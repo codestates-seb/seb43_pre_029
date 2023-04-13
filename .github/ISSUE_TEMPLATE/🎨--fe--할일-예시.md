@@ -1,7 +1,7 @@
 ---
-name: 할일 예시
+name: "\U0001F3A8 [FE] 할일 예시"
 about: Suggest an idea for this project
-title: 작업 분류 / 작업 이름 (담당자)
+title: "\U0001F3A8 [FE] 작업 분류 / 작업 이름 (담당자)"
 labels: ''
 assignees: ''
 
