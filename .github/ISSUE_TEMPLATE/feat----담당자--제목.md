@@ -1,5 +1,5 @@
 ---
-name: "\U0001F4F0 Feat : (담당자) 제목"
+name: 'Feat : (담당자) 제목'
 about: Suggest an idea for this project
 title: ''
 labels: ''
