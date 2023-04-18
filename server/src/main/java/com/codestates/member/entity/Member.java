@@ -2,12 +2,14 @@ package com.codestates.member.entity;
 
 
 import com.codestates.audit.Auditable;
+import com.codestates.comment.entity.Comment;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @Getter
@@ -39,10 +41,10 @@ public class Member extends Auditable {
 //    private List<Answer> answers = new ArrayList<>();
 //
 //    @OneToMany(mappedBy = "member")
-//    private List<Question> answers = new ArrayList<>();
+//    private List<Question> questions = new ArrayList<>();
 //
-//    @OneToMany(mappedBy = "member")
-//    private List<Comment> answers = new ArrayList<>();
+    @OneToMany(mappedBy = "member")
+    private List<Comment> comments = new ArrayList<>();
 
     public enum MemberStatus{
         MEMBER_ACTIVE,
