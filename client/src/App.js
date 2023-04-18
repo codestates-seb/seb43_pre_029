@@ -1,12 +1,16 @@
-import Header from "./component/Header";
+import Contnent from './component/Content';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <Header />
-    
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Contnent />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
-}
+};
 
 export default App;
