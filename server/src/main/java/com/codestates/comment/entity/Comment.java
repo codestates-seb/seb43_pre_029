@@ -18,9 +18,9 @@ public class Comment extends Auditable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long commentId;
 
-    @ManyToOne
-    @JoinColumn(name = "MEMBER_ID")
-    private Member creator;
+//    @ManyToOne
+//    @JoinColumn(name = "MEMBER_ID")
+//    private Member creator;
 
     // Question 구현 후 활성화
 //    @ManyToOne

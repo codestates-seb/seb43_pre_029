@@ -16,11 +16,9 @@ import org.springframework.web.bind.annotation.*;
 public class CommentController {
 
     private final CommentService commentService;
-    private final CommentMapper mapper;
 
-    public CommentController(CommentService commentService, CommentMapper mapper){
+    public CommentController(CommentService commentService){
         this.commentService = commentService;
-        this.mapper = mapper;
     }
 
     @PostMapping

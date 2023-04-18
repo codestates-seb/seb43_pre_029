@@ -17,11 +17,9 @@ import javax.validation.constraints.Positive;
 @RequestMapping("/member")
 public class MemberController {
     private final MemberService memberService;
-    private final MemberMapper mapper;
 
-    public MemberController(MemberService memberService, MemberMapper mapper){
+    public MemberController(MemberService memberService){
         this.memberService = memberService;
-        this.mapper = mapper;
     }
 
     @PatchMapping("/edit")

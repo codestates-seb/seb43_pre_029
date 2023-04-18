@@ -42,9 +42,9 @@ public class Member extends Auditable {
 //
 //    @OneToMany(mappedBy = "member")
 //    private List<Question> questions = new ArrayList<>();
-//
-    @OneToMany(mappedBy = "member")
-    private List<Comment> comments = new ArrayList<>();
+////
+//    @OneToMany(mappedBy = "member")
+//    private List<Comment> comments = new ArrayList<>();
 
     public enum MemberStatus{
         MEMBER_ACTIVE,
