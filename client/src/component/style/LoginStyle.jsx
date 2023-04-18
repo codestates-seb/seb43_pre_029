@@ -25,6 +25,8 @@ const OauthStyle = styled.div`
   margin-bottom: 1em;
 
   button {
+    width: 17.5em;
+
     height: 1.8em;
     border-radius: 0.3em;
     border: none;
@@ -65,7 +67,8 @@ const FormStyle = styled.form`
 
   background: #fff;
 
-  padding: 1em;
+  width: 10em;
+  padding: 1.1em;
   border-radius: 0.5em;
 
   .input {
@@ -75,17 +78,25 @@ const FormStyle = styled.form`
     margin-bottom: 1em;
 
     label {
-      font-size: 0.8em;
+      font-size: 0.7em;
       font-weight: 600;
-      margin-bottom: 0.2em;
+      margin-bottom: 0.5em;
     }
     input {
-      height: 1.5em;
+      height: 2.5em;
       border: solid 0.03em rgba(0, 0, 0, 0.5);
       border-radius: 0.2em;
     }
   }
+  .input:nth-child(3) {
+    margin-bottom: 0.1em;
+  }
 
+  p {
+    font-size: 0.1em;
+    color: #6a737c;
+    margin-bottom: 8em;
+  }
   button {
     height: 4em;
     font-size: 0.5em;
