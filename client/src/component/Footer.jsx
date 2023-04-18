@@ -47,7 +47,7 @@ const LogoImg = styled.img`
   height: 3.3125rem;
 `;
 
-const Asdf = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -171,7 +171,7 @@ function Footer() {
             </FooterLinkList>
           </div>
         </FooterSection>
-        <Asdf>
+        <Wrapper>
           <div>
             <FooterLink href="#">Blog</FooterLink>
             <FooterLink href="#">Facebook</FooterLink>
@@ -186,7 +186,7 @@ function Footer() {
             </p>
             <p>rev 2023.4.17.43393</p>
           </div>
-        </Asdf>
+        </Wrapper>
     </FooterContainer>
   );
 }
