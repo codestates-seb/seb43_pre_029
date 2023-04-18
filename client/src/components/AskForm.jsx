@@ -22,7 +22,7 @@ const AskForm = () => {
       <Box backColor="rgb(255, 255, 255)">
         <label htmlFor="">What are the details of your problem?</label>
         <p>Introduce the problem and expand on what you put in the title. Minimum 20 characters.</p>
-        <ReactQuill />
+        <ReactQuill theme="snow" />
       </Box>
 
       <Box backColor="rgb(255, 255, 255)">

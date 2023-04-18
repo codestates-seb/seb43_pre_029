@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import questionimg from '../image/questionsform-img.png';
 import pencil from '../image/pencil.png';
-import AskForm from '../component/AskForm';
+import AskForm from '../components/AskForm';
 
 const Wrapper = styled.div`
   margin: 0 auto;
