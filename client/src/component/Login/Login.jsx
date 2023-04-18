@@ -1,7 +1,7 @@
 import { LoginStyle, MainLogoStyle } from '../style/LoginStyle';
-import FormContainer from './FormContainer';
-import OAuthButton from './OAuthButton2';
-import StackOverFlow from '../../image/StackOverflow.png';
+import LoginForm from './LoginForm';
+import OAuthButton from './OAuthButton';
+import { StackOverFlow } from '../Import-Logo';
 
 const MainLogoContainer = () => {
   return (
@@ -16,7 +16,7 @@ const Login = () => {
     <LoginStyle>
       <MainLogoContainer />
       <OAuthButton />
-      <FormContainer />
+      <LoginForm />
     </LoginStyle>
   );
 };
