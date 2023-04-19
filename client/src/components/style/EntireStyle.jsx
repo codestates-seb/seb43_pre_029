@@ -6,7 +6,7 @@ const EntireStyle = styled.div`
   align-content: center;
   background: #f1f2f3;
 
-  height: 61rem;
+  height: 60rem;
 
   padding-top: 2.8125rem;
 `;

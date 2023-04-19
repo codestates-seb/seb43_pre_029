@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import styled from 'styled-components';
 
 import { UserInfoStyle } from '../../style/MyPageStyle';
 import InfoItems from './InfoItems';
 import PassConfirm from './PassConfirm';
 
 const UserInfoContainer = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
   const isBlock = !isLogin ? 'block' : '';
 
   return (
