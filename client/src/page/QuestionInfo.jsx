@@ -133,7 +133,6 @@ const QuestionInfo = () => {
         <InfoValue>
           <div className="infoValue">value</div>
           <InfoValueUnder>
-            <div>edited 2 hours ago</div>
             <div className="userProfil">
               <div className="creatTime">
                 <span>asked </span>
