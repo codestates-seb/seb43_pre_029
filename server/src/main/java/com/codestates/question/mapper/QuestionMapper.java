@@ -17,11 +17,13 @@ public interface QuestionMapper {
     @Mapping(source="m_id", target = "member.m_id")
     Question questionPatchDtoToQuestion(QuestionDto.Patch questionPatchDto);
 
+    @Mapping(source = "m_id", target = "member.m_id")
+    Question questiondeleteDtoToQuestion(QuestionDto.Delete questionDeleteDto);
+
     List<QuestionDto.SingleResponse> questionToQuestionResponseDtos(List<Question> questions);
+
     default QuestionDto.SingleResponse questionToQuestionSingleResponseDto(Question questions){
         QuestionDto.SingleResponse questionResponseDto = new QuestionDto.SingleResponse();
         return questionResponseDto;
     }
-
-
 }

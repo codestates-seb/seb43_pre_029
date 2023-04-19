@@ -31,9 +31,17 @@ public class QuestionController {
         return new ResponseEntity<>(mapper.questionToQuestionSingleResponseDto(question), HttpStatus.CREATED);
     }
 
-    @PatchMapping("edit")
+    @PatchMapping("/edit")
     public ResponseEntity patchQustion(@Valid @RequestBody QuestionDto.Patch questionPatchDto){
         Question question = questionService.updateQuestion(mapper.questionPatchDtoToQuestion(questionPatchDto));
         return new ResponseEntity<>(mapper.questionToQuestionSingleResponseDto(question), HttpStatus.OK);
+    }
+
+    @DeleteMapping
+    public ResponseEntity deleteQustion(@Valid @RequestBody QuestionDto.Delete questionDeleteDto){
+        //TODO 토큰 값으로 회원인지 확인 일단 Dto로 구현
+        Question question = mapper.questiondeleteDtoToQuestion(questionDeleteDto);
+        questionService.deleteQuestion(question);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

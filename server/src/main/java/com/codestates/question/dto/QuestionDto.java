@@ -40,6 +40,8 @@ public class QuestionDto {
     }
 
 
+
+
     @Getter
     @Setter
     public static class SingleResponse {
@@ -52,6 +54,14 @@ public class QuestionDto {
 //        private CommentResponseDto commentResponseDto;
         @NotNull
         private Question.QuestionStatus q_status;
+    }
+
+    @Getter
+    public static class Delete{
+        @Positive
+        private Long q_id;
+        @Positive
+        private Long m_id;
     }
 
 
