@@ -43,8 +43,8 @@ const OauthStyle = styled.div`
     align-items: center;
 
     .logo {
-      width: 0.8rem;
-      margin: 0 0.3rem;
+      width: 1rem;
+      margin: 0 0.3rem 0 0;
     }
 
     :nth-child(1) {
@@ -98,8 +98,9 @@ const FormStyle = styled.form`
   }
 
   p {
-    font-size: 0.1rem;
+    font-size: 0.5rem;
     color: #6a737c;
+    margin-top: 0.2rem;
     margin-bottom: 1rem;
   }
   button {
