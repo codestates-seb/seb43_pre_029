@@ -8,13 +8,12 @@ const ContnentTemplate = styled.div`
   height: auto;
   border-bottom: 1px solid black;
   padding-bottom: 20px;
+  margin-top: 2.8125rem;
 `;
 const ContentHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 20px 16px;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding: 20px 25px;
   margin-bottom: 5px;
   h1 {
     margin: 0px;
@@ -42,7 +41,6 @@ const ContentA = styled.div`
   padding-right: 25px;
 
   .aBtn {
-    width: auto;
     height: 40px;
     /* border-radius: 5px; */
     border: 1px solid gray;
