@@ -1,0 +1,24 @@
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import homeimg from '../assets/home_img.png';
+
+const Imgstyle = styled.div`
+  img {
+    padding-top: 2.8125rem;
+    width: 100%;
+  }
+`;
+
+export default function Home() {
+  const [isLogin, setIsLogin] = useState(true);
+
+  return (
+    <>
+      {isLogin ? (
+        <Imgstyle>
+          <img src={homeimg} alt="" />
+        </Imgstyle>
+      ) : null}
+    </>
+  );
+}
