@@ -11,10 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -32,5 +29,11 @@ public class QuestionController {
     public ResponseEntity postQustion(@Valid @RequestBody QuestionDto.Post questionPostDto){
         Question question = questionService.createQuestion(mapper.questionPostDtoToQuestion(questionPostDto));
         return new ResponseEntity<>(mapper.questionToQuestionSingleResponseDto(question), HttpStatus.CREATED);
+    }
+
+    @PatchMapping("edit")
+    public ResponseEntity patchQustion(@Valid @RequestBody QuestionDto.Patch questionPatchDto){
+        Question question = questionService.updateQuestion(mapper.questionPatchDtoToQuestion(questionPatchDto));
+        return new ResponseEntity<>(mapper.questionToQuestionSingleResponseDto(question), HttpStatus.OK);
     }
 }
