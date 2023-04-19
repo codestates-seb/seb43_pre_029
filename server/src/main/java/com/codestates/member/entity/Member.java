@@ -17,7 +17,7 @@ import java.util.List;
 @Entity
 public class Member extends Auditable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long memberId;
     @Column(nullable = false)
     private String name;
@@ -27,7 +27,8 @@ public class Member extends Auditable {
     private String email;
     @Column(nullable = false)
     private String address;
-
+    @Column
+    private String status_message;
     @Column(length = 13, nullable = false, unique = true)
     private String phone;
 
