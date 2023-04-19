@@ -1,10 +1,10 @@
 import React from 'react';
-import OAuthButton from '../component/Login/OAuthButton';
-import SignUpForm from '../component/SignUp/SignUpForm';
+import OAuthButton from '../components/Login/OAuthButton';
+import SignUpForm from '../components/SignUp/SignUpForm';
 import SignUpInfo from '../image/SignUp.png';
 
-import { SignUpStyle } from '../component/style/SignUpStyle';
-import EntireStyle from '../component/style/EntireStyle';
+import { SignUpStyle } from '../components/style/SignUpStyle';
+import EntireStyle from '../components/style/EntireStyle';
 
 function SignUp() {
   return (

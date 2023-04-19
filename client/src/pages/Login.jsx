@@ -1,9 +1,9 @@
-import LoginForm from '../component/Login/LoginForm';
-import OAuthButton from '../component/Login/OAuthButton';
-import { StackOverFlow } from '../component/Import-Logo';
+import LoginForm from '../components/Login/LoginForm';
+import OAuthButton from '../components/Login/OAuthButton';
+import { StackOverFlow } from '../components/Import-Logo';
 
-import { LoginStyle, MainLogoStyle } from '../component/style/LoginStyle';
-import EntireStyle from '../component/style/EntireStyle';
+import { LoginStyle, MainLogoStyle } from '../components/style/LoginStyle';
+import EntireStyle from '../components/style/EntireStyle';
 
 const MainLogoContainer = () => {
   return (
