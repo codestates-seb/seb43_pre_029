@@ -16,7 +16,7 @@ public class Comment extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long commentId;
+    private Long c_id;
 
 //    @ManyToOne
 //    @JoinColumn(name = "MEMBER_ID")
@@ -29,7 +29,7 @@ public class Comment extends Auditable {
 
     @Enumerated(value = EnumType.STRING)
     @Column(nullable = false)
-    private CommentStatus commentStatus = CommentStatus.COMMENT_ACTIVE;
+    private CommentStatus c_status = CommentStatus.COMMENT_ACTIVE;
 
     public enum CommentStatus{
         COMMENT_ACTIVE,
