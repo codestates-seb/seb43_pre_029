@@ -9,13 +9,14 @@ const HeaderContainer = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  height: 2.87rem; 
+  height: 2.8rem; 
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(248, 249, 249);
   border-top: 0.1875rem solid rgb(244, 130, 36);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.219);
+  z-index: 999;
 `;
 
 // 햄버거 사이드 버튼
@@ -149,10 +150,9 @@ function Header() {
   return (
     <HeaderContainer>
       <div>
-        {/* <RxHamburgerMenu size={19} /> */}
-        <HamburgerStyle>
+        {/* <HamburgerStyle>
           <Icon1 />
-        </HamburgerStyle>
+        </HamburgerStyle> */}
       </div>
       <Logo href="#">
         <LogoImg src={MainLogo} alt="Main Logo" />
