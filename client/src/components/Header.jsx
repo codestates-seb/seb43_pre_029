@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import MainLogo from '../images/MainLogo.png';
+import MainLogo from '../images/stack-overflow-logo-vector.svg';
 
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { SlMagnifier } from 'react-icons/sl';
@@ -9,7 +9,7 @@ const HeaderContainer = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  height: 2.8125rem; 
+  height: 3rem; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,31 +18,31 @@ const HeaderContainer = styled.header`
 `;
 
 // 햄버거 사이드 버튼
-const HamburgerStyle = styled.span`
+const HamburgerStyle = styled.button`
   display: flex;
   align-items: center;
-
+  border: none;
+  background-color:transparent;
+  
   &:hover {
-    background-color: rgb(227, 230, 232);
+    background-color: rgba(227, 230, 232, 0.61);
   }
 `;
 
 const Icon1 = styled(RxHamburgerMenu)`
   font-size: 1.125rem;
   color: rgb(0, 0, 0);
-  padding: 0.875rem;
+  padding: 0.7rem 0.5rem;
 `;
 
 // 메인 로고
 const Logo = styled.a`
-  display: flex;
-  align-items: center;
   padding: 0 0.375rem 0 0.125rem;
 `;
 
 const LogoImg = styled.img`
-  height: 2.1875rem;
-  margin: 0 0 0.3125rem 0;
+  height: 9.7rem;
+  padding: 0 20px;
 `;
 
 // 네비 버튼
