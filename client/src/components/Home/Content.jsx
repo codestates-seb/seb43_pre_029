@@ -8,7 +8,6 @@ const ContnentTemplate = styled.div`
   height: auto;
   border-bottom: 1px solid black;
   padding-bottom: 20px;
-  margin-top: 2.8125rem;
 `;
 const ContentHeader = styled.div`
   display: flex;
