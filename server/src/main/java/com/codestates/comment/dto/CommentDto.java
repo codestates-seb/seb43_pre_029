@@ -20,12 +20,12 @@ public class CommentDto {
     @Getter
     @AllArgsConstructor
     public static class CommentResponse{
-        private Long memberId;
-        private Long questionId;
-        private Long commentId;
-        private String content;
+        private Long m_id;
+        private Long q_id;
+        private Long c_id;
+        private String c_content;
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
-        private String commentStatus;
+        private String c_status;
     }
 }

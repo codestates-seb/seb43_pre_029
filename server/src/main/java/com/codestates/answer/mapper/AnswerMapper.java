@@ -9,8 +9,8 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface AnswerMapper {
 
-    @Mapping(source = "m_id", target = "member.m_id")
-    @Mapping(source = "q_id", target = "question.q_id")
+//    @Mapping(source = "m_id", target = "member.m_id")
+//    @Mapping(source = "q_id", target = "question.q_id")
     Answer answerPostDtoToAnswer(AnswerDto.Post answerPostDto);
     Answer answerPatchDtoToAnswer(AnswerDto.Patch answerPatchDto);
     default AnswerDto.SingleResponse answerToAnswerSingleResponseDto(Answer answer){
