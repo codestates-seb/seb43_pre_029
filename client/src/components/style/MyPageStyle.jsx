@@ -4,7 +4,7 @@ const MyPageStyle = styled.div`
   display: flex;
   flex-direction: column;
 
-  width: 100%;
+  width: 45rem;
   padding: 2rem;
 
   background-color: #fff;
@@ -54,6 +54,7 @@ const ImageSample = styled.div`
 const StatsStyle = styled.div`
   width: 15%;
   margin-right: 1rem;
+  flex-wrap: wrap;
 
   h4 {
     font-size: 2.5rem;
@@ -176,6 +177,8 @@ const PassConfirmStyle = styled.div`
     padding: 0.4em 0.8em;
     border-radius: 0.7em;
 
+    width: 25rem;
+
     .passInput {
       display: flex;
       align-items: center;
@@ -183,15 +186,16 @@ const PassConfirmStyle = styled.div`
   }
 
   input {
-    width: 13rem;
+    width: 100%;
     height: 1.5rem;
-    margin-right: 0.3em;
+    margin-right: 0.3rem;
 
-    border: solid 0.05em rgba(0, 0, 0, 0.4);
-    border-radius: 0.2em;
+    border: solid 0.05rem rgba(0, 0, 0, 0.4);
+    border-radius: 0.2rem;
   }
 
   button {
+    width: 6rem;
     height: 1.7rem;
     background-color: #fff;
     border: solid 0.2em;
@@ -200,6 +204,12 @@ const PassConfirmStyle = styled.div`
     color: rgba(0, 0, 0, 0.4);
 
     font-size: 0.2em;
+
+    display: flex;
+    align-items: center;
+    .editIcon {
+      width: 0.9rem;
+    }
   }
 
   .pText {

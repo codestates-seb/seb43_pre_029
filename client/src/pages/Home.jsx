@@ -27,7 +27,6 @@ export default function Home() {
 
   return (
     <>
-      <Header />
       {isLogin ? (
         <HomeTemplate>
           <Contnent />
@@ -38,7 +37,6 @@ export default function Home() {
           <img src={homeimg} alt="" />
         </Imgstyle>
       )}
-      <Footer />
     </>
   );
 }
