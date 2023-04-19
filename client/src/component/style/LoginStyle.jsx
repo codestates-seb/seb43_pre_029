@@ -5,33 +5,33 @@ const LoginStyle = styled.div`
   flex-direction: column;
   justify-content: center;
 
-  width: 12em;
+  width: 12rem;
 
   .mainlogo {
-    width: 3em;
+    width: 3rem;
   }
 `;
 
 const MainLogoStyle = styled.div`
   display: flex;
   justify-content: center;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.5rem;
 `;
 
 const OauthStyle = styled.div`
   display: flex;
   flex-direction: column;
 
-  margin-bottom: 1em;
+  margin-bottom: 1rem;
 
   button {
-    width: 17.5em;
+    width: 12rem;
 
-    height: 1.8em;
-    border-radius: 0.3em;
+    height: 1.5rem;
+    border-radius: 0.3rem;
     border: none;
 
-    font-size: 0.7em;
+    font-size: 0.7rem;
 
     display: flex;
 
@@ -39,8 +39,8 @@ const OauthStyle = styled.div`
     align-items: center;
 
     .logo {
-      width: 1em;
-      margin: 0 0.3em;
+      width: 0.8rem;
+      margin: 0 0.3rem;
     }
 
     :nth-child(1) {
@@ -57,7 +57,7 @@ const OauthStyle = styled.div`
   }
 
   button:not(:last-child) {
-    margin-bottom: 0.3em;
+    margin-bottom: 0.2rem;
   }
 `;
 
@@ -67,39 +67,39 @@ const FormStyle = styled.form`
 
   background: #fff;
 
-  width: 10em;
-  padding: 1.1em;
-  border-radius: 0.5em;
+  width: 10rem;
+  padding: 1.1rem;
+  border-radius: 0.5rem;
 
   .input {
     display: flex;
     flex-direction: column;
 
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
 
     label {
-      font-size: 0.7em;
+      font-size: 0.7rem;
       font-weight: 600;
-      margin-bottom: 0.5em;
+      margin-bottom: 0.3rem;
     }
     input {
-      height: 2.5em;
-      border: solid 0.03em rgba(0, 0, 0, 0.5);
-      border-radius: 0.2em;
+      height: 2rem;
+      border: solid 0.03rem rgba(0, 0, 0, 0.5);
+      border-radius: 0.2rem;
     }
   }
   .input:nth-child(3) {
-    margin-bottom: 0.1em;
+    margin-bottom: 0.1rem;
   }
 
   p {
-    font-size: 0.1em;
+    font-size: 0.1rem;
     color: #6a737c;
-    margin-bottom: 8em;
+    margin-bottom: 1rem;
   }
   button {
-    height: 4em;
-    font-size: 0.5em;
+    height: 2rem;
+    font-size: 0.5rem;
     background-color: #0a95ff;
     border: none;
 

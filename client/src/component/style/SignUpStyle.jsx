@@ -8,12 +8,12 @@ const SignUpStyle = styled.div`
   border-color: aliceblue;
 
   .SignUpInfo {
-    width: 15em;
-    margin-right: 1em;
+    width: 15rem;
+    margin-right: 1rem;
   }
 
   .SignUpForm {
-    width: 17em;
+    width: 17rem;
   }
 `;
 
