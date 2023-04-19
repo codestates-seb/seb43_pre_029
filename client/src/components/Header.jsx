@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import MainLogo from '../image/MainLogo.png';
+import MainLogo from '../images/MainLogo.png';
 
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { SlMagnifier } from 'react-icons/sl';

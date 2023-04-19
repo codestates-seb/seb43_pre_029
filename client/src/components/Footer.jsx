@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import stackOverflow from '../image/StackOverflow.png';
+import stackOverflow from '../images/StackOverflow.png';
 
 const FooterContainer = styled.footer`
   background-color: rgb(35, 38, 41);
