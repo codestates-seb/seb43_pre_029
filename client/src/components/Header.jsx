@@ -9,12 +9,13 @@ const HeaderContainer = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  height: 3rem; 
+  height: 2.87rem; 
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(248, 249, 249);
+  background-color: rgb(255, 255, 255);
   border-top: 0.1875rem solid rgb(244, 130, 36);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.219);
 `;
 
 // 햄버거 사이드 버튼
@@ -32,7 +33,7 @@ const HamburgerStyle = styled.button`
 const Icon1 = styled(RxHamburgerMenu)`
   font-size: 1.125rem;
   color: rgb(0, 0, 0);
-  padding: 0.7rem 0.5rem;
+  padding: 0.8rem 0.5rem;
 `;
 
 // 메인 로고
@@ -63,7 +64,7 @@ const MenuButton = styled.a`
   &:hover {
     border-radius: 3.125rem / 3.125rem;
     color: rgb(0, 0, 0);
-    background-color: rgb(227, 230, 232);
+    background-color: rgba(227, 230, 232, 0.61);
   }
 `;
 
