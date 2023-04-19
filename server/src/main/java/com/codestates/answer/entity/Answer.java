@@ -30,10 +30,17 @@ public class Answer extends Auditable {
     private Member member;
 
     @Enumerated(EnumType.STRING)
+    @Column(length = 10, nullable = false)
+    private Accepted accepted = Accepted.FALSE; // 기본값 : 채택되지 않았다.
+
+    @Enumerated(EnumType.STRING)
     @Column(length = 30, nullable = false)
     private AnswerStatus a_status = AnswerStatus.ANSWER_REGISTRATION;
 
-
+    public enum Accepted{
+        TRUE,
+        FALSE;
+    }
 
     public enum AnswerStatus{
         ANSWER_REGISTRATION,
