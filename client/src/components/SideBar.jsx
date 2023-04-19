@@ -1,12 +1,9 @@
-import React from 'react';
 import styled from 'styled-components';
 import SideBarImg from '../images/SidebarImg.png';
 import SidebarStarImg from '../images/SidebarStarImg.png';
 
 import { IoEarthSharp } from 'react-icons/io5';
 import { IoIosInformationCircle } from 'react-icons/io';
-import { TiStarburstOutline } from 'react-icons/ti';
-import { TfiStar } from 'react-icons/tfi';
 
 const SidebarWrapper = styled.div`
   background-color: rgb(255, 255, 255);
