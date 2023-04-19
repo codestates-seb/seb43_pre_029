@@ -9,7 +9,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Entity(name = "ANSWER")
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor

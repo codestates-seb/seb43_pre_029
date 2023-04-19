@@ -36,6 +36,9 @@ public class Member extends Auditable {
     @Column(nullable = false)
     private MemberStatus m_status = MemberStatus.MEMBER_ACTIVE;
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles = new ArrayList<>();
+
     // Question, Comment, Answer 생성 후
 
 //    @OneToMany(mappedBy = "member")
