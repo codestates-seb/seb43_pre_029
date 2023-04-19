@@ -1,13 +1,18 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import Header from './components/Header';
+import Footer from './components/Footer';
+
+import Home from './pages/Home';
 import Login from './pages/Login'
 import SignUp from './pages/SignUp'
 import MyPage from './pages/MyPage'
-import Home from './pages/Home';
 import QuestionInfo from './pages/QuestionInfo';
 
 const App = () => {
   return (
     <div className="App">
+      <Header />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -17,6 +22,7 @@ const App = () => {
           <Route path="/question/:id" element={<QuestionInfo />} />
         </Routes>
       </BrowserRouter>
+      <Footer />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import MainLogo from '../image/MainLogo.png';
+import MainLogo from '../images/MainLogo.png';
 
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { SlMagnifier } from 'react-icons/sl';
@@ -9,7 +9,7 @@ const HeaderContainer = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  height: 2.8125rem; 
+  height: 2.8125rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -142,7 +142,6 @@ const SignupButton = styled.button`
     color: #fff;
   }
 `;
-
 
 function Header() {
   return (

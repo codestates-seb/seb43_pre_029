@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import stackOverflow from '../image/StackOverflow.png';
+import stackOverflow from '../images/StackOverflow.png';
 
 const FooterContainer = styled.footer`
   background-color: rgb(35, 38, 41);
@@ -38,7 +38,6 @@ const FooterLink = styled.a`
   color: rgb(186, 191, 196);
   text-decoration: none;
   padding: 0.625rem;
-
 `;
 
 const FooterLogo = styled.a``;
@@ -62,131 +61,130 @@ const Wrapper = styled.div`
   }
 `;
 
-
 function Footer() {
   return (
     <FooterContainer>
-        <FooterSection>
-          <div>
-            <FooterLogo>
-              <LogoImg src={stackOverflow} alt="Main Logo" />
-            </FooterLogo>
-          </div>
-          <div>
-            <FooterLinkList>
-              <li>
-                <FooterLink href="#">STACK OVERFLOW</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="#">Questions</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="#">Help</FooterLink>
-              </li>
-            </FooterLinkList>
-          </div>
-          <div>
-            <FooterLinkList>
-              <li>
-                <FooterLink href="#">PRODUCTS</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="#">Teams</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="#">Advertising</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="#">Collectives</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="#">Talent</FooterLink>
-              </li>
-            </FooterLinkList>
-          </div>
-          <div>
-            <FooterLinkList>
-              <li>
-                <FooterLink href="#">COMPANY</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="#">About</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="#">Press</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="#">Work Here</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="#">Legal</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="#">Privacy Policy</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="#">Terms of Service</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="#">Contact Us</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="#">Cookie Settings</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="#">Cookie Policy</FooterLink>
-              </li>
-            </FooterLinkList>
-          </div>
-          <div>
-            <FooterLinkList>
-              <li>
-                <FooterLink href="#">STACK EXCHANGE NETWORK</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="#">Technology</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="#">Culture & recreation</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="#">Life & arts</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="#">Science</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="#">Professional</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="#">Business</FooterLink>
-              </li>
-              <li>&nbsp;</li>
-              <li>
-                <FooterLink href="#">API</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="#">Data</FooterLink>
-              </li>
-            </FooterLinkList>
-          </div>
-        </FooterSection>
-        <Wrapper>
-          <div>
-            <FooterLink href="#">Blog</FooterLink>
-            <FooterLink href="#">Facebook</FooterLink>
-            <FooterLink href="#">Twitter</FooterLink>
-            <FooterLink href="#">LinkedIn</FooterLink>
-            <FooterLink href="#">Instagram</FooterLink>
-          </div>
-          <div>
-            <p>Site design / logo © 2023 Stack Exchange Inc; user</p>
-            <p>
-              contributions licensed under <u>CC BY-SA</u>.
-            </p>
-            <p>rev 2023.4.17.43393</p>
-          </div>
-        </Wrapper>
+      <FooterSection>
+        <div>
+          <FooterLogo>
+            <LogoImg src={stackOverflow} alt="Main Logo" />
+          </FooterLogo>
+        </div>
+        <div>
+          <FooterLinkList>
+            <li>
+              <FooterLink href="#">STACK OVERFLOW</FooterLink>
+            </li>
+            <li>
+              <FooterLink href="#">Questions</FooterLink>
+            </li>
+            <li>
+              <FooterLink href="#">Help</FooterLink>
+            </li>
+          </FooterLinkList>
+        </div>
+        <div>
+          <FooterLinkList>
+            <li>
+              <FooterLink href="#">PRODUCTS</FooterLink>
+            </li>
+            <li>
+              <FooterLink href="#">Teams</FooterLink>
+            </li>
+            <li>
+              <FooterLink href="#">Advertising</FooterLink>
+            </li>
+            <li>
+              <FooterLink href="#">Collectives</FooterLink>
+            </li>
+            <li>
+              <FooterLink href="#">Talent</FooterLink>
+            </li>
+          </FooterLinkList>
+        </div>
+        <div>
+          <FooterLinkList>
+            <li>
+              <FooterLink href="#">COMPANY</FooterLink>
+            </li>
+            <li>
+              <FooterLink href="#">About</FooterLink>
+            </li>
+            <li>
+              <FooterLink href="#">Press</FooterLink>
+            </li>
+            <li>
+              <FooterLink href="#">Work Here</FooterLink>
+            </li>
+            <li>
+              <FooterLink href="#">Legal</FooterLink>
+            </li>
+            <li>
+              <FooterLink href="#">Privacy Policy</FooterLink>
+            </li>
+            <li>
+              <FooterLink href="#">Terms of Service</FooterLink>
+            </li>
+            <li>
+              <FooterLink href="#">Contact Us</FooterLink>
+            </li>
+            <li>
+              <FooterLink href="#">Cookie Settings</FooterLink>
+            </li>
+            <li>
+              <FooterLink href="#">Cookie Policy</FooterLink>
+            </li>
+          </FooterLinkList>
+        </div>
+        <div>
+          <FooterLinkList>
+            <li>
+              <FooterLink href="#">STACK EXCHANGE NETWORK</FooterLink>
+            </li>
+            <li>
+              <FooterLink href="#">Technology</FooterLink>
+            </li>
+            <li>
+              <FooterLink href="#">Culture & recreation</FooterLink>
+            </li>
+            <li>
+              <FooterLink href="#">Life & arts</FooterLink>
+            </li>
+            <li>
+              <FooterLink href="#">Science</FooterLink>
+            </li>
+            <li>
+              <FooterLink href="#">Professional</FooterLink>
+            </li>
+            <li>
+              <FooterLink href="#">Business</FooterLink>
+            </li>
+            <li>&nbsp;</li>
+            <li>
+              <FooterLink href="#">API</FooterLink>
+            </li>
+            <li>
+              <FooterLink href="#">Data</FooterLink>
+            </li>
+          </FooterLinkList>
+        </div>
+      </FooterSection>
+      <Wrapper>
+        <div>
+          <FooterLink href="#">Blog</FooterLink>
+          <FooterLink href="#">Facebook</FooterLink>
+          <FooterLink href="#">Twitter</FooterLink>
+          <FooterLink href="#">LinkedIn</FooterLink>
+          <FooterLink href="#">Instagram</FooterLink>
+        </div>
+        <div>
+          <p>Site design / logo © 2023 Stack Exchange Inc; user</p>
+          <p>
+            contributions licensed under <u>CC BY-SA</u>.
+          </p>
+          <p>rev 2023.4.17.43393</p>
+        </div>
+      </Wrapper>
     </FooterContainer>
   );
 }

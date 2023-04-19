@@ -3,12 +3,14 @@ import styled from 'styled-components';
 const LoginStyle = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
 
-  width: 12rem;
+  justify-content: center;
+  align-items: center;
+
+  width: 22rem;
 
   .mainlogo {
-    width: 3rem;
+    width: 5rem;
   }
 `;
 
@@ -21,17 +23,19 @@ const MainLogoStyle = styled.div`
 const OauthStyle = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
 
   margin-bottom: 1rem;
 
   button {
-    width: 12rem;
+    height: 2rem;
+    width: 100%;
 
-    height: 1.5rem;
     border-radius: 0.3rem;
     border: none;
 
-    font-size: 0.7rem;
+    font-size: 1rem;
 
     display: flex;
 
@@ -57,7 +61,7 @@ const OauthStyle = styled.div`
   }
 
   button:not(:last-child) {
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.5rem;
   }
 `;
 
@@ -67,7 +71,8 @@ const FormStyle = styled.form`
 
   background: #fff;
 
-  width: 10rem;
+  width: 20rem;
+
   padding: 1.1rem;
   border-radius: 0.5rem;
 
@@ -75,12 +80,12 @@ const FormStyle = styled.form`
     display: flex;
     flex-direction: column;
 
-    margin-bottom: 1rem;
+    margin-bottom: 2.2rem;
 
     label {
-      font-size: 0.7rem;
+      font-size: 1rem;
       font-weight: 600;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.6rem;
     }
     input {
       height: 2rem;
@@ -99,9 +104,10 @@ const FormStyle = styled.form`
   }
   button {
     height: 2rem;
-    font-size: 0.5rem;
+    font-size: 1rem;
     background-color: #0a95ff;
     border: none;
+    border-radius: 0.2rem;
 
     color: #ffffff;
   }
