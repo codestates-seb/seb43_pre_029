@@ -3,7 +3,10 @@ import styled from 'styled-components';
 import homeimg from '../images/home_img.png';
 import Contnent from '../components/Home/Content';
 import QuestionsList from '../components/Home/QuestionsList';
-import NoSideHeader from '../components/Header/NoSideHeader';
+
+import FixSideHeader from '../components/Header/FixSideHeader';
+import ModalSideHeader from '../components/Header/ModalSideHeader';
+import LoginHeader from '.././components/Header/LoginHeader';
 
 const HomeTemplate = styled.div`
   display: flex;
@@ -26,16 +29,21 @@ export default function Home() {
 
   return (
     <>
-      <NoSideHeader />
       {isLogin ? (
+        <>
+        <FixSideHeader />
         <HomeTemplate>
           <Contnent />
           <QuestionsList />
         </HomeTemplate>
+        </>
       ) : (
+        <>
+        <ModalSideHeader />
         <Imgstyle>
           <img src={homeimg} alt="" />
         </Imgstyle>
+        </>
       )}
     </>
   );
