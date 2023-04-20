@@ -1,0 +1,8 @@
+{
+  "/auth/signup": "/auth",
+  "/auth/login": "/auth",
+  "/auth/signin/password": "/auth",
+  "/auth/signup/check-email": "/auth",
+
+  "/member/:id": "/auth/:id"
+}

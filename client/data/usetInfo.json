@@ -1,0 +1,18 @@
+{
+  "auth": [
+    {
+      "id": 1,
+      "name": "eunhee",
+      "email": "user@gmail.com",
+      "password": "숫자1개, 문자1개, 8자이상",
+      "address": "서울특별시 강남구 서초구 코드스테이츠"
+    },
+    {
+      "id": 2,
+      "name": "hyunguk",
+      "email": "user1@gmail.com",
+      "password": "asdf12345",
+      "address": "우리집"
+    }
+  ]
+}
