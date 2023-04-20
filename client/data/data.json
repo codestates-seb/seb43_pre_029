@@ -16,8 +16,8 @@
     },
     {
       "id": 3,
-      "question": "How to convert a 3d zmap tiff image to a color bitmap or Image<Bgr,byte>?",
-      "value": "I have a few images from a 3D scanner of a grinding disc. I want to view the image in a picturebox. I use this code : ",
+      "question": "How to convert a 3d zmap tiff images to a color bitmap or images<Bgr,byte>?",
+      "value": "I have a few imagess from a 3D scanner of a grinding disc. I want to view the images in a picturebox. I use this code : ",
       "username": "hyun",
       "date": "43 secs ago"
     },

@@ -1,4 +1,4 @@
-import { ImageSample, ProfileStyle } from '../style/MyPageStyle';
+import { imagesSample, ProfileStyle } from '../style/MyPageStyle';
 
 const ProfileInfo = () => {
   return (
@@ -16,7 +16,7 @@ const ProfileInfo = () => {
 const Profile = () => {
   return (
     <ProfileStyle>
-      <ImageSample />
+      <imagesSample />
       <ProfileInfo />
     </ProfileStyle>
   );

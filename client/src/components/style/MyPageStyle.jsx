@@ -152,7 +152,7 @@ const ProfileStyle = styled.div`
   }
 `;
 
-const ImageSample = styled.div`
+const imagesSample = styled.div`
   width: 5em;
   height: 5em;
   background-color: #000;
@@ -200,4 +200,4 @@ const InfoItemsStyle = styled.div`
     color: rgba(0, 0, 0, 0.4);
   }
 `;
-export { MyPageStyle, StatsStyle, UserInfoStyle, PassConfirmStyle, InfoItemsStyle, ProfileStyle, ImageSample };
+export { MyPageStyle, StatsStyle, UserInfoStyle, PassConfirmStyle, InfoItemsStyle, ProfileStyle, imagesSample };
