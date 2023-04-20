@@ -1,48 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
-import MainLogo from '../image/MainLogo.png';
+import MainLogo from '../../images/stack-overflow-logo-vector.svg'
 
-import { RxHamburgerMenu } from 'react-icons/rx';
 import { SlMagnifier } from 'react-icons/sl';
 
 const HeaderContainer = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  height: 2.8125rem; 
+  height: 2.8rem; 
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgb(248, 249, 249);
   border-top: 0.1875rem solid rgb(244, 130, 36);
-`;
-
-// 햄버거 사이드 버튼
-const HamburgerStyle = styled.span`
-  display: flex;
-  align-items: center;
-
-  &:hover {
-    background-color: rgb(227, 230, 232);
-  }
-`;
-
-const Icon1 = styled(RxHamburgerMenu)`
-  font-size: 1.125rem;
-  color: rgb(0, 0, 0);
-  padding: 0.875rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.219);
+  z-index: 999;
 `;
 
 // 메인 로고
 const Logo = styled.a`
-  display: flex;
-  align-items: center;
   padding: 0 0.375rem 0 0.125rem;
 `;
 
 const LogoImg = styled.img`
-  height: 2.1875rem;
-  margin: 0 0 0.3125rem 0;
+  height: 9.7rem;
+  padding: 0 20px;
 `;
 
 // 네비 버튼
@@ -63,7 +46,7 @@ const MenuButton = styled.a`
   &:hover {
     border-radius: 3.125rem / 3.125rem;
     color: rgb(0, 0, 0);
-    background-color: rgb(227, 230, 232);
+    background-color: rgba(227, 230, 232, 0.61);
   }
 `;
 
@@ -144,15 +127,9 @@ const SignupButton = styled.button`
 `;
 
 
-function Header() {
+function NoSideHeader() {
   return (
     <HeaderContainer>
-      <div>
-        {/* <RxHamburgerMenu size={19} /> */}
-        <HamburgerStyle>
-          <Icon1 />
-        </HamburgerStyle>
-      </div>
       <Logo href="#">
         <LogoImg src={MainLogo} alt="Main Logo" />
       </Logo>
@@ -177,4 +154,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default NoSideHeader;

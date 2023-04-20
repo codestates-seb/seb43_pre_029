@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import SideBar from '../SideBar';
 
 const ContnentTemplate = styled.div`
   display: flex;
@@ -65,6 +66,7 @@ const Contnent = () => {
           <a href="/">Ask Question</a>
         </button>
       </ContentHeader>
+      <SideBar />
       <ContentA>
         <button className="aBtn">
           <a href="/?tab=interesting">Interesting</a>

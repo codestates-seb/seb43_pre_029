@@ -1,7 +1,7 @@
 import React from 'react';
 import OAuthButton from '../Login/OAuthButton';
 import SignUpForm from './SignUpForm';
-import SignUpInfo from '../../image/SignUp.png';
+import SignUpInfo from '../../images/SignUp.png';
 
 import SignUpStyle from '../style/SignUpStyle';
 
