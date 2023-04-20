@@ -6,7 +6,9 @@ const ItemList = styled.div`
   width: 800px;
   height: 120px;
   display: flex;
-  border-bottom: 1px solid gray;
+  :not(:last-child) {
+    border-bottom: 1px solid gray;
+  }
   .A {
     /* border: 1px solid;  */
     width: 23em;
@@ -46,7 +48,7 @@ const ItemList = styled.div`
   }
 `;
 
-const QuestItem = ({ item, questions, setQuestions }) => {
+const QuestItem = ({ item, questions }) => {
   const { id, question, username, date } = item;
 
   return (
@@ -57,10 +59,7 @@ const QuestItem = ({ item, questions, setQuestions }) => {
         <div>2 views</div>
       </div>
       <div className="B">
-        {/* <div className="text">{question}</div> */}
-        <Link to={`/question/${id}`} item={item} questions={questions} setQuestions={setQuestions}>
-          {question}
-        </Link>
+        <Link to={`/question/${id}`}>{question}</Link>
         <div className="info">
           <div className="user">{username}</div>
           <div className="date">{date}</div>
