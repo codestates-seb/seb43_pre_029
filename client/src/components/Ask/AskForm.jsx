@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import Editor from './Editor.jsx';
+import TestEditorForm from './TestEditorForm';
 
 const FlexColumn = styled.div`
   display: flex;
@@ -83,7 +83,7 @@ const AskForm = () => {
         <Box>
           <label htmlFor="detail">What are the details of your problem?</label>
           <p>Introduce the problem and expand on what you put in the title. Minimum 20 characters.</p>
-          <Editor name="detail" setInputs={setInputs} inputs={inputs} />
+          <TestEditorForm />
           <Btn top="3.5rem">Next</Btn>
         </Box>
 
@@ -92,7 +92,7 @@ const AskForm = () => {
           <p>
             Describe what you tried, what you expected to happen, and what actually resulted. Minimum 20 characters.
           </p>
-          <Editor name="detail2" setInputs={setInputs} inputs={inputs} />
+          <TestEditorForm />
           <Btn top="3.5rem">Next</Btn>
         </Box>
 
