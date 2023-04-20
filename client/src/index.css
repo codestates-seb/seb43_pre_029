@@ -4,8 +4,29 @@ body {
     'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(248, 249, 249);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  border: 0;
+  font-family: -apple-system, 'system-ui', 'Segoe UI Adjusted', 'Segoe UI', 'Liberations Sans', sans-serif;
+  white-space: nowrap;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+}
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
 }
