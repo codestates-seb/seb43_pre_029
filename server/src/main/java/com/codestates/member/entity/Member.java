@@ -18,7 +18,7 @@ import java.util.List;
 public class Member extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long memberId;
+    private Long m_id;
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
@@ -34,7 +34,10 @@ public class Member extends Auditable {
 
     @Enumerated(value = EnumType.STRING)
     @Column(nullable = false)
-    private MemberStatus memberStatus = MemberStatus.MEMBER_ACTIVE;
+    private MemberStatus m_status = MemberStatus.MEMBER_ACTIVE;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles = new ArrayList<>();
 
     // Question, Comment, Answer 생성 후
 
