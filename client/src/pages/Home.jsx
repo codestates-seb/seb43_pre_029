@@ -4,7 +4,6 @@ import homeimg from '../images/home_img.png';
 import Contnent from '../components/Home/Content';
 import QuestionsList from '../components/Home/QuestionsList';
 import NoSideHeader from '../components/Header/NoSideHeader';
-import Footer from '../components/Footer';
 
 const HomeTemplate = styled.div`
   display: flex;
@@ -38,7 +37,6 @@ export default function Home() {
           <img src={homeimg} alt="" />
         </Imgstyle>
       )}
-      <Footer />
     </>
   );
 }

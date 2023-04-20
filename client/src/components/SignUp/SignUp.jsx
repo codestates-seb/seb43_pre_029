@@ -1,4 +1,3 @@
-import React from 'react';
 import OAuthButton from '../Login/OAuthButton';
 import SignUpForm from './SignUpForm';
 import SignUpInfo from '../../images/SignUp.png';

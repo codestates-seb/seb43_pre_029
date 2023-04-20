@@ -5,15 +5,13 @@ const SignUpStyle = styled.div`
   justify-content: center;
   align-items: center;
 
+  width: 60rem;
+
   border-color: aliceblue;
 
   .SignUpInfo {
-    width: 15rem;
+    width: 30rem;
     margin-right: 1rem;
-  }
-
-  .SignUpForm {
-    width: 17rem;
   }
 `;
 

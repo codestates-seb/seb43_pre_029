@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import MainLogo from '../../images/stack-overflow-logo-vector.svg'
+import MainLogo from '../../images/stack-overflow-logo-vector.svg';
 
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { SlMagnifier } from 'react-icons/sl';
@@ -9,7 +9,7 @@ const HeaderContainer = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  height: 2.8rem; 
+  height: 2.8rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,8 +24,8 @@ const HamburgerStyle = styled.button`
   display: flex;
   align-items: center;
   border: none;
-  background-color:transparent;
-  
+  background-color: transparent;
+
   &:hover {
     background-color: rgba(227, 230, 232, 0.61);
   }
@@ -144,7 +144,6 @@ const SignupButton = styled.button`
     color: #fff;
   }
 `;
-
 
 function SideHeader() {
   return (
