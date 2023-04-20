@@ -6,7 +6,8 @@ import QuestionsList from '../components/Home/QuestionsList';
 
 import FixSideHeader from '../components/Header/FixSideHeader';
 import ModalSideHeader from '../components/Header/ModalSideHeader';
-import LoginHeader from '.././components/Header/LoginHeader';
+import LoginFixSideHeader from '../components/Header/LoginFixSideHeader';
+import LoginModalSideHeader from '../components/Header/LoginModalSideHeader';
 
 const HomeTemplate = styled.div`
   display: flex;
