@@ -3,52 +3,57 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const ItemList = styled.div`
-  width: 800px;
-  height: 120px;
+  width: 48.125rem;
+  height: 5.375rem;
   display: flex;
+  padding: 1rem;
+  margin-right: 1.875rem;
+  padding-left: 9rem;
   :not(:last-child) {
-    border-bottom: 1px solid gray;
+    border-top: 0.0625rem solid rgb(227 230 232);
   }
   .A {
-    /* border: 1px solid;  */
-    width: 23em;
+    width: 6.75rem;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
-    justify-content: space-evenly;
     align-items: end;
-    padding: 30px 30px 40px 0px;
+    padding-top: 0.3125rem;
+    margin: 0rem 1rem 0.25rem 0rem;
+    gap: 0.375rem;
     div {
-      padding-bottom: 10px;
-      font-size: 13px;
+      height: 1.1875rem;
+      font-size: 0.8125rem;
     }
   }
   .B {
-    /* border: 1px solid red; */
-    width: 80em;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    padding-top: 5px;
+    justify-content: space-between;
+    padding-top: 0.3125rem;
     a {
       text-decoration-line: none;
-      color: #2897ff;
+      color: rgb(0 116 204);
+      font-weight: 600;
+    }
+    h3 {
+      width: 35.6875rem;
+      padding-right: 1.5rem;
     }
     .info {
+      width: 41.875rem;
+      height: 0.75rem;
       display: flex;
       justify-content: end;
-      padding-bottom: 20px;
-      padding-right: 20px;
-      font-size: 15px;
     }
     .user {
       color: #0848bf;
-      padding-right: 15px;
+      padding-right: 0.9375rem;
+      font-size: 1rem;
     }
   }
 `;
 
-const QuestItem = ({ item, questions }) => {
+const QuestItem = ({ item }) => {
   const { id, question, username, date } = item;
 
   return (
@@ -59,7 +64,9 @@ const QuestItem = ({ item, questions }) => {
         <div>2 views</div>
       </div>
       <div className="B">
-        <Link to={`/question/${id}`}>{question}</Link>
+        <h3>
+          <Link to={`/question/${id}`}>{question}</Link>
+        </h3>
         <div className="info">
           <div className="user">{username}</div>
           <div className="date">{date}</div>
