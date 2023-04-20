@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import MainLogo from '../../images/stack-overflow-logo-vector.svg';
-
-import { RxHamburgerMenu } from 'react-icons/rx';
-import { SlMagnifier } from 'react-icons/sl';
-
 import ModalSideBarImg from '../../images/ModalSideBarImg.png'
 import SidebarStarImg from '../../images/SidebarStarImg.png';
 
+import { RxHamburgerMenu } from 'react-icons/rx';
+import { SlMagnifier } from 'react-icons/sl';
 import { IoEarthSharp } from 'react-icons/io5';
 import { IoIosInformationCircle } from 'react-icons/io';
 import { IoCloseSharp } from "react-icons/io5";
