@@ -8,10 +8,7 @@ const ItemList = styled.div`
   display: flex;
   padding: 1rem;
   margin-right: 1.875rem;
-  padding-left: 9rem;
-  :not(:last-child) {
-    border-top: 0.0625rem solid rgb(227 230 232);
-  }
+  border-top: 0.0625rem solid rgb(227 230 232);
   .A {
     width: 6.75rem;
     display: flex;
