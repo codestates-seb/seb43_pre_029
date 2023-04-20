@@ -4,8 +4,38 @@
       "id": 1,
       "question": "how to stream AVPacket using live555?",
       "value": "llive555-latest/live/testProgs/testH264VideoStreamer.cpp in this file few AVPackets are generated i want to stream them directly without saving h264 file on my pc, is there anyway we can do that?  testH264VideoStreamer.cpp in this example it takes h264 file which is already stored in my pc instead i want it to stream directly in real time.",
+      "email": "asd@asd.com",
       "username": "kim",
-      "date": "27 secs ago"
+      "date": "27 secs ago",
+      "view": "18",
+      "answers": [
+        {
+          "id": 1,
+          "value": "llive555-latest/live/testProgs/testH264VideoStreamer.cpp in this file few AVPackets are generated i want to stream them directly without saving h264 file on my pc, is there anyway we can do that?  testH264VideoStreamer.cpp in this example it takes h264 file which is already stored in my pc instead i want it to stream directly in real time.",
+          "username": "Hyun",
+          "date": "27 secs ago"
+        },
+        {
+          "id": 2,
+          "value": "The solution here lies in defining a new draw key. However, as Tjebo points out in the comments, it is difficult to customize the slopes this way because the data passed to the draw_key_* functions does not contain all the aesthetic data - only that necessary to make the standard draw keys (linewidth, colour, fill, etc). One way round this is to take advantage of the fact that ggplots are built using the ggproto system, which itself is based on nested environments. A custom draw_key_* function can be written that looks up the appropriate ancestor frame to find the whole aesthetic data set",
+          "username": "bob",
+          "date": "2 secs ago"
+        }
+      ],
+      "comment": [
+        {
+          "id": 1,
+          "value": "@tjebo annoying but not insurmountable - see below .",
+          "username": "dong",
+          "date": "234 secs ago"
+        },
+        {
+          "id": 2,
+          "value": "related stackoverflow.com/questions/72784232/… - same problem here, data$slope returns NULL, thus one cannot simply use data$slope for grid::segmentGrob. Annoying.",
+          "username": "wook",
+          "date": "45 secs ago"
+        }
+      ]
     },
     {
       "id": 2,
