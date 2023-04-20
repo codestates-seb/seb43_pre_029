@@ -40,5 +40,9 @@ public class QuestionService {
         questionRepository.save(deletedQuestion);
     }
 
-
+    // Answer 채택
+    public void selectAnswer(Question question){
+        Question findQuestion = questionRepository.findById(question.getQ_id());
+        Answer acceptedAnswer = answerRepository.findById(question.getAnswers().)
+    }
 }

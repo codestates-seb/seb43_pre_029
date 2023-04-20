@@ -30,7 +30,7 @@ public class Answer extends Auditable {
     private Member member;
 
     @Column
-    private Boolean accepted; // 답변이 채택되었는지 여부 채택됨:true
+    private Boolean accepted = false; // 답변이 채택되었는지 여부 채택됨:true
 
     @Enumerated(EnumType.STRING)
     @Column(length = 30, nullable = false)

@@ -1,27 +1,31 @@
 package com.codestates.question.dto;
 
-import ch.qos.logback.classic.pattern.LineOfCallerConverter;
-import com.codestates.question.entity.Question;
+import com.codestates.answer.dto.AnswerResponseDto;
+import com.codestates.comment.dto.CommentDto;
+import com.codestates.validator.NotSpace;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
-import java.time.LocalDateTime;
 
 public class QuestionDto {
 
     @Getter
+    @AllArgsConstructor
     public class Post {
         @Positive
         private Long m_id;
 
         @NotBlank
-        private String title;
+        private String q_title;
 
         @NotBlank
-        private String content;
+        private String q_content1;
+
+        @NotBlank
+        private String q_content2;
     }
 
     @Getter
@@ -31,38 +35,25 @@ public class QuestionDto {
         private Long q_id;
         @Positive
         private Long m_id;
+        private Long authenticatedMemberId;
 
-        @NotBlank
-        private String title;
+        @NotSpace(message = "제목은 공백이 아니어야 합니다")
+        private String q_title;
 
-        @NotBlank
-        private String content;
-    }
+        @NotSpace(message = "내용은 공백이 아니어야 합니다")
+        private String q_content1;
+
+        @NotSpace(message = "내용은 공백이 아니어야 합니다")
+        private String q_content2;
 
 
-
-
-    @Getter
-    @Setter
-    public static class SingleResponse {
-        private Long q_id;
-        private String title;
-        private String content;
-        private LocalDateTime create_at;
-        private LocalDateTime last_modifined__at;
-//        private AnswerResponseDto answerResponseDto;
-//        private CommentResponseDto commentResponseDto;
-        @NotNull
-        private Question.QuestionStatus q_status;
     }
 
     @Getter
-    public static class Delete{
+    public static class Delete {
         @Positive
         private Long q_id;
         @Positive
         private Long m_id;
     }
-
-
 }

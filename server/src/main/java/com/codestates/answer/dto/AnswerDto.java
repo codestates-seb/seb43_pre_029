@@ -17,14 +17,6 @@ public class AnswerDto {
 
     }
 
-    @Getter
-    @Setter
-    public static class SingleResponse {
-        private Long q_id;
-        private Long a_id;
-        private Long m_id;
-        private String a_content;
-        private LocalDateTime created_at;
-        private Boolean selection;
-    }
+
+
 }
