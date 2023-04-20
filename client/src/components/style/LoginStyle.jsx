@@ -91,6 +91,8 @@ const FormStyle = styled.form`
       height: 2rem;
       border: solid 0.03rem rgba(0, 0, 0, 0.5);
       border-radius: 0.2rem;
+
+      padding-left: 0.3rem;
     }
   }
   .input:nth-child(3) {
@@ -98,7 +100,7 @@ const FormStyle = styled.form`
   }
 
   p {
-    font-size: 0.5rem;
+    font-size: 0.8rem;
     color: #6a737c;
     margin-top: 0.2rem;
     margin-bottom: 1rem;
@@ -111,6 +113,10 @@ const FormStyle = styled.form`
     border-radius: 0.2rem;
 
     color: #ffffff;
+
+    &.disabled {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
   }
 `;
 
