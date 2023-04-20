@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import MainLogo from '../image/MainLogo.png';
+import MainLogo from '../images/MainLogo.png';
 
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { SlMagnifier } from 'react-icons/sl';
@@ -9,7 +9,7 @@ const HeaderContainer = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  height: 2.8125rem; 
+  height: 2.8125rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -126,6 +126,11 @@ const LoginButton = styled.button`
     background-color: rgb(179, 211, 234);
     color: rgb(44, 88, 119);
   }
+
+  a {
+    text-decoration-line: none;
+    color: rgb(69, 123, 162);
+  }
 `;
 
 const SignupButton = styled.button`
@@ -141,8 +146,12 @@ const SignupButton = styled.button`
     background-color: rgb(0, 116, 204);
     color: #fff;
   }
-`;
 
+  a {
+    text-decoration-line: none;
+    color: rgb(255, 255, 255);
+  }
+`;
 
 function Header() {
   return (
@@ -153,7 +162,7 @@ function Header() {
           <Icon1 />
         </HamburgerStyle>
       </div>
-      <Logo href="#">
+      <Logo href="/">
         <LogoImg src={MainLogo} alt="Main Logo" />
       </Logo>
       <HeaderMenu>
@@ -170,8 +179,12 @@ function Header() {
         </SearchInputWrapper>
       </form>
       <ButtonWrapper>
-        <LoginButton>Log in</LoginButton>
-        <SignupButton>Sign up</SignupButton>
+        <LoginButton>
+          <a href="/login">login</a>
+        </LoginButton>
+        <SignupButton>
+          <a href="/signup">Sign up</a>
+        </SignupButton>
       </ButtonWrapper>
     </HeaderContainer>
   );

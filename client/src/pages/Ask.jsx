@@ -1,7 +1,7 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
-import questionimg from '../assets/questionsform-img.png';
-import pencil from '../assets/pencil.png';
+import styled from 'styled-components';
+import questionimg from '../images/questionsform-img.png';
+import pencil from '../images/pencil.png';
 import AskForm from '../components/AskForm';
 
 const Wrapper = styled.div`
