@@ -9,7 +9,7 @@ const testExp = (label, value, setValid) => {
   if (label === 'Password') validTest(passwordRegExp.test(value));
 };
 
-const Input = ({ label, bind, setValid }) => {
+const SignUpInput = ({ label, bind, setValid }) => {
   const { value, onChange } = bind;
 
   useEffect(() => {
@@ -19,9 +19,21 @@ const Input = ({ label, bind, setValid }) => {
   return (
     <div className="input">
       <label>{label}</label>
-      <input value={value} onChange={(e) => onChange(e)} type={label === 'Password' ? 'password' : ''} />
+      <input value={value} onChange={(e) => onChange(e.target.value)} type={label === 'Password' ? 'password' : ''} />
     </div>
   );
 };
 
-export default Input;
+const LoginInput = ({ label, bind }) => {
+  const { value, onChange } = bind;
+
+  console.log(value);
+  return (
+    <div className="input">
+      <label>{label}</label>
+      <input value={value} onChange={(e) => onChange(e.target.value)} type={label === 'Password' ? 'password' : ''} />
+    </div>
+  );
+};
+
+export { SignUpInput, LoginInput };

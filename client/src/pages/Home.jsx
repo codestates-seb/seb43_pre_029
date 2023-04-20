@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import homeimg from '../images/home_img.png';
 import Contnent from '../components/Home/Content';
 import QuestionsList from '../components/Home/QuestionsList';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 
 const HomeTemplate = styled.div`
   display: flex;
