@@ -11,39 +11,39 @@ const SidebarWrapper = styled.div`
   position: fixed;
   left: 0;
   top: 0;
-  width: 479.5px;
+  width: 29.96875rem;
   padding-top: 2.8125rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-right: 1px solid rgb(214, 217, 220);
+  border-right: 0.0625rem solid rgb(214, 217, 220);
 `;
 
 const SidebarMenu = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 30px;
-  margin-left: 310px;
+  padding-top: 1.875rem;
+  margin-left: 19.375rem;
 
   & > *:nth-child(n + 4):nth-child(-n + 6) {
-    padding: 7px 0 7px 28px;
+    padding: 0.4375rem 0 0.4375rem 1.75rem;
   }
 
   & > *:nth-child(7) {
-    padding: 0 20px 0 0;
+    padding: 0 1.25rem 0 0;
   }
 `;
 
 const SidebarCategories = styled.p`
-  font-size: 12.5px;
-  margin: 14px 0 7px 7px;
+  font-size: 0.78125rem;
+  margin: 0.875rem 0 0.4375rem 0.4375rem;
   color: rgb(103, 103, 103);
   display: flex;
   justify-content: space-between;
 `;
 
 const InformationIcon = styled(IoIosInformationCircle)`
-  font-size: 16px;
+  font-size: 1rem;
   color: #737373;
 `;
 
@@ -67,18 +67,18 @@ const SidebarMenuItem = styled.button`
   display: flex;
   align-items: center;
   text-align: center;
-  margin-bottom: 10px;
-  padding: 7px 0 7px 4px;
+  margin-bottom: 0.625rem;
+  padding: 0.4375rem 0 0.4375rem 0.25rem;
   color: rgb(85, 85, 85);
   z-index: 9999;
   background-color: transparent;
-  font-size: 13px;
+  font-size: 0.8125rem;
   cursor: pointer;
 
   & > svg {
     color: #7e7e7e;
-    margin-right: 5px;
-    font-size: 18px;
+    margin-right: 0.3125rem;
+    font-size: 1.125rem;
   }
 
   &:hover {
@@ -87,13 +87,13 @@ const SidebarMenuItem = styled.button`
 `;
 
 const SideImg = styled.img`
-  width: 170px;
+  width: 10.625rem;
 `;
 
 const SidebarStarImgWrapper = styled.img`
-  height: 18px;
+  height: 1.125rem;
   width: auto;
-  margin-right: 5px;
+  margin-right: 0.3125rem;
 `;
 
 const Sidebar = () => {
