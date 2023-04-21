@@ -2,7 +2,9 @@ package com.codestates.question.entity;
 
 import com.codestates.answer.entity.Answer;
 import com.codestates.audit.Auditable;
+import com.codestates.comment.entity.Comment;
 import com.codestates.member.entity.Member;
+import com.mysql.cj.protocol.ColumnDefinition;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,8 +25,10 @@ public class Question extends Auditable {
     @Column(nullable = false)
     private String q_title;
 
-    @Column(nullable = false)
-    private String q_content;
+    @Column(columnDefinition = "TEXT", nullable = false)
+    private String q_content1;
+    @Column(columnDefinition = "TEXT", nullable = false)
+    private String q_content2;
 
     @ManyToOne
     @JoinColumn(name = "m_id")
@@ -33,8 +37,17 @@ public class Question extends Auditable {
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
     private List<Answer> answers = new ArrayList<>();
 
+    @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
+    private List<Comment> comments = new ArrayList<>();
+
 //    @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
-//    private List<Comment> comments = new ArrayList<>();
+//    private List<AnswerComment> a_comments = new ArrayList<>();
+
+    @Column
+    private Long suggestedCount = 0L;
+
+    @Column
+    private Long viewCount = 0L ;
 
     @Enumerated(EnumType.STRING)
     @Column(length = 20, nullable = false)
