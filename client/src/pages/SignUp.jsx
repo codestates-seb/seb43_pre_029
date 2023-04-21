@@ -5,12 +5,12 @@ import OAuthButton from '../components/Login/OAuthButton';
 import SignUpForm from '../components/SignUp/SignUpForm';
 import SignUpInfo from '../images/SignUp.png';
 
-import SideHeader from '../components/Header/SideHeader';
+import ModalSideHeader from '../components/Header/ModalSideHeader';
 
 function SignUp() {
   return (
     <EntireStyle>
-      <SideHeader />
+      <ModalSideHeader />
       <SignUpStyle>
         <div>
           <img className="SignUpInfo" src={SignUpInfo} alt="SignUpInfo" />
