@@ -29,11 +29,9 @@ public interface QuestionMapper {
                         .q_title(question.getQ_title())
                         .q_content1(question.getQ_content1())
                         .q_content2(question.getQ_content2())
-                        .q_status(question.getQ_status())
                         .m_name(question.getMember().getName())
                         .viewCount(question.getViewCount())
                         .answerCount(question.getAnswers().stream().count())
-                        .q_status(question.getQ_status())
                         .create_at(question.getCreated_at())
                         .last_modifined_at(question.getModified_at())
                         //TODO List<Answer>, List<Comment> 스트림 처리 -> dto 처리 해야함
