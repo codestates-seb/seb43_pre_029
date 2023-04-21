@@ -12,16 +12,11 @@ code {
 }
 
 * {
-  box-sizing: border-box;
   padding: 0;
   border: 0;
   font-family: -apple-system, 'system-ui', 'Segoe UI Adjusted', 'Segoe UI', 'Liberations Sans', sans-serif;
-  white-space: nowrap;
 }
-body {
-  width: 100vw;
-  height: 100vh;
-}
+
 ol,
 ul {
   list-style: none;
