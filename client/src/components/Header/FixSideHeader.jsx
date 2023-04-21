@@ -129,13 +129,16 @@ const SignupButton = styled.button`
     background-color: rgb(0, 116, 204);
     color: #fff;
   }
+  a {
+    color: rgb(255, 255, 255);
+  }
 `;
 
 function FixSideHeader() {
   return (
     <>
       <HeaderContainer>
-        <Logo href="#">
+        <Logo href="/">
           <LogoImg src={MainLogo} alt="Main Logo" />
         </Logo>
         <HeaderMenu>
@@ -152,8 +155,12 @@ function FixSideHeader() {
           </SearchInputWrapper>
         </form>
         <ButtonWrapper>
-          <LoginButton>Log in</LoginButton>
-          <SignupButton>Sign up</SignupButton>
+          <LoginButton>
+            <a href="/login">Log in</a>
+          </LoginButton>
+          <SignupButton>
+            <a href="/signup">Sign up</a>
+          </SignupButton>
         </ButtonWrapper>
       </HeaderContainer>
       <FixSidebar />

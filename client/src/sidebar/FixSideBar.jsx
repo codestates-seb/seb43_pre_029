@@ -85,6 +85,9 @@ const SidebarMenuItem = styled.button`
   &:hover {
     color: rgb(0, 0, 0);
   }
+  a {
+    color: rgb(85, 85, 85);
+  }
 `;
 
 const SideImg = styled.img`
@@ -101,7 +104,9 @@ const FixSidebar = () => {
   return (
     <SidebarWrapper>
       <SidebarMenu>
-        <SidebarMenuItem>Home</SidebarMenuItem>
+        <SidebarMenuItem>
+          <a href="/">Home</a>
+        </SidebarMenuItem>
         <SidebarCategories>PUBLIC</SidebarCategories>
         <SidebarMenuItem>
           <IoEarthSharp />

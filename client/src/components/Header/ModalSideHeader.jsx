@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import MainLogo from '../../images/stack-overflow-logo-vector.svg';
-import ModalSideBarImg from '../../images/ModalSideBarImg.png'
+import ModalSideBarImg from '../../images/ModalSideBarImg.png';
 import SidebarStarImg from '../../images/SidebarStarImg.png';
 
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { SlMagnifier } from 'react-icons/sl';
 import { IoEarthSharp } from 'react-icons/io5';
 import { IoIosInformationCircle } from 'react-icons/io';
-import { IoCloseSharp } from "react-icons/io5";
-
-
+import { IoCloseSharp } from 'react-icons/io5';
 
 const HeaderContainer = styled.header`
   position: fixed;
@@ -43,7 +41,7 @@ const Icon1Close = styled(RxHamburgerMenu)`
   font-size: 1.125rem;
   color: rgb(0, 0, 0);
   padding: 0.8rem 0.5rem;
-  transform: ${({ open }) => open ? 'rotate(0deg)' : 'rotate(180deg)'};
+  transform: ${({ open }) => (open ? 'rotate(0deg)' : 'rotate(180deg)')};
   transition: transform 1s ease-in-out;
 `;
 
@@ -51,7 +49,7 @@ const Icon1Open = styled(IoCloseSharp)`
   font-size: 1.5rem;
   color: rgba(26, 26, 26, 0.683);
   padding: 0.6rem 0.32rem;
-  transform: ${({ open }) => open ? 'rotate(0deg)' : 'rotate(180deg)'};
+  transform: ${({ open }) => (open ? 'rotate(0deg)' : 'rotate(180deg)')};
   transition: transform 1s ease-in-out;
 `;
 
@@ -147,6 +145,9 @@ const LoginButton = styled.button`
     background-color: rgb(179, 211, 234);
     color: rgb(44, 88, 119);
   }
+  a {
+    color: rgb(69, 123, 162);
+  }
 `;
 
 const SignupButton = styled.button`
@@ -161,6 +162,9 @@ const SignupButton = styled.button`
   &:hover {
     background-color: rgb(0, 116, 204);
     color: #fff;
+  }
+  a {
+    color: rgb(255, 255, 255);
   }
 `;
 
@@ -242,6 +246,9 @@ const SidebarMenuItem = styled.button`
   &:hover {
     color: rgb(0, 0, 0);
   }
+  a {
+    color: rgb(85, 85, 85);
+  }
 `;
 
 const SideImg = styled.img`
@@ -255,9 +262,7 @@ const SidebarStarImgWrapper = styled.img`
   margin-right: 0.3125rem;
 `;
 
-
-
-function SideHeader({isOpen}) {
+function SideHeader({ isOpen }) {
   const [open, setOpen] = useState(false);
 
   const onToggle = () => setOpen(!open);
@@ -266,35 +271,37 @@ function SideHeader({isOpen}) {
     <HeaderContainer>
       <div>
         <HamburgerStyle onClick={onToggle} open={open}>
-        {open ? <Icon1Open open={open} /> : <Icon1Close open={open} />}
+          {open ? <Icon1Open open={open} /> : <Icon1Close open={open} />}
         </HamburgerStyle>
         {open && (
-            <SidebarWrapper>
-              <SidebarMenu>
-                <SidebarMenuItem>Home</SidebarMenuItem>
-                <SidebarCategories>PUBLIC</SidebarCategories>
-                <SidebarMenuItem>
-                  <IoEarthSharp />
-                  Questions
-                </SidebarMenuItem>
-                <SidebarMenuItem>Tags</SidebarMenuItem>
-                <SidebarMenuItem>Users</SidebarMenuItem>
-                <SidebarMenuItem>Companies</SidebarMenuItem>
-                <SidebarCategories>
-                  COLLECTIVES
-                  <InformationIcon />
-                </SidebarCategories>
-                <SidebarMenuItem>
-                  <SidebarStarImgWrapper src={SidebarStarImg} alt="Sidebar Star" />
-                  Explore Collectives
-                </SidebarMenuItem>
-                <SidebarCategories>TEAMS</SidebarCategories>
-                <SideImg src={ModalSideBarImg} alt="SideBarImg" />
-              </SidebarMenu>
-            </SidebarWrapper>
+          <SidebarWrapper>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <a href="/">Home</a>
+              </SidebarMenuItem>
+              <SidebarCategories>PUBLIC</SidebarCategories>
+              <SidebarMenuItem>
+                <IoEarthSharp />
+                Questions
+              </SidebarMenuItem>
+              <SidebarMenuItem>Tags</SidebarMenuItem>
+              <SidebarMenuItem>Users</SidebarMenuItem>
+              <SidebarMenuItem>Companies</SidebarMenuItem>
+              <SidebarCategories>
+                COLLECTIVES
+                <InformationIcon />
+              </SidebarCategories>
+              <SidebarMenuItem>
+                <SidebarStarImgWrapper src={SidebarStarImg} alt="Sidebar Star" />
+                Explore Collectives
+              </SidebarMenuItem>
+              <SidebarCategories>TEAMS</SidebarCategories>
+              <SideImg src={ModalSideBarImg} alt="SideBarImg" />
+            </SidebarMenu>
+          </SidebarWrapper>
         )}
       </div>
-      <Logo href="#">
+      <Logo href="/">
         <LogoImg src={MainLogo} alt="Main Logo" />
       </Logo>
       <HeaderMenu>
@@ -311,8 +318,12 @@ function SideHeader({isOpen}) {
         </SearchInputWrapper>
       </form>
       <ButtonWrapper>
-        <LoginButton>Log in</LoginButton>
-        <SignupButton>Sign up</SignupButton>
+        <LoginButton>
+          <a href="/login">Log in</a>
+        </LoginButton>
+        <SignupButton>
+          <a href="/signup">Sign up</a>
+        </SignupButton>
       </ButtonWrapper>
     </HeaderContainer>
   );
