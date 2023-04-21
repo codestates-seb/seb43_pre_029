@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-import onSubmit from './onSubmit';
+import { signupSubmit } from '../../logic/onSubmit';
 import { SignUpInput } from '../Input';
 import useBind from '../../logic/useBind';
 
@@ -29,7 +29,7 @@ const SignUpForm = () => {
   }, [emailValid, passwordValid]);
 
   return (
-    <FormStyle onSubmit={(e) => onSubmit(e, data, navigate)}>
+    <FormStyle onSubmit={(e) => signupSubmit(e, data, navigate)}>
       <SignUpInput label="Display Name" bind={nameBind} />
       <SignUpInput label="Email" bind={emailBind} setValid={setEmailValid} />
       <SignUpInput label="Password" bind={passwordBind} setValid={setPasswordValid} />
