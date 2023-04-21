@@ -1,33 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
+
+const HeaderBox = styled.div`
+  padding-right: 20px;
+`;
+
 const InfoHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 20px 25px;
+  padding: 20px 0px 20px 25px;
   padding-bottom: 8px;
   margin-top: 2.8125rem;
-
   h1 {
     font-size: 28px;
   }
-  /* .askBtn {
-    background-color: rgb(9, 149, 255);
-    width: 105px;
-    height: 38px;
-    border-radius: 5px;
-    padding: 0px;
-    border: none;
-    a {
-      color: white;
-      padding: 10px;
-      text-decoration-line: none;
-      width: auto;
-    }
-  } */
 `;
 
-const SignupButton = styled.button`
-  padding: 7px 11px;
+const AskBtn = styled.button`
+  padding: 10.4px;
   background-color: rgb(9, 149, 255);
   border-radius: 4px;
   border: 1px solid rgb(9, 149, 255);
@@ -57,19 +47,19 @@ const InfoheaderUnder = styled.div`
 const QInfoHeader = ({ qinfo }) => {
   const { question, view } = qinfo;
   return (
-    <>
+    <HeaderBox>
       <InfoHeader>
         <h1>{question}</h1>
-        <SignupButton>
+        <AskBtn>
           <a href="/">Ask Question</a>
-        </SignupButton>
+        </AskBtn>
       </InfoHeader>
       <InfoheaderUnder>
         <span>Asked today</span>
         <span>Modified today</span>
         <span>Viewed {view} times</span>
       </InfoheaderUnder>
-    </>
+    </HeaderBox>
   );
 };
 
