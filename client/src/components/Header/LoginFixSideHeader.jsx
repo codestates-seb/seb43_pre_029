@@ -179,7 +179,7 @@ function LoginFixSideHeader() {
   return (
     <>
       <HeaderContainer>
-        <Logo href="#">
+        <Logo href="/">
           <LogoImg src={MainLogo} alt="Main Logo" />
         </Logo>
         <HeaderMenu>

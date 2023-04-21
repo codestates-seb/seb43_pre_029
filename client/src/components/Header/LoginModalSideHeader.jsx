@@ -287,6 +287,9 @@ const SidebarMenuItem = styled.button`
   &:hover {
     color: rgb(0, 0, 0);
   }
+  a {
+    color: rgb(85, 85, 85);
+  }
 `;
 
 const SideImg = styled.img`
@@ -315,7 +318,9 @@ function LoginModalSideHeader({ isOpen }) {
           {open && (
             <SidebarWrapper>
               <SidebarMenu>
-                <SidebarMenuItem>Home</SidebarMenuItem>
+                <SidebarMenuItem>
+                  <a href="/">Home</a>
+                </SidebarMenuItem>
                 <SidebarCategories>PUBLIC</SidebarCategories>
                 <SidebarMenuItem>
                   <IoEarthSharp />
@@ -338,7 +343,7 @@ function LoginModalSideHeader({ isOpen }) {
             </SidebarWrapper>
           )}
         </div>
-        <Logo href="#">
+        <Logo href="/">
           <LogoImg src={MainLogo} alt="Main Logo" />
         </Logo>
         <HeaderMenu>
