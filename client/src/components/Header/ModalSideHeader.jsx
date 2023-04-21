@@ -262,7 +262,7 @@ const SidebarStarImgWrapper = styled.img`
   margin-right: 0.3125rem;
 `;
 
-function SideHeader({ isOpen }) {
+function ModalSideHeader({ isOpen }) {
   const [open, setOpen] = useState(false);
 
   const onToggle = () => setOpen(!open);
@@ -329,4 +329,4 @@ function SideHeader({ isOpen }) {
   );
 }
 
-export default SideHeader;
+export default ModalSideHeader;
