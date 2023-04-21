@@ -22,7 +22,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           {/* Home > QuestionsList get 요청 못받음 */}
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home {...isLogin} />} />
           <Route path="/login" element={isLogin ? <Navigate to="/" /> : <Login />} />
           <Route path="/signup" element={isLogin ? <Navigate to="/" /> : <SignUp />} />
           <Route path="/mypage" element={isLogin ? <MyPage /> : <Navigate to="/login" />} />

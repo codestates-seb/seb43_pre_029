@@ -31,7 +31,7 @@ const CommentList = styled.div`
   margin: 0px 20px 5px 70px;
 `;
 
-const QuestionInfo = () => {
+const QuestionInfo = ({ isLogin }) => {
   const [qinfo, setQinfo] = useState([]);
   const [qanswers, setQianswers] = useState([]);
   const [comments, setComments] = useState([]);

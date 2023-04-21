@@ -21,9 +21,7 @@ const Imgstyle = styled.div`
   }
 `;
 
-export default function Home() {
-  const [isLogin, setIsLogin] = useState(true);
-
+export default function Home({ isLogin }) {
   return (
     <>
       {isLogin ? (
