@@ -15,11 +15,11 @@ const RowBox = styled.div`
 `;
 
 const Viewer = styled.div`
-  width: calc(50% - 40px);
-  height: 400px;
-  padding: 20px;
-  margin-top: 20px;
-  border: 2px solid gray;
+  width: calc(50% - 2rem);
+  height: 20rem;
+  padding: 1.2rem;
+  margin-top: 1.4rem;
+  border: 0.2rem solid gray;
 `;
 
 const Draft = () => {
@@ -50,10 +50,10 @@ const Draft = () => {
           }}
           localization={{ locale: 'ko' }}
           editorStyle={{
-            height: '400px',
+            height: '20rem',
             width: '100%',
-            border: '3px solid lightgray',
-            padding: '20px',
+            border: '0.2rem solid lightgray',
+            padding: '1.2rem',
           }}
         />
       </Container>

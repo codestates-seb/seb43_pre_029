@@ -8,13 +8,13 @@ export default function AskTitle() {
     justify-content: space-between;
 
     img {
-      width: 500px;
+      width: 40rem;
     }
   `;
   const AskGuide = styled.div`
-    border: 1px solid #b0d3ee;
-    border-radius: 5px;
-    padding: 24px;
+    border: 0.1rem solid #b0d3ee;
+    border-radius: 0.2rem;
+    padding: 1.5rem;
 
     background-color: #ebf4fb;
   `;
