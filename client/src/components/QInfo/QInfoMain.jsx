@@ -6,6 +6,7 @@ import QInfoValue from './QInfoValue';
 const QMain = styled.div`
   margin: 24px 16px;
   display: flex;
+  padding-bottom: 40px;
 `;
 
 const QInfoMain = ({ qinfo }) => {
