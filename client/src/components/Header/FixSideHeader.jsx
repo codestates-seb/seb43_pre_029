@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import MainLogo from '../../images/stack-overflow-logo-vector.svg';
+import FixSidebar from '../../sidebar/FixSideBar';
 
-import { RxHamburgerMenu } from 'react-icons/rx';
 import { SlMagnifier } from 'react-icons/sl';
 
 const HeaderContainer = styled.header`
@@ -15,26 +15,8 @@ const HeaderContainer = styled.header`
   align-items: center;
   background-color: rgb(248, 249, 249);
   border-top: 0.1875rem solid rgb(244, 130, 36);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.219);
+  box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.219);
   z-index: 999;
-`;
-
-// 햄버거 사이드 버튼
-const HamburgerStyle = styled.button`
-  display: flex;
-  align-items: center;
-  border: none;
-  background-color: transparent;
-
-  &:hover {
-    background-color: rgba(227, 230, 232, 0.61);
-  }
-`;
-
-const Icon1 = styled(RxHamburgerMenu)`
-  font-size: 1.125rem;
-  color: rgb(0, 0, 0);
-  padding: 0.8rem 0.5rem;
 `;
 
 // 메인 로고
@@ -43,14 +25,15 @@ const Logo = styled.a`
 `;
 
 const LogoImg = styled.img`
-  height: 9.7rem;
-  padding: 0 20px;
+  height: 9.9rem;
+  padding: 0 1.25rem;
 `;
 
 // 네비 버튼
 const HeaderMenu = styled.div`
   display: flex;
   align-items: center;
+  margin: 0.1875rem 0.5rem 0 0;
 `;
 
 const MenuButton = styled.a`
@@ -145,36 +128,34 @@ const SignupButton = styled.button`
   }
 `;
 
-function SideHeader() {
+function FixSideHeader() {
   return (
-    <HeaderContainer>
-      <div>
-        <HamburgerStyle>
-          <Icon1 />
-        </HamburgerStyle>
-      </div>
-      <Logo href="#">
-        <LogoImg src={MainLogo} alt="Main Logo" />
-      </Logo>
-      <HeaderMenu>
-        <MenuButton href="#">About</MenuButton>
-        <MenuButton href="#">Products</MenuButton>
-        <MenuButton href="#">For Teams</MenuButton>
-      </HeaderMenu>
-      <form>
-        <SearchInputWrapper>
-          <IconStyle>
-            <Icon2 />
-          </IconStyle>
-          <SearchInput type="text" placeholder="Search..." />
-        </SearchInputWrapper>
-      </form>
-      <ButtonWrapper>
-        <LoginButton>Log in</LoginButton>
-        <SignupButton>Sign up</SignupButton>
-      </ButtonWrapper>
-    </HeaderContainer>
+    <>
+      <HeaderContainer>
+        <Logo href="#">
+          <LogoImg src={MainLogo} alt="Main Logo" />
+        </Logo>
+        <HeaderMenu>
+          <MenuButton href="#">About</MenuButton>
+          <MenuButton href="#">Products</MenuButton>
+          <MenuButton href="#">For Teams</MenuButton>
+        </HeaderMenu>
+        <form>
+          <SearchInputWrapper>
+            <IconStyle>
+              <Icon2 />
+            </IconStyle>
+            <SearchInput type="text" placeholder="Search..." />
+          </SearchInputWrapper>
+        </form>
+        <ButtonWrapper>
+          <LoginButton>Log in</LoginButton>
+          <SignupButton>Sign up</SignupButton>
+        </ButtonWrapper>
+      </HeaderContainer>
+      <FixSidebar />
+    </>
   );
 }
 
-export default SideHeader;
+export default FixSideHeader;

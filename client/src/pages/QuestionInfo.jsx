@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Header from '../components/Header';
+import FixSideHeader from '.././components/Header/FixSideHeader';
 import QInfoHeader from '../components/QInfo/QInfoHeader';
 import Footer from '../components/Footer';
 import QInfoMain from '../components/QInfo/QInfoMain';
@@ -24,7 +24,7 @@ const QuestionInfo = () => {
   console.log(qanswers);
   return (
     <>
-      <Header />
+      {/* <FixSideHeader /> */}
       <QInfoHeader qinfo={qinfo} />
       <QInfoMain qinfo={qinfo} />
       <AnswerTotal>{qanswers.length} Answers</AnswerTotal>

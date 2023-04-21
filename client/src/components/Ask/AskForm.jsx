@@ -9,9 +9,9 @@ const FlexColumn = styled.div`
 
 const Box = styled.div`
   background-color: white;
-  padding: 24px;
-  border: 1px solid lightgrey;
-  margin-top: 20px;
+  padding: 1.5rem;
+  border: 0.0625rem solid lightgrey;
+  margin-top: 1.25rem;
 
   label {
     font-weight: bolder;
@@ -27,7 +27,7 @@ const Btn = styled.button`
   color: rgb(255, 255, 255);
   padding: 0.5rem;
   border: none;
-  border-radius: 3px;
+  border-radius: 0.1875rem;
   margin-top: ${(props) => (props.top ? props.top : '0.85rem')};
   font-weight: bolder;
 `;
