@@ -1,9 +1,10 @@
 import LoginForm from '../components/Login/LoginForm';
 import OAuthButton from '../components/Login/OAuthButton';
 import { StackOverFlow } from '../components/Import-Logo';
-
-import { LoginStyle, MainLogoStyle } from '../components/style/LoginStyle';
 import EntireStyle from '../components/style/EntireStyle';
+import { LoginStyle, MainLogoStyle } from '../components/style/LoginStyle';
+
+import SideHeader from '../components/Header/SideHeader';
 
 const MainLogoContainer = () => {
   return (
@@ -16,6 +17,7 @@ const MainLogoContainer = () => {
 const Login = () => {
   return (
     <EntireStyle>
+      <SideHeader />
       <LoginStyle>
         <MainLogoContainer />
         <OAuthButton />

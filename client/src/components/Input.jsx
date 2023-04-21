@@ -27,7 +27,6 @@ const SignUpInput = ({ label, bind, setValid }) => {
 const LoginInput = ({ label, bind }) => {
   const { value, onChange } = bind;
 
-  console.log(value);
   return (
     <div className="input">
       <label>{label}</label>
