@@ -10,7 +10,6 @@ const HomeTemplate = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 90wh;
   margin-top: 2.8125rem;
 `;
 
