@@ -12,7 +12,7 @@ const QuestionsList = () => {
     <>
       <div>
         {questions.map((item) => (
-          <QuestItem item={item} questions={questions} key={item.id} />
+          <QuestItem item={item} key={item.id} />
         ))}
       </div>
     </>

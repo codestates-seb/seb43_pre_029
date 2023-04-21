@@ -1,22 +1,40 @@
 import React from 'react';
 import styled from 'styled-components';
-import MainLogo from '../../images/stack-overflow-logo-vector.svg';
-import FixSidebar from '../../sidebar/FixSideBar';
+import MainLogo from '../images/MainLogo.png';
 
+import { RxHamburgerMenu } from 'react-icons/rx';
 import { SlMagnifier } from 'react-icons/sl';
 
 const HeaderContainer = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  height: 2.8rem;
+  height: 2.8125rem;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgb(248, 249, 249);
   border-top: 0.1875rem solid rgb(244, 130, 36);
-  box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.219);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.219);
   z-index: 999;
+`;
+
+// 햄버거 사이드 버튼
+const HamburgerStyle = styled.button`
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+
+  &:hover {
+    background-color: rgba(227, 230, 232, 0.61);
+  }
+`;
+
+const Icon1 = styled(RxHamburgerMenu)`
+  font-size: 1.125rem;
+  color: rgb(0, 0, 0);
+  padding: 0.8rem 0.5rem;
 `;
 
 // 메인 로고
@@ -25,15 +43,14 @@ const Logo = styled.a`
 `;
 
 const LogoImg = styled.img`
-  height: 9.9rem;
-  padding: 0 1.25rem;
+  height: 9.7rem;
+  padding: 0 20px;
 `;
 
 // 네비 버튼
 const HeaderMenu = styled.div`
   display: flex;
   align-items: center;
-  margin: 0.1875rem 0.5rem 0 0;
 `;
 
 const MenuButton = styled.a`
@@ -111,14 +128,16 @@ const LoginButton = styled.button`
     background-color: rgb(179, 211, 234);
     color: rgb(44, 88, 119);
   }
+
   a {
+    text-decoration-line: none;
     color: rgb(69, 123, 162);
   }
 `;
 
 const SignupButton = styled.button`
   padding: 0.4375rem 0.625rem;
-  background-color: rgba(9, 148, 255, 0.824);
+  background-color: rgb(9, 149, 255);
   color: rgb(255, 255, 255);
   font-size: 0.8125rem;
   border-radius: 0.25rem;
@@ -129,36 +148,47 @@ const SignupButton = styled.button`
     background-color: rgb(0, 116, 204);
     color: #fff;
   }
+
+  a {
+    text-decoration-line: none;
+    color: rgb(255, 255, 255);
+  }
 `;
 
-function FixSideHeader() {
+function SideHeader() {
   return (
-    <>
-      <HeaderContainer>
-        <Logo href="#">
-          <LogoImg src={MainLogo} alt="Main Logo" />
-        </Logo>
-        <HeaderMenu>
-          <MenuButton href="#">About</MenuButton>
-          <MenuButton href="#">Products</MenuButton>
-          <MenuButton href="#">For Teams</MenuButton>
-        </HeaderMenu>
-        <form>
-          <SearchInputWrapper>
-            <IconStyle>
-              <Icon2 />
-            </IconStyle>
-            <SearchInput type="text" placeholder="Search..." />
-          </SearchInputWrapper>
-        </form>
-        <ButtonWrapper>
-          <LoginButton>Log in</LoginButton>
-          <SignupButton>Sign up</SignupButton>
-        </ButtonWrapper>
-      </HeaderContainer>
-      <FixSidebar />
-    </>
+    <HeaderContainer>
+      <div>
+        <HamburgerStyle>
+          <Icon1 />
+        </HamburgerStyle>
+      </div>
+      <Logo href="/">
+        <LogoImg src={MainLogo} alt="Main Logo" />
+      </Logo>
+      <HeaderMenu>
+        <MenuButton href="#">About</MenuButton>
+        <MenuButton href="#">Products</MenuButton>
+        <MenuButton href="#">For Teams</MenuButton>
+      </HeaderMenu>
+      <form>
+        <SearchInputWrapper>
+          <IconStyle>
+            <Icon2 />
+          </IconStyle>
+          <SearchInput type="text" placeholder="Search..." />
+        </SearchInputWrapper>
+      </form>
+      <ButtonWrapper>
+        <LoginButton>
+          <a href="/login">login</a>
+        </LoginButton>
+        <SignupButton>
+          <a href="/signup">Sign up</a>
+        </SignupButton>
+      </ButtonWrapper>
+    </HeaderContainer>
   );
 }
 
-export default FixSideHeader;
+export default SideHeader;

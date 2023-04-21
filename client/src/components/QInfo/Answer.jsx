@@ -4,14 +4,18 @@ import AnswerSide from './AnswerSide';
 
 const AnswerMain = styled.div`
   display: flex;
-  border: 1px solid red;
   margin: 24px 16px;
-
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgb(227 230 232);
   .answerMain {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    .addComment {
+      color: gray;
+      font-size: 13px;
+    }
   }
 `;
 
@@ -19,28 +23,39 @@ const ProfilLine = styled.div`
   margin-top: 20px;
   display: flex;
   justify-content: end;
-  border: 1px solid tomato;
 `;
 const Profil = styled.div`
+  width: 187px;
+  height: 54px;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
-  border: 1px solid blue;
   padding: 5px 6px 7px 7px;
+  font-size: 13px;
+  .date {
+    width: 187px;
+    height: 16px;
+    margin: 1px 0px 4px;
+    color: rgb(106 115 124);
+  }
 `;
 const User = styled.div`
-  width: 200px;
-  height: 66px;
-  margin-top: 8px;
   display: flex;
-  border: 1px solid blue;
   .pic {
     margin-right: 8px;
+    img {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+  a {
+    color: rgb(0 116 204);
+    text-decoration: none;
   }
 `;
 
 const Answer = ({ answer }) => {
-  const { value, username, date } = answer;
+  const { value, username, date, pic } = answer;
 
   return (
     <AnswerMain>
@@ -49,28 +64,20 @@ const Answer = ({ answer }) => {
         <div>{value}</div>
         <ProfilLine>
           <Profil>
-            <div>{date}</div>
+            <div className="date">{date}</div>
             <User>
-              <div className="pic">사진</div>
-              <div>{username}</div>
+              <div className="pic">
+                <img src={pic} alt="profile" />
+              </div>
+              <div>
+                <a href={'/'}>{username}</a>
+              </div>
             </User>
           </Profil>
         </ProfilLine>
+        <div className="addComment">Add a comment</div>
       </div>
     </AnswerMain>
   );
 };
 export default Answer;
-
-// const Answer = ({ qinfo }) => {
-//   const { answers } = qinfo;
-
-//   return (
-//     <>
-//     {answers.map((answer) => (
-//   <AnswerList answer={answer} />
-// ))}
-//     </>
-//   );
-// };
-// export default Answer;
