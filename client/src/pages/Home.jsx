@@ -3,14 +3,14 @@ import styled from 'styled-components';
 import homeimg from '../images/home_img.png';
 import Contnent from '../components/Home/Content';
 import QuestionsList from '../components/Home/QuestionsList';
-import NoSideHeader from '../components/Header/NoSideHeader';
+import FixSideHeader from '../components/Header/FixSideHeader';
+import ModalSideHeader from '../components/Header/ModalSideHeader';
 
 const HomeTemplate = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 90wh;
   margin-top: 2.8125rem;
 `;
 
@@ -26,16 +26,21 @@ export default function Home() {
 
   return (
     <>
-      <NoSideHeader />
       {isLogin ? (
-        <HomeTemplate>
-          <Contnent />
-          <QuestionsList />
-        </HomeTemplate>
+        <>
+          <FixSideHeader />
+          <HomeTemplate>
+            <Contnent />
+            <QuestionsList />
+          </HomeTemplate>
+        </>
       ) : (
-        <Imgstyle>
-          <img src={homeimg} alt="" />
-        </Imgstyle>
+        <>
+          <ModalSideHeader />
+          <Imgstyle>
+            <img src={homeimg} alt="" />
+          </Imgstyle>
+        </>
       )}
     </>
   );

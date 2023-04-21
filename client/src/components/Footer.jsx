@@ -10,7 +10,7 @@ const FooterContainer = styled.footer`
   justify-content: space-around;
   bottom: -2rem;
   width: 100%;
-  height: 21.25rem;
+  /* height: 21.25rem; */
   box-sizing: border-box;
   z-index: 999;
   position: relative;
