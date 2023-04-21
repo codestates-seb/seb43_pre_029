@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import SideBarImg from '../images/SidebarImg.png';
 import SidebarStarImg from '../images/SidebarStarImg.png';
@@ -96,7 +97,7 @@ const SidebarStarImgWrapper = styled.img`
   margin-right: 0.3125rem;
 `;
 
-const Sidebar = () => {
+const FixSidebar = () => {
   return (
     <SidebarWrapper>
       <SidebarMenu>
@@ -124,4 +125,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default FixSidebar;

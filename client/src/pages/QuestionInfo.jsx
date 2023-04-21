@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import FixSideHeader from '.././components/Header/FixSideHeader';
 import QInfoHeader from '../components/QInfo/QInfoHeader';
 import QInfoMain from '../components/QInfo/QInfoMain';
 import Answer from '../components/QInfo/Answer';
 import axios from 'axios';
 import styled from 'styled-components';
-import NoSideHeader from '../components/Header/NoSideHeader';
 import Comment from '../components/QInfo/Comment';
 import Sidebar from '../components/SideBar';
 import Quill from '../components/Quill';
@@ -45,7 +45,7 @@ const QuestionInfo = () => {
   }, []);
   return (
     <>
-      <NoSideHeader />
+      <FixSideHeader />
       <Sidebar />
       <QMain>
         <QInfoHeader qinfo={qinfo} />
