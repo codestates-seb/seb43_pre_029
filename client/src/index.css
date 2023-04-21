@@ -9,3 +9,21 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+* {
+  padding: 0;
+  border: 0;
+  font-family: -apple-system, 'system-ui', 'Segoe UI Adjusted', 'Segoe UI', 'Liberations Sans', sans-serif;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+}
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
