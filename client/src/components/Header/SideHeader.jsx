@@ -153,7 +153,7 @@ function SideHeader() {
           <Icon1 />
         </HamburgerStyle>
       </div>
-      <Logo href="#">
+      <Logo href="/">
         <LogoImg src={MainLogo} alt="Main Logo" />
       </Logo>
       <HeaderMenu>
@@ -170,8 +170,8 @@ function SideHeader() {
         </SearchInputWrapper>
       </form>
       <ButtonWrapper>
-        <LoginButton>Log in</LoginButton>
-        <SignupButton>Sign up</SignupButton>
+        <LoginButton href="/login">Log in</LoginButton>
+        <SignupButton href="/singup">Sign up</SignupButton>
       </ButtonWrapper>
     </HeaderContainer>
   );

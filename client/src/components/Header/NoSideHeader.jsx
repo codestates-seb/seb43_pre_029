@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import MainLogo from '../../images/stack-overflow-logo-vector.svg'
+import MainLogo from '../../images/stack-overflow-logo-vector.svg';
 
 import { SlMagnifier } from 'react-icons/sl';
 
@@ -8,7 +8,7 @@ const HeaderContainer = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  height: 2.8rem; 
+  height: 2.8rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -109,11 +109,14 @@ const LoginButton = styled.button`
     background-color: rgb(179, 211, 234);
     color: rgb(44, 88, 119);
   }
+  a {
+    color: rgb(69, 123, 162);
+  }
 `;
 
 const SignupButton = styled.button`
   padding: 0.4375rem 0.625rem;
-  background-color: rgb(9, 149, 255);
+  background-color: rgba(9, 148, 255, 0.824);
   color: rgb(255, 255, 255);
   font-size: 0.8125rem;
   border-radius: 0.25rem;
@@ -126,11 +129,10 @@ const SignupButton = styled.button`
   }
 `;
 
-
 function NoSideHeader() {
   return (
     <HeaderContainer>
-      <Logo href="#">
+      <Logo href="/">
         <LogoImg src={MainLogo} alt="Main Logo" />
       </Logo>
       <HeaderMenu>
@@ -147,8 +149,12 @@ function NoSideHeader() {
         </SearchInputWrapper>
       </form>
       <ButtonWrapper>
-        <LoginButton>Log in</LoginButton>
-        <SignupButton>Sign up</SignupButton>
+        <LoginButton>
+          <a href="/login">Log in</a>
+        </LoginButton>
+        <SignupButton href="/singup">
+          <a href="/singup">Sign up</a>
+        </SignupButton>
       </ButtonWrapper>
     </HeaderContainer>
   );
