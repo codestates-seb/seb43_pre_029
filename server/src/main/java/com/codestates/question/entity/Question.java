@@ -44,10 +44,10 @@ public class Question extends Auditable {
 //    private List<AnswerComment> a_comments = new ArrayList<>();
 
     @Column
-    private Long suggestedCount = 0L;
+    private Long suggestedCount = 0L; // 추천수
 
     @Column
-    private Long viewCount = 0L ;
+    private Long viewCount = 0L ; // 조회수
 
     @Enumerated(EnumType.STRING)
     @Column(length = 20, nullable = false)

@@ -17,30 +17,23 @@ public class QuestionManager {
     private final MemberService memberService;
 
     // Question을 업데이트 하는 실제적 로직
-    public Question questionUpdater(Question question) {
-        // TODO 게시글을 작성한 멤버id가 데이터베이스에 있는지 확인하는 로직필요
-        //memberService.
-        Question verifyQuestion = verifiedQuestion(question.getQ_id());
-        checkNotExistQuestion(question);
-        return changerContent(question);
+    public Question questionUpdater(Question findQuestion) {
+        checkNotExistQuestion(findQuestion);
+        return changerContent(findQuestion);
     }
 
     public Question changerContent(Question question) {
-        Question findQuestion = verifiedQuestion(question.getQ_id());
-
         Optional.ofNullable(question.getQ_title())
-                .ifPresentOrElse(findQuestion::setQ_title, () -> {});
+                .ifPresentOrElse(question::setQ_title, () -> {});
         Optional.ofNullable(question.getQ_content1())
-                .ifPresentOrElse(findQuestion::setQ_content1, () -> {});
+                .ifPresentOrElse(question::setQ_content1, () -> {});
         Optional.ofNullable(question.getQ_content2())
-                .ifPresentOrElse(findQuestion::setQ_content2, () -> {});
-        Optional.ofNullable(question.getQ_status())
-                .ifPresentOrElse(findQuestion::setQ_status, () -> {});
-
-        return findQuestion;
+                .ifPresentOrElse(question::setQ_content2, () -> {});
+        return question;
     }
 
     // Question을 수정 및 삭제 권한이 없는 member를 check
+    // JWT구현 시 대체
     public void checkNotExistQuestion(Question question) {
         //TODO question을 작성한 멤버 id값으로 멤버가 작성한 question List에서 q_id값이 있는지 확인
 //        Member findMember = memberService.메서드명(question.getMember().getMemberId());
@@ -69,15 +62,14 @@ public class QuestionManager {
     }
 
     // Question 삭제상태인지 확인
-    public void verifyDeleted(Question question){
-        if(question.getQ_status() == Question.QuestionStatus.QUESTION_DELETE){
+    public void verifyDeleted(Question findQuestion){
+        if(findQuestion.getQ_status() == Question.QuestionStatus.QUESTION_DELETE){
             throw new BusinessLogicException(ExceptionCode.QUESTION_HAS_BEEN_DELETED);
         }
     }
 
     // Question 숨김(삭제)상태로 변경
     public Question deleteStatusQuestion(Question findQuestion) {
-        checkNotExistQuestion(findQuestion);
         verifyDeleted(findQuestion);
         findQuestion.setQ_status(Question.QuestionStatus.QUESTION_DELETE);
         return findQuestion;

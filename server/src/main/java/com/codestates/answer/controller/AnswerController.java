@@ -8,8 +8,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
@@ -20,22 +22,31 @@ import javax.validation.constraints.Positive;
 @Slf4j
 @RequiredArgsConstructor
 public class AnswerController {
-    private final AnswerService answerService;
     private final AnswerMapper mapper;
+    private final AnswerService answerService;
+    //public final static String QNA_ANSWER_DEFAULT_URL = "/qna-answers";
 
 
+    // answer 등록
     @PostMapping
-    public ResponseEntity postAnswer(@Valid @RequestBody AnswerDto.Post AnswerDtoPostDto){
-        Answer answer = answerService.createAnswer(mapper.answerPostDtoToAnswer(AnswerDtoPostDto));
-        return new ResponseEntity<>(mapper.answerToAnswerSingleResponseDto(answer), HttpStatus.CREATED);
+    public ResponseEntity postAnswer(@Valid @RequestBody AnswerDto AnswerDtoPostDto){
+        Answer answer = answerService.createAnswer(mapper.answerDtoToAnswer(AnswerDtoPostDto));
+        return new ResponseEntity<>(mapper.answerToAnswerResponseDto(answer), HttpStatus.CREATED);
     }
 
+    // answer 수정
     @PatchMapping("/edit")
-    public ResponseEntity patchQnaForum(@PathVariable("answer-id") @Positive Long answerId, // TODO path variable에서 추출되는(extract)를 사용하세요.-> PatchDto에서 보드아이디를 지워도 됨
-                                        @Valid @RequestBody AnswerDto.Patch answerPatchDto){
-        // Dto를 mapper로 바꿔서 service로직에서 UpdateBoard()를 실행
-        Answer answer = mapper.answerPatchDtoToAnswer(answerPatchDto);
-        Answer patchAnswer = answerService.updateAnswer(answer);
-        return new ResponseEntity<>(mapper.answerToAnswerSingleResponseDto(patchAnswer), HttpStatus.OK);
+    public ResponseEntity patchQnaForum(@PathVariable("a_id") @Positive Long a_id,
+                                        @Valid @RequestBody AnswerDto answerPatchDto){
+        Answer answer = answerService.updateAnswer(mapper.answerDtoToAnswer(answerPatchDto));
+        return new ResponseEntity<>(mapper.answerToAnswerResponseDto(answer), HttpStatus.OK);
+    }
+
+    // answer 삭제
+    @DeleteMapping
+    public ResponseEntity deleteAnswer(@Valid @RequestBody AnswerDto answerDeleteDto){
+        Answer answer = mapper.answerDtoToAnswer(answerDeleteDto);
+        answerService.deleteAnswer(answer);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 }
