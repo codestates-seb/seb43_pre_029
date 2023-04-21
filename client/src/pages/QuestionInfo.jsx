@@ -6,7 +6,6 @@ import Answer from '../components/QInfo/Answer';
 import axios from 'axios';
 import styled from 'styled-components';
 import Comment from '../components/QInfo/Comment';
-import Sidebar from '../components/SideBar';
 import Quill from '../components/Quill';
 
 const QMain = styled.div`
@@ -46,7 +45,6 @@ const QuestionInfo = () => {
   return (
     <>
       <FixSideHeader />
-      <Sidebar />
       <QMain>
         <QInfoHeader qinfo={qinfo} />
         <QInfoMain qinfo={qinfo} />
