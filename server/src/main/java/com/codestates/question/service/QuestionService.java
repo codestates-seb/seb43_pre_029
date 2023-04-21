@@ -1,13 +1,11 @@
 package com.codestates.question.service;
 
-import com.codestates.answer.entity.Answer;
-import com.codestates.exception.BusinessLogicException;
-import com.codestates.exception.ExceptionCode;
 import com.codestates.member.service.MemberService;
 import com.codestates.question.entity.Question;
 import com.codestates.question.repository.QuestionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -36,13 +34,24 @@ public class QuestionService {
     // Question 숨김(삭제)
     public void deleteQuestion(Question question){
         Question findQuestion = questionManager.verifiedQuestion(question.getQ_id());
-        Question deletedQuestion = questionManager.deleteQuestion(findQuestion);
+        Question deletedQuestion = questionManager.deleteStatusQuestion(findQuestion);
         questionRepository.save(deletedQuestion);
     }
 
-    // Answer 채택
-    public void selectAnswer(Question question){
-        Question findQuestion = questionRepository.findById(question.getQ_id());
-        Answer acceptedAnswer = answerRepository.findById(question.getAnswers().)
+    // 1건의 Question 조회 (question, answer, comment포함)
+    @Transactional(readOnly = true)
+    public Question findQuestion(Long q_id, Long m_id){
+        Question findQuestion = questionManager.verifiedQuestion(q_id);
+       // Member member = memberService.findMember(m_id);
+        questionManager.verifyDeleted(findQuestion);
+        return findQuestion;
     }
+
+    // Answer 채택
+//    public void acceptAnswer(Question question){
+//        Question findQuestion = questionRepository.findById(question.getQ_id());
+//        Answer acceptedAnswer = answerRepository.findById(question.getAnswers().)
+//    }
+
+
 }

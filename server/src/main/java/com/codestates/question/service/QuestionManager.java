@@ -2,15 +2,12 @@ package com.codestates.question.service;
 
 import com.codestates.exception.BusinessLogicException;
 import com.codestates.exception.ExceptionCode;
-import com.codestates.member.entity.Member;
-import com.codestates.member.repository.MemberRepository;
 import com.codestates.member.service.MemberService;
 import com.codestates.question.entity.Question;
 import com.codestates.question.repository.QuestionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -33,8 +30,10 @@ public class QuestionManager {
 
         Optional.ofNullable(question.getQ_title())
                 .ifPresentOrElse(findQuestion::setQ_title, () -> {});
-        Optional.ofNullable(question.getQ_content())
-                .ifPresentOrElse(findQuestion::setQ_content, () -> {});
+        Optional.ofNullable(question.getQ_content1())
+                .ifPresentOrElse(findQuestion::setQ_content1, () -> {});
+        Optional.ofNullable(question.getQ_content2())
+                .ifPresentOrElse(findQuestion::setQ_content2, () -> {});
         Optional.ofNullable(question.getQ_status())
                 .ifPresentOrElse(findQuestion::setQ_status, () -> {});
 
@@ -43,19 +42,19 @@ public class QuestionManager {
 
     // Question을 수정 및 삭제 권한이 없는 member를 check
     public void checkNotExistQuestion(Question question) {
-        //TODO question을 작성한 멤버 id값으로 멤버가 작성한 question List에 인자로 들어온 question id값이 있는지 확인
+        //TODO question을 작성한 멤버 id값으로 멤버가 작성한 question List에서 q_id값이 있는지 확인
 //        Member findMember = memberService.메서드명(question.getMember().getMemberId());
-//        List<Question> questionList = findMember.getQuestion();
+//        List<Question> questions = findMember.getQuestion();
 //
 //        boolean existQuestion = false;
-//        for(Question q:questionList){
+//        for(Question q:questions){
 //            if(question.getQ_id() == q.getQ_id()){
 //                existQuestion = true;
 //                break;
 //            }
 //        }
 //
-//        게시물을 수정할 권한이 없다면 예외처리
+//        게시물을 읽기, 수정, 삭제 권한이 없다면 예외처리
 //        if(!existQuestion){
 //            throw new BusinessLogicException(ExceptionCode.MEMBER_NO_HAVE_AUTHORIZATION);
 //        }
@@ -77,7 +76,7 @@ public class QuestionManager {
     }
 
     // Question 숨김(삭제)상태로 변경
-    public Question deleteQuestion(Question findQuestion) {
+    public Question deleteStatusQuestion(Question findQuestion) {
         checkNotExistQuestion(findQuestion);
         verifyDeleted(findQuestion);
         findQuestion.setQ_status(Question.QuestionStatus.QUESTION_DELETE);

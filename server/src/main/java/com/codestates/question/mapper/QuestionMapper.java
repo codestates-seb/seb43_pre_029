@@ -36,7 +36,9 @@ public interface QuestionMapper {
                         .q_status(question.getQ_status())
                         .create_at(question.getCreated_at())
                         .last_modifined_at(question.getModified_at())
+                        //TODO List<Answer>, List<Comment> 스트림 처리 -> dto 처리 해야함
                         .build();
 
+        return questionResponseDto;
     }
 }

@@ -29,24 +29,33 @@ public class QuestionController {
     @PostMapping("/ask")
     public ResponseEntity postQustion(@Valid @RequestBody QuestionDto.Post questionPostDto){
         Question question = questionService.createQuestion(mapper.questionPostDtoToQuestion(questionPostDto));
-        //mapper.questionToQuestionResponseDto(question)
         return new ResponseEntity<>(mapper.questionToQuestionResponseDto(question), HttpStatus.CREATED);
     }
 
     @PatchMapping("/edit")
     public ResponseEntity patchQustion(@Valid @RequestBody QuestionDto.Patch questionPatchDto){
         // JwtParseInterceptor에서 extract한 memberId를 얻는다.
-        // long authenticatedMemberId = JwtParseInterceptor.getAuthenticatedMemberId();
+        // Long m_id = JwtParseInterceptor.getAuthenticatedMemberId();
 
         Question question = questionService.updateQuestion(mapper.questionPatchDtoToQuestion(questionPatchDto));
-        return new ResponseEntity<>(mapper.questionToQuestionSingleResponseDto(question), HttpStatus.OK);
+        return new ResponseEntity<>(mapper.questionToQuestionResponseDto(question), HttpStatus.OK);
     }
 
     @DeleteMapping
     public ResponseEntity deleteQustion(@Valid @RequestBody QuestionDto.Delete questionDeleteDto){
-        //TODO 토큰 값으로 회원인지 확인 일단 Dto로 구현
+        //TODO 토큰 값으로 회원인지 확인해야함 일단 Dto로 구현
         Question question = mapper.questiondeleteDtoToQuestion(questionDeleteDto);
         questionService.deleteQuestion(question);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    // 전체 게시글 조회
+    @GetMapping("/some-page/{q_id}")
+    public ResponseEntity getQuestion(@RequestParam ("q_id") Long q_id){
+        //Long m_id = JwtParseInterceptor.getAuthenticatedMemberId();
+//        Question question = questionService.findQuestion(q_id,m_id);
+//        return ResponseEntity<>(mapper.questionToQuestionResponseDto(question));
+        return null;
+    }
+
 }

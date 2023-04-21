@@ -29,7 +29,6 @@ public class QuestionResponseDto {
     private Long answerCount;
     private LocalDateTime create_at;
     private LocalDateTime last_modifined_at;
-    private Question.QuestionStatus q_status;
     private List<CommentDto.CommentResponse> comments;
     private List<AnswerResponseDto> answers;
 

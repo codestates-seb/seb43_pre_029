@@ -39,11 +39,15 @@ public class Question extends Auditable {
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
     private List<Comment> comments = new ArrayList<>();
-    @Column
-    private Long suggestedCount;
+
+//    @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
+//    private List<AnswerComment> a_comments = new ArrayList<>();
 
     @Column
-    private Long viewCount;
+    private Long suggestedCount = 0L;
+
+    @Column
+    private Long viewCount = 0L ;
 
     @Enumerated(EnumType.STRING)
     @Column(length = 20, nullable = false)
