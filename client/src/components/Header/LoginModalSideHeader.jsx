@@ -59,7 +59,7 @@ const Icon1Open = styled(IoCloseSharp)`
 
 // 메인 로고
 const Logo = styled.a`
-  padding: 0 0.375rem 0 0.125rem;
+  padding: 0 0.375rem 0 0.3rem;
 `;
 
 const LogoImg = styled.img`
@@ -117,7 +117,7 @@ const Icon1 = styled(SlMagnifier)`
 // 검색 인풋
 const SearchInput = styled.input`
   height: 1.375rem;
-  width: 44.9rem;
+  width: 42rem;
   padding: 0.25rem 0.5rem;
   border: none;
   border-radius: 0.25rem;
@@ -172,7 +172,7 @@ const NavIconStyle = styled.button`
 const Icon2 = styled(BsFillInboxFill)`
   font-size: 1.3rem;
   color: rgb(82, 88, 96);
-  padding: 0.7rem 0.2rem;
+  padding: 0.75rem 0.5rem;
 
   &:hover {
     color: rgb(0, 0, 0);
@@ -182,7 +182,7 @@ const Icon2 = styled(BsFillInboxFill)`
 const Icon3 = styled(IoIosTrophy)`
   font-size: 1.4rem;
   color: rgb(82, 88, 96);
-  padding: 0.65rem 0.2rem;
+  padding: 0.7rem 0.5rem;
 
   &:hover {
     color: rgb(0, 0, 0);
@@ -190,9 +190,9 @@ const Icon3 = styled(IoIosTrophy)`
 `;
 
 const Icon4 = styled(BsFillQuestionCircleFill)`
-  font-size: 1.125rem;
+  font-size: 1rem;
   color: rgb(82, 88, 96);
-  padding: 0.78rem 0.3rem;
+  padding: 0.9rem 0.65rem;
 
   &:hover {
     color: rgb(0, 0, 0);
@@ -202,7 +202,7 @@ const Icon4 = styled(BsFillQuestionCircleFill)`
 const Icon5 = styled(MdChatBubble)`
   font-size: 1.28rem;
   color: rgb(82, 88, 96);
-  padding: 0.7rem 0.3rem;
+  padding: 0.79rem 0.55rem;
 
   &:hover {
     color: rgb(0, 0, 0);
