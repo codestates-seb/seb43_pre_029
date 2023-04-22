@@ -1,22 +1,25 @@
 package com.codestates.answer.dto;
 
-import com.codestates.answer.entity.Answer;
+import com.codestates.validator.NotSpace;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 
+@Getter
+@Setter
+@AllArgsConstructor
 public class AnswerDto {
-    @Setter
-    @Getter
-    public static class Patch{
+    @Positive
+    private Long a_id;
 
-    }
-    @Getter
-    public static class Post{
+    @Positive
+    private Long q_id;
 
-    }
+    @Positive
+    private Long m_id;
 
-
-
+    private String a_content;
 }

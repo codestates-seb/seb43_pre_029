@@ -2,21 +2,17 @@ package com.codestates.question.dto;
 
 import com.codestates.answer.dto.AnswerResponseDto;
 import com.codestates.comment.dto.CommentDto;
-import com.codestates.comment.entity.Comment;
 import com.codestates.question.entity.Question;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Builder
 @Getter
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class QuestionResponseDto {
     private Long m_id;
     private String m_name;
@@ -31,5 +27,5 @@ public class QuestionResponseDto {
     private LocalDateTime last_modifined_at;
     private List<CommentDto.CommentResponse> comments;
     private List<AnswerResponseDto> answers;
-
+    private Question.QuestionStatus q_status;
 }
