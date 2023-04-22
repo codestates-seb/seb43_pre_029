@@ -3,22 +3,57 @@ package com.codestates.answer.dto;
 import com.codestates.validator.NotSpace;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 
-@Getter
-@Setter
 public class AnswerDto {
-    @Positive
-    private Long a_id;
 
-    @Positive
-    private Long q_id;
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class Post{
+        @Positive
+        private Long q_id;
 
-    @Positive
-    private Long m_id;
+        @Positive
+        private Long m_id;
 
-    private String a_content;
+        @NotBlank
+        private String a_content;
+
+    }
+
+    @Getter
+    @Setter
+    public static class Patch{
+        @Positive
+        private Long a_id;
+        @Positive
+        private Long q_id;
+
+        @Positive
+        private Long m_id;
+
+        @NotSpace(message = "내용은 공백이 아니어야합니다.")
+        private String a_content;
+    }
+
+    @Getter
+    public static class Delete{
+        @Positive
+        private Long a_id;
+        @Positive
+        private Long m_id;
+    }
+
+
+
+
+
+
+
+
 }
