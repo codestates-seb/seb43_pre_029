@@ -33,9 +33,7 @@ public class MemberDto {
     @Getter
     @AllArgsConstructor
     public static class Patch{
-        @Email
-        private String email;
-
+        // TODO: 양식 작성 -> 숫자 1개, 문자 1개, 8자 이상
         private String password;
 
         private String name;
@@ -73,5 +71,6 @@ public class MemberDto {
         private Long activityCount;
         private Long commentCount;
         private Long answerCount;
+        private Long questionCount;
     }
 }

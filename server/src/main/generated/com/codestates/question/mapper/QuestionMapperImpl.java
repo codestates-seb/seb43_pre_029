@@ -1,18 +1,16 @@
 package com.codestates.question.mapper;
 
 import com.codestates.member.entity.Member;
+import com.codestates.question.dto.QuestionDto.Delete;
 import com.codestates.question.dto.QuestionDto.Patch;
 import com.codestates.question.dto.QuestionDto.Post;
-import com.codestates.question.dto.QuestionDto.SingleResponse;
 import com.codestates.question.entity.Question;
-import java.util.ArrayList;
-import java.util.List;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-04-19T11:27:00+0900",
+    date = "2023-04-21T16:36:14+0900",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.18 (Azul Systems, Inc.)"
 )
 @Component
@@ -27,6 +25,9 @@ public class QuestionMapperImpl implements QuestionMapper {
         Question question = new Question();
 
         question.setMember( postToMember( questionPostDto ) );
+        question.setQ_title( questionPostDto.getQ_title() );
+        question.setQ_content1( questionPostDto.getQ_content1() );
+        question.setQ_content2( questionPostDto.getQ_content2() );
 
         return question;
     }
@@ -41,22 +42,25 @@ public class QuestionMapperImpl implements QuestionMapper {
 
         question.setMember( patchToMember( questionPatchDto ) );
         question.setQ_id( questionPatchDto.getQ_id() );
+        question.setQ_title( questionPatchDto.getQ_title() );
+        question.setQ_content1( questionPatchDto.getQ_content1() );
+        question.setQ_content2( questionPatchDto.getQ_content2() );
 
         return question;
     }
 
     @Override
-    public List<SingleResponse> questionToQuestionResponseDtos(List<Question> questions) {
-        if ( questions == null ) {
+    public Question questiondeleteDtoToQuestion(Delete questionDeleteDto) {
+        if ( questionDeleteDto == null ) {
             return null;
         }
 
-        List<SingleResponse> list = new ArrayList<SingleResponse>( questions.size() );
-        for ( Question question : questions ) {
-            list.add( questionToQuestionSingleResponseDto( question ) );
-        }
+        Question question = new Question();
 
-        return list;
+        question.setMember( deleteToMember( questionDeleteDto ) );
+        question.setQ_id( questionDeleteDto.getQ_id() );
+
+        return question;
     }
 
     protected Member postToMember(Post post) {
@@ -79,6 +83,18 @@ public class QuestionMapperImpl implements QuestionMapper {
         Member member = new Member();
 
         member.setM_id( patch.getM_id() );
+
+        return member;
+    }
+
+    protected Member deleteToMember(Delete delete) {
+        if ( delete == null ) {
+            return null;
+        }
+
+        Member member = new Member();
+
+        member.setM_id( delete.getM_id() );
 
         return member;
     }

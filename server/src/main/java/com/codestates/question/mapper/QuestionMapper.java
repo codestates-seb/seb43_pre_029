@@ -3,6 +3,10 @@ package com.codestates.question.mapper;
 import com.codestates.answer.dto.AnswerDto;
 import com.codestates.answer.dto.AnswerResponseDto;
 import com.codestates.answer.entity.Answer;
+import com.codestates.answer.mapper.AnswerMapper;
+import com.codestates.answer.mapper.AnswerMapperImpl;
+import com.codestates.comment.mapper.CommentMapper;
+import com.codestates.comment.mapper.CommentMapperImpl;
 import com.codestates.question.dto.QuestionDto;
 import com.codestates.question.dto.QuestionResponseDto;
 import com.codestates.question.entity.Question;
@@ -10,9 +14,12 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Mapper(componentModel ="spring")
 public interface QuestionMapper {
+    AnswerMapper answerMapper = new AnswerMapperImpl();
+    CommentMapper commentMapper = new CommentMapperImpl();
     @Mapping(source="m_id", target = "member.m_id")
     Question questionPostDtoToQuestion(QuestionDto.Post questionPostDto);
 
@@ -35,7 +42,10 @@ public interface QuestionMapper {
                         .create_at(question.getCreated_at())
                         .last_modifined_at(question.getModified_at())
                         //TODO List<Answer>, List<Comment> 스트림 처리 -> dto 처리 해야함
+//                        .answers(question.getAnswers().stream().map(answer -> answerMapper.answerToAnswerSingleResponseDto(answer)).collect(Collectors.toList()))
+//                        .comments(question.getComments().stream().map(comment -> commentMapper.))
                         .build();
+
 
         return questionResponseDto;
     }

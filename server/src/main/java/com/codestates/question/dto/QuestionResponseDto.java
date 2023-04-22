@@ -16,7 +16,7 @@ import java.util.List;
 
 @Builder
 @Getter
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class QuestionResponseDto {
     private Long m_id;
     private String m_name;
