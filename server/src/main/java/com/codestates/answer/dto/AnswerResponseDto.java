@@ -13,5 +13,5 @@ public class AnswerResponseDto {
     private Long m_id;
     private String a_content;
     private LocalDateTime created_at;
-    private Boolean selection;
+    private Boolean accepted;
 }

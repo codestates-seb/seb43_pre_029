@@ -4,16 +4,20 @@ import com.codestates.member.service.MemberService;
 import com.codestates.question.dto.QuestionDto;
 import com.codestates.question.entity.Question;
 import com.codestates.question.mapper.QuestionMapper;
+import com.codestates.question.response.MultiResponseDto;
 import com.codestates.question.service.QuestionService;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.querydsl.QPageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Positive;
+import java.util.List;
 
 @RestController
 @RequestMapping("/question")
@@ -24,7 +28,6 @@ public class QuestionController {
     // public final static String QNA_QUESTION_DEFAULT_URL = "/questions";
     private final QuestionMapper mapper;
     private final QuestionService questionService;
-    private final MemberService memberService;
 
     @PostMapping("/ask")
     public ResponseEntity postQustion(@Valid @RequestBody QuestionDto.Post questionPostDto){
@@ -49,13 +52,39 @@ public class QuestionController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    // 전체 게시글 조회
+    // 1건의 게시글 조회
     @GetMapping("/some-page/{q_id}")
-    public ResponseEntity getQuestion(@RequestParam ("q_id") Long q_id){
-        //Long m_id = JwtParseInterceptor.getAuthenticatedMemberId();
-//        Question question = questionService.findQuestion(q_id,m_id);
-//        return ResponseEntity<>(mapper.questionToQuestionResponseDto(question));
-        return null;
+    public ResponseEntity getQuestion(@PathVariable ("q_id") Long q_id){
+        Question question = questionService.findQuestion(q_id);
+        questionService.increaseViews(question);
+        return new ResponseEntity<>(mapper.questionToQuestionResponseDto(question), HttpStatus.OK);
     }
 
+    // 전체 게시글 조회
+    @GetMapping
+    public ResponseEntity getQuestions(@RequestParam ("page") Long page){
+        Page<Question> pageQuestions = questionService.findQuestions(page -1); //페이지정보
+        System.out.println("4번까지 됌");
+        List<Question> questions = pageQuestions.getContent();
+        return new ResponseEntity<>(
+                new MultiResponseDto<>(mapper.questionToQuestionResponseDtos(questions),pageQuestions)
+            ,HttpStatus.OK);
+    }
+
+    // 답변 채택
+    @PatchMapping("/edit/answer-accept/{a_id}")
+    public ResponseEntity acceptAnswer(@PathVariable("a_id") @Positive Long a_id,
+                                        @Valid @RequestBody QuestionDto.AcceptAnswerPatch acceptAnswerPatch){
+//       Long m_id = JwtParseInterceptor.getAuthenticatedMemberId();
+        Question question = questionService.acceptAnswer(mapper.acceptAnswerPatchDtoToQuestion(acceptAnswerPatch), a_id);
+        return new ResponseEntity<>(mapper.questionToQuestionResponseDto(question),HttpStatus.OK);
+    }
+
+    // 게시글 추천
+    @PatchMapping("/like/{q_id}")
+    public ResponseEntity likePost(@PathVariable Long q_id){
+        Question question = questionService.findQuestion(q_id);
+        questionService.increaseLikes(question);
+        return new ResponseEntity<>(mapper.questionToQuestionResponseDto(question), HttpStatus.OK);
+    }
 }

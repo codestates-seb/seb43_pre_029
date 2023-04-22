@@ -4,7 +4,6 @@ import com.codestates.answer.entity.Answer;
 import com.codestates.audit.Auditable;
 import com.codestates.comment.entity.Comment;
 import com.codestates.member.entity.Member;
-import com.mysql.cj.protocol.ColumnDefinition;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -44,13 +43,13 @@ public class Question extends Auditable {
 //    private List<AnswerComment> a_comments = new ArrayList<>();
 
     @Column
-    private Long suggestedCount = 0L;
+    private Long suggestedCount = 0L; // 추천수
 
     @Column
-    private Long viewCount = 0L ;
+    private Long viewCount = 0L ; // 조회수
 
     @Enumerated(EnumType.STRING)
-    @Column(length = 20, nullable = false)
+    @Column(nullable = false)
     private QuestionStatus q_status = QuestionStatus.QUESTION_REGISTRATION;
 
     public enum QuestionStatus {
