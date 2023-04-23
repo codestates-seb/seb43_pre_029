@@ -16,7 +16,7 @@ import {
   ButtonWrapper,
   LoginButton,
   SignupButton,
-} from './SideHeaderStyle';
+} from './FixSideHeaderstyle';
 
 // 햄버거 사이드 버튼
 const HamburgerStyle = styled.button`
