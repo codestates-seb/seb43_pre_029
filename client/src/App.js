@@ -7,14 +7,13 @@ import MyPage from './pages/MyPage';
 import QuestionInfo from './pages/QuestionInfo';
 import { useState } from 'react';
 
-
 const App = () => {
-  /** 
+  /**
    * setIsLogin
    * Home이나 mypage question 등에서 logout 버튼 클릭시
-   * localStorage.clear() 
+   * localStorage.clear()
    */
-  const [isLogin, setIsLogin] = useState(localStorage.getItem("access_token"))
+  const [isLogin, setIsLogin] = useState(localStorage.getItem('access_token'));
 
   return (
     <div className="App">
