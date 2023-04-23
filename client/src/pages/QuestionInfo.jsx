@@ -7,8 +7,8 @@ import axios from 'axios';
 import styled from 'styled-components';
 import Comment from '../components/QInfo/Comment';
 import Quill from '../components/Quill';
+import Footer from '../components/Footer';
 import { useParams } from 'react-router-dom';
-
 const QMain = styled.div`
   width: 800px;
   margin: auto;
@@ -44,7 +44,7 @@ const QuestionInfo = () => {
       setQianswers(res.data.answers);
       setComments(res.data.comment);
     });
-  }, []);
+  }, [id]);
 
   return (
     <>
@@ -66,6 +66,7 @@ const QuestionInfo = () => {
           <Quill />
         </AnswerInput>
       </QMain>
+      <Footer />
     </>
   );
 };
