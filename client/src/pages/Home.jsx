@@ -5,6 +5,7 @@ import Contnent from '../components/Home/Content';
 import QuestionsList from '../components/Home/QuestionsList';
 import FixSideHeader from '../components/Header/FixSideHeader';
 import ModalSideHeader from '../components/Header/ModalSideHeader';
+import Footer from '../components/Footer';
 
 const HomeTemplate = styled.div`
   display: flex;
@@ -42,6 +43,7 @@ export default function Home() {
           </Imgstyle>
         </>
       )}
+      <Footer />
     </>
   );
 }

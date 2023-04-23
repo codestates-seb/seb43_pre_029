@@ -5,12 +5,10 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import MyPage from './pages/MyPage';
 import QuestionInfo from './pages/QuestionInfo';
-import Footer from './components/Footer';
 import { useState } from 'react';
 
-
 const App = () => {
-  const [isLogin, setIsLogin] = useState(localStorage.getItem("accessToken"))
+  const [isLogin, setIsLogin] = useState(localStorage.getItem('accessToken'));
 
   return (
     <div className="App">
@@ -24,7 +22,6 @@ const App = () => {
           <Route path="/question/:id" element={<QuestionInfo {...isLogin} />} />
         </Routes>
       </BrowserRouter>
-      <Footer />
     </div>
   );
 };
