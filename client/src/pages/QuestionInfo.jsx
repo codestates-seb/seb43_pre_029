@@ -6,9 +6,9 @@ import Answer from '../components/QInfo/Answer';
 import axios from 'axios';
 import styled from 'styled-components';
 import Comment from '../components/QInfo/Comment';
-import Quill from '../components/Quill';
 import Footer from '../components/Footer/Footer';
 import { useParams } from 'react-router-dom';
+import QInfoForm from '../components/QInfoForm';
 
 const QMain = styled.div`
   width: 800px;
@@ -65,7 +65,7 @@ const QuestionInfo = () => {
         ))}
         <AnswerInput>
           <h2>Your Answer</h2>
-          <Quill />
+          <QInfoForm />
         </AnswerInput>
       </QMain>
       <Footer />
