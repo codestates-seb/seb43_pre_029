@@ -3,29 +3,20 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/stackoverflow?createdDatabaseIfNotExist=true&useUnicode=true&characterSetResults=UTF-8&useSSL=true
     username: root
-<<<<<<< HEAD
     password: asd123
-=======
-    password: sjha782800!
->>>>>>> 883b8845a2c64626497a2edf8f8e246edcdcd7d9
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
-      ddl-auto: create
+      ddl-auto: validate
     show-sql: true
     properties:
       hibernate:
         format_sql: true
-<<<<<<< HEAD
-
-=======
 jwt:
-  key: ${JWT_SECRET_KEY}               # 민감한 정보는 시스템 환경 변수에서 로드한다.
+  key: $12341234               # 민감한 정보는 시스템 환경 변수에서 로드한다.
   access-token-expiration-minutes: 30
   refresh-token-expiration-minutes: 420
-
 
 mail:
   address:
     admin: admin@gmail.com
->>>>>>> 883b8845a2c64626497a2edf8f8e246edcdcd7d9

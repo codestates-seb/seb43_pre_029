@@ -24,7 +24,7 @@ public class MemberDto {
         @NotBlank
         private String address;
         @NotBlank
-        private String status_message;
+        private String status_message = "none";
         @NotBlank
         private String phone;
 
@@ -32,6 +32,7 @@ public class MemberDto {
 
     @Getter
     @AllArgsConstructor
+    @NoArgsConstructor
     public static class Patch{
         // TODO: 양식 작성 -> 숫자 1개, 문자 1개, 8자 이상
         private String password;

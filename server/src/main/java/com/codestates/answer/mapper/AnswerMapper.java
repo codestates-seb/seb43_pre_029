@@ -21,7 +21,7 @@ public interface AnswerMapper {
     @Mapping(source = "m_id", target = "member.m_id")
     Answer answerDeleteDtoToAnswer(AnswerDto.Delete answerDeleteDto);
 
-    @Mapping(source = "m_id", target = "member.m_id")
-    @Mapping(source = "q_id", target = "question.q_id")
+    @Mapping(source = "member.m_id", target = "m_id")
+    @Mapping(source = "question.q_id", target = "q_id")
     AnswerResponseDto answerToAnswerResponseDto(Answer answer);
 }

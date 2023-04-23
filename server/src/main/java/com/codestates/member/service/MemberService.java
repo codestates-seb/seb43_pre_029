@@ -31,16 +31,18 @@ public class MemberService {
         findMember.setStatus_message(member.getStatus_message());
         findMember.setPhone(member.getPhone());
 
-        return findMember;
+        return memberRepository.save(findMember);
     }
     // 멤버의 상태 값을 MEMBER_DELETE 로 바꾸는 메서드
     public void deleteMember(long m_id){
         Member findMember = findMember(m_id);
         findMember.setM_status(Member.MemberStatus.MEMBER_DELETE);
+        memberRepository.save(findMember);
     }
     // memberId를 통해 레포지토리에서 멤버를 찾아주는 메서드. 멤버가 존재하지 않으면 예외 발생 (MEMBER_NOT_FOUND)
     public Member findMember(long m_id) {
-        Member findMember = memberRepository.findById(m_id).orElseThrow(() -> new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
+        Member findMember = memberRepository.findById(m_id)
+                .orElseThrow(() -> new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
         return findMember;
     }
 

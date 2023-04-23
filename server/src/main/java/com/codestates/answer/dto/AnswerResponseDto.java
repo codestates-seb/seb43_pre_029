@@ -14,6 +14,7 @@ public class AnswerResponseDto {
     private Long m_id;
     private String a_content;
     private LocalDateTime created_at;
+    private LocalDateTime modified_at;
     private Answer.AnswerStatus a_status;
     private Boolean accepted;
 }

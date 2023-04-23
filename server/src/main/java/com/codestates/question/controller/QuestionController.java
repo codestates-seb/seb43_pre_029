@@ -64,10 +64,9 @@ public class QuestionController {
     @GetMapping
     public ResponseEntity getQuestions(@RequestParam ("page") Long page){
         Page<Question> pageQuestions = questionService.findQuestions(page -1); //페이지정보
-        System.out.println("4번까지 됌");
         List<Question> questions = pageQuestions.getContent();
         return new ResponseEntity<>(
-                new MultiResponseDto<>(mapper.questionToQuestionResponseDtos(questions),pageQuestions)
+                new MultiResponseDto<>(mapper.questionsToQuestionResponseDtos(questions),pageQuestions)
             ,HttpStatus.OK);
     }
 

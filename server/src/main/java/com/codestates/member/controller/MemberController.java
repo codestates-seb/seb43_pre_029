@@ -42,9 +42,11 @@ public class MemberController {
         return ResponseEntity.created(location).build();
     }
 
-    @PatchMapping("/edit")
-    public ResponseEntity editMember(@Valid @RequestBody MemberDto.Patch requestBody){
+    @PatchMapping("/edit/{m_id}")
+    public ResponseEntity editMember(@PathVariable("m_id") Long m_id,
+                                     @Valid @RequestBody MemberDto.Patch requestBody){
         Member member = memberMapper.MemberPatchDtoToMember(requestBody);
+        member.setM_id(m_id);
         // 스택오버플로 회원인지 확인
         // 로그인 확인 로직
         Member response = memberService.updateMember(member);

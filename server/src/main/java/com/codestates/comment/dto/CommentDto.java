@@ -9,7 +9,6 @@ public class CommentDto {
     @Getter
     public static class Post{
         private Long m_id;
-        private Long a_id;
         private Long q_id;
         private String q_content;
     }

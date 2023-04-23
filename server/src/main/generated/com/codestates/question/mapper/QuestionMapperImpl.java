@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-04-23T22:23:17+0900",
+    date = "2023-04-24T01:11:06+0900",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.18 (Azul Systems, Inc.)"
 )
 @Component
@@ -72,6 +72,7 @@ public class QuestionMapperImpl implements QuestionMapper {
 
         Question question = new Question();
 
+        question.setMember( acceptAnswerPatchToMember( acceptAnswerPatch ) );
         question.setQ_id( acceptAnswerPatch.getQ_id() );
 
         return question;
@@ -109,6 +110,18 @@ public class QuestionMapperImpl implements QuestionMapper {
         Member member = new Member();
 
         member.setM_id( delete.getM_id() );
+
+        return member;
+    }
+
+    protected Member acceptAnswerPatchToMember(AcceptAnswerPatch acceptAnswerPatch) {
+        if ( acceptAnswerPatch == null ) {
+            return null;
+        }
+
+        Member member = new Member();
+
+        member.setM_id( acceptAnswerPatch.getM_id() );
 
         return member;
     }
