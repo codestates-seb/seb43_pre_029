@@ -13,7 +13,7 @@ import com.codestates.question.entity.Question;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Mapper(componentModel ="spring")
@@ -49,4 +49,11 @@ public interface QuestionMapper {
 
         return questionResponseDto;
     }
+
+    default List<QuestionResponseDto> questionToQuestionResponseDtos(List<Question> questions){
+        List<QuestionResponseDto> list = new ArrayList<>();
+        return list;
+    };
+
+    Question acceptAnswerPatchDtoToQuestion(QuestionDto.AcceptAnswerPatch acceptAnswerPatch);
 }
