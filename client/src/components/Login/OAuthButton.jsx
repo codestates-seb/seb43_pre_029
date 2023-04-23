@@ -3,6 +3,11 @@ import { Google, Facebook, GitHub } from '../Import-Logo';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
+/**
+ * 2023/03/17 - OAuth로그인의 개별 버튼  - fe-hyungUk
+ * @param {domain} domain 도메인을 설명하는 문자열
+ * @type {'Google' | 'Facebook' | 'GitHub'}
+ */
 const OneButton = ({ domain }) => {
   const [domainName, setDomainName] = useState('');
 
@@ -24,6 +29,7 @@ const OneButton = ({ domain }) => {
   );
 };
 
+/** 2023/03/17 - OAuth 방식의 로그인 버튼 묶음  - fe-hyungUk */
 const OAuthButton = () => {
   return (
     <OauthStyle>

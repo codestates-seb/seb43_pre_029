@@ -4,6 +4,7 @@ body {
     'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(248, 249, 249);
 }
 
 code {
@@ -26,4 +27,12 @@ ul {
 
 a {
   text-decoration: none;
+}
+
+:host #description2-qe /deep/ .ql-container {
+  height: 530px;
+}
+
+.my-quill .ql-editor {
+  height: 200px !important;
 }

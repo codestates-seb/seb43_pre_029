@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+/** 2023/03/17 - 로그인 페이지 전체 스타일 - fe-hyungUk */
 const LoginStyle = styled.div`
   display: flex;
   flex-direction: column;
@@ -14,12 +15,14 @@ const LoginStyle = styled.div`
   }
 `;
 
+/** 2023/03/17 - 로고 이미지 스타일 - fe-hyungUk */
 const MainLogoStyle = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 0.5rem;
 `;
 
+/** 2023/03/17 - OAuth 버튼 묶음 스타일 - fe-hyungUk */
 const OauthStyle = styled.div`
   display: flex;
   flex-direction: column;
@@ -65,6 +68,7 @@ const OauthStyle = styled.div`
   }
 `;
 
+/** 2023/03/17 - Form영역(입력창 및 전송 버튼) 스타일 - fe-hyungUk */
 const FormStyle = styled.form`
   display: flex;
   flex-direction: column;

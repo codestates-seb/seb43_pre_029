@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import SideBarImg from '../images/SidebarImg.png';
-import SidebarStarImg from '../images/SidebarStarImg.png';
+import SideBarImg from '../../../images/CreateTeam/SidebarImg.png';
+import SidebarStarImg from '../../../images/Icon/SidebarStarImg.png';
 
 import { IoEarthSharp } from 'react-icons/io5';
 import { IoIosInformationCircle } from 'react-icons/io';

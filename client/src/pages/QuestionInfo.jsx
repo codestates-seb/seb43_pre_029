@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import FixSideHeader from '.././components/Header/FixSideHeader';
+import FixSideHeader from '../components/Header/Fix/FixSideHeader';
 import QInfoHeader from '../components/QInfo/QInfoHeader';
 import QInfoMain from '../components/QInfo/QInfoMain';
 import Answer from '../components/QInfo/Answer';
@@ -9,6 +9,7 @@ import Comment from '../components/QInfo/Comment';
 import Quill from '../components/Quill';
 import Footer from '../components/Footer';
 import { useParams } from 'react-router-dom';
+
 const QMain = styled.div`
   width: 800px;
   margin: auto;
@@ -34,6 +35,7 @@ const CommentList = styled.div`
 
 const QuestionInfo = () => {
   const { id } = useParams();
+  
   const [qinfo, setQinfo] = useState([]);
   const [qanswers, setQianswers] = useState([]);
   const [comments, setComments] = useState([]);

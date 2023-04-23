@@ -4,24 +4,11 @@ import { LoginInput } from '../Input';
 import useBind from '../../logic/useBind';
 import { useNavigate } from 'react-router-dom';
 
-import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { loginSubmit } from '../../logic/onSubmit';
 
-const BASE_URL = 'http://localhost:5000';
-
-const onSubmit = async (e, data, setAccessToken, setRefreshToken) => {
-  e.preventDefault();
-
-  await axios
-    .post(`${BASE_URL}/auth/login`, data)
-    .then((res) => {
-      setAccessToken(res.data['accessToken']);
-      setRefreshToken(res.body['refresh_token']);
-    })
-    .catch((err) => console.log(err));
-};
-
+/** 2023/03/17 - 로그인시 이메일 패스워드 입력창 - fe-hyungUk */
 const LoginForm = () => {
   const navigate = useNavigate();
   const { emailBind, passwordBind } = useBind();
@@ -42,7 +29,7 @@ const LoginForm = () => {
   };
 
   return (
-    <FormStyle onSubmit={(e) => onSubmit(e, data, setAccessToken, setRefreshToken)}>
+    <FormStyle onSubmit={(e) => loginSubmit(e, data, setAccessToken, setRefreshToken)}>
       <LoginInput label="Email" bind={emailBind} />
       <LoginInput label="Password" bind={passwordBind} />
       <button>Log in</button>
