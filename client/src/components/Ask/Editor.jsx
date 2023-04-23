@@ -46,26 +46,23 @@ export default function Editor({ setInputValue, inputValue }) {
   const quillRef = useRef(null);
 
   /**
-   *
-   * @param {*} e : 텍스트 에디터에 하는 입력하는 값
+   * @param {*} content : 텍스트 에디터에 하는 입력하는 값
    */
-  const handleChange = (e) => {
-    setInputValue((prev) => ({ ...inputValue, body: e }));
-    console.log('body', inputValue);
+  const handleBodyChange = (content) => {
+    setInputValue((prevInputValue) => ({ ...prevInputValue, body: content }));
+    console.log('🌈body : ', inputValue);
   };
 
   return (
-    <div className="container">
-      <ReactQuill
-        className="my-quill"
-        ref={quillRef}
-        inputValue={inputValue.body}
-        onChange={handleChange}
-        theme="snow"
-        modules={modules}
-        formats={formats}
-        placeholder="질문할 내용을 상세히 적어주세요."
-      />
-    </div>
+    <ReactQuill
+      className="my-quill"
+      ref={quillRef}
+      value={inputValue.body}
+      onChange={handleBodyChange}
+      theme="snow"
+      modules={modules}
+      formats={formats}
+      placeholder="질문할 내용을 상세히 적어주세요."
+    />
   );
 }

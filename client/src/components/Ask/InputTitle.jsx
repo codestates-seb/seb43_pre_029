@@ -4,30 +4,39 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setAskTitle } from '../../store';
 
 export default function InputForm({ setInputValue, inputValue }) {
+  /**
+   * @param {*} e 이벤트 객체
+   */
+  const handleTitleChange = (e) => {
+    setInputValue((prevInputValue) => ({
+      ...prevInputValue,
+      title: e.target.value,
+    }));
+    console.log('제목 inputValue', inputValue);
+  };
+
   return (
     <div>
       <Box>
-        <FlexColumn>
+        <Flex direction="column">
           <label htmlFor="title">제목</label>
           <p>Be specific and imagine you’re asking a question to another person.</p>
           <input
             name="title"
+            value={inputValue.title}
             type="text"
             placeholder="질문 글 제목을 적어주세요."
-            onChange={(e) => {
-              setInputValue({ ...inputValue, title: e.target.value });
-              console.log('제목 inputValue', inputValue);
-            }}
+            onChange={handleTitleChange}
           />
-        </FlexColumn>
+        </Flex>
       </Box>
     </div>
   );
 }
 
-const FlexColumn = styled.div`
+const Flex = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: ${(props) => props.direction};
 `;
 
 const Box = styled.div`
