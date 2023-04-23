@@ -4,7 +4,7 @@ import askTitleImg from '../../images/img.png';
 
 export default function AskTitle() {
   return (
-    <div>
+    <article>
       <AskTitleStyle>
         <h2>Ask a publick question</h2>
         <img src={askTitleImg} alt="askTitleImg" />
@@ -23,7 +23,7 @@ export default function AskTitle() {
           <li>Review your question and post it to the site.</li>
         </ul>
       </AskGuideStyle>
-    </div>
+    </article>
   );
 }
 
