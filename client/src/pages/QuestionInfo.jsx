@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import FixSideHeader from '.././components/Header/FixSideHeader';
+import FixSideHeader from '../components/Header/Fix/FixSideHeader';
 import QInfoHeader from '../components/QInfo/QInfoHeader';
 import QInfoMain from '../components/QInfo/QInfoMain';
 import Answer from '../components/QInfo/Answer';
@@ -7,6 +7,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import Comment from '../components/QInfo/Comment';
 import Quill from '../components/Quill';
+import Footer from '../components/Footer/Footer';
 
 const QMain = styled.div`
   width: 800px;
@@ -62,6 +63,7 @@ const QuestionInfo = ({ isLogin }) => {
           <Quill />
         </AnswerInput>
       </QMain>
+      <Footer />
     </>
   );
 };
