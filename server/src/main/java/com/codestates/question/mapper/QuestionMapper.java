@@ -49,4 +49,8 @@ public interface QuestionMapper {
 
         return questionResponseDto;
     }
+
+    @Mapping(source = "m_id", target = "member.m_id")
+    Question acceptAnswerPatchDtoToQuestion(QuestionDto.AcceptAnswerPatch acceptAnswerPatch);
+
 }

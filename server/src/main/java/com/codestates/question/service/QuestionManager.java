@@ -1,5 +1,7 @@
 package com.codestates.question.service;
 
+import com.codestates.answer.entity.Answer;
+import com.codestates.comment.entity.Comment;
 import com.codestates.exception.BusinessLogicException;
 import com.codestates.exception.ExceptionCode;
 import com.codestates.member.entity.Member;
@@ -26,11 +28,14 @@ public class QuestionManager {
 
     public Question changerContent(Question toQuestion, Question fromQuestion) {
         Optional.ofNullable(fromQuestion.getQ_title())
-                .ifPresentOrElse(toQuestion::setQ_title, () -> {});
+                .ifPresentOrElse(toQuestion::setQ_title, () -> {
+                });
         Optional.ofNullable(fromQuestion.getQ_content1())
-                .ifPresentOrElse(toQuestion::setQ_content1, () -> {});
+                .ifPresentOrElse(toQuestion::setQ_content1, () -> {
+                });
         Optional.ofNullable(fromQuestion.getQ_content2())
-                .ifPresentOrElse(toQuestion::setQ_content2, () -> {});
+                .ifPresentOrElse(toQuestion::setQ_content2, () -> {
+                });
         return toQuestion;
     }
 
@@ -42,15 +47,15 @@ public class QuestionManager {
         List<Question> questions = findMember.getQuestions();
 
         boolean existQuestion = false;
-        for(Question q:questions){
-            if(question.getQ_id() == q.getQ_id()){
+        for (Question q : questions) {
+            if (question.getQ_id() == q.getQ_id()) {
                 existQuestion = true;
                 break;
             }
         }
 
 //        게시물을 읽기, 수정, 삭제 권한이 없다면 예외처리
-        if(!existQuestion){
+        if (!existQuestion) {
             throw new BusinessLogicException(ExceptionCode.MEMBER_NO_HAVE_AUTHORIZATION);
         }
     }
@@ -64,16 +69,36 @@ public class QuestionManager {
     }
 
     // Question 삭제상태인지 확인
-    public void verifyDeleted(Question findQuestion){
-        if(findQuestion.getQ_status() == Question.QuestionStatus.QUESTION_DELETE){
+    public void verifyDeleted(Question findQuestion) {
+        if (findQuestion.getQ_status() == Question.QuestionStatus.QUESTION_DELETE) {
             throw new BusinessLogicException(ExceptionCode.QUESTION_HAS_BEEN_DELETED);
         }
     }
 
     // Question 숨김(삭제)상태로 변경
-    public Question deleteStatusQuestion(Question findQuestion) {
-        verifyDeleted(findQuestion);
-        findQuestion.setQ_status(Question.QuestionStatus.QUESTION_DELETE);
-        return findQuestion;
+    public Question deleteStatusQuestion(Question question) {
+        verifyDeleted(question);
+        question.setQ_status(Question.QuestionStatus.QUESTION_DELETE);
+        return question;
+    }
+
+    // Question의 status가 delete일 때 List<Answer>, List<Comment>를 delete상태로 변경
+    public Question deleteQuestionAndRelatedAnswersAndComments(Question question) {
+        if (question.getQ_status().equals(Question.QuestionStatus.QUESTION_DELETE) && question.getAnswers() != null || question.getAnswers().size() != 0) {
+            for (Answer answer : question.getAnswers()) {
+                if (answer.getA_status() != Answer.AnswerStatus.ANSWER_DELETE) {
+                    answer.setA_status(Answer.AnswerStatus.ANSWER_DELETE);
+                }
+            }
+        }
+
+        if (question.getQ_status().equals(Question.QuestionStatus.QUESTION_DELETE) && question.getComments() != null || question.getComments().size() != 0) {
+            for (Comment comment : question.getComments()) {
+                if (comment.getC_status() != Comment.CommentStatus.COMMENT_DELETE) {
+                    comment.setC_status(Comment.CommentStatus.COMMENT_DELETE);
+                }
+            }
+        }
+        return question;
     }
 }
