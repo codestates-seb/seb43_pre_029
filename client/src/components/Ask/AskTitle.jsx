@@ -3,30 +3,14 @@ import styled from 'styled-components';
 import askTitleImg from '../../images/img.png';
 
 export default function AskTitle() {
-  const AskTitle = styled.div`
-    display: flex;
-    justify-content: space-between;
-
-    img {
-      width: 40rem;
-    }
-  `;
-  const AskGuide = styled.div`
-    border: 0.1rem solid #b0d3ee;
-    border-radius: 0.2rem;
-    padding: 1.5rem;
-
-    background-color: #ebf4fb;
-  `;
-
   return (
     <div>
-      <AskTitle>
+      <AskTitleStyle>
         <h2>Ask a publick question</h2>
         <img src={askTitleImg} alt="askTitleImg" />
-      </AskTitle>
+      </AskTitleStyle>
 
-      <AskGuide>
+      <AskGuideStyle>
         <h2>Writing a good question</h2>
         <p>You’re ready to ask a programming-related question and this form will help guide you through the process.</p>
         <p>Looking to ask a non-programming question? See the topics here to find a relevant site.</p>
@@ -38,7 +22,27 @@ export default function AskTitle() {
           <li>Add “tags” which help surface your question to members of the community.</li>
           <li>Review your question and post it to the site.</li>
         </ul>
-      </AskGuide>
+      </AskGuideStyle>
     </div>
   );
 }
+
+const AskTitleStyle = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  img {
+    width: 40rem;
+  }
+`;
+
+const AskGuideStyle = styled.div`
+  border: 0.1rem solid #b0d3ee;
+  border-radius: 0.2rem;
+  padding: 1.5rem;
+  background-color: #ebf4fb;
+  li {
+    list-style: upper-roman;
+    margin-left: 3rem;
+  }
+`;

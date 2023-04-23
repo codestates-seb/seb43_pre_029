@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import AskForm from '../components/Ask/AskForm';
+import AskMain from '../components/Ask/AskMain';
 import AskTitle from '../components/Ask/AskTitle';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -17,7 +17,7 @@ const Ask = () => {
       <Header />
       <Container>
         <AskTitle />
-        <AskForm />
+        <AskMain />
       </Container>
       <Footer />
     </>
