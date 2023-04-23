@@ -24,6 +24,12 @@ const SignUpInput = ({ label, bind, setValid }) => {
   );
 };
 
+/**
+ * 2023/03/18 - 로그인 입력창 - fe-hyungUk
+ * @param label : 입력 창의 종류 설명
+ * @param bind : 상태관리 묶음(value, setValue)
+ * @type { {label: 'Email' | 'Password', bind: { value, onChange }} }
+ */
 const LoginInput = ({ label, bind }) => {
   const { value, onChange } = bind;
 
