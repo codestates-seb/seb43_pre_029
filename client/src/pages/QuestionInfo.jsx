@@ -7,7 +7,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import Comment from '../components/QInfo/Comment';
 import Quill from '../components/Quill';
-import Footer from '../components/Footer';
+import Footer from '../components/Footer/Footer';
 import { useParams } from 'react-router-dom';
 
 const QMain = styled.div`
@@ -35,7 +35,7 @@ const CommentList = styled.div`
 
 const QuestionInfo = () => {
   const { id } = useParams();
-  
+
   const [qinfo, setQinfo] = useState([]);
   const [qanswers, setQianswers] = useState([]);
   const [comments, setComments] = useState([]);
