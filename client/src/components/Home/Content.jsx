@@ -4,46 +4,56 @@ import styled from 'styled-components';
 const ContnentTemplate = styled.div`
   display: flex;
   flex-direction: column;
-  width: 800px;
-  height: auto;
-  border-bottom: 1px solid black;
-  padding-bottom: 20px;
+  justify-content: center;
+  width: 770px;
+  padding: 20px 25px;
+  padding: 20px 0px 20px 25px;
+  margin-right: 30px;
+  /* border: 1px solid red; */
 `;
 const ContentHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 20px 25px;
-  margin-bottom: 5px;
+  margin-bottom: 13px;
   h1 {
-    margin: 0px;
-    padding: 0px;
-  }
-  .askBtn {
-    background-color: hsl(206, 100%, 52%);
-    width: 105px;
-    height: 38px;
-    border-radius: 5px;
-    padding: 0px;
-    border: none;
-    a {
-      color: white;
-      padding: 10px;
-      text-decoration-line: none;
-      width: auto;
-    }
+    font-size: 30px;
+    font-weight: 500;
   }
 `;
-
+const AskBtn = styled.button`
+  padding: 10.4px;
+  background-color: rgb(9, 149, 255);
+  border-radius: 4px;
+  border: 1px solid rgb(9, 149, 255);
+  cursor: pointer;
+  a {
+    color: rgb(255, 255, 255);
+    font-size: 13px;
+    text-decoration-line: none;
+  }
+  &:hover {
+    background-color: rgb(0, 116, 204);
+    color: #fff;
+  }
+`;
 const ContentA = styled.div`
   display: flex;
   justify-content: end;
-  padding-right: 25px;
-
-  .aBtn {
+  button {
     height: 40px;
-    /* border-radius: 5px; */
     border: 1px solid gray;
-    border-radius: 5px;
+    :not(:first-child) {
+      background-color: white;
+      border-left: none;
+    }
+    :first-child {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+    :last-child {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
   }
   a {
     padding: 12px;
@@ -53,6 +63,14 @@ const ContentA = styled.div`
     :not(:last-child) {
       border-right: 1px solid gray;
     }
+    .bountiedNum {
+      color: rgb(255 255 255);
+      margin-right: 5px;
+      padding: 0.2em 0.5em 0.25em;
+      border-radius: 2px;
+      background-color: rgb(0 116 204);
+      font-size: 11px;
+    }
   }
 `;
 
@@ -61,16 +79,26 @@ const Contnent = () => {
     <ContnentTemplate>
       <ContentHeader>
         <h1>Top Questions</h1>
-        <button className="askBtn">
+        <AskBtn>
           <a href="/">Ask Question</a>
-        </button>
+        </AskBtn>
       </ContentHeader>
       <ContentA>
-        <button className="aBtn">
+        <button>
           <a href="/?tab=interesting">Interesting</a>
-          <a href="/">Bountied</a>
+        </button>
+        <button>
+          <a href="/">
+            <span className="bountiedNum">224</span> Bountied
+          </a>
+        </button>
+        <button>
           <a href="/">Hot</a>
+        </button>
+        <button>
           <a href="/">Week</a>
+        </button>
+        <button>
           <a href="/">Month</a>
         </button>
       </ContentA>

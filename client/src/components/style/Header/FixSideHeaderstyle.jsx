@@ -1,54 +1,35 @@
-import React from 'react';
 import styled from 'styled-components';
-import MainLogo from '../images/MainLogo.png';
-
-import { RxHamburgerMenu } from 'react-icons/rx';
 import { SlMagnifier } from 'react-icons/sl';
 
 const HeaderContainer = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  height: 2.8125rem;
+  height: 2.8rem;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgb(248, 249, 249);
   border-top: 0.1875rem solid rgb(244, 130, 36);
-`;
-
-// 햄버거 사이드 버튼
-const HamburgerStyle = styled.span`
-  display: flex;
-  align-items: center;
-
-  &:hover {
-    background-color: rgb(227, 230, 232);
-  }
-`;
-
-const Icon1 = styled(RxHamburgerMenu)`
-  font-size: 1.125rem;
-  color: rgb(0, 0, 0);
-  padding: 0.875rem;
+  box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.219);
+  z-index: 999;
 `;
 
 // 메인 로고
 const Logo = styled.a`
-  display: flex;
-  align-items: center;
   padding: 0 0.375rem 0 0.125rem;
 `;
 
 const LogoImg = styled.img`
-  height: 2.1875rem;
-  margin: 0 0 0.3125rem 0;
+  height: 9.9rem;
+  padding: 0 1.25rem;
 `;
 
 // 네비 버튼
 const HeaderMenu = styled.div`
   display: flex;
   align-items: center;
+  margin: 0.1875rem 0.5rem 0 0;
 `;
 
 const MenuButton = styled.a`
@@ -63,7 +44,7 @@ const MenuButton = styled.a`
   &:hover {
     border-radius: 3.125rem / 3.125rem;
     color: rgb(0, 0, 0);
-    background-color: rgb(227, 230, 232);
+    background-color: rgba(227, 230, 232, 0.61);
   }
 `;
 
@@ -92,6 +73,7 @@ const Icon2 = styled(SlMagnifier)`
   size: 1rem;
   color: rgb(117, 117, 117);
 `;
+
 // 검색 인풋
 const SearchInput = styled.input`
   height: 1.375rem;
@@ -126,11 +108,14 @@ const LoginButton = styled.button`
     background-color: rgb(179, 211, 234);
     color: rgb(44, 88, 119);
   }
+  a {
+    color: rgb(69, 123, 162);
+  }
 `;
 
 const SignupButton = styled.button`
   padding: 0.4375rem 0.625rem;
-  background-color: rgb(9, 149, 255);
+  background-color: rgba(9, 148, 255, 0.824);
   color: rgb(255, 255, 255);
   font-size: 0.8125rem;
   border-radius: 0.25rem;
@@ -141,39 +126,13 @@ const SignupButton = styled.button`
     background-color: rgb(0, 116, 204);
     color: #fff;
   }
+  a {
+    color: rgb(255, 255, 255);
+  }
 `;
 
-function Header() {
-  return (
-    <HeaderContainer>
-      <div>
-        {/* <RxHamburgerMenu size={19} /> */}
-        <HamburgerStyle>
-          <Icon1 />
-        </HamburgerStyle>
-      </div>
-      <Logo href="#">
-        <LogoImg src={MainLogo} alt="Main Logo" />
-      </Logo>
-      <HeaderMenu>
-        <MenuButton href="#">About</MenuButton>
-        <MenuButton href="#">Products</MenuButton>
-        <MenuButton href="#">For Teams</MenuButton>
-      </HeaderMenu>
-      <form>
-        <SearchInputWrapper>
-          <IconStyle>
-            <Icon2 />
-          </IconStyle>
-          <SearchInput type="text" placeholder="Search..." />
-        </SearchInputWrapper>
-      </form>
-      <ButtonWrapper>
-        <LoginButton>Log in</LoginButton>
-        <SignupButton>Sign up</SignupButton>
-      </ButtonWrapper>
-    </HeaderContainer>
-  );
-}
-
-export default Header;
+export { HeaderContainer };
+export { Logo, LogoImg };
+export { HeaderMenu, MenuButton };
+export { SearchInputWrapper, IconStyle, Icon2, SearchInput };
+export { ButtonWrapper, LoginButton, SignupButton };

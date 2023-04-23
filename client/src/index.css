@@ -16,7 +16,10 @@ code {
   border: 0;
   font-family: -apple-system, 'system-ui', 'Segoe UI Adjusted', 'Segoe UI', 'Liberations Sans', sans-serif;
 }
-
+body {
+  width: 100vw;
+  height: 100vh;
+}
 ol,
 ul {
   list-style: none;
