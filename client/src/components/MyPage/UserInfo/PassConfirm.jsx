@@ -1,5 +1,5 @@
 import { PassConfirmStyle } from '../../style/MyPageStyle';
-import pencil from '../../../images/pencil.png';
+import pencil from '../../../images/Icon/pencil.png';
 
 const PassConfirm = () => {
   return (

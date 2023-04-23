@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { loginSubmit } from '../../logic/onSubmit';
 
+/** 2023/03/17 - 로그인시 이메일 패스워드 입력창 - fe-hyungUk */
 const LoginForm = () => {
   const navigate = useNavigate();
   const { emailBind, passwordBind } = useBind();
