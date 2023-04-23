@@ -81,6 +81,7 @@ const Btn = styled.button`
   border-radius: 3px;
   margin: 10px 20px;
   font-weight: bolder;
+  cursor: pointer;
 `;
 
 const Box = styled.div`
