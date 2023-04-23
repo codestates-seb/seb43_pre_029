@@ -35,16 +35,11 @@ public class MemberController {
     @PostMapping
     public ResponseEntity postMember(@Valid @RequestBody MemberDto.Post requestBody) {
         Member member = memberMapper.MemberPostDtoToMember(requestBody);
-<<<<<<< HEAD
-        Member response = memberService.registMember(member);
-        return new ResponseEntity(memberMapper.MemberToMemberResponseDto(response), HttpStatus.CREATED);
-=======
 
         Member createdMember = jwtService.createMember(member);
         URI location = UriCreator.createUri(MEMBER_DEFAULT_URL, createdMember.getM_id());
 
         return ResponseEntity.created(location).build();
->>>>>>> 883b8845a2c64626497a2edf8f8e246edcdcd7d9
     }
 
     @PatchMapping("/edit")

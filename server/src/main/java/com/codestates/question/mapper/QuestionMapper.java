@@ -50,10 +50,16 @@ public interface QuestionMapper {
         return questionResponseDto;
     }
 
+<<<<<<< HEAD
     default List<QuestionResponseDto> questionToQuestionResponseDtos(List<Question> questions){
         List<QuestionResponseDto> list = new ArrayList<>();
         return list;
     };
 
     Question acceptAnswerPatchDtoToQuestion(QuestionDto.AcceptAnswerPatch acceptAnswerPatch);
+=======
+    @Mapping(source = "m_id", target = "member.m_id")
+    Question acceptAnswerPatchDtoToQuestion(QuestionDto.AcceptAnswerPatch acceptAnswerPatch);
+
+>>>>>>> 4d08a5005f2aef1eb4bfb79cdc4a66fd7f2aefc1
 }

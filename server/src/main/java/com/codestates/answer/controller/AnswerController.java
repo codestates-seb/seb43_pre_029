@@ -29,23 +29,23 @@ public class AnswerController {
 
     // answer 등록
     @PostMapping
-    public ResponseEntity postAnswer(@Valid @RequestBody AnswerDto AnswerDtoPostDto){
-        Answer answer = answerService.createAnswer(mapper.answerDtoToAnswer(AnswerDtoPostDto));
+    public ResponseEntity postAnswer(@Valid @RequestBody AnswerDto.Post answerDtoPostDto){
+        Answer answer = answerService.createAnswer(mapper.answerPostDtoToAnswer(answerDtoPostDto));
         return new ResponseEntity<>(mapper.answerToAnswerResponseDto(answer), HttpStatus.CREATED);
     }
 
     // answer 수정
     @PatchMapping("/edit/{a_id}")
     public ResponseEntity patchQnaForum(@PathVariable("a_id") @Positive Long a_id,
-                                        @Valid @RequestBody AnswerDto answerPatchDto){
-        Answer answer = answerService.updateAnswer(mapper.answerDtoToAnswer(answerPatchDto));
+                                        @Valid @RequestBody AnswerDto.Patch answerPatchDto){
+        Answer answer = answerService.updateAnswer(mapper.answerPatchDtoToPatch(answerPatchDto));
         return new ResponseEntity<>(mapper.answerToAnswerResponseDto(answer), HttpStatus.OK);
     }
 
     // answer 삭제
     @DeleteMapping
-    public ResponseEntity deleteAnswer(@Valid @RequestBody AnswerDto answerDeleteDto){
-        Answer answer = mapper.answerDtoToAnswer(answerDeleteDto);
+    public ResponseEntity deleteAnswer(@Valid @RequestBody AnswerDto.Delete answerDeleteDto){
+        Answer answer = mapper.answerDeleteDtoToAnswer(answerDeleteDto);
         answerService.deleteAnswer(answer);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }

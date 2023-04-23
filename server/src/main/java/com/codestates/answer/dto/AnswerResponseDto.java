@@ -1,5 +1,6 @@
 package com.codestates.answer.dto;
 
+import com.codestates.answer.entity.Answer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,5 +14,6 @@ public class AnswerResponseDto {
     private Long m_id;
     private String a_content;
     private LocalDateTime created_at;
+    private Answer.AnswerStatus a_status;
     private Boolean accepted;
 }
