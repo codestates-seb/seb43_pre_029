@@ -7,6 +7,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import Comment from '../components/QInfo/Comment';
 import Quill from '../components/Quill';
+import { useParams } from 'react-router-dom';
 
 const QMain = styled.div`
   width: 800px;
@@ -32,16 +33,19 @@ const CommentList = styled.div`
 `;
 
 const QuestionInfo = () => {
+  const { id } = useParams();
   const [qinfo, setQinfo] = useState([]);
   const [qanswers, setQianswers] = useState([]);
   const [comments, setComments] = useState([]);
+
   useEffect(() => {
-    axios.get('http://localhost:4000/questions/1').then((res) => {
+    axios.get(`http://localhost:4000/questions/${id}`).then((res) => {
       setQinfo(res.data);
       setQianswers(res.data.answers);
       setComments(res.data.comment);
     });
   }, []);
+
   return (
     <>
       <FixSideHeader />
