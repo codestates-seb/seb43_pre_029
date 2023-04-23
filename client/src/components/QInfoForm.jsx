@@ -63,6 +63,13 @@ export default function QInfoForm() {
           formats={formats}
           placeholder="좋은 댓글을 적어주세요. 😊"
         />
+        <ReactQuill
+          value={commentValue.value}
+          readOnly={true}
+          modules={{
+            toolbar: false,
+          }}
+        />
       </AnswerInput>
       <PostBtn>Post Your Answer</PostBtn>
     </form>
