@@ -4,6 +4,7 @@ import com.codestates.answer.entity.Answer;
 import com.codestates.validator.NotSpace;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
@@ -14,7 +15,8 @@ public class QuestionDto {
 
     @Getter
     @AllArgsConstructor
-    public class Post {
+    @NoArgsConstructor
+    public static class Post {
         @Positive
         private Long m_id;
 
@@ -61,6 +63,5 @@ public class QuestionDto {
         private Long q_id;
         @Positive
         private Long m_id;
-        private List<Answer> answers;
     }
 }

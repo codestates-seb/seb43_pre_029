@@ -1,9 +1,9 @@
 package com.codestates.answer.mapper;
 
 import com.codestates.answer.dto.AnswerDto;
+import com.codestates.answer.dto.AnswerResponseDto;
 import com.codestates.answer.entity.Answer;
 import com.codestates.answer.repository.AnswerRepository;
-import com.codestates.answer.response.AnswerResponseDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -12,7 +12,14 @@ public interface AnswerMapper {
 
     @Mapping(source = "m_id", target = "member.m_id")
     @Mapping(source = "q_id", target = "question.q_id")
-    Answer answerDtoToAnswer(AnswerDto answerDto);
+    Answer answerPostDtoToAnswer(AnswerDto.Post answerPostDto);
+
+    @Mapping(source = "m_id", target = "member.m_id")
+    @Mapping(source = "q_id", target = "question.q_id")
+    Answer answerPatchDtoToPatch(AnswerDto.Patch answerPatchDto);
+
+    @Mapping(source = "m_id", target = "member.m_id")
+    Answer answerDeleteDtoToAnswer(AnswerDto.Delete answerDeleteDto);
 
     @Mapping(source = "m_id", target = "member.m_id")
     @Mapping(source = "q_id", target = "question.q_id")

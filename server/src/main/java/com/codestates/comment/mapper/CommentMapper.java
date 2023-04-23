@@ -8,5 +8,5 @@ import org.mapstruct.Mapper;
 public interface CommentMapper {
     Comment CommentPostDtoToComment (CommentDto.Post commentPostDto);
     Comment CommentPatchDtoToComment (CommentDto.Patch commentPatchDto);
-
+    CommentDto.CommentResponse CommentToCommentResponseDto(Comment comment);
 }

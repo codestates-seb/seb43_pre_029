@@ -33,6 +33,5 @@ public class CommentDto {
         private String c_content;
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
-        private String c_status;
     }
 }

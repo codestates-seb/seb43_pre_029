@@ -16,6 +16,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Positive;
 import java.util.List;
 
 @RestController
@@ -53,28 +54,29 @@ public class QuestionController {
 
     // 1건의 게시글 조회
     @GetMapping("/some-page/{q_id}")
-    public ResponseEntity getQuestion(@RequestParam ("q_id") Long q_id){
+    public ResponseEntity getQuestion(@PathVariable ("q_id") Long q_id){
         Question question = questionService.findQuestion(q_id);
         questionService.increaseViews(question);
         return new ResponseEntity<>(mapper.questionToQuestionResponseDto(question), HttpStatus.OK);
     }
 
     // 전체 게시글 조회
-//    @GetMapping
-//    public ResponseEntity getQuestions(@RequestParam ("page") Long page){
-//        Page<Question> pageQuestions = questionService.findQuestions(page -1); //페이지정보
-//        List<Question> questions = pageQuestions.getContent();
-//        return new ResponseEntity<>(
-//                new MultiResponseDto<>(mapper.questionToQuestionResponseDtos(questions),pageQuestions)
-//            ,HttpStatus.OK);
-//    }
+    @GetMapping
+    public ResponseEntity getQuestions(@RequestParam ("page") Long page){
+        Page<Question> pageQuestions = questionService.findQuestions(page -1); //페이지정보
+        System.out.println("4번까지 됌");
+        List<Question> questions = pageQuestions.getContent();
+        return new ResponseEntity<>(
+                new MultiResponseDto<>(mapper.questionToQuestionResponseDtos(questions),pageQuestions)
+            ,HttpStatus.OK);
+    }
 
     // 답변 채택
-    @PatchMapping("/edit/answer-accept")
-    public ResponseEntity acceptAnswer(@Valid @RequestBody QuestionDto.AcceptAnswerPatch acceptAnswerPatch){
+    @PatchMapping("/edit/answer-accept/{a_id}")
+    public ResponseEntity acceptAnswer(@PathVariable("a_id") @Positive Long a_id,
+                                        @Valid @RequestBody QuestionDto.AcceptAnswerPatch acceptAnswerPatch){
 //       Long m_id = JwtParseInterceptor.getAuthenticatedMemberId();
-
-        Question question = questionService.acceptAnswer(mapper.acceptAnswerPatchDtoToQuestion(acceptAnswerPatch));
+        Question question = questionService.acceptAnswer(mapper.acceptAnswerPatchDtoToQuestion(acceptAnswerPatch), a_id);
         return new ResponseEntity<>(mapper.questionToQuestionResponseDto(question),HttpStatus.OK);
     }
 
