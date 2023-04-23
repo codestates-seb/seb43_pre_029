@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
 import styled from 'styled-components';
 import homeimg from '../images/home_img.png';
 import Contnent from '../components/Home/Content';
 import QuestionsList from '../components/Home/QuestionsList';
-import FixSideHeader from '../components/Header/FixSideHeader';
-import ModalSideHeader from '../components/Header/ModalSideHeader';
+import FixSideHeader from '../components/Header/Fix/FixSideHeader';
+import ModalSideHeader from '../components/Header/Modal/ModalSideHeader';
+import Footer from '../components/Footer/Footer';
 
 const HomeTemplate = styled.div`
   display: flex;
@@ -21,9 +21,7 @@ const Imgstyle = styled.div`
   }
 `;
 
-export default function Home() {
-  const [isLogin, setIsLogin] = useState(true);
-
+export default function Home({ isLogin }) {
   return (
     <>
       {isLogin ? (
@@ -42,6 +40,7 @@ export default function Home() {
           </Imgstyle>
         </>
       )}
+      <Footer />
     </>
   );
 }

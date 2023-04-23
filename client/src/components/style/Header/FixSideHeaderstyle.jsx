@@ -1,8 +1,4 @@
-import React from 'react';
 import styled from 'styled-components';
-import MainLogo from '../../images/stack-overflow-logo-vector.svg';
-import FixSidebar from '../../sidebar/FixSideBar';
-
 import { SlMagnifier } from 'react-icons/sl';
 
 const HeaderContainer = styled.header`
@@ -77,6 +73,7 @@ const Icon2 = styled(SlMagnifier)`
   size: 1rem;
   color: rgb(117, 117, 117);
 `;
+
 // 검색 인풋
 const SearchInput = styled.input`
   height: 1.375rem;
@@ -134,38 +131,8 @@ const SignupButton = styled.button`
   }
 `;
 
-function FixSideHeader() {
-  return (
-    <>
-      <HeaderContainer>
-        <Logo href="/">
-          <LogoImg src={MainLogo} alt="Main Logo" />
-        </Logo>
-        <HeaderMenu>
-          <MenuButton href="#">About</MenuButton>
-          <MenuButton href="#">Products</MenuButton>
-          <MenuButton href="#">For Teams</MenuButton>
-        </HeaderMenu>
-        <form>
-          <SearchInputWrapper>
-            <IconStyle>
-              <Icon2 />
-            </IconStyle>
-            <SearchInput type="text" placeholder="Search..." />
-          </SearchInputWrapper>
-        </form>
-        <ButtonWrapper>
-          <LoginButton>
-            <a href="/login">Log in</a>
-          </LoginButton>
-          <SignupButton>
-            <a href="/signup">Sign up</a>
-          </SignupButton>
-        </ButtonWrapper>
-      </HeaderContainer>
-      <FixSidebar />
-    </>
-  );
-}
-
-export default FixSideHeader;
+export { HeaderContainer };
+export { Logo, LogoImg };
+export { HeaderMenu, MenuButton };
+export { SearchInputWrapper, IconStyle, Icon2, SearchInput };
+export { ButtonWrapper, LoginButton, SignupButton };
