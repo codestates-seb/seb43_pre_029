@@ -27,6 +27,7 @@ const AnswerInput = styled.div`
     padding-top: 20px;
   }
 `;
+
 const CommentList = styled.div`
   border-top: 1px solid rgb(227 230 232);
   width: auto;
@@ -37,9 +38,8 @@ const QuestionInfo = () => {
   const { id } = useParams();
 
   const [qinfo, setQinfo] = useState([]);
-  const [qanswers, setQianswers] = useState([]);
   const [comments, setComments] = useState([]);
-
+  const [qanswers, setQianswers] = useState([]);
   useEffect(() => {
     axios.get(`http://localhost:4000/questions/${id}`).then((res) => {
       setQinfo(res.data);
@@ -47,7 +47,6 @@ const QuestionInfo = () => {
       setComments(res.data.comment);
     });
   }, [id]);
-
   return (
     <>
       <FixSideHeader />
@@ -61,7 +60,7 @@ const QuestionInfo = () => {
         </CommentList>
         <AnswerTotal>{qanswers.length} Answers</AnswerTotal>
         {qanswers.map((answer) => (
-          <Answer answer={answer} key={answer.id} />
+          <Answer answer={answer} key={answer.a_id} a_id={answer.a_id} qanswers={qanswers} />
         ))}
         <AnswerInput>
           <h2>Your Answer</h2>
