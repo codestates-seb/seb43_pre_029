@@ -4,13 +4,12 @@ import com.codestates.comment.dto.CommentDto.CommentResponse;
 import com.codestates.comment.entity.Comment;
 import com.codestates.member.entity.Member;
 import com.codestates.question.entity.Question;
-import java.time.LocalDateTime;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-04-24T09:02:48+0900",
+    date = "2023-04-24T10:52:28+0900",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.18 (Azul Systems, Inc.)"
 )
 @Component
@@ -22,20 +21,12 @@ public class CommentMapperImpl implements CommentMapper {
             return null;
         }
 
-        Long m_id = null;
-        Long q_id = null;
-        Long c_id = null;
-        String c_comment = null;
+        CommentResponse commentResponse = new CommentResponse();
 
-        m_id = commentMemberM_id( comment );
-        q_id = commentQuestionQ_id( comment );
-        c_id = comment.getC_id();
-        c_comment = comment.getC_comment();
-
-        LocalDateTime createdAt = null;
-        LocalDateTime modifiedAt = null;
-
-        CommentResponse commentResponse = new CommentResponse( m_id, q_id, c_id, c_comment, createdAt, modifiedAt );
+        commentResponse.setM_id( commentMemberM_id( comment ) );
+        commentResponse.setQ_id( commentQuestionQ_id( comment ) );
+        commentResponse.setC_id( comment.getC_id() );
+        commentResponse.setC_comment( comment.getC_comment() );
 
         return commentResponse;
     }

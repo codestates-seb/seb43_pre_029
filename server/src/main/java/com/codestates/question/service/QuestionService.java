@@ -76,7 +76,7 @@ public class QuestionService {
             throw new IllegalArgumentException("페이지 번호는 음수일 수 없습니다.");
         }
         Sort.Direction direction = Sort.Direction.DESC;
-        String property = "Q_ID";
+        String property = "createdAt";
         if(direction == null || property == null){
             throw new IllegalArgumentException("정렬 속성 및 방향은 null 일 수 없습니다.");
         }
