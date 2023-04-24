@@ -1,6 +1,7 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import AnswerSide from './AnswerSide';
 
 const AnswerMain = styled.div`
   display: flex;
@@ -18,7 +19,21 @@ const AnswerMain = styled.div`
     }
   }
 `;
-
+const AswSide = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50px;
+  button,
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    margin: 3px;
+    padding: 0px;
+  }
+`;
 const ProfilLine = styled.div`
   margin-top: 20px;
   display: flex;
@@ -54,12 +69,48 @@ const User = styled.div`
   }
 `;
 
-const Answer = ({ answer }) => {
+const Answer = ({ answer, qanswers, a_id }) => {
   const { value, username, date, pic } = answer;
+  const [checks, setChecks] = useState();
+  const { id } = useParams();
+  // console.log('@@@@@@@@@@@');
+  // console.log('answer', answer.check);
+  // console.log('qanswers', qanswers);
+  // console.log('a_id', a_id);
+  const onCheck = (a_id) => {
+    axios
+      .patch(`http://localhost:4000/questions/${id}`, { check: !qanswers.check })
+      .then((response) => {
+        const newCheck = response.data.answers.map((el) => {
+          // console.log('a_id', a_id);
+          // console.log('el', el);
+          // console.log('el.a_id', el.a_id);
+          // console.log('@@@@@@@@@@@@@@@@@');
+          if (el.a_id === a_id) {
+            return el;
+          } else {
+            return response.data.answers;
+          }
+        });
+        // console.log(response.data.answers);
+        setChecks(newCheck);
+      })
+      .catch((err) => console.log(Error));
+  };
+  // console.log('checks', checks);
 
+  // console.log(qanswers[0].check);
   return (
     <AnswerMain>
-      <AnswerSide />
+      {/* <AnswerSide answer={answer} check={check} /> */}
+      <AswSide>
+        <button>UP</button>
+        <div>0</div>
+        <button>Down</button>
+        <button>북마크</button>
+        <button onClick={() => onCheck(a_id)}>체크</button>
+        <button>아이콘</button>
+      </AswSide>
       <div className="answerMain">
         <div>{value}</div>
         <ProfilLine>
