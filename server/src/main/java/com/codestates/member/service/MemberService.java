@@ -25,7 +25,6 @@ public class MemberService {
         findMember.checkActiveMember(findMember);
         // 수정권한이 있는지 확인 (토큰기반 인증 가능한지)
 
-        findMember.setPassword(member.getPassword());
         findMember.setName(member.getName());
         findMember.setAddress(member.getAddress());
         findMember.setStatus_message(member.getStatus_message());
@@ -33,6 +32,8 @@ public class MemberService {
 
         return memberRepository.save(findMember);
     }
+
+
     // 멤버의 상태 값을 MEMBER_DELETE 로 바꾸는 메서드
     public void deleteMember(long m_id){
         Member findMember = findMember(m_id);
@@ -44,6 +45,13 @@ public class MemberService {
         Member findMember = memberRepository.findById(m_id)
                 .orElseThrow(() -> new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
         return findMember;
+    }
+
+    public Member findEmail(String email) {
+        Member findEmail = memberRepository.findByEmail(email)
+                .orElseThrow(() -> new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
+
+        return findEmail;
     }
 
     // for test (멤버를 ID 기반으로 찾아내 레포지토리에서 삭제하는 메서드)
