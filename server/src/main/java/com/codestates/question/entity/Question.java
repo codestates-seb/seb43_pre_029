@@ -19,6 +19,7 @@ import java.util.List;
 public class Question extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "q_id")
     private Long q_id;
 
     @Column(nullable = false)

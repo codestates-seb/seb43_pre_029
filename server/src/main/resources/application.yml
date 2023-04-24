@@ -3,11 +3,11 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/stackoverflow?createdDatabaseIfNotExist=true&useUnicode=true&characterSetResults=UTF-8&useSSL=true
     username: root
-    password: ${PASSWORD}
+    password: asd123
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
-      ddl-auto: create
+      ddl-auto: validate
     show-sql: true
     properties:
       hibernate:
@@ -17,8 +17,8 @@ spring:
       client:
         registration:
           google:
-            clientId: ${OAUTH_ID}
-            clientSecret: ${OAUTH_PASSWORD}
+            clientId: 329778892660-d7rhmfahefpllvb4a6caaj1q5iclg8k8.apps.googleusercontent.com
+            clientSecret: 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
 jwt:
   key: ${JWT_SECRET_KEY}               # 민감한 정보는 시스템 환경 변수에서 로드한다.
   access-token-expiration-minutes: 30

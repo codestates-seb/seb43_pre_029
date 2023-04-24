@@ -46,7 +46,9 @@ public class MemberDto {
     }
 
     @Getter
+    @Setter
     @NoArgsConstructor
+    @AllArgsConstructor
     public static class MemberResponse{
 
         private String email;

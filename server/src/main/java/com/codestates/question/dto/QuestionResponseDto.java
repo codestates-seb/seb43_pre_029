@@ -23,8 +23,8 @@ public class QuestionResponseDto {
     private Long suggestedCount;
     private Long viewCount;
     private Long answerCount;
-    private LocalDateTime create_at;
-    private LocalDateTime last_modifined_at;
+    private LocalDateTime createAt;
+    private LocalDateTime modifiedAt;
     private List<CommentDto.CommentResponse> comments;
     private List<AnswerResponseDto> answers;
     private Question.QuestionStatus q_status;
