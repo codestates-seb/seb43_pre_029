@@ -50,7 +50,7 @@ public class SecurityConfiguration {
 						.authorizeHttpRequests(authorize -> authorize
 										.anyRequest().permitAll()		// 모든 HTTP request 요청에 대해 접근 허용
 						)
-//						.authorizeHttpRequests(authorize -> authorize
+//						.authorizeHttpRequests(authorize -> authorize			//OAuth
 //										.anyRequest().authenticated()
 //						)
 						.oauth2Login(withDefaults());	// oauth 인증 활성화
