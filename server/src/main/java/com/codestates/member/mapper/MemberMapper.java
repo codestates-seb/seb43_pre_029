@@ -26,7 +26,6 @@ public interface MemberMapper {
         response.setCommentCount(commentCount);
         response.setAnswerCount(answerCount);
         response.setQuestionCount(questionCount);
-
         return response;
     };
 }
