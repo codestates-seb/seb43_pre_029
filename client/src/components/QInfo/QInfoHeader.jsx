@@ -8,6 +8,7 @@ const HeaderBox = styled.div`
 const InfoHeader = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 20px 0px 20px 25px;
   padding-bottom: 8px;
   margin-top: 2.8125rem;
@@ -21,6 +22,9 @@ const AskBtn = styled.button`
   background-color: rgb(9, 149, 255);
   border-radius: 4px;
   border: 1px solid rgb(9, 149, 255);
+  height: 30px;
+  display: flex;
+  align-items: center;
   cursor: pointer;
   a {
     color: rgb(255, 255, 255);
