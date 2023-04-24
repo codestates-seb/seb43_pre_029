@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.net.URI;
+import java.util.Optional;
 
 @RestController
 @Slf4j
@@ -65,5 +66,12 @@ public class MemberController {
         // 권한 인증
         memberService.deleteMember(memberId);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/check-email")
+    public boolean checkEmail(@RequestBody MemberDto.Check requestBody) {
+        String email = requestBody.getEmail();
+
+        return !jwtService.checkEmail(email);
     }
 }
