@@ -17,6 +17,7 @@ public interface MemberMapper {
         response.setName(member.getName());
         response.setAddress(member.getAddress());
         response.setStatus_message(member.getStatus_message());
+        response.setEmail(member.getEmail());
 
         Long questionCount = Long.valueOf(member.getQuestions().size());
         Long answerCount = Long.valueOf(member.getAnswers().size());

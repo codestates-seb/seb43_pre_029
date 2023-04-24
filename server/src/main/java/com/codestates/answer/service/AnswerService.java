@@ -22,7 +22,7 @@ public class AnswerService {
     // Answer 등록
 
     public Answer createAnswer(Answer answer){
-        hasPermissionToModify(answer);
+//        hasPermissionToModify(answer);
         injectMember(answer);
         return saveAnswer(answer);
     }
@@ -90,7 +90,7 @@ public class AnswerService {
     // Answer 삭제
     public void deleteAnswer(Answer answer) {
         Answer findAnswer = verifiedAnswer(answer.getA_id());
-        hasPermissionToModify(findAnswer);
+        hasPermissionToModify(answer);
         Answer deletedAnswer = deleteStatusAnswer(findAnswer);
         answerRepository.save(deletedAnswer);
     }

@@ -38,8 +38,10 @@ public class AnswerController {
     @PatchMapping("/edit/{a_id}")
     public ResponseEntity patchQnaForum(@PathVariable("a_id") @Positive Long a_id,
                                         @Valid @RequestBody AnswerDto.Patch answerPatchDto){
-        Answer answer = answerService.updateAnswer(mapper.answerPatchDtoToPatch(answerPatchDto));
-        return new ResponseEntity<>(mapper.answerToAnswerResponseDto(answer), HttpStatus.OK);
+        Answer answer = mapper.answerPatchDtoToPatch(answerPatchDto);
+        answer.setA_id(a_id);
+        Answer response = answerService.updateAnswer(answer);
+        return new ResponseEntity<>(mapper.answerToAnswerResponseDto(response), HttpStatus.OK);
     }
 
     // answer 삭제

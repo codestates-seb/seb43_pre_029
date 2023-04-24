@@ -23,21 +23,21 @@ public class Member extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long m_id;
-    @Column(nullable = false)
+    @Column
     private String name;
-    @Column(nullable = false)
+    @Column
     private String password;
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private String email;
-    @Column(nullable = false)
+    @Column
     private String address;
     @Column
     private String status_message = "none";
-    @Column(length = 13, nullable = false, unique = true)
+    @Column(length = 13)
     private String phone;
 
     @Enumerated(value = EnumType.STRING)
-    @Column(nullable = false)
+    @Column
     private MemberStatus m_status = MemberStatus.MEMBER_REGISTRATION;
 
     @ElementCollection(fetch = FetchType.EAGER)

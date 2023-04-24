@@ -26,7 +26,7 @@ public class QuestionService {
 
     // Question 등록
     public Question createQuestion(Question question){
-        questionManager.hasPermissionToModify(question);
+//        questionManager.hasPermissionToModify(question);
         injectMember(question);
         return saveQuestion(question);
     }
@@ -76,7 +76,7 @@ public class QuestionService {
             throw new IllegalArgumentException("페이지 번호는 음수일 수 없습니다.");
         }
         Sort.Direction direction = Sort.Direction.DESC;
-        String property = "questionId";
+        String property = "Q_ID";
         if(direction == null || property == null){
             throw new IllegalArgumentException("정렬 속성 및 방향은 null 일 수 없습니다.");
         }
@@ -87,10 +87,7 @@ public class QuestionService {
     public Question acceptAnswer(Question question, Long a_id) {
         questionManager.hasPermissionToModify(question);
         Question findQuestion = questionManager.verifiedQuestion(question.getQ_id());
-        if(a_id == null){
-            rejectAcceptedAnswers(findQuestion);
-            findQuestion.setQ_status(Question.QuestionStatus.QUESTION_REGISTRATION); // 채택완료 -> 채택대기 상태로 변경
-        }
+
         acceptAnswers(findQuestion.getAnswers(), a_id);
         markQuestionAsAnswered(findQuestion);
         saveQuestion(findQuestion);
@@ -117,12 +114,17 @@ public class QuestionService {
         boolean isFindAnswer = false;
         for (Answer answer : answers) { // 이미 다른답변이 있다면 해당 답변을 취소
             if(answer.getAccepted()){
-                answer.setAccepted(isFindAnswer);
+                if(answer.getA_id() == a_id){
+                    answer.setAccepted(isFindAnswer);
+                    isFindAnswer = true;
+                    break;
+                }
+                answer.setAccepted(false);
             }
             if(answer.getA_id() == a_id){ // 선택한 답변을 채택
                 answer.setAccepted(true);
                 isFindAnswer = true;
-                break;
+                continue;
             }
         }
         if(!isFindAnswer){
