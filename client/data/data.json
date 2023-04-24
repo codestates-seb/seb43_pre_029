@@ -20,29 +20,35 @@
           "id": 2,
           "value": "윗 답변과 공감합니다.",
           "username": "이유현",
-          "date": "30분 전",
+          "date": "2시간 전",
           "pic": "https://images.unsplash.com/photo-1492370284958-c20b15c692d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=749&q=80"
         },
         {
           "id": 3,
           "value": "윗 답변에 첨언하자면 자바스크립트 실행 환경은 웹 브라우저와 더불어 최근에는 Node.js 환경도 있습니다!",
           "username": "김형욱",
-          "date": "15분 전",
+          "date": "3시간 전",
           "pic": "https://images.unsplash.com/photo-1492370284958-c20b15c692d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=749&q=80"
         }
       ],
       "comment": [
         {
           "id": 1,
-          "value": "@tjebo annoying but not insurmountable - see below .",
-          "username": "dong",
-          "date": "234 secs ago"
+          "value": "댓글 내용1.",
+          "username": "박은희",
+          "date": "1시간 전"
         },
         {
           "id": 2,
-          "value": "related stackoverflow.com/questions/72784232/… - same problem here, data$slope returns NULL, thus one cannot simply use data$slope for grid::segmentGrob. Annoying.",
-          "username": "wook",
-          "date": "45 secs ago"
+          "value": "댓글 내용2",
+          "username": "유성영",
+          "date": "2시간 전"
+        },
+        {
+          "id": 3,
+          "value": "댓글 내용3",
+          "username": "손정훈",
+          "date": "3시간 전"
         }
       ]
     },
