@@ -45,9 +45,12 @@ const OauthStyle = styled.div`
     justify-content: center;
     align-items: center;
 
+    span {
+      margin-left: 0.3rem;
+    }
     .logo {
       width: 1rem;
-      margin: 0 0.3rem 0 0;
+      margin: 0rem 0.3rem;
     }
 
     :nth-child(1) {
