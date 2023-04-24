@@ -1,9 +1,6 @@
 package com.codestates.comment.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -37,6 +34,7 @@ public class CommentDto {
     @NoArgsConstructor
     @AllArgsConstructor
     @Setter
+    @Builder
     public static class CommentResponse{
         private Long m_id;
         private Long q_id;

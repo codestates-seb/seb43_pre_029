@@ -18,7 +18,16 @@ public interface CommentMapper {
         comment.setC_id(commentPatchDto.getC_id());
         return comment;
     };
-    @Mapping(target = "m_id", source = "member.m_id")
-    @Mapping(target = "q_id", source = "question.q_id")
-    CommentDto.CommentResponse CommentToCommentResponseDto(Comment comment);
+//    @Mapping(target = "m_id", source = "member.m_id")
+//    @Mapping(target = "q_id", source = "question.q_id")
+    default CommentDto.CommentResponse CommentToCommentResponseDto(Comment comment){
+        return CommentDto.CommentResponse.builder()
+                .m_id(comment.getMember().getM_id())
+                .q_id(comment.getQuestion().getQ_id())
+                .c_id(comment.getC_id())
+                .c_comment(comment.getC_comment())
+                .createdAt(comment.getCreatedAt())
+                .modifiedAt(comment.getModifiedAt())
+                .build();
+    };
 }
