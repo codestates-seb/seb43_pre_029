@@ -40,8 +40,8 @@ public interface QuestionMapper {
                         .q_status(question.getQ_status())
                         .viewCount(question.getViewCount())
                         .answerCount(question.getAnswers().stream().count())
-                        .create_at(question.getCreated_at())
-                        .last_modifined_at(question.getModified_at())
+                        .createAt(question.getCreatedAt())
+                        .modifiedAt(question.getModifiedAt())
                         //TODO List<Answer>, List<Comment> 스트림 처리 -> dto 처리 해야함
                         .answers(question.getAnswers().stream()
                                 .filter(answer -> !answer.getA_status().equals(Answer.AnswerStatus.ANSWER_DELETE))
