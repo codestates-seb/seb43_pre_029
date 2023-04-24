@@ -1,5 +1,40 @@
 import React from 'react';
 import styled from 'styled-components';
+import ReactQuill from 'react-quill';
+
+const QInfoValue = ({ qinfo }) => {
+  const { value, date, username, title, body } = qinfo;
+  return (
+    <div>
+      <ReactQuill
+        value={value}
+        readOnly={true}
+        modules={{
+          toolbar: false,
+        }}
+      />
+      <ProfilLine>
+        <Profil>
+          <div className="date">{date}</div>
+          <User>
+            <div className="pic">
+              <img
+                src="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=736&q=80"
+                alt="profile"
+              />
+            </div>
+            <div>
+              <a href={'/'}>{username}</a>
+            </div>
+          </User>
+        </Profil>
+      </ProfilLine>
+    </div>
+  );
+};
+
+export default QInfoValue;
+
 const ProfilLine = styled.div`
   margin-top: 50px;
   display: flex;
@@ -36,30 +71,3 @@ const User = styled.div`
     text-decoration: none;
   }
 `;
-
-const QInfoValue = ({ qinfo }) => {
-  const { value, date, username } = qinfo;
-  return (
-    <div>
-      <div>{value}</div>
-      <ProfilLine>
-        <Profil>
-          <div className="date">{date}</div>
-          <User>
-            <div className="pic">
-              <img
-                src="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=736&q=80"
-                alt="profile"
-              />
-            </div>
-            <div>
-              <a href={'/'}>{username}</a>
-            </div>
-          </User>
-        </Profil>
-      </ProfilLine>
-    </div>
-  );
-};
-
-export default QInfoValue;

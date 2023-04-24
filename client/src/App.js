@@ -6,6 +6,8 @@ import SignUp from './pages/SignUp';
 import MyPage from './pages/MyPage';
 import QuestionInfo from './pages/QuestionInfo';
 import { useState } from 'react';
+import Loding from './components/Loding';
+import Ask from './pages/Ask';
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(localStorage.getItem('accessToken'));
@@ -18,6 +20,8 @@ const App = () => {
           <Route path="/signup" element={isLogin ? <Navigate to="/" /> : <SignUp />} />
           <Route path="/mypage" element={isLogin ? <MyPage /> : <Navigate to="/login" />} />
           <Route path="/question/:id" element={<QuestionInfo {...isLogin} />} />
+          <Route path="/loding" element={<Loding />} />
+          <Route path="/question/ask" element={<Ask />} />
         </Routes>
       </BrowserRouter>
     </div>

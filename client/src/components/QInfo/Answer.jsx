@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import AnswerSide from './AnswerSide';
+import ReactQuill from 'react-quill';
 
 const AnswerMain = styled.div`
   display: flex;
@@ -61,7 +62,13 @@ const Answer = ({ answer }) => {
     <AnswerMain>
       <AnswerSide />
       <div className="answerMain">
-        <div>{value}</div>
+        <ReactQuill
+          value={value}
+          readOnly={true}
+          modules={{
+            toolbar: false,
+          }}
+        />
         <ProfilLine>
           <Profil>
             <div className="date">{date}</div>
