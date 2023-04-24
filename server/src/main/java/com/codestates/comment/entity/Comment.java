@@ -21,7 +21,7 @@ public class Comment extends Auditable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long c_id;
 
-    @Column(nullable = false)
+    @Column
     private String c_comment;
 
     @ManyToOne
@@ -34,12 +34,26 @@ public class Comment extends Auditable {
     private Question question;
 
     @Enumerated(value = EnumType.STRING)
-    @Column(nullable = false)
+    @Column
     private CommentStatus c_status = CommentStatus.COMMENT_REGISTRATION;
 
     public void checkCommentAuthority(Member AuthenticatedMember) {
         if(member != AuthenticatedMember)
             throw new BusinessLogicException(ExceptionCode.MEMBER_NO_HAVE_AUTHORIZATION);
+    }
+
+    public void setMember (Member member){
+        this.member = member;
+        if(!member.getComments().contains(this)){
+            member.getComments().add(this);
+        }
+    }
+
+    public void setQuestion (Question question){
+        this.question = question;
+        if(!question.getComments().contains(this)){
+            question.getComments().add(this);
+        }
     }
 
     public enum CommentStatus{

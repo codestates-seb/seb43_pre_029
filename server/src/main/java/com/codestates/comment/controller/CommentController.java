@@ -31,23 +31,30 @@ public class CommentController {
     @PostMapping
     public ResponseEntity postComment(@Valid @RequestBody CommentDto.Post requestBody){
         Comment comment = commentMapper.CommentPostDtoToComment(requestBody);
+        Long m_id = requestBody.getM_id();
+        Long q_id = requestBody.getQ_id();
         // 스택오버플로 회원인지 확인
-        Comment response = commentService.registComment(comment);
-        return new ResponseEntity(new CommentDto(), HttpStatus.CREATED);
+        Comment response = commentService.registComment(comment, m_id, q_id);
+        return new ResponseEntity(commentMapper.CommentToCommentResponseDto(response), HttpStatus.CREATED);
     }
 
     @PatchMapping("/edit")
     public ResponseEntity editComment(@Valid @RequestBody CommentDto.Patch requestBody){
         Comment comment = commentMapper.CommentPatchDtoToComment(requestBody);
+        Long m_id = requestBody.getM_id();
+        Long q_id = requestBody.getQ_id();
         // 스택오버플로 회원인지 확인
-        Comment response = commentService.updateComment(comment);
-        return new ResponseEntity(new CommentDto(), HttpStatus.OK);
+        Comment response = commentService.updateComment(comment, m_id, q_id);
+        return new ResponseEntity(commentMapper.CommentToCommentResponseDto(response), HttpStatus.OK);
     }
 
     @DeleteMapping("/{comment-id}")
-    public ResponseEntity deleteComment(@PathVariable long c_id){
+    public ResponseEntity deleteComment(@PathVariable("comment-id") long c_id,
+                                        @Valid @RequestBody CommentDto.Delete requestBody){
+        Long m_id = requestBody.getM_id();
+        Long q_id = requestBody.getQ_id();
         // 스택오버플로 회원인지 확인
-        commentService.deleteComment(c_id);
+        commentService.deleteComment(c_id, m_id, q_id);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 }

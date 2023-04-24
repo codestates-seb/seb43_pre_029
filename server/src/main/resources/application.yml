@@ -12,8 +12,15 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 329778892660-d7rhmfahefpllvb4a6caaj1q5iclg8k8.apps.googleusercontent.com
+            clientSecret: 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
 jwt:
-  key: $12341234               # 민감한 정보는 시스템 환경 변수에서 로드한다.
+  key: ${JWT_SECRET_KEY}               # 민감한 정보는 시스템 환경 변수에서 로드한다.
   access-token-expiration-minutes: 30
   refresh-token-expiration-minutes: 420
 
