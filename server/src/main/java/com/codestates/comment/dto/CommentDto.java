@@ -36,6 +36,7 @@ public class CommentDto {
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
+    @Setter
     public static class CommentResponse{
         private Long m_id;
         private Long q_id;

@@ -1,12 +1,9 @@
 package com.codestates.question.mapper;
 
-import com.codestates.answer.dto.AnswerDto;
-import com.codestates.answer.dto.AnswerResponseDto;
 import com.codestates.answer.entity.Answer;
 import com.codestates.answer.mapper.AnswerMapper;
 import com.codestates.comment.entity.Comment;
 import com.codestates.comment.mapper.CommentMapper;
-import com.codestates.comment.mapper.CommentMapperImpl;
 import com.codestates.question.dto.QuestionDto;
 import com.codestates.question.dto.QuestionResponseDto;
 import com.codestates.question.entity.Question;
