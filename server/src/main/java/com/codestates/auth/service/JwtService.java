@@ -65,4 +65,13 @@ public class JwtService {
 		if (member.isPresent())
 			throw new BusinessLogicException(ExceptionCode.MEMBER_EXISTS);
 	}
+
+	public boolean checkEmail(String email) {
+		Optional<Member> member = memberRepository.findByEmail(email);
+		if (member.isPresent()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

@@ -9,12 +9,14 @@ import com.codestates.member.service.MemberService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.net.URI;
+import java.util.Optional;
 
 @RestController
 @Slf4j
@@ -25,11 +27,13 @@ public class MemberController {
     private final MemberService memberService;
     private final MemberMapper memberMapper;
     private final JwtService jwtService;
+    private final PasswordEncoder passwordEncoder;
     private final static String MEMBER_DEFAULT_URL = "/member";
-    public MemberController(MemberService memberService, MemberMapper memberMapper, JwtService jwtService){
+    public MemberController(MemberService memberService, MemberMapper memberMapper, JwtService jwtService, PasswordEncoder passwordEncoder){
         this.memberService = memberService;
         this.memberMapper = memberMapper;
         this.jwtService = jwtService;
+        this.passwordEncoder = passwordEncoder;
     }
 //     for test
     @PostMapping
@@ -65,5 +69,22 @@ public class MemberController {
         // 권한 인증
         memberService.deleteMember(memberId);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
+
+    // 이메일 중복 확인
+    @GetMapping("/check-email")
+    public boolean checkEmail(@RequestBody MemberDto.CheckEmail requestBody) {
+        String email = requestBody.getEmail();
+
+        return !jwtService.checkEmail(email);
+    }
+
+    // password 확인
+    @GetMapping("/check-password")
+    public boolean checkPassword(@RequestBody MemberDto.CheckPassword requestBody) {
+        Member member = memberService.findEmail(requestBody.getEmail());
+        String password = requestBody.getPassword();
+
+        return passwordEncoder.matches(password, member.getPassword());      // password 를 암호화하여 일치여부 확인
     }
 }

@@ -48,6 +48,19 @@ public class MemberDto {
     @Getter
     @Setter
     @NoArgsConstructor
+    public static class CheckEmail {
+        private String email;
+    }
+    @Getter
+    @NoArgsConstructor
+    public static class CheckPassword {
+        private String email;
+        private String password;
+    }
+
+    @Getter
+    @Setter
+    @NoArgsConstructor
     @AllArgsConstructor
     public static class MemberResponse{
 

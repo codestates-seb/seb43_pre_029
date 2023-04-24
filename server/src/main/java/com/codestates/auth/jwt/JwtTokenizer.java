@@ -75,13 +75,14 @@ public class JwtTokenizer {
 		return claims;
 	}
 
+	// JWT 위/변조 여부를 확인
 	public void verifySignature(String jws, String base64EncodedSecretKey) {
 		Key key = getKeyFromBase64EncodedKey(base64EncodedSecretKey);
 
 		Jwts.parserBuilder()
-						.setSigningKey(key)
+						.setSigningKey(key)	// 서명에 사용된 Secret Key 설정
 						.build()
-						.parseClaimsJws(jws);
+						.parseClaimsJws(jws);	// JWT를 파싱해서 Claims를 얻음
 	}
 
 	// JWT 만료 일시를 지정 (JWT 생성 시 사용)
