@@ -48,7 +48,6 @@ public class MemberDto {
     @Getter
     @Setter
     @NoArgsConstructor
-<<<<<<< HEAD
     public static class CheckEmail {
         private String email;
     }
@@ -60,10 +59,9 @@ public class MemberDto {
     }
 
     @Getter
+    @Setter
     @NoArgsConstructor
-=======
     @AllArgsConstructor
->>>>>>> e5e4b56622c8dc0224a23302c72d15e4012f3bc9
     public static class MemberResponse{
 
         private String email;
