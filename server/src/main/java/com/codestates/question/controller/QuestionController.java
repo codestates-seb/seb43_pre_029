@@ -81,9 +81,10 @@ public class QuestionController {
 
     // 게시글 추천
     @PatchMapping("/like/{q_id}")
-    public ResponseEntity likePost(@PathVariable Long q_id){
+    public ResponseEntity likePost(@PathVariable Long q_id,
+                                   @RequestParam Long m_id){
         Question question = questionService.findQuestion(q_id);
-        questionService.increaseLikes(question);
+        questionService.increaseLikes(question,m_id);
         return new ResponseEntity<>(mapper.questionToQuestionResponseDto(question), HttpStatus.OK);
     }
 }

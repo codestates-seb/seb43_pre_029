@@ -146,12 +146,9 @@ public class QuestionService {
     }
 
     // 게시글 추천 수 증가
-    public void increaseLikes(Question question) {
+    public void increaseLikes(Question question, Long m_id) {
         //TODO 회원은 하나의 게시글에 한번의 추천밖에 할 수 없다. 로직 추가해야함
         question.setSuggestedCount(question.getSuggestedCount()+1);
         saveQuestion(question);
     }
-
-
-
 }
