@@ -46,6 +46,12 @@ public class MemberDto {
     }
 
     @Getter
+    @NoArgsConstructor
+    public static class PatchPassword {
+        private String password;
+    }
+
+    @Getter
     @Setter
     @NoArgsConstructor
     public static class CheckEmail {

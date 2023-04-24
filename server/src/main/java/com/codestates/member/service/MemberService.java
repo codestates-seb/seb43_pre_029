@@ -32,6 +32,8 @@ public class MemberService {
 
         return memberRepository.save(findMember);
     }
+
+
     // 멤버의 상태 값을 MEMBER_DELETE 로 바꾸는 메서드
     public void deleteMember(long m_id){
         Member findMember = findMember(m_id);

@@ -57,6 +57,17 @@ public class MemberController {
         return new ResponseEntity(memberMapper.MemberToMemberResponseDto(response), HttpStatus.OK);
     }
 
+    @PatchMapping("/edit/password/{m_id}")
+    public ResponseEntity editPassword(@PathVariable("m_id") Long m_id,
+                                       @RequestBody MemberDto.PatchPassword requestBody) {
+        Member member = memberService.findMember(m_id);
+        String encryptedPassword = passwordEncoder.encode(requestBody.getPassword());	// Password 암호화
+        member.setPassword(encryptedPassword);
+
+        memberService.updateMember(member);
+        return new ResponseEntity(memberMapper.MemberToMemberGetResponse(member), HttpStatus.OK);
+    }
+
     @GetMapping("/{m_id}")
     public ResponseEntity getMember(@PathVariable("m_id") @Positive long m_id){
         // 로그인 확인 로직(인증)
