@@ -29,23 +29,22 @@ public class Answer extends Auditable {
     @JoinColumn(name = "m_id")
     private Member member;
 
-    @Enumerated(EnumType.STRING)
-    @Column(length = 10, nullable = false)
-    private Accepted accepted = Accepted.FALSE; // 기본값 : 채택되지 않았다.
+    @Column
+    private Boolean accepted = false; // 답변이 채택되었는지 여부 채택됨:true
 
     @Enumerated(EnumType.STRING)
     @Column(length = 30, nullable = false)
     private AnswerStatus a_status = AnswerStatus.ANSWER_REGISTRATION;
 
-    public enum Accepted{
-        TRUE,
-        FALSE;
-    }
+
 
     public enum AnswerStatus{
         ANSWER_REGISTRATION,
         ANSWER_DELETE;
     }
+
+
+
 
 }
 

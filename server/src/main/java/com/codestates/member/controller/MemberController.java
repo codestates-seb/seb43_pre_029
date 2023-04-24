@@ -31,7 +31,7 @@ public class MemberController {
         this.memberMapper = memberMapper;
         this.jwtService = jwtService;
     }
-    // for test
+//     for test
     @PostMapping
     public ResponseEntity postMember(@Valid @RequestBody MemberDto.Post requestBody) {
         Member member = memberMapper.MemberPostDtoToMember(requestBody);
@@ -41,19 +41,29 @@ public class MemberController {
 
         return ResponseEntity.created(location).build();
     }
-    @PatchMapping("/edit")
-    public ResponseEntity editMember(){
-        return new ResponseEntity(new MemberDto(), HttpStatus.OK);
+
+    @PatchMapping("/edit/{m_id}")
+    public ResponseEntity editMember(@PathVariable("m_id") Long m_id,
+                                     @Valid @RequestBody MemberDto.Patch requestBody){
+        Member member = memberMapper.MemberPatchDtoToMember(requestBody);
+        member.setM_id(m_id);
+        // 스택오버플로 회원인지 확인
+        // 로그인 확인 로직
+        Member response = memberService.updateMember(member);
+        return new ResponseEntity(memberMapper.MemberToMemberResponseDto(response), HttpStatus.OK);
     }
 
-    @GetMapping("/{member-id}")
-    public ResponseEntity getMember(@PathVariable("member-id") @Positive long memberId){
-        return new ResponseEntity(new MemberDto(), HttpStatus.OK);
+    @GetMapping("/{m_id}")
+    public ResponseEntity getMember(@PathVariable("m_id") @Positive long m_id){
+        // 로그인 확인 로직(인증)
+        Member response = memberService.findMember(m_id);
+        return new ResponseEntity(memberMapper.MemberToMemberGetResponse(response), HttpStatus.OK);
     }
     // for test
     @DeleteMapping("/{member-id}")
     public ResponseEntity deleteMember(@PathVariable("member-id") @Positive long memberId){
-        memberService.removeMember(memberId);
+        // 권한 인증
+        memberService.deleteMember(memberId);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 }

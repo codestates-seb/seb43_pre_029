@@ -8,11 +8,11 @@ import lombok.Setter;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 
 public class MemberDto {
     // Test용 PostDto
     @Getter
+    @NoArgsConstructor
     public static class Post{
         @NotBlank
         private String name;
@@ -24,18 +24,16 @@ public class MemberDto {
         @NotBlank
         private String address;
         @NotBlank
-        private String status_message;
+        private String status_message = "none";
         @NotBlank
         private String phone;
 
     }
 
     @Getter
-    @AllArgsConstructor
+    @NoArgsConstructor
     public static class Patch{
-        @Email
-        private String email;
-
+        // TODO: 양식 작성 -> 숫자 1개, 문자 1개, 8자 이상
         private String password;
 
         private String name;
@@ -44,14 +42,10 @@ public class MemberDto {
 
         private String status_message;
 
-        @Pattern(regexp = "^010-\\d{3,4}-\\d{4}$",
-                message = "휴대폰 번호는 010으로 시작하는 11자리 숫자와 '-'로 구성되어야 합니다.")
         private String phone;
     }
 
     @Getter
-    @Setter
-    @AllArgsConstructor
     @NoArgsConstructor
     public static class MemberResponse{
 
@@ -63,7 +57,6 @@ public class MemberDto {
     }
     @Getter
     @Setter
-    @AllArgsConstructor
     @NoArgsConstructor
     public static class MemberGetResponse{
         private String email;
@@ -73,5 +66,6 @@ public class MemberDto {
         private Long activityCount;
         private Long commentCount;
         private Long answerCount;
+        private Long questionCount;
     }
 }
