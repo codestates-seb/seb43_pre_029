@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import Comment from '../components/QInfo/Comment';
 import Footer from '../components/Footer/Footer';
 import { useParams } from 'react-router-dom';
-import QInfoForm from '../components/QInfoForm';
+import AnswerForm from '../components/QInfo/AnswerForm';
 
 const QMain = styled.div`
   width: 800px;
@@ -50,24 +50,26 @@ const QuestionInfo = () => {
 
   return (
     <>
-      <FixSideHeader />
-      <QMain>
-        <QInfoHeader qinfo={qinfo} />
-        <QInfoMain qinfo={qinfo} />
-        <CommentList>
-          {comments.map((comment) => (
-            <Comment comment={comment} key={comment.id} />
+      <div style={{ display: 'flex' }}>
+        <FixSideHeader />
+        <QMain>
+          <QInfoHeader qinfo={qinfo} />
+          <QInfoMain qinfo={qinfo} />
+          <CommentList>
+            {comments.map((comment) => (
+              <Comment comment={comment} key={comment.id} />
+            ))}
+          </CommentList>
+          <AnswerTotal>{qanswers.length} Answers</AnswerTotal>
+          {qanswers.map((answer) => (
+            <Answer answer={answer} key={answer.id} />
           ))}
-        </CommentList>
-        <AnswerTotal>{qanswers.length} Answers</AnswerTotal>
-        {qanswers.map((answer) => (
-          <Answer answer={answer} key={answer.id} />
-        ))}
-        <AnswerInput>
-          <h2>Your Answer</h2>
-          <QInfoForm />
-        </AnswerInput>
-      </QMain>
+          <AnswerInput>
+            <h2>Your Answer</h2>
+            <AnswerForm />
+          </AnswerInput>
+        </QMain>
+      </div>
       <Footer />
     </>
   );
