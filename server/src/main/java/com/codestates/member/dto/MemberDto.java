@@ -47,8 +47,14 @@ public class MemberDto {
 
     @Getter
     @NoArgsConstructor
-    public static class Check {
+    public static class CheckEmail {
         private String email;
+    }
+    @Getter
+    @NoArgsConstructor
+    public static class CheckPassword {
+        private String email;
+        private String password;
     }
 
     @Getter

@@ -46,6 +46,13 @@ public class MemberService {
         return findMember;
     }
 
+    public Member findEmail(String email) {
+        Member findEmail = memberRepository.findByEmail(email)
+                .orElseThrow(() -> new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
+
+        return findEmail;
+    }
+
     // for test (멤버를 ID 기반으로 찾아내 레포지토리에서 삭제하는 메서드)
 //    public void removeMember(long m_Id) {
 //        memberRepository.delete(memberRepository.findById(memberId).get());
