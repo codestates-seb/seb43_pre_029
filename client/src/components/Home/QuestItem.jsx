@@ -30,40 +30,39 @@ const ItemList = styled.div`
     a {
       text-decoration-line: none;
       color: rgb(0 116 204);
-      font-weight: 600;
     }
-    h3 {
+    h4 {
       width: 35.6875rem;
       padding-right: 1.5rem;
+      margin-top: 0px;
     }
     .info {
       width: 41.875rem;
       height: 0.75rem;
       display: flex;
       justify-content: end;
+      font-size: 0.9rem;
     }
     .user {
       color: #0848bf;
       padding-right: 0.9375rem;
-      font-size: 1rem;
     }
   }
 `;
 
 const QuestItem = ({ item }) => {
-  const { id, question, username, date } = item;
-
+  const { id, question, username, date, answers } = item;
   return (
     <ItemList>
       <div className="A">
         <div>0 votes</div>
-        <div>0 answers</div>
+        <div>{answers.length} answers</div>
         <div>2 views</div>
       </div>
       <div className="B">
-        <h3>
+        <h4>
           <Link to={`/question/${id}`}>{question}</Link>
-        </h3>
+        </h4>
         <div className="info">
           <div className="user">{username}</div>
           <div className="date">{date}</div>
