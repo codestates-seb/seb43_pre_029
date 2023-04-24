@@ -41,7 +41,7 @@ const formats = [
   'code-block',
 ];
 
-export default function QInfoForm() {
+export default function AnswerForm() {
   const [commentValue, setCommentValue] = useState({
     value: '',
   });
@@ -61,14 +61,7 @@ export default function QInfoForm() {
           theme="snow"
           modules={modules}
           formats={formats}
-          placeholder="좋은 댓글을 적어주세요. 😊"
-        />
-        <ReactQuill
-          value={commentValue.value}
-          readOnly={true}
-          modules={{
-            toolbar: false,
-          }}
+          placeholder="좋은 답변을 적어주세요. 😊"
         />
       </AnswerInput>
       <PostBtn>Post Your Answer</PostBtn>
