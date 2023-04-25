@@ -100,6 +100,13 @@ const FormStyle = styled.form`
       border-radius: 0.2rem;
 
       padding-left: 0.3rem;
+
+      &:focus {
+        outline: none;
+
+        border: 0.0625rem solid rgb(156, 209, 250);
+        box-shadow: 0 0 0 0.25rem rgb(215, 229, 243);
+      }
     }
   }
   .input:nth-child(3) {
