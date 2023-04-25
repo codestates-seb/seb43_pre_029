@@ -21,6 +21,7 @@ import javax.validation.constraints.Positive;
 @Validated
 @Slf4j
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class AnswerController {
     private final AnswerMapper mapper;
     private final AnswerService answerService;
