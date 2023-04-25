@@ -12,9 +12,14 @@ const MyPageBlock = ({ number, text }) => {
 const StateBlock = () => {
   return (
     <div className="contents">
-      <MyPageBlock number={1} text="questions" />
-      <MyPageBlock number={2} text="answered" />
-      <MyPageBlock number={3} text="comment" />
+      <div className="first-column">
+        <MyPageBlock number={6} text="activity_count" />
+        <MyPageBlock number={2} text="answered" />
+      </div>
+      <div className="second-column">
+        <MyPageBlock number={1} text="questions" />
+        <MyPageBlock number={3} text="comment" />
+      </div>
     </div>
   );
 };

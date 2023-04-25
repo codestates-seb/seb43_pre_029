@@ -1,11 +1,13 @@
+import { useState } from 'react';
 import { ImageSample, ProfileStyle } from '../style/MyPageStyle';
 
 const ProfileInfo = () => {
+  const [status_message] = useState('부끄러웡');
   return (
     <div className="infoStyle">
       <h2>Adesti</h2>
       <div className="userDate">
-        <div>Member since today</div>
+        <div>{status_message}</div>
         {/* <div>Last seen this week</div>
         <div>Visitied 1 day</div> */}
       </div>

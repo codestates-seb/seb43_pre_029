@@ -3,8 +3,10 @@ import styled from 'styled-components';
 const MyPageStyle = styled.div`
   display: flex;
   flex-direction: column;
+  position: relative;
 
-  width: 45rem;
+  /* width: 45rem; */
+  width: 100%;
   padding: 2rem;
 
   background-color: #fff;
@@ -29,7 +31,7 @@ const ProfileStyle = styled.div`
 
   h2 {
     margin: 0;
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 300;
   }
 
@@ -52,7 +54,7 @@ const ImageSample = styled.div`
 `;
 
 const StatsStyle = styled.div`
-  width: 15%;
+  width: 30%;
   margin-right: 1rem;
   flex-wrap: wrap;
 
@@ -63,9 +65,10 @@ const StatsStyle = styled.div`
   .contents {
     display: flex;
     flex-wrap: wrap;
+    /* flex-direction: column; */
 
     border: solid 0.1rem;
-    padding: 1.1rem;
+    padding: 0rem 1.1rem;
 
     .Block {
       display: flex;
@@ -74,6 +77,7 @@ const StatsStyle = styled.div`
       font-size: 2rem;
 
       h3 {
+        margin-top: 1rem;
         margin-bottom: 0.5rem;
       }
 
@@ -84,15 +88,22 @@ const StatsStyle = styled.div`
       }
     }
     .Block:nth-child(odd) {
-      margin-right: 2rem;
+      margin-right: 1.5rem;
     }
-    .Block:last-child {
-      margin-bottom: -2rem;
+
+    /* .Block:last-child {
+      margin-bottom: -1rem;
+    } */
+    .second-column {
+      .Block:last-child {
+        margin-bottom: -1rem;
+      }
     }
   }
 `;
 
-const UserInfoStyle = styled.div`
+/** 2023/04/25 - UserInfo 스타일 - fe-HyungUk */
+const UserInfoStyle = styled.form`
   width: 100%;
 
   h4 {
@@ -103,10 +114,8 @@ const UserInfoStyle = styled.div`
     display: flex;
     justify-content: center;
 
-    border: solid 0.1em;
-    height: 16.5em;
-
-    padding: 0.5em;
+    border: solid 0.1rem;
+    margin-bottom: 2rem;
 
     &.block {
       background-color: #f1f2f3;
@@ -119,15 +128,84 @@ const InfoItemsStyle = styled.div`
   flex-direction: column;
   width: 100%;
 
-  padding: 0.8rem;
+  position: relative;
+`;
 
-  > div {
-    margin-bottom: 3rem;
+const ModalStyle = styled.div`
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  padding: 0;
+  justify-content: center;
+  display: flex;
+
+  .modalBG {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+  }
+
+  form {
+    background-color: #fff;
+    z-index: 1;
+    padding: 2rem;
+    border-radius: 1rem;
 
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: center;
   }
+
+  input {
+    display: flex;
+    flex-direction: column;
+    border: solid 0.1rem #000;
+
+    width: 20rem;
+    height: 2.5rem;
+    margin-top: 0.5rem;
+  }
+  .input:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+  label {
+    margin-bottom: 2rem;
+  }
+
+  button {
+    width: 12rem;
+    height: 2rem;
+    border-radius: 1rem;
+  }
+`;
+
+const ItemContainerStyle = styled.div`
+  padding: 1.2rem;
+
+  div:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+  > div:last-child {
+    /* border: solid #000 1px; */
+    margin-bottom: 0rem;
+  }
+`;
+
+const ItemStyle = styled.div`
+  /* margin-bottom: 2rem; */
+  display: flex;
+  flex-direction: column;
+  align-items: end;
 
   label {
     font-size: 1.8rem;
@@ -141,48 +219,48 @@ const InfoItemsStyle = styled.div`
     word-break: keep-all;
     text-align: end;
 
-    margin-top: 1.1em;
+    margin-top: 0.8em;
     margin-bottom: 0.3em;
+
+    padding-left: 3rem;
+
+    &:hover {
+      color: rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+    }
   }
 
-  button {
-    font-size: 0.9rem;
-    background-color: #fff;
-
+  input.itemValue {
     border: solid 0.1em rgba(0, 0, 0, 0.4);
-    border-radius: 0.3em;
-    color: rgba(0, 0, 0, 0.4);
+    width: 97%;
+    height: 2.5rem;
+
+    margin-top: 0.3em;
+    margin-bottom: 0.8em;
+    padding-left: 0;
+    padding-right: 0.5rem;
+
+    border-radius: 0.5rem;
+
+    &:hover {
+      color: #000;
+      cursor: text;
+    }
   }
 `;
 
-const PassConfirmStyle = styled.div`
+const UserForm = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 0.4em 0.8em;
+  border-radius: 0.7em;
 
-  color: rgba(0, 0, 0, 0.4);
+  width: 25rem;
 
-  label {
-    font-size: 1rem;
-    font-weight: 500;
-    margin-bottom: 0.3em;
-
-    color: #000;
-  }
-
-  .UserForm {
+  .passInput {
     display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    padding: 0.4em 0.8em;
-    border-radius: 0.7em;
-
-    width: 25rem;
-
-    .passInput {
-      display: flex;
-      align-items: center;
-    }
+    align-items: center;
   }
 
   input {
@@ -221,5 +299,60 @@ const PassConfirmStyle = styled.div`
     }
   }
 `;
+const PassConfirmStyle = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-export { MyPageStyle, StatsStyle, UserInfoStyle, PassConfirmStyle, InfoItemsStyle, ProfileStyle, ImageSample };
+  color: rgba(0, 0, 0, 0.4);
+
+  label {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.3em;
+
+    color: #000;
+  }
+`;
+
+const UserConfigBtnStyle = styled.form`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+
+  button {
+    width: 6.5rem;
+    height: 2rem;
+    font-size: 1rem;
+    color: #000;
+    border: solid 0.08em rgb(0, 0, 0);
+    border-radius: 0.6rem;
+    background-color: #fff;
+
+    margin-left: 0.5rem;
+
+    &.disabled {
+      color: rgba(0, 0, 0, 0.3);
+      border: solid 0.08em rgba(0, 0, 0, 0.3);
+    }
+  }
+`;
+
+export {
+  MyPageStyle,
+  StatsStyle,
+  UserInfoStyle,
+  UserForm,
+  PassConfirmStyle,
+  InfoItemsStyle,
+  ProfileStyle,
+  ImageSample,
+  ItemContainerStyle,
+  ItemStyle,
+  UserConfigBtnStyle,
+  ModalStyle,
+};

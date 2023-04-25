@@ -10,13 +10,14 @@ import useBind from '../../logic/useBind';
 
 const SignUpForm = () => {
   const navigate = useNavigate();
-  const { nameBind, emailBind, passwordBind, addressBind } = useBind();
+  const { nameBind, emailBind, passwordBind, addressBind, PhoneBind } = useBind();
 
   const data = {
     name: nameBind.value,
     email: emailBind.value,
     password: passwordBind.value,
     address: addressBind.value,
+    phone: PhoneBind.value,
   };
 
   const [isDisabled, setIsDisabled] = useState('disabled');
@@ -35,8 +36,9 @@ const SignUpForm = () => {
       <SignUpInput label="Password" bind={passwordBind} setValid={setPasswordValid} />
       <p>Passwords must contain at least eight characters, including at least 1 letter and 1 number.</p>
       <SignUpInput label="Address" bind={addressBind} />
+      <SignUpInput label="Phone Number" bind={PhoneBind} />
       <button className={isDisabled} disabled={isDisabled}>
-        Log in
+        Sign Up
       </button>
     </FormStyle>
   );

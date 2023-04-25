@@ -5,8 +5,19 @@ const testExp = (label, value, setValid) => {
   const passwordRegExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
   const validTest = (RegExp) => (RegExp ? setValid(true) : setValid(false));
-  if (label === 'Email') validTest(EmailExp.test(value));
-  if (label === 'Password') validTest(passwordRegExp.test(value));
+
+  switch (label) {
+    case 'Email':
+      return validTest(EmailExp.test(value));
+
+    case 'Password':
+    case 'Current Password':
+    case 'New Password':
+      return validTest(passwordRegExp.test(value));
+
+    default:
+      return;
+  }
 };
 
 const SignUpInput = ({ label, bind, setValid }) => {
@@ -16,10 +27,22 @@ const SignUpInput = ({ label, bind, setValid }) => {
     testExp(label, value, setValid);
   }, [label, value, setValid]);
 
+  let isPassword = '';
+  switch (label) {
+    case 'Password':
+    case 'Current Password':
+    case 'New Password':
+      isPassword = 'password';
+      break;
+
+    default:
+      isPassword = '';
+  }
+
   return (
     <div className="input">
       <label>{label}</label>
-      <input value={value} onChange={(e) => onChange(e.target.value)} type={label === 'Password' ? 'password' : ''} />
+      <input value={value} onChange={(e) => onChange(e.target.value)} type={isPassword} />
     </div>
   );
 };
