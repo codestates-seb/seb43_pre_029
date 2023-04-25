@@ -3,20 +3,21 @@ import styled from 'styled-components';
 const FooterContainer = styled.footer`
   background-color: rgb(35, 38, 41);
   color: rgb(186, 191, 196);
-  padding: 1.875rem 17.5rem;
+  /* padding: 1.875rem 17.5rem; */
+  padding: 1rem 0.3rem;
   display: flex;
-  justify-content: space-around;
-  bottom: -2rem;
+  justify-content: space-between;
+  bottom: -3rem;
   width: 100%;
   /* height: 21.25rem; */
   box-sizing: border-box;
-  z-index: 999;
-  position: relative;
+  z-index: 800;
+  position: absolute;
 `;
 
 const FooterSection = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   justify-content: space-between;
 `;
 

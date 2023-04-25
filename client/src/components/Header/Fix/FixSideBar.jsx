@@ -12,19 +12,22 @@ const SidebarWrapper = styled.div`
   position: fixed;
   left: 0;
   top: 0;
-  width: 29.96875rem;
+  /* width: 29.96875rem; */
+  width: 21.5vw;
   padding-top: 2.8125rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border-right: 0.0625rem solid rgb(214, 217, 220);
+  /* z-index: 900; */
 `;
 
 const SidebarMenu = styled.div`
   display: flex;
   flex-direction: column;
   padding-top: 1.875rem;
-  margin-left: 19.375rem;
+  /* margin-left: 19.375rem; */
+  margin-left: 3rem;
 
   & > *:nth-child(n + 4):nth-child(-n + 6) {
     padding: 0.4375rem 0 0.4375rem 1.75rem;

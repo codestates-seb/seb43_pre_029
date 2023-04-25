@@ -8,14 +8,13 @@ const QuestionsList = () => {
   useEffect(() => {
     axios.get('http://localhost:4000/questions').then((data) => setQuestions(data.data));
   }, []);
+
   return (
-    <>
-      <div>
-        {questions.map((item) => (
-          <QuestItem item={item} key={item.id} />
-        ))}
-      </div>
-    </>
+    <div>
+      {questions.map((item) => (
+        <QuestItem item={item} key={item.id} />
+      ))}
+    </div>
   );
 };
 
