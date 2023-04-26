@@ -69,59 +69,49 @@ const User = styled.div`
   }
 `;
 
-const Answer = ({ answer, qanswers, a_id }) => {
-  const { value, username, date, pic } = answer;
-  const [checks, setChecks] = useState();
-  const { id } = useParams();
-  // console.log('@@@@@@@@@@@');
-  // console.log('answer', answer.check);
-  // console.log('qanswers', qanswers);
-  // console.log('a_id', a_id);
+const Answer = ({ answer, a_id }) => {
+  const { a_content, m_name, createdAt, pic } = answer;
+  const [newAnswer, setNewAnswer] = useState();
+
   const onCheck = (a_id) => {
     axios
-      .patch(`http://localhost:4000/questions/${id}`, { check: !qanswers.check })
+      .patch(`http://ec2-3-39-194-243.ap-northeast-2.compute.amazonaws.com:8080/question/edit/answer-accept/1`, {
+        q_id: 1,
+        m_id: 1,
+      }) // body {m_id, q_id} ??
       .then((response) => {
-        const newCheck = response.data.answers.map((el) => {
-          // console.log('a_id', a_id);
-          // console.log('el', el);
-          // console.log('el.a_id', el.a_id);
-          // console.log('@@@@@@@@@@@@@@@@@');
+        const newAnswers = response.data.answers.map((el) => {
           if (el.a_id === a_id) {
-            return el;
-          } else {
-            return response.data.answers;
+            console.log('a_id', a_id);
+            return { ...el, check: !el.check };
           }
+          return el;
         });
-        // console.log(response.data.answers);
-        setChecks(newCheck);
+        setNewAnswer(newAnswers);
       })
       .catch((err) => console.log(Error));
   };
-  // console.log('checks', checks);
-
-  // console.log(qanswers[0].check);
   return (
     <AnswerMain>
-      {/* <AnswerSide answer={answer} check={check} /> */}
       <AswSide>
         <button>UP</button>
         <div>0</div>
         <button>Down</button>
         <button>북마크</button>
-        <button onClick={() => onCheck(a_id)}>체크</button>
+        <button onClick={() => onCheck(a_id)}>{'체크'}</button>
         <button>아이콘</button>
       </AswSide>
       <div className="answerMain">
-        <div>{value}</div>
+        <div>{a_content}</div>
         <ProfilLine>
           <Profil>
-            <div className="date">{date}</div>
+            <div className="date">{createdAt}</div>
             <User>
               <div className="pic">
                 <img src={pic} alt="profile" />
               </div>
               <div>
-                <a href={'/'}>{username}</a>
+                <a href={'/'}>{m_name}</a>
               </div>
             </User>
           </Profil>

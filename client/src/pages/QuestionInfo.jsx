@@ -41,10 +41,12 @@ const QuestionInfo = () => {
   const [comments, setComments] = useState([]);
   const [qanswers, setQianswers] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:4000/questions/${id}`).then((res) => {
+    axios.get(`http://ec2-3-39-194-243.ap-northeast-2.compute.amazonaws.com:8080/question/some-page/1`).then((res) => {
       setQinfo(res.data);
+      console.log('data', res.data);
       setQianswers(res.data.answers);
-      setComments(res.data.comment);
+      console.log('answers', res.data.answers);
+      setComments(res.data.comments);
     });
   }, [id]);
   return (
@@ -58,7 +60,7 @@ const QuestionInfo = () => {
             <Comment comment={comment} key={comment.id} />
           ))}
         </CommentList>
-        <AnswerTotal>{qanswers.length} Answers</AnswerTotal>
+        <AnswerTotal>{qinfo.answerCount} Answers</AnswerTotal>
         {qanswers.map((answer) => (
           <Answer answer={answer} key={answer.a_id} a_id={answer.a_id} qanswers={qanswers} />
         ))}
