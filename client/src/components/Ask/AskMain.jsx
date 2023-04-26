@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Editor from './Editor';
 import InputTitle from './InputTitle';
@@ -12,8 +12,8 @@ import InputTitle from './InputTitle';
  */
 const AskMain = () => {
   const [inputValue, setInputValue] = useState({
-    title: '',
-    body: '',
+    q_title: '',
+    q_content: '',
   });
 
   /**
@@ -23,13 +23,13 @@ const AskMain = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post('http://localhost:4000/questions', inputValue)
+      .post('ec2-3-39-194-243.ap-northeast-2.compute.amazonaws.com:8080/question/ask', { ...inputValue, m_id: 1 })
       .then((res) => {
         alert('질문 게시글 등록 완료하였습니다!');
         setInputValue((prevInputValue) => ({
           ...prevInputValue,
-          title: '',
-          body: '',
+          q_title: '',
+          q_content: '',
         }));
       })
       .catch((err) => {
@@ -44,8 +44,8 @@ const AskMain = () => {
   const handleAllClear = () => {
     setInputValue((prevInputValue) => ({
       ...prevInputValue,
-      title: '',
-      body: '',
+      q_title: '',
+      q_content: '',
     }));
   };
 

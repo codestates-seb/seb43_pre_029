@@ -49,7 +49,7 @@ export default function Editor({ setInputValue, inputValue }) {
    * @param {*} content : 텍스트 에디터에 하는 입력하는 값
    */
   const handleBodyChange = (content) => {
-    setInputValue((prevInputValue) => ({ ...prevInputValue, body: content }));
+    setInputValue((prevInputValue) => ({ ...prevInputValue, q_content: content }));
     console.log('🌈body : ', inputValue);
   };
 
@@ -57,7 +57,7 @@ export default function Editor({ setInputValue, inputValue }) {
     <ReactQuill
       className="my-quill"
       ref={quillRef}
-      value={inputValue.body}
+      value={inputValue.q_content}
       onChange={handleBodyChange}
       theme="snow"
       modules={modules}
