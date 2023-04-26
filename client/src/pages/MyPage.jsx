@@ -1,12 +1,10 @@
-import StateContainer from '../components/MyPage/StateContainer';
-import UserInfoContainer from '../components/MyPage/UserInfo/UserInfoContainer';
-import Profile from '../components/MyPage/Profile';
+import { Profile, StateContainer, UserConfigBtn, UserInfoContainer } from '../components/MyPage/MyPageBind';
+
 import Footer from '../components/Footer/Footer';
 import LoginFixSideHeader from '../components/Header/Fix/LoginFixSideHeader';
 
 import { MyPageStyle } from '../components/style/MyPageStyle';
 import EntireStyle from '../components/style/EntireStyle';
-import UserConfigBtn from '../components/MyPage/UserConfigBtn';
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';

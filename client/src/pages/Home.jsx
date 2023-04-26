@@ -2,10 +2,9 @@ import styled from 'styled-components';
 import homeimg from '../images/home_img.png';
 import Contnent from '../components/Home/Content';
 import QuestionsList from '../components/Home/QuestionsList';
-import FixSideHeader from '../components/Header/Fix/FixSideHeader';
-import ModalSideHeader from '../components/Header/Modal/ModalSideHeader';
-// import LoginFixSideHeader from '../components/Header/Fix/LoginFixSideHeader'
-// import LoginModalSideHeader from '../components/Header/Modal/LoginModalSideHeader'
+
+import { FixSideHeader, ModalSideHeader } from '../components/Header/HeaderBind';
+
 import Footer from '../components/Footer/Footer';
 import { useState } from 'react';
 import SearchList from '../components/Home/SearchList';

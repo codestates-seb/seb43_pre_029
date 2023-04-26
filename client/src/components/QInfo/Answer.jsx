@@ -2,10 +2,9 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { GoTriangleUp, GoTriangleDown } from 'react-icons/go';
-import { BsBookmark } from 'react-icons/bs';
-import { RxCountdownTimer } from 'react-icons/rx';
 import ReactQuill from 'react-quill';
+
+import { GoTriangleUp, GoTriangleDown, BsBookmark, RxCountdownTimer } from '../Icon';
 
 const AnswerMain = styled.div`
   display: flex;

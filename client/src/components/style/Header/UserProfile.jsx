@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { BsFillInboxFill, IoIosTrophy, BsFillQuestionCircleFill, MdChatBubble } from '../../Header/Icon';
+import { BsFillInboxFill, IoIosTrophy, BsFillQuestionCircleFill, MdChatBubble } from '../../Icon';
 
 // 유저 프로필
 const ProfileWrapper = styled.div`

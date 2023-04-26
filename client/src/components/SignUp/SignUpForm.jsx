@@ -1,12 +1,11 @@
 import { FormStyle } from '../style/LoginStyle';
 
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 import { signupSubmit } from '../../logic/onSubmit';
-import { SignupInput } from '../Input';
 import useBind from '../../logic/useBind';
+import { SignupInput } from '../Input';
 
 const SignUpForm = () => {
   const navigate = useNavigate();
