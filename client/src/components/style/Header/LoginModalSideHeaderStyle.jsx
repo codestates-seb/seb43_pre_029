@@ -7,10 +7,6 @@ import {
   SidebarWrapper,
   SidebarMenu,
   SidebarCategories,
-  InformationIcon,
-  SidebarMenuItem,
-  SideImg,
-  SidebarStarImgWrapper,
 } from './ModalSideHeaderStyle';
 
 import { ProfileWrapper, NavIconStyle, Icon2, Icon3, Icon4, Icon5, Avatar, Num } from './UserProfile';
@@ -84,5 +80,4 @@ export { HeaderMenu, MenuButton };
 export { SearchInputWrapper, IconStyle, Icon1, SearchInput };
 export { ProfileWrapper, Avatar, Num };
 export { NavIconStyle, Icon2, Icon3, Icon4, Icon5 };
-export { SidebarWrapper, SidebarMenu, SidebarCategories, InformationIcon };
-export { SidebarMenuItem, SideImg, SidebarStarImgWrapper };
+export { SidebarWrapper, SidebarMenu, SidebarCategories };

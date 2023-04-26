@@ -12,7 +12,7 @@ import {
   Avatar,
   Num,
 } from '../style/LoginModalSideHeaderStyle';
-import { HamburgerContainer } from './LoginModalSideHeaderComp';
+import { HamburgerContainer } from './ModalSideHeader';
 
 const LogoContainer = () => {
   return (
