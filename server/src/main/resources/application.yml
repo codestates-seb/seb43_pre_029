@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/stackoverflow?createdDatabaseIfNotExist=true&useUnicode=true&characterSetResults=UTF-8&useSSL=true
+    username: root
+    password: password #db비밀번호
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 773450300303-nm0ir1c36og1e715q8s6agp8vmj5u9qp.apps.googleusercontent.com
+            clientSecret: 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
+jwt:
+  key: #비번               # 민감한 정보는 시스템 환경 변수에서 로드한다.
+  access-token-expiration-minutes: 30
+  refresh-token-expiration-minutes: 420
+
+mail:
+  address:
+    admin: admin@gmail.com
