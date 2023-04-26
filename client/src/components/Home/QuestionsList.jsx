@@ -6,7 +6,10 @@ const QuestionsList = () => {
   const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:4000/questions').then((data) => setQuestions(data.data));
+    axios.get('http://ec2-3-39-194-243.ap-northeast-2.compute.amazonaws.com:8080/question/some-page/1').then((data) => {
+      console.log(data);
+      setQuestions(data.data);
+    });
   }, []);
   return (
     <>
