@@ -1,6 +1,6 @@
 import MainLogo from '../../../images/Logo/stack-overflow-logo-vector.svg';
 import ModalSideBarImg from '../../../images/CreateTeam/ModalSideBarImg.png';
-import SidebarStarImg from '../../../images/CreateTeam/SidebarImg.png';
+import SidebarStarImg from '../../../images/Icon/SidebarStarImg.png';
 
 import { IoEarthSharp } from 'react-icons/io5';
 
@@ -12,6 +12,7 @@ import {
   LogoImg,
   HeaderMenu,
   MenuButton,
+  SearchForm,
   SearchInputWrapper,
   IconStyle,
   Icon2,
@@ -105,16 +106,16 @@ const LogoContainer = () => {
   );
 };
 
-const SearchForm = () => {
+const SearchForms = () => {
   return (
-    <form>
+    <SearchForm>
       <SearchInputWrapper>
         <IconStyle>
           <Icon2 />
         </IconStyle>
         <SearchInput type="text" placeholder="Search..." />
       </SearchInputWrapper>
-    </form>
+    </SearchForm>
   );
 };
 
@@ -133,4 +134,4 @@ const MemberButton = () => {
   );
 };
 
-export { HamburgerContainer, LogoContainer, SearchForm, MemberButton };
+export { HamburgerContainer, LogoContainer, SearchForms, MemberButton };

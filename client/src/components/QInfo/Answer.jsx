@@ -2,6 +2,10 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { GoTriangleUp, GoTriangleDown } from 'react-icons/go';
+import { BsBookmark } from 'react-icons/bs';
+import { RxCountdownTimer } from 'react-icons/rx';
+import ReactQuill from 'react-quill';
 
 const AnswerMain = styled.div`
   display: flex;
@@ -72,6 +76,9 @@ const User = styled.div`
 const Answer = ({ answer, a_id }) => {
   const { a_content, m_name, createdAt, pic } = answer;
   const [newAnswer, setNewAnswer] = useState();
+  const { id } = useParams();
+  const [commentModal, setCommentModal] = useState(false);
+  const [answerModal, setAnswerModal] = useState(false);
 
   const onCheck = (a_id) => {
     axios
@@ -94,21 +101,27 @@ const Answer = ({ answer, a_id }) => {
   return (
     <AnswerMain>
       <AswSide>
-        <button>UP</button>
+        <GoTriangleUp size="40px" color="lightgrey" className="flex-item" />
         <div>0</div>
-        <button>Down</button>
-        <button>북마크</button>
+        <GoTriangleDown size="40px" color="lightgrey" className="flex-item" />
+        <BsBookmark size="20px" color="lightgrey" className="flex-item" />
+        <RxCountdownTimer size="20px" color="lightgrey" className="flex-item" />
         <button onClick={() => onCheck(a_id)}>{'체크'}</button>
-        <button>아이콘</button>
       </AswSide>
       <div className="answerMain">
-        <div>{a_content}</div>
+        <ReactQuill
+          value={value}
+          readOnly={true}
+          modules={{
+            toolbar: false,
+          }}
+        />
         <ProfilLine>
           <Profil>
             <div className="date">{createdAt}</div>
             <User>
               <div className="pic">
-                <img src={pic} alt="profile" />
+                <img src={answer.pic} alt="profile" />
               </div>
               <div>
                 <a href={'/'}>{m_name}</a>
@@ -116,9 +129,86 @@ const Answer = ({ answer, a_id }) => {
             </User>
           </Profil>
         </ProfilLine>
-        <div className="addComment">Add a comment</div>
+        <Flex>
+          <Btn
+            color="blue"
+            onClick={() => {
+              setAnswerModal((prev) => !prev);
+            }}
+          >
+            답글 수정
+          </Btn>
+          {answerModal ? (
+            <FlexColumn>
+              <ReactQuill />
+            </FlexColumn>
+          ) : null}
+          <Btn
+            color="red"
+            onClick={() => {
+              axios.delete(`http://localhost:4000/question/${id}`);
+            }}
+          >
+            답글 삭제
+          </Btn>
+        </Flex>
+        <Flex>
+          <Btn
+            color="green"
+            onClick={() => {
+              setCommentModal(!commentModal);
+            }}
+          >
+            Add a comment
+          </Btn>
+        </Flex>
+        {commentModal ? (
+          <div>
+            <CommentInputStyle>
+              <form>
+                <input type="text" placeholder="댓글을 적어주세요." />
+                <button type="submit">확인</button>
+              </form>
+            </CommentInputStyle>
+          </div>
+        ) : null}
       </div>
     </AnswerMain>
   );
 };
 export default Answer;
+
+const Btn = styled.button`
+  display: block;
+  background-color: ${(props) => props.color};
+  color: rgb(255, 255, 255);
+  padding: 0.5rem;
+  border: none;
+  border-radius: 3px;
+  margin: 5px 5px;
+  font-weight: bolder;
+  cursor: pointer;
+`;
+
+const Flex = styled.div`
+  display: flex;
+  justify-content: end;
+`;
+
+const CommentInputStyle = styled.div`
+  input {
+    width: 85%;
+    border: 2px solid lightgray;
+    padding: 6px;
+  }
+  button {
+    width: 12%;
+    padding: 5px;
+    border: 2px solid lightgray;
+  }
+`;
+
+const FlexColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+`;

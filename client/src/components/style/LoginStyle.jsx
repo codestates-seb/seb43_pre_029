@@ -45,9 +45,12 @@ const OauthStyle = styled.div`
     justify-content: center;
     align-items: center;
 
+    span {
+      margin-left: 0.3rem;
+    }
     .logo {
       width: 1rem;
-      margin: 0 0.3rem 0 0;
+      margin: 0rem 0.3rem;
     }
 
     :nth-child(1) {
@@ -97,6 +100,13 @@ const FormStyle = styled.form`
       border-radius: 0.2rem;
 
       padding-left: 0.3rem;
+
+      &:focus {
+        outline: none;
+
+        border: 0.0625rem solid rgb(156, 209, 250);
+        box-shadow: 0 0 0 0.25rem rgb(215, 229, 243);
+      }
     }
   }
   .input:nth-child(3) {

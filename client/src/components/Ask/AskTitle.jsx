@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import askTitleImg from '../../images/img.png';
+import askTitleImg from '../../images/Ask/img.png';
 
 export default function AskTitle() {
   return (

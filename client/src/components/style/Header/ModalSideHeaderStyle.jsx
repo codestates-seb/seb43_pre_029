@@ -12,6 +12,7 @@ import {
   SearchInputWrapper,
   IconStyle,
   Icon2,
+  SearchForm,
   SearchInput,
   ButtonWrapper,
   LoginButton,
@@ -26,6 +27,11 @@ const HamburgerStyle = styled.button`
   border: none;
   background-color: transparent;
 
+  /* svg {
+    padding: auto;
+    font-size: 1rem;
+  } */
+
   &:hover {
     background-color: rgba(227, 230, 232, 0.61);
   }
@@ -34,7 +40,8 @@ const HamburgerStyle = styled.button`
 const Icon1Close = styled(RxHamburgerMenu)`
   font-size: 1.125rem;
   color: rgb(0, 0, 0);
-  padding: 0.8rem 0.5rem;
+  padding: 0.85rem 0.5rem;
+  /* padding: 0.8rem min(0.8vw, 0.5rem); */
   transform: ${({ open }) => (open ? 'rotate(0deg)' : 'rotate(180deg)')};
   transition: transform 1s ease-in-out;
 `;
@@ -43,6 +50,7 @@ const Icon1Open = styled(IoCloseSharp)`
   font-size: 1.5rem;
   color: rgba(26, 26, 26, 0.683);
   padding: 0.6rem 0.32rem;
+  /* padding: 0.6rem min(0.8vw, 0.5rem); */
   transform: ${({ open }) => (open ? 'rotate(0deg)' : 'rotate(180deg)')};
   transition: transform 1s ease-in-out;
 `;
@@ -145,7 +153,7 @@ export { HeaderContainer };
 export { HamburgerStyle, Icon1Close, Icon1Open };
 export { Logo, LogoImg };
 export { HeaderMenu, MenuButton };
-export { SearchInputWrapper, IconStyle, Icon2, SearchInput };
+export { SearchForm, SearchInputWrapper, IconStyle, Icon2, SearchInput };
 export { ButtonWrapper, LoginButton, SignupButton };
 
 export { SidebarWrapper, SidebarMenu, SidebarCategories, InformationIcon };

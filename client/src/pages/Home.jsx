@@ -4,33 +4,55 @@ import Contnent from '../components/Home/Content';
 import QuestionsList from '../components/Home/QuestionsList';
 import FixSideHeader from '../components/Header/Fix/FixSideHeader';
 import ModalSideHeader from '../components/Header/Modal/ModalSideHeader';
+// import LoginFixSideHeader from '../components/Header/Fix/LoginFixSideHeader'
+// import LoginModalSideHeader from '../components/Header/Modal/LoginModalSideHeader'
 import Footer from '../components/Footer/Footer';
 
 const HomeTemplate = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
+
+  /* position: fixed; */
   margin-top: 2.8125rem;
+  margin-left: 16rem;
+  /* overflow-y: scroll; */
+
+  /* height: 150vh; */
 `;
 
 const Imgstyle = styled.div`
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
   img {
     padding-top: 2.8125rem;
-    width: 100%;
+    /* width: 100%; */
+    height: 73vh;
   }
+
+  margin-top: -2rem;
 `;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
 export default function Home({ isLogin }) {
   return (
     <>
-      {isLogin ? (
+      {!isLogin ? (
         <>
           <FixSideHeader />
-          <HomeTemplate>
-            <Contnent />
-            <QuestionsList />
-          </HomeTemplate>
+          <Wrapper>
+            <HomeTemplate>
+              <Contnent />
+              <QuestionsList />
+            </HomeTemplate>
+            <Footer />
+          </Wrapper>
         </>
       ) : (
         <>
@@ -38,9 +60,9 @@ export default function Home({ isLogin }) {
           <Imgstyle>
             <img src={homeimg} alt="" />
           </Imgstyle>
+          <Footer />
         </>
       )}
-      <Footer />
     </>
   );
 }
