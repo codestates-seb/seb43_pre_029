@@ -10,7 +10,7 @@ export default function InputForm({ setInputValue, inputValue }) {
   const handleTitleChange = (e) => {
     setInputValue((prevInputValue) => ({
       ...prevInputValue,
-      title: e.target.value,
+      q_title: e.target.value,
     }));
     console.log('제목 inputValue', inputValue);
   };
@@ -23,7 +23,7 @@ export default function InputForm({ setInputValue, inputValue }) {
           <p>Be specific and imagine you’re asking a question to another person.</p>
           <input
             name="title"
-            value={inputValue.title}
+            value={inputValue.q_title}
             type="text"
             placeholder="질문 글 제목을 적어주세요."
             onChange={handleTitleChange}
