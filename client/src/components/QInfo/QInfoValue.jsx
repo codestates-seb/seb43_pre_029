@@ -6,8 +6,49 @@ import axios from 'axios';
 import 'quill/dist/quill.snow.css';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/vs2015.css';
+import { useParams } from 'react-router-dom';
+
+const ProfilLine = styled.div`
+  width: 720px;
+  margin-top: 50px;
+  display: flex;
+  justify-content: end;
+`;
+const Profil = styled.div`
+  width: 187px;
+  height: 54px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  padding: 5px 6px 7px 7px;
+  border-radius: 3px;
+  background-color: rgb(217, 234, 247);
+  .date {
+    width: 187px;
+    height: 16px;
+    margin: 1px 0px 4px;
+    color: rgb(106 115 124);
+  }
+`;
+const User = styled.div`
+  display: flex;
+  .pic {
+    margin-right: 8px;
+    img {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+  a {
+    color: rgb(0 116 204);
+    text-decoration: none;
+  }
+`;
 
 const QInfoValue = ({ qinfo }) => {
+  const { q_content1, createAt, m_name } = qinfo;
+
   const modules = useMemo(() => {
     return {
       toolbar: [
@@ -41,11 +82,11 @@ const QInfoValue = ({ qinfo }) => {
     'code-block',
   ];
 
-  const { value, date, username, title, body, id } = qinfo;
   const [commentModal, setCommentModal] = useState(false);
   const [commentInput, setCommentInput] = useState('');
   const [questionModal, setQuestionModal] = useState(false);
   const [updateQuestionInput, setUpdateQuestionInput] = useState('');
+  const { id } = useParams();
 
   const handleDelete = (id) => (e) => {
     axios.delete(`http://localhost:4000/question/${id}`);
@@ -57,8 +98,9 @@ const QInfoValue = ({ qinfo }) => {
 
   return (
     <div>
+      <div>{q_content1}</div>
       <ReactQuill
-        value={value}
+        value={q_content1}
         readOnly={true}
         modules={{
           toolbar: false,
@@ -66,7 +108,7 @@ const QInfoValue = ({ qinfo }) => {
       />
       <ProfilLine>
         <Profil>
-          <div className="date">{date}</div>
+          <div className="date">{createAt}</div>
           <User>
             <div className="pic">
               <img
@@ -75,7 +117,7 @@ const QInfoValue = ({ qinfo }) => {
               />
             </div>
             <div>
-              <a href={'/'}>{username}</a>
+              <a href={'/'}>{m_name}</a>
             </div>
           </User>
         </Profil>
@@ -154,46 +196,6 @@ const QInfoValue = ({ qinfo }) => {
 };
 
 export default QInfoValue;
-
-const ProfilLine = styled.div`
-  margin-top: 50px;
-  width: 720px;
-  display: flex;
-  justify-content: end;
-`;
-
-const Profil = styled.div`
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  font-size: 13px;
-  padding: 5px 6px 7px 7px;
-  border-radius: 3px;
-  background-color: rgb(217, 234, 247);
-
-  .date {
-    width: 187px;
-    height: 16px;
-    margin: 1px 0px 4px;
-    color: rgb(10, 115, 124);
-  }
-`;
-
-const User = styled.div`
-  display: flex;
-
-  .pic {
-    margin-right: 8px;
-    img {
-      width: 2rem;
-      height: 2rem;
-    }
-  }
-  a {
-    color: rgb(0, 116, 204);
-    text-decoration: none;
-  }
-`;
 
 const Btn = styled.button`
   background-color: ${(props) => props.color};

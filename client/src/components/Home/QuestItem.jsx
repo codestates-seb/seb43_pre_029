@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
+import { GoCheck } from 'react-icons/go';
 const ItemList = styled.div`
   width: 48.125rem;
   height: 5.375rem;
@@ -21,6 +21,16 @@ const ItemList = styled.div`
       height: 1.1875rem;
       font-size: 0.8125rem;
     }
+    .acc {
+      background-color: rgb(47, 111, 68);
+      color: rgb(255, 255, 255);
+      display: flex;
+      padding: 2px 4px;
+      width: 85px;
+      height: 20px;
+      border-radius: 3px;
+      font-weight: 500;
+    }
   }
   .B {
     display: flex;
@@ -30,43 +40,61 @@ const ItemList = styled.div`
     a {
       text-decoration-line: none;
       color: rgb(0 116 204);
-      font-weight: 600;
     }
-    h3 {
+    h4 {
       width: 35.6875rem;
       padding-right: 1.5rem;
+      margin-top: 0px;
     }
     .info {
       width: 41.875rem;
       height: 0.75rem;
       display: flex;
       justify-content: end;
+      font-size: 0.9rem;
     }
     .user {
       color: #0848bf;
       padding-right: 0.9375rem;
-      font-size: 1rem;
     }
   }
 `;
-
+const Checkicon = styled(GoCheck)`
+  color: white;
+  font-size: 1rem;
+  margin: 0px 2px 0px 2px;
+`;
 const QuestItem = ({ item }) => {
-  const { id, question, username, date } = item;
+  const { q_id, id, q_title, m_name, createAt, answers } = item;
+  // const acc = answer.acc;
+  // console.log(answer.a_id);
+  // console.log('acc', acc);
+  const accepted = answers.findIndex((e) => e.accepted === true);
 
   return (
     <ItemList>
       <div className="A">
         <div>0 votes</div>
-        <div>0 answers</div>
+        {accepted ? (
+          <div>{answers.length} answer</div>
+        ) : (
+          <div className="acc">
+            <span>
+              <Checkicon />
+            </span>
+            {answers.length} answers
+          </div>
+        )}
+        {/* <div>{answers.length} answers</div> */}
         <div>2 views</div>
       </div>
       <div className="B">
-        <h3>
-          <Link to={`/question/${id}`}>{question}</Link>
-        </h3>
+        <h4>
+          <Link to={`/question/${id}`}>{q_title}</Link>
+        </h4>
         <div className="info">
-          <div className="user">{username}</div>
-          <div className="date">{date}</div>
+          <div className="user">{m_name}</div>
+          <div className="date">{createAt}</div>
         </div>
       </div>
     </ItemList>
