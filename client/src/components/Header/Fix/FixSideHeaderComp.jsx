@@ -6,6 +6,7 @@ import {
   HeaderMenu,
   MenuButton,
   SearchInputWrapper,
+  SearchForm,
   IconStyle,
   Icon2,
   SearchInput,
@@ -34,14 +35,14 @@ const HeaderMenuContainer = () => {
 
 const HeaderForm = () => {
   return (
-    <form>
+    <SearchForm>
       <SearchInputWrapper>
         <IconStyle>
           <Icon2 />
         </IconStyle>
         <SearchInput type="text" placeholder="Search..." />
       </SearchInputWrapper>
-    </form>
+    </SearchForm>
   );
 };
 
