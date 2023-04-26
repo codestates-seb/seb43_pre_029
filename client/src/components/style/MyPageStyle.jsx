@@ -103,7 +103,7 @@ const StatsStyle = styled.div`
 `;
 
 /** 2023/04/25 - UserInfo 스타일 - fe-HyungUk */
-const UserInfoStyle = styled.form`
+const UserInfoStyle = styled.div`
   width: 100%;
 
   h4 {
@@ -189,7 +189,7 @@ const ModalStyle = styled.div`
   }
 `;
 
-const ItemContainerStyle = styled.div`
+const ItemContainerStyle = styled.form`
   padding: 1.2rem;
 
   div:not(:last-child) {
@@ -198,6 +198,10 @@ const ItemContainerStyle = styled.div`
   > div:last-child {
     /* border: solid #000 1px; */
     margin-bottom: 0rem;
+  }
+
+  .none {
+    display: none;
   }
 `;
 
@@ -249,49 +253,79 @@ const ItemStyle = styled.div`
   }
 `;
 
-const UserForm = styled.div`
+const UserForm = styled.form`
   display: flex;
   flex-direction: column;
   background-color: #fff;
-  padding: 0.4em 0.8em;
+  padding: 1em 1.2em;
   border-radius: 0.7em;
 
   width: 25rem;
 
-  .passInput {
-    display: flex;
-    align-items: center;
+  align-items: center;
+  div {
+    width: 100%;
   }
 
+  > div:first-child {
+    margin-bottom: 1rem;
+  }
   input {
     width: 100%;
     height: 1.5rem;
     margin-right: 0.3rem;
+    margin-top: 0.5rem;
 
     border: solid 0.05rem rgba(0, 0, 0, 0.4);
     border-radius: 0.2rem;
+    padding-left: 0.5rem;
   }
 
   button {
-    width: 6rem;
-    height: 1.7rem;
-    background-color: #fff;
-    border: solid 0.2em;
-    border-radius: 0.9em;
+    width: 7rem;
+    height: 2rem;
+    background-color: rgba(156, 209, 250, 0.2);
+    /* background-color: #fff; */
 
+    border: solid 0.07em;
+    border-radius: 0.5em;
+
+    /* color: #fff; */
     color: rgba(0, 0, 0, 0.4);
 
-    font-size: 0.2em;
+    font-size: 0.9em;
 
     display: flex;
+    justify-content: center;
     align-items: center;
+
+    padding-left: 0.3rem;
+    padding-right: 0.5rem;
     .editIcon {
-      width: 0.9rem;
+      width: 1.1rem;
+      margin-right: 0.2rem;
+    }
+    :hover {
+      cursor: pointer;
+      border: 0.0625rem solid rgb(156, 209, 250);
+      box-shadow: 0 0 0 0.15rem rgb(215, 229, 243);
+    }
+    &.disabled {
+      background-color: rgba(244, 80, 80, 0.08);
+      color: rgba(0, 0, 0, 0.4);
+      border-color: rgba(244, 80, 80, 1);
+
+      :hover {
+        cursor: default;
+        border-color: rgba(244, 80, 80, 1);
+        box-shadow: none;
+      }
     }
   }
 
   .pText {
     margin-top: 0.4rem;
+    margin-bottom: 0.5rem;
     font-size: 0.01rem;
 
     p {
@@ -305,6 +339,7 @@ const PassConfirmStyle = styled.div`
   align-items: center;
 
   color: rgba(0, 0, 0, 0.4);
+  height: 28.5rem;
 
   label {
     font-size: 1rem;
