@@ -1,6 +1,7 @@
 import MainLogo from '../../../images/Logo/stack-overflow-logo-vector.svg';
 import ModalSideBarImg from '../../../images/CreateTeam/ModalSideBarImg.png';
 import SidebarStarImg from '../../../images/Icon/SidebarStarImg.png';
+import headerSearch from '../../../logic/headerSearch';
 
 import {
   HamburgerStyle,
@@ -61,14 +62,20 @@ const LogoContainer = () => {
   );
 };
 
-const SearchForms = () => {
+const SearchForms = ({ searchBind }) => {
+  const [keyword, setKeyword] = searchBind;
   return (
-    <SearchForm>
+    <SearchForm
+      onSubmit={(e) => {
+        e.preventDefault();
+        headerSearch(keyword);
+      }}
+    >
       <SearchInputWrapper>
         <IconStyle>
           <Icon2 />
         </IconStyle>
-        <SearchInput type="text" placeholder="Search..." />
+        <SearchInput value={keyword} onChange={setKeyword} placeholder="Search..." />
       </SearchInputWrapper>
     </SearchForm>
   );

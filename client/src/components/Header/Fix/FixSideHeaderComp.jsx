@@ -1,4 +1,5 @@
 import MainLogo from '../../../images/Logo/stack-overflow-logo-vector.svg';
+import headerSearch from '../../../logic/headerSearch';
 
 import {
   Logo,
@@ -14,6 +15,7 @@ import {
   LoginButton,
   SignupButton,
 } from '../../style/Header/FixSideHeaderstyle';
+import axios from 'axios';
 
 const HeaderLogo = () => {
   return (
@@ -33,14 +35,24 @@ const HeaderMenuContainer = () => {
   );
 };
 
-const HeaderForm = () => {
+const HeaderForm = ({ searchvalueBind, isSearchBind }) => {
+  const [keyword, setKeyword] = searchvalueBind;
+  const [isSearched, setIsSearched] = isSearchBind;
+  // console.log(keyword);
+
   return (
-    <SearchForm>
+    <SearchForm
+      onSubmit={(e) => {
+        e.preventDefault();
+        headerSearch(keyword, setKeyword);
+        setIsSearched(true);
+      }}
+    >
       <SearchInputWrapper>
         <IconStyle>
           <Icon2 />
         </IconStyle>
-        <SearchInput type="text" placeholder="Search..." />
+        <SearchInput value={keyword} onChange={(e) => setKeyword(e.target.value)} placeholder="Search..." />
       </SearchInputWrapper>
     </SearchForm>
   );

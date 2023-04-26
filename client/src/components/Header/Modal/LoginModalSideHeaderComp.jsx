@@ -12,7 +12,8 @@ import {
   Avatar,
   Num,
 } from '../style/LoginModalSideHeaderStyle';
-import { HamburgerContainer } from './ModalSideHeader';
+// import { HamburgerContainer } from './ModalSideHeader';
+import { HamburgerContainer } from './ModalSideHeaderComp';
 
 const LogoContainer = () => {
   return (

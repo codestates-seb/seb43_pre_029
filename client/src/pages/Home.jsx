@@ -7,6 +7,8 @@ import ModalSideHeader from '../components/Header/Modal/ModalSideHeader';
 // import LoginFixSideHeader from '../components/Header/Fix/LoginFixSideHeader'
 // import LoginModalSideHeader from '../components/Header/Modal/LoginModalSideHeader'
 import Footer from '../components/Footer/Footer';
+import { useState } from 'react';
+import SearchList from '../components/Home/SearchList';
 
 const HomeTemplate = styled.div`
   display: flex;
@@ -38,25 +40,29 @@ const Imgstyle = styled.div`
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 
 export default function Home({ isLogin }) {
+  const searchvalueBind = useState('');
+  const isSearchBind = useState(false);
+  const [isSearched, setIsSearched] = isSearchBind;
+
   return (
     <>
       {!isLogin ? (
         <>
-          <FixSideHeader />
+          <FixSideHeader searchvalueBind={searchvalueBind} isSearchBind={isSearchBind} />
           <Wrapper>
             <HomeTemplate>
               <Contnent />
-              <QuestionsList />
+              {isSearched ? <SearchList searchvalueBind={searchvalueBind} /> : <QuestionsList />}
             </HomeTemplate>
             <Footer />
           </Wrapper>
         </>
       ) : (
         <>
-          <ModalSideHeader />
+          <ModalSideHeader searchvalueBind={searchvalueBind} />
           <Imgstyle>
             <img src={homeimg} alt="" />
           </Imgstyle>
