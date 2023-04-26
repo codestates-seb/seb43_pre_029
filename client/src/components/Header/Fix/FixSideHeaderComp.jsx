@@ -15,7 +15,6 @@ import {
   LoginButton,
   SignupButton,
 } from '../../style/Header/FixSideHeaderstyle';
-import axios from 'axios';
 
 const HeaderLogo = () => {
   return (
@@ -38,7 +37,6 @@ const HeaderMenuContainer = () => {
 const HeaderForm = ({ searchvalueBind, isSearchBind }) => {
   const [keyword, setKeyword] = searchvalueBind;
   const [isSearched, setIsSearched] = isSearchBind;
-  // console.log(keyword);
 
   return (
     <SearchForm
