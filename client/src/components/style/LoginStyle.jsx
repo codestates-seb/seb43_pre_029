@@ -31,6 +31,9 @@ const OauthStyle = styled.div`
 
   margin-bottom: 1rem;
 
+  svg {
+    margin-right: 0.2rem;
+  }
   button {
     height: 2rem;
     width: 100%;

@@ -5,9 +5,9 @@ import QuestItem from './QuestItem';
 const QuestionsList = () => {
   const [questions, setQuestions] = useState([]);
 
-  useEffect(() => {
-    axios.get('http://localhost:4000/questions').then((data) => setQuestions(data.data));
-  }, []);
+  // useEffect(() => {
+  //   axios.get('http://localhost:4000/questions').then((data) => setQuestions(data.data));
+  // }, []);
 
   return (
     <div>

@@ -18,9 +18,8 @@ const App = () => {
           <Route path="/" element={<Home {...isLogin} />} />
           <Route path="/login" element={isLogin ? <Navigate to="/" /> : <Login />} />
           <Route path="/signup" element={isLogin ? <Navigate to="/" /> : <SignUp />} />
-          {/* <Route path="/mypage" element={isLogin ? <MyPage /> : <Navigate to="/login" />} /> */}
-          <Route path="/mypage/:id" element={<Navigate to={`/mypage/${m_id}`} />} />
-          <Route path={`/mypage/${m_id}`} element={<MyPage />} />
+          <Route path="/mypage/:id" element={isLogin ? <Navigate to={`/mypage/${m_id}`} /> : <Login />} />
+          <Route path={`/mypage/${m_id}`} element={<MyPage m_id={m_id} />} />
           <Route path="/question/:id" element={<QuestionInfo {...isLogin} />} />
         </Routes>
       </BrowserRouter>
