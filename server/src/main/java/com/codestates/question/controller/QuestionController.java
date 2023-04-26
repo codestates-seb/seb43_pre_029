@@ -25,6 +25,7 @@ import java.util.List;
 @Validated
 @Slf4j
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class QuestionController {
     // public final static String QNA_QUESTION_DEFAULT_URL = "/questions";
     private final QuestionMapper mapper;
