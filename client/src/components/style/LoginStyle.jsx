@@ -83,33 +83,7 @@ const FormStyle = styled.form`
   padding: 1.1rem;
   border-radius: 0.5rem;
 
-  .input {
-    display: flex;
-    flex-direction: column;
-
-    margin-bottom: 2.2rem;
-
-    label {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.6rem;
-    }
-    input {
-      height: 2rem;
-      border: solid 0.03rem rgba(0, 0, 0, 0.5);
-      border-radius: 0.2rem;
-
-      padding-left: 0.3rem;
-
-      &:focus {
-        outline: none;
-
-        border: 0.0625rem solid rgb(156, 209, 250);
-        box-shadow: 0 0 0 0.25rem rgb(215, 229, 243);
-      }
-    }
-  }
-  .input:nth-child(3) {
+  > div:nth-child(3) {
     margin-bottom: 0.1rem;
   }
 

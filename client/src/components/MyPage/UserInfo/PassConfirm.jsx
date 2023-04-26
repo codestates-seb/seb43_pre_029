@@ -1,45 +1,65 @@
 import { PassConfirmStyle, UserForm } from '../../style/MyPageStyle';
 import pencil from '../../../images/Icon/pencil.png';
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const PassConfirm = ({ setIsLogin }) => {
-  const [password, setPassword] = useState('');
+import { LoginInput } from '../../Input';
+import useInput from '../../../logic/useInput';
+
+const useValidTest = (emailBind, passwordBind, setDisabled) => {
+  const [emailValid, setEmailValid] = useState(false);
+  const [passValid, setPassValid] = useState(false);
+
+  const EmailExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+  const passwordRegExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+  useEffect(() => {
+    EmailExp.test(emailBind.value) ? setEmailValid(true) : setEmailValid(false);
+    passwordRegExp.test(passwordBind.value) ? setPassValid(true) : setPassValid(false);
+
+    if (emailValid && passValid) return setDisabled('');
+    return setDisabled('disabled');
+  }, [emailBind.value, passwordBind.value, emailValid, passValid]);
+};
+
+const PassConfirm = ({ setIsConfirm }) => {
+  const emailBind = useInput();
+  const passwordBind = useInput();
+
   const [isCorrect, setIsCorrect] = useState('initial');
+  const [disabled, setDisabled] = useState('disabled');
 
-  const UserConfirm = () => {
-    axios
-      .get('/member/check-password', { password })
-      .then(() => {
-        setIsLogin(true);
-        setPassword('');
-      })
-      .catch((err) => setIsCorrect(err.message));
+  useValidTest(emailBind, passwordBind, setDisabled);
+
+  const UserConfirm = async (email, password) => {
+    try {
+      await axios.post('/member/check-password', { email, password });
+      setIsConfirm(true);
+    } catch (error) {
+      setIsCorrect(error.message);
+    }
   };
 
   return (
     <PassConfirmStyle>
       <UserForm
-        onClick={(e) => {
-          e.target.prevent();
-          UserConfirm(password, setPassword, setIsLogin, setIsCorrect);
+        onSubmit={(e) => {
+          e.preventDefault();
+          UserConfirm(emailBind.value, passwordBind.value);
         }}
       >
-        <label>Password</label>
-        <div className="passInput">
-          <input type="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          <button>
-            <img className="editIcon" src={pencil} alt="pencil" />
-            Edit profile
-          </button>
-        </div>
+        <LoginInput label="Email" bind={emailBind} />
+        <LoginInput label="Password" bind={passwordBind} />
+
         <div className="pText">
-          {isCorrect === 'initial' ? (
-            <p>Passwords must contain at least eight characters, including at least 1 letter and 1 number.</p>
-          ) : (
-            <p>{isCorrect}</p>
-          )}
+          <p>{isCorrect === 'initial' ? '' : { isCorrect }}</p>
         </div>
+
+        <button className={disabled} disabled={disabled}>
+          {/* <button disabled={''}> */}
+          <img className="editIcon" src={pencil} alt="pencil" />
+          Edit profile
+        </button>
       </UserForm>
     </PassConfirmStyle>
   );
