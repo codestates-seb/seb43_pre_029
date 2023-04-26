@@ -14,14 +14,16 @@ const LoginForm = () => {
   const { emailBind, passwordBind } = useBind();
   const [accessToken, setAccessToken] = useState('');
   const [refreshToken, setRefreshToken] = useState('');
+  const [m_id, setM_id] = useState('');
 
   useEffect(() => {
     if (accessToken !== '' && accessToken !== undefined) {
       localStorage.setItem('access_token', accessToken);
       localStorage.setItem('refresh_token', refreshToken);
+      localStorage.setItem('m_id', m_id);
       navigate('/');
     }
-  }, [accessToken, refreshToken]);
+  }, [accessToken, refreshToken, m_id]);
 
   const data = {
     email: emailBind.value,
@@ -29,7 +31,7 @@ const LoginForm = () => {
   };
 
   return (
-    <FormStyle onSubmit={(e) => loginSubmit(e, data, setAccessToken, setRefreshToken)}>
+    <FormStyle onSubmit={(e) => loginSubmit(e, data, setAccessToken, setRefreshToken, setM_id)}>
       <LoginInput label="Email" bind={emailBind} />
       <LoginInput label="Password" bind={passwordBind} />
       <button>Log in</button>
