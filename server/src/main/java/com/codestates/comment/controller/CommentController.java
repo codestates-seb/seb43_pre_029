@@ -19,6 +19,7 @@ import javax.validation.Valid;
 @Validated
 @RequestMapping("/comment")
 @Transactional
+@CrossOrigin(origins = "*")
 public class CommentController {
 
     private final CommentService commentService;
