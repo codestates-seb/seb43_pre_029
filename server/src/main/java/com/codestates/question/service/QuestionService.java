@@ -13,7 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import org.springframework.data.domain.PageRequest;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 
@@ -180,17 +182,31 @@ public class QuestionService {
         if(direction == null || property == null){
             throw new IllegalArgumentException("정렬 속성 및 방향은 null 일 수 없습니다.");
         }
-        Page<Question> pageQuestions = questionRepository.findAll(PageRequest.of(pageNumber, 5, Sort.by(direction, property)));
+        Page<Question> pageQuestions = questionRepository.findAll(PageRequest.of(pageNumber, 5, Sort.by(direction, property))); //fixme 애초에 db에서 데이터를 추출할 수 없는지. 중복코드 제거요망
         List<Question> filteredQuestions = pageQuestions.getContent();
         List<Question> resultQuestions = new ArrayList<>();
         for(Question question : filteredQuestions){
-            if(question.getQ_title().contains(keyword)){
+            if(question.getQ_title().contains(keyword)|| question.getQ_content1().contains(keyword)|| question.getQ_content2().contains(keyword)){
                 resultQuestions.add(question);
             }
         }
-        return filteredQuestions;
+        return removeDuplicateQuestions(resultQuestions);
     }
 
+    // List내 중복요소 제거
+    public List<Question> removeDuplicateQuestions(List<Question> questions) {
+        Set<String> titleSet = new HashSet<>();
+        List<Question> uniqueQuestions = new ArrayList<>();
+        for (Question q : questions) {
+            if (!titleSet.contains(q.getQ_title())) {
+                titleSet.add(q.getQ_title());
+                uniqueQuestions.add(q);
+            }
+        }
+        return uniqueQuestions;
+    }
+
+    // 검색기능의 페이지 네이션
     public Page<Question> convertToPage(List<Question> questions, Long pageNumber, int pageSize) {
         int start = (int)(pageNumber - 1) * pageSize;
         int end = Math.min(start + pageSize, questions.size());
