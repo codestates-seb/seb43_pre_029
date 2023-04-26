@@ -11,15 +11,15 @@ import UserConfigBtn from '../components/MyPage/UserConfigBtn';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function MyPage() {
-  // useEffect(() => {
-  //   axios
-  //     .get(`/member/${m_id}`)
-  //     .then((res) => {
-  //       setTotalData(res);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, [m_id]);
+function MyPage({ m_id }) {
+  useEffect(() => {
+    axios
+      .get(`/member/${m_id}`)
+      .then((res) => {
+        setTotalData(res);
+      })
+      .catch((err) => console.log(err));
+  }, [m_id]);
 
   const [isOverlay, setIsOverlay] = useState(false);
   const [isDisabled, setIsDisabled] = useState('disabled');
