@@ -6,6 +6,7 @@ import axios from 'axios';
 import 'quill/dist/quill.snow.css';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/vs2015.css';
+import { useParams } from 'react-router-dom';
 
 const ProfilLine = styled.div`
   width: 720px;
@@ -85,6 +86,7 @@ const QInfoValue = ({ qinfo }) => {
   const [commentInput, setCommentInput] = useState('');
   const [questionModal, setQuestionModal] = useState(false);
   const [updateQuestionInput, setUpdateQuestionInput] = useState('');
+  const { id } = useParams();
 
   const handleDelete = (id) => (e) => {
     axios.delete(`http://localhost:4000/question/${id}`);

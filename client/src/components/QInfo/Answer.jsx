@@ -110,7 +110,7 @@ const Answer = ({ answer, a_id }) => {
       </AswSide>
       <div className="answerMain">
         <ReactQuill
-          value={value}
+          value={a_content}
           readOnly={true}
           modules={{
             toolbar: false,
