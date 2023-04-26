@@ -4,17 +4,19 @@ import { UserInfoStyle } from '../../style/MyPageStyle';
 import InfoItems from './InfoItems';
 import PassConfirm from './PassConfirm';
 
-const UserInfoContainer = () => {
-  const [isLogin, setIsLogin] = useState(false);
-  const isBlock = !isLogin ? 'block' : '';
+const UserInfoContainer = ({ isOverlay, disAbleBind, totalData, editBind }) => {
+  const [isConfirm, setIsConfirm] = useState(true);
+  const isBlock = !isConfirm ? 'block' : '';
 
   return (
     <UserInfoStyle>
       <h4>User Info</h4>
       <div className={`contents ` + isBlock}>
-        {
-          isLogin ? <InfoItems /> : <PassConfirm /> //
-        }
+        {isConfirm ? (
+          <InfoItems isOverlay={isOverlay} disAbleBind={disAbleBind} totalData={totalData} editBind={editBind} />
+        ) : (
+          <PassConfirm setIsConfirm={setIsConfirm} />
+        )}
       </div>
     </UserInfoStyle>
   );

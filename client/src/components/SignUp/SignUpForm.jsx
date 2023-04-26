@@ -5,18 +5,19 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 
 import { signupSubmit } from '../../logic/onSubmit';
-import { SignUpInput } from '../Input';
+import { SignupInput } from '../Input';
 import useBind from '../../logic/useBind';
 
 const SignUpForm = () => {
   const navigate = useNavigate();
-  const { nameBind, emailBind, passwordBind, addressBind } = useBind();
+  const { nameBind, emailBind, passwordBind, addressBind, PhoneBind } = useBind();
 
   const data = {
     name: nameBind.value,
     email: emailBind.value,
     password: passwordBind.value,
     address: addressBind.value,
+    phone: PhoneBind.value,
   };
 
   const [isDisabled, setIsDisabled] = useState('disabled');
@@ -30,13 +31,14 @@ const SignUpForm = () => {
 
   return (
     <FormStyle onSubmit={(e) => signupSubmit(e, data, navigate)}>
-      <SignUpInput label="Display Name" bind={nameBind} />
-      <SignUpInput label="Email" bind={emailBind} setValid={setEmailValid} />
-      <SignUpInput label="Password" bind={passwordBind} setValid={setPasswordValid} />
+      <SignupInput label="Display Name" bind={nameBind} />
+      <SignupInput label="Email" bind={emailBind} setValid={setEmailValid} />
+      <SignupInput label="Password" bind={passwordBind} setValid={setPasswordValid} />
       <p>Passwords must contain at least eight characters, including at least 1 letter and 1 number.</p>
-      <SignUpInput label="Address" bind={addressBind} />
+      <SignupInput label="Address" bind={addressBind} />
+      <SignupInput label="Phone Number" bind={PhoneBind} />
       <button className={isDisabled} disabled={isDisabled}>
-        Log in
+        Sign Up
       </button>
     </FormStyle>
   );

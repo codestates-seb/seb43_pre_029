@@ -1,6 +1,5 @@
-import React from 'react';
-import MainLogo from '../../../images/Logo/stack-overflow-logo-vector.svg'
-import FixSidebar from '../../Header/Fix/FixSideBar'
+import MainLogo from '../../../images/Logo/stack-overflow-logo-vector.svg';
+import FixSidebar from '../Fix/FixSideBar';
 
 import {
   HeaderContainer,
@@ -13,7 +12,9 @@ import {
   Icon4,
   Icon5,
 } from '../../style/Header/LoginFixSideHeaderstyle';
-import { LoginHeaderForm, ProfileContainer, NavIconContainer } from './FixSideHeaderComp';
+
+import { LoginHeaderForm, ProfileContainer, NavIconContainer } from './LoginFixSideHeaderComp';
+
 
 function LoginFixSideHeader() {
   /**

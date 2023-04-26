@@ -49,6 +49,7 @@ const QuestionInfo = () => {
       setComments(res.data.comments);
     });
   }, [id]);
+
   return (
     <>
       <div style={{ display: 'flex' }}>
