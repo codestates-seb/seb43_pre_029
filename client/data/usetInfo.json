@@ -14,42 +14,5 @@
       "address": "aa",
       "id": 2
     }
-  ],
-  "questions": [
-    {
-      "id": 1,
-      "question": "how to stream AVPacket using live555?",
-      "value": "llive555-latest/live/testProgs/testH264VideoStreamer.cpp in this file few AVPackets are generated i want to stream them directly without saving h264 file on my pc, is there anyway we can do that?  testH264VideoStreamer.cpp in this example it takes h264 file which is already stored in my pc instead i want it to stream directly in real time.",
-      "username": "kim",
-      "date": "27 secs ago"
-    },
-    {
-      "id": 2,
-      "question": "how can i delete(or create css parameter) on the exact div with onmouseover command",
-      "value": "i try to made a simple game, create 9 divs with various numbers in each one(1-9), the mission is to delete with on mouse over command only the divs in which the number will be less than in other div's.",
-      "username": "do",
-      "date": "40 secs ago"
-    },
-    {
-      "id": 3,
-      "question": "How to convert a 3d zmap tiff image to a color bitmap or Image<Bgr,byte>?",
-      "value": "I have a few images from a 3D scanner of a grinding disc. I want to view the image in a picturebox. I use this code : ",
-      "username": "hyun",
-      "date": "43 secs ago"
-    },
-    {
-      "id": 4,
-      "question": "hHow can I deploy an Azure Logic App Standard from one resource group to another?",
-      "value": "Need to create a new app service plan and storage account along with the deployment of azure standard logic app",
-      "username": "apple",
-      "date": "43 secs ago"
-    },
-    {
-      "id": 5,
-      "question": "Is there some way to make this flex box (and the items inside) centered?",
-      "value": "I am attempting to make the nav bar. For some reason, there is some padding (as noted by chrome's inspect (or so I think?)) But I can't seem to find it in the css file, any tips? I may be doing the flex boxes wrong, but maybe something else.",
-      "username": "bob",
-      "date": "55 secs ago"
-    }
   ]
 }

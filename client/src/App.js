@@ -9,8 +9,7 @@ import { useState } from 'react';
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(localStorage.getItem('accessToken'));
-  // const [m_id] = useState(localStorage.getItem('m_id'));
-  const [m_id] = useState(2);
+  const m_id = localStorage.getItem('m_id');
 
   return (
     <div className="App">
@@ -21,7 +20,7 @@ const App = () => {
           <Route path="/signup" element={isLogin ? <Navigate to="/" /> : <SignUp />} />
           {/* <Route path="/mypage" element={isLogin ? <MyPage /> : <Navigate to="/login" />} /> */}
           <Route path="/mypage/:id" element={<Navigate to={`/mypage/${m_id}`} />} />
-          <Route path={`/mypage/${m_id}`} element={<MyPage m_id={m_id} />} />
+          <Route path={`/mypage/${m_id}`} element={<MyPage />} />
           <Route path="/question/:id" element={<QuestionInfo {...isLogin} />} />
         </Routes>
       </BrowserRouter>

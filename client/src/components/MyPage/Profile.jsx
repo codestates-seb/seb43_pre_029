@@ -1,25 +1,23 @@
-import { useState } from 'react';
 import { ImageSample, ProfileStyle } from '../style/MyPageStyle';
 
-const ProfileInfo = () => {
-  const [status_message] = useState('부끄러웡');
+const ProfileInfo = ({ totalData }) => {
+  const { name, status_message } = totalData;
+
   return (
     <div className="infoStyle">
-      <h2>Adesti</h2>
+      <h2>{name}</h2>
       <div className="userDate">
         <div>{status_message}</div>
-        {/* <div>Last seen this week</div>
-        <div>Visitied 1 day</div> */}
       </div>
     </div>
   );
 };
 
-const Profile = () => {
+const Profile = ({ totalData }) => {
   return (
     <ProfileStyle>
       <ImageSample />
-      <ProfileInfo />
+      <ProfileInfo totalData={totalData} />
     </ProfileStyle>
   );
 };

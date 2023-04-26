@@ -1,30 +1,25 @@
 import { useEffect, useState } from 'react';
 import { InfoItemsStyle, ItemStyle, UserConfigBtnStyle, ModalStyle, ItemContainerStyle } from '../../style/MyPageStyle';
-import { SignUpInput } from '../../Input';
+import { SignupInput } from '../../Input';
 import useInput from '../../../logic/useInput';
+import axios from 'axios';
 
-const InfoItem = ({ label, value, setValue }) => {
-  // const [isEdit, setIsEdit] = useState(true);
-  const [isEdit, setIsEdit] = useState(false);
+const InfoItem = ({ data, editBind }) => {
+  const { label, value, setValue } = data;
+  const [isEdit, setIsEdit] = editBind;
 
-  const onSubmit = () => {
-    console.log(1);
-  };
   return (
     <ItemStyle>
       <label>{label}</label>
       {isEdit ? (
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            onSubmit();
-            setIsEdit(false);
+        <input className={`itemValue`} value={value} onChange={(e) => setValue(e.target.value)} />
+      ) : (
+        <div
+          className={`itemValue`}
+          onClick={() => {
+            setIsEdit(true);
           }}
         >
-          <input className={`itemValue`} value={value} onChange={(e) => setValue(e.target.value)} />
-        </form>
-      ) : (
-        <div className={`itemValue`} onClick={() => setIsEdit(true)}>
           {value}
         </div>
       )}
@@ -32,20 +27,69 @@ const InfoItem = ({ label, value, setValue }) => {
   );
 };
 
-const InfoItemContainer = () => {
-  const [status, setStatus] = useState('부끄러웡');
-  const [email, setEmail] = useState('user@gmail.com');
-  const [address, setAddress] = useState(
-    '서울특별시 관악구 남부순환로 1643 서울 관악우체국 3층 소포실 (신림동) 렉처노트',
-  );
-  const [phone, setPhone] = useState('010-0000-0000');
+const modifySubmit = async (m_id, body, editBind) => {
+  const [isEdit] = editBind;
+
+  // try {
+  //   const res = await axios.post(`/member/edit/${m_id}`, body);
+  //   console.log(res);
+
+  //   const newEdit = isEdit.map(() => false);
+  //   setIsEdit(newEdit);
+  // } catch (error) {
+  //   console.log(error);
+  // }
+};
+
+const InfoItemContainer = ({ totalData, editBind }) => {
+  const { name, email, address, status_message, phone } = totalData;
+  const m_id = localStorage.getItem('m_id');
+
+  const [nameValue, setNameValue] = useState(name);
+  const [status, setStatus] = useState(status_message);
+  const [emailaddress, setEmailaddress] = useState(email);
+  const [adPoint, setAdPoint] = useState(address);
+  const [phoneNum, setPhoneNum] = useState(phone);
+  const [body, setBody] = useState({
+    name,
+    address: adPoint,
+    status_message: status,
+    phone: phoneNum,
+  });
+
+  const bind = [
+    { label: 'Name', value: nameValue, setValue: setNameValue, idx: 1 },
+    { label: 'Status Message', value: status, setValue: setStatus, idx: 2 },
+    { label: 'Email', value: emailaddress, setValue: setEmailaddress, idx: 3 },
+    { label: 'Address', value: adPoint, setValue: setAdPoint, idx: 4 },
+    { label: 'Phone Number', value: phoneNum, setValue: setPhoneNum, idx: 5 },
+  ];
+  const [isEdit, setIsEdit] = editBind;
+
+  useEffect(() => {
+    const newBody = {
+      name,
+      address: adPoint,
+      status_message: status,
+      phone: phoneNum,
+    };
+
+    setBody(newBody);
+  }, [name, adPoint, status, phoneNum]);
 
   return (
-    <ItemContainerStyle>
-      <InfoItem label={'Status Message'} value={status} setValue={setStatus} />
-      <InfoItem label={'Email'} value={email} setValue={setEmail} />
-      <InfoItem label={'Address'} value={address} setValue={setAddress} />
-      <InfoItem label={'Phone Number'} value={phone} setValue={setPhone} />
+    <ItemContainerStyle
+      onSubmit={(e) => {
+        e.preventDefault();
+        modifySubmit(m_id, body, editBind);
+        setIsEdit(false);
+      }}
+    >
+      {bind.map((el) => (
+        <InfoItem data={el} editBind={editBind} key={el.idx} />
+      ))}
+      {/* button에 submit 속성이 있는 듯 */}
+      {isEdit && <button className="none" />}
     </ItemContainerStyle>
   );
 };
@@ -71,20 +115,20 @@ const Modal = ({ disAbleBind }) => {
     <ModalStyle>
       <div className="modalBG" />
       <form>
-        <SignUpInput label="Current Password" bind={curPassBind} setValid={setCurPassValid} />
-        <SignUpInput label="New Password" bind={newPassBind} setValid={setNewPassValid} />
-        <SignUpInput label="New Password Confirm" bind={newPassConfirmBind} />
+        <SignupInput label="Current Password" bind={curPassBind} setValid={setCurPassValid} />
+        <SignupInput label="New Password" bind={newPassBind} setValid={setNewPassValid} />
+        <SignupInput label="New Password Confirm" bind={newPassConfirmBind} />
         <button disabled={isDisabled}>{isDisabled === 'disabled' ? '수정 중' : '수정 완료'}</button>
       </form>
     </ModalStyle>
   );
 };
 
-const InfoItems = ({ isOverlay, disAbleBind }) => {
+const InfoItems = ({ isOverlay, disAbleBind, totalData, editBind }) => {
   return (
     <InfoItemsStyle>
       {isOverlay && <Modal disAbleBind={disAbleBind} />}
-      <InfoItemContainer />
+      <InfoItemContainer totalData={totalData} editBind={editBind} />
     </InfoItemsStyle>
   );
 };

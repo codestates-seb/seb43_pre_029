@@ -12,7 +12,7 @@ const signupSubmit = (e, data, navigate) => {
     .catch((err) => console.log(err));
 };
 
-const loginSubmit = async (e, data, setAccessToken, setRefreshToken) => {
+const loginSubmit = async (e, data, setAccessToken, setRefreshToken, setM_id) => {
   e.preventDefault();
 
   await axios
@@ -20,6 +20,7 @@ const loginSubmit = async (e, data, setAccessToken, setRefreshToken) => {
     .then((res) => {
       setAccessToken(res.data['accessToken']);
       setRefreshToken(res.body['refresh_token']);
+      setM_id(res.data['id']);
     })
     .catch((err) => console.log(err));
 };
