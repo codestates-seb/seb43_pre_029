@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 const ProfilLine = styled.div`
+  width: 720px;
   margin-top: 50px;
   display: flex;
   justify-content: end;
@@ -38,13 +39,14 @@ const User = styled.div`
 `;
 
 const QInfoValue = ({ qinfo }) => {
-  const { value, date, username } = qinfo;
+  const { q_content1, createAt, m_name } = qinfo;
+
   return (
     <div>
-      <div>{value}</div>
+      <div>{q_content1}</div>
       <ProfilLine>
         <Profil>
-          <div className="date">{date}</div>
+          <div className="date">{createAt}</div>
           <User>
             <div className="pic">
               <img
@@ -53,7 +55,7 @@ const QInfoValue = ({ qinfo }) => {
               />
             </div>
             <div>
-              <a href={'/'}>{username}</a>
+              <a href={'/'}>{m_name}</a>
             </div>
           </User>
         </Profil>

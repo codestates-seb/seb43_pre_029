@@ -1,46 +1,65 @@
 {
   "questions": [
     {
-      "id": 1,
-      "question": "how to stream AVPacket using live555?",
-      "value": "llive555-latest/live/testProgs/testH264VideoStreamer.cpp in this file few AVPackets are generated i want to stream them directly without saving h264 file on my pc, is there anyway we can do that?  testH264VideoStreamer.cpp in this example it takes h264 file which is already stored in my pc instead i want it to stream directly in real time.",
+      "q_id": 1,
+      "q_title": "how to stream AVPacket using live555?",
+      "q_content1": " directly in real time.",
       "email": "asd@asd.com",
-      "username": "kim",
-      "date": "27 secs ago",
-      "view": "18",
+      "m_name": "Hyun",
+      "createAt": "27 secs ago",
+      "viewCount": "18",
       "answers": [
         {
           "a_id": 1,
+          "check": false,
           "value": "llive555-latest/live/testProgs/testH264VideoStreamer.cpp in this file few AVPackets are generated i want to stream them directly without saving h264 file on my pc, is there anyway we can do that?  testH264VideoStreamer.cpp in this example it takes h264 file which is already stored in my pc instead i want it to stream directly in real time.",
           "username": "Hyun",
           "date": "27 secs ago",
           "pic": "https://images.unsplash.com/photo-1562009910-830d74050500?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=762&q=80",
-          "check": false
+          "acc": true
         },
         {
           "a_id": 2,
+          "check": true,
           "value": "The solution here lies in defining a new draw key. However, as Tjebo points out in the comments, it is difficult to customize the slopes this way because the data passed to the draw_key_* functions does not contain all the aesthetic data - only that necessary to make the standard draw keys (linewidth, colour, fill, etc). One way round this is to take advantage of the fact that ggplots are built using the ggproto system, which itself is based on nested environments. A custom draw_key_* function can be written that looks up the appropriate ancestor frame to find the whole aesthetic data set",
           "username": "유현",
           "date": "29 secs ago",
-          "pic": "https://images.unsplash.com/photo-1492370284958-c20b15c692d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=749&q=80",
-          "check": true
+          "acc": true,
+          "pic": "https://images.unsplash.com/photo-1492370284958-c20b15c692d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=749&q=80"
         }
       ],
       "comment": [
         {
-          "id": 1,
-          "value": "@tjebo annoying but not insurmountable - see below .",
-          "username": "dong",
-          "date": "234 secs ago"
+          "c_id": 1,
+          "c_comment": "@tjebo annoying but not insurmountable - see below .",
+          "m_name": "dong",
+          "createAt": "234 secs ago"
         },
         {
-          "id": 2,
-          "value": "related stackoverflow.com/questions/72784232/… - same problem here, data$slope returns NULL, thus one cannot simply use data$slope for grid::segmentGrob. Annoying.",
-          "username": "wook",
-          "date": "45 secs ago"
+          "c_id": 2,
+          "c_comment": "related stackoverflow.com/questions/72784232/… - same problem here, data$slope returns NULL, thus one cannot simply use data$slope for grid::segmentGrob. Annoying.",
+          "m_name": "wook",
+          "createAt": "45 secs ago"
         }
       ],
-      "check": true
+      "checks": [
+        {
+          "a_id": 1,
+          "check": true,
+          "value": "llive555-latest/live/testProgs/testH264VideoStreamer.cpp in this file few AVPackets are generated i want to stream them directly without saving h264 file on my pc, is there anyway we can do that?  testH264VideoStreamer.cpp in this example it takes h264 file which is already stored in my pc instead i want it to stream directly in real time.",
+          "username": "Hyun",
+          "date": "27 secs ago",
+          "pic": "https://images.unsplash.com/photo-1562009910-830d74050500?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=762&q=80"
+        },
+        {
+          "a_id": 2,
+          "check": true,
+          "value": "The solution here lies in defining a new draw key. However, as Tjebo points out in the comments, it is difficult to customize the slopes this way because the data passed to the draw_key_* functions does not contain all the aesthetic data - only that necessary to make the standard draw keys (linewidth, colour, fill, etc). One way round this is to take advantage of the fact that ggplots are built using the ggproto system, which itself is based on nested environments. A custom draw_key_* function can be written that looks up the appropriate ancestor frame to find the whole aesthetic data set",
+          "username": "유현",
+          "date": "29 secs ago",
+          "pic": "https://images.unsplash.com/photo-1492370284958-c20b15c692d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=749&q=80"
+        }
+      ]
     },
     {
       "id": 2,
@@ -48,8 +67,18 @@
       "value": "i try to made a simple game, create 9 divs with various numbers in each one(1-9), the mission is to delete with on mouse over command only the divs in which the number will be less than in other div's.",
       "username": "do",
       "date": "40 secs ago",
-      "answers": [],
-      "check": false
+      "check": false,
+      "answers": [
+        {
+          "a_id": 1,
+          "check": false,
+          "value": "아몰라ㅏㅏㅏㅏdeoStreamer.cpp in this file few AVPackets are generated i want to stream them directly without saving h264 file on my pc, is there anyway we can do that?  testH264VideoStreamer.cpp in this example it takes h264 file which is already stored in my pc instead i want it to stream directly in real time.",
+          "username": "동욱",
+          "date": "27 secs ago",
+          "pic": "https://images.unsplash.com/photo-1562009910-830d74050500?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=762&q=80",
+          "acc": true
+        }
+      ]
     },
     {
       "id": 3,
@@ -92,6 +121,20 @@
       "date": "29 secs ago",
       "pic": "https://images.unsplash.com/photo-1492370284958-c20b15c692d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=749&q=80",
       "check": true
+    }
+  ],
+  "comment": [
+    {
+      "c_id": 1,
+      "value": "@tjebo annoying but not insurmountable - see below .",
+      "username": "dong",
+      "date": "234 secs ago"
+    },
+    {
+      "c_id": 2,
+      "value": "related stackoverflow.com/questions/72784232/… - same problem here, data$slope returns NULL, thus one cannot simply use data$slope for grid::segmentGrob. Annoying.",
+      "username": "wook",
+      "date": "45 secs ago"
     }
   ]
 }
