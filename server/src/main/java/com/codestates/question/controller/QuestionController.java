@@ -2,6 +2,7 @@ package com.codestates.question.controller;
 
 import com.codestates.member.service.MemberService;
 import com.codestates.question.dto.QuestionDto;
+import com.codestates.question.dto.QuestionResponseDto;
 import com.codestates.question.entity.Question;
 import com.codestates.question.mapper.QuestionMapper;
 import com.codestates.question.response.MultiResponseDto;
@@ -74,7 +75,6 @@ public class QuestionController {
     @PatchMapping("/edit/answer-accept/{a_id}")
     public ResponseEntity acceptAnswer(@PathVariable("a_id") @Positive Long a_id,
                                         @Valid @RequestBody QuestionDto.AcceptAnswerPatch acceptAnswerPatch){
-//       Long m_id = JwtParseInterceptor.getAuthenticatedMemberId();
         Question question = questionService.acceptAnswer(mapper.acceptAnswerPatchDtoToQuestion(acceptAnswerPatch), a_id);
         return new ResponseEntity<>(mapper.questionToQuestionResponseDto(question),HttpStatus.OK);
     }
@@ -87,4 +87,18 @@ public class QuestionController {
         questionService.increaseLikes(question,m_id);
         return new ResponseEntity<>(mapper.questionToQuestionResponseDto(question), HttpStatus.OK);
     }
+
+    // 검색기능
+    @GetMapping("/search")
+    public ResponseEntity searchQuestions(@RequestParam("keyword") String keyword,
+                                          @RequestParam("page") Long page) {
+
+        List<Question> pageQuestions = questionService.searchQuestions(page -1,keyword);
+        Page<Question> questions = questionService.convertToPage(pageQuestions, page, 5);
+
+        return new ResponseEntity<>(
+                new MultiResponseDto<>(mapper.questionsToQuestionResponseDtos(pageQuestions),questions)
+                ,HttpStatus.OK);
+    }
+
 }
