@@ -40,13 +40,13 @@ const QuestionInfo = () => {
   const [qanswers, setQianswers] = useState([]);
   const [comments, setComments] = useState([]);
 
-  useEffect(() => {
-    axios.get(`http://localhost:4000/questions/${id}`).then((res) => {
-      setQinfo(res.data);
-      setQianswers(res.data.answers);
-      setComments(res.data.comment);
-    });
-  }, [id]);
+  // useEffect(() => {
+  //   axios.get(`http://localhost:4000/questions/${id}`).then((res) => {
+  //     setQinfo(res.data);
+  //     setQianswers(res.data.answers);
+  //     setComments(res.data.comment);
+  //   });
+  // }, [id]);
 
   return (
     <>
