@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { GoTriangleUp, GoTriangleDown } from 'react-icons/go';
 import { BsBookmark } from 'react-icons/bs';
@@ -81,6 +81,7 @@ const Answer = ({ answer, a_id, qinfo, qanswers, setQianswers }) => {
   const [commentModal, setCommentModal] = useState(false);
   const [answerModal, setAnswerModal] = useState(false);
   const [updateValue, setUpdateValue] = useState('');
+  const navigate = useNavigate();
   // console.log(answer);
   // console.log(qanswers);
   const onCheck = (a_id) => {
@@ -173,7 +174,7 @@ const Answer = ({ answer, a_id, qinfo, qanswers, setQianswers }) => {
                         a_content: updateValue,
                       })
                       .then((res) => {
-                        setQianswers((prev) => [...prev, { ...prev, a_content: updateValue }]); // [{},{},{},{},{}]
+                        navigate(0);
                       });
                   }}
                 >
