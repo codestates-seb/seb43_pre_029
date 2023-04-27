@@ -5,6 +5,8 @@ import 'react-quill/dist/quill.snow.css';
 import 'quill/dist/quill.snow.css';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/vs2015.css';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const CodeBlock = Quill.import('formats/code-block');
 
@@ -41,23 +43,42 @@ const formats = [
   'code-block',
 ];
 
-export default function AnswerForm() {
-  const [commentValue, setCommentValue] = useState({
-    value: '',
-  });
+export default function AnswerForm({ qinfo, setQianswers, qanswers }) {
+  const { q_id, m_id } = qinfo;
 
-  const handleCommentChange = (content) => {
-    setCommentValue((prevCommentValue) => ({ ...prevCommentValue, value: content }));
-    console.log('🌈value : ', commentValue);
+  const [answerInputValue, setAnswerInputValue] = useState('');
+
+  const navigate = useNavigate();
+
+  const handleAnswerChange = (editorContent) => {
+    setAnswerInputValue(editorContent);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post('http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/answer', {
+        q_id: q_id,
+        m_id: m_id,
+        a_content: answerInputValue,
+      })
+      .then((res) => {
+        alert('답변 등록 완료하였습니다!');
+        setAnswerInputValue('');
+        navigate(0);
+      })
+      .catch((err) => {
+        alert('답변 등록에 실패하였습니다.');
+      });
   };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <AnswerInput>
         <ReactQuill
           className="my-quill"
-          value={commentValue.value}
-          onChange={handleCommentChange}
+          value={answerInputValue}
+          onChange={handleAnswerChange}
           theme="snow"
           modules={modules}
           formats={formats}

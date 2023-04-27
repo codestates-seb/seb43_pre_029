@@ -9,21 +9,28 @@ const MyPageBlock = ({ number, text }) => {
   );
 };
 
-const StateBlock = () => {
+const StateBlock = ({ totalData }) => {
+  const { activity_count, question_count, comment_count, answer_count } = totalData;
+
   return (
     <div className="contents">
-      <MyPageBlock number={1} text="questions" />
-      <MyPageBlock number={2} text="answered" />
-      <MyPageBlock number={3} text="comment" />
+      <div className="first-column">
+        <MyPageBlock number={activity_count} text="activity_count" />
+        <MyPageBlock number={answer_count} text="answered" />
+      </div>
+      <div className="second-column">
+        <MyPageBlock number={question_count} text="questions" />
+        <MyPageBlock number={comment_count} text="comment" />
+      </div>
     </div>
   );
 };
 
-const StateContainer = () => {
+const StateContainer = ({ totalData }) => {
   return (
     <StatsStyle>
       <h4>Stats</h4>
-      <StateBlock />
+      <StateBlock totalData={totalData} />
     </StatsStyle>
   );
 };

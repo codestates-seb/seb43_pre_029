@@ -25,8 +25,8 @@ const OneButton = ({ domain }) => {
 
   return (
     <button>
-      {/* <img className="logo" src={domain} alt={`${domainName} logo`} /> */}
-      <SVGIcon id={domainName} width="1rem" height="1rem" />
+      <img className="logo" src={domain} alt={`${domainName} logo`} />
+      {/* <SVGIcon id={domainName} width="1rem" /> */}
       <span>{`Log in with ${domainName}`}</span>
     </button>
   );

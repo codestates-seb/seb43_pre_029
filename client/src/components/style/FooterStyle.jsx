@@ -3,14 +3,15 @@ import styled from 'styled-components';
 const FooterContainer = styled.footer`
   background-color: rgb(35, 38, 41);
   color: rgb(186, 191, 196);
-  padding: 1.875rem 17.5rem;
+  padding: 1rem 0.75rem 1rem 0.75rem;
+  margin: 0 auto;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   bottom: -2rem;
   width: 100%;
   /* height: 21.25rem; */
   box-sizing: border-box;
-  z-index: 999;
+  z-index: 800;
   position: relative;
 `;
 
@@ -37,7 +38,8 @@ const FooterLinkList = styled.ul`
 const FooterLink = styled.a`
   color: rgb(186, 191, 196);
   text-decoration: none;
-  padding: 0.625rem;
+  /* padding: 0.625rem; */
+  padding: 1.5rem;
 `;
 
 const FooterLogo = styled.a``;
@@ -54,10 +56,7 @@ const Wrapper = styled.div`
   font-size: 0.6875rem;
 
   p {
-    margin: 0.1875rem 0 0 0.625rem;
-  }
-  p:first-child {
-    margin-top: 1.875rem;
+    margin: 0.1875rem 0 0 0.9rem;
   }
 `;
 

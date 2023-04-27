@@ -1,23 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const ContnentTemplate = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 770px;
-  padding: 20px 25px;
   padding: 20px 0px 20px 25px;
   margin-right: 30px;
   /* border: 1px solid red; */
 `;
 const ContentHeader = styled.div`
+  height: 62px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 13px;
   h1 {
     font-size: 30px;
-    font-weight: 500;
   }
 `;
 const AskBtn = styled.button`
@@ -25,6 +26,9 @@ const AskBtn = styled.button`
   background-color: rgb(9, 149, 255);
   border-radius: 4px;
   border: 1px solid rgb(9, 149, 255);
+  height: 30px;
+  display: flex;
+  align-items: center;
   cursor: pointer;
   a {
     color: rgb(255, 255, 255);
@@ -80,7 +84,7 @@ const Contnent = () => {
       <ContentHeader>
         <h1>Top Questions</h1>
         <AskBtn>
-          <a href="/">Ask Question</a>
+          <Link to="/question/ask">Ask Question</Link>
         </AskBtn>
       </ContentHeader>
       <ContentA>

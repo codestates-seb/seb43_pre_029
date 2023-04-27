@@ -5,8 +5,9 @@ const useBind = () => {
   const emailBind = useInput();
   const passwordBind = useInput();
   const addressBind = useInput();
+  const PhoneBind = useInput();
 
-  return { nameBind, emailBind, passwordBind, addressBind };
+  return { nameBind, emailBind, passwordBind, addressBind, PhoneBind };
 };
 
 export default useBind;

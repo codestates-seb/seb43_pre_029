@@ -1,42 +1,44 @@
 import { FormStyle } from '../style/LoginStyle';
 
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 import { signupSubmit } from '../../logic/onSubmit';
-import { SignUpInput } from '../Input';
 import useBind from '../../logic/useBind';
+import { SignupInput } from '../Input';
 
 const SignUpForm = () => {
   const navigate = useNavigate();
-  const { nameBind, emailBind, passwordBind, addressBind } = useBind();
+  const { nameBind, emailBind, passwordBind, addressBind, PhoneBind } = useBind();
 
   const data = {
-    name: nameBind.value,
+    name: nameBind.value || 'default',
     email: emailBind.value,
     password: passwordBind.value,
-    address: addressBind.value,
+    address: addressBind.value || 'default',
+    phone: PhoneBind.value,
   };
 
   const [isDisabled, setIsDisabled] = useState('disabled');
   const [emailValid, setEmailValid] = useState(false);
   const [passwordValid, setPasswordValid] = useState(false);
+  const [phoneValid, setPhoneValid] = useState(false);
 
   useEffect(() => {
-    if (emailValid && passwordValid) return setIsDisabled('');
+    if (emailValid && passwordValid && phoneValid) return setIsDisabled('');
     setIsDisabled('disabled');
-  }, [emailValid, passwordValid]);
+  }, [emailValid, passwordValid, phoneValid]);
 
   return (
     <FormStyle onSubmit={(e) => signupSubmit(e, data, navigate)}>
-      <SignUpInput label="Display Name" bind={nameBind} />
-      <SignUpInput label="Email" bind={emailBind} setValid={setEmailValid} />
-      <SignUpInput label="Password" bind={passwordBind} setValid={setPasswordValid} />
+      <SignupInput label="Display Name" bind={nameBind} />
+      <SignupInput label="Email" bind={emailBind} setValid={setEmailValid} />
+      <SignupInput label="Password" bind={passwordBind} setValid={setPasswordValid} />
       <p>Passwords must contain at least eight characters, including at least 1 letter and 1 number.</p>
-      <SignUpInput label="Address" bind={addressBind} />
+      <SignupInput label="Address" bind={addressBind} />
+      <SignupInput label="Phone Number" bind={PhoneBind} setValid={setPhoneValid} />
       <button className={isDisabled} disabled={isDisabled}>
-        Log in
+        Sign Up
       </button>
     </FormStyle>
   );

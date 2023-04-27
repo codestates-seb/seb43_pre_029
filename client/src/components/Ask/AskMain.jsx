@@ -1,10 +1,9 @@
 import axios from 'axios';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Editor from './Editor';
 import InputTitle from './InputTitle';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { setAskContent, setAskTitle } from '../../store';
+import { useNavigate } from 'react-router-dom';
 
 /**
  *
@@ -12,9 +11,11 @@ import InputTitle from './InputTitle';
  */
 const AskMain = () => {
   const [inputValue, setInputValue] = useState({
-    title: '',
-    body: '',
+    q_title: '',
+    q_content: '',
   });
+
+  const navigate = useNavigate();
 
   /**
    * 질문 글 등록 기능!
@@ -23,17 +24,21 @@ const AskMain = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post('http://localhost:4000/questions', inputValue)
+      .post('http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/question/ask', {
+        ...inputValue,
+        m_id: 1,
+      })
       .then((res) => {
+        console.log(res);
         alert('질문 게시글 등록 완료하였습니다!');
         setInputValue((prevInputValue) => ({
           ...prevInputValue,
-          title: '',
-          body: '',
+          q_title: '',
+          q_content: '',
         }));
+        navigate('/');
       })
       .catch((err) => {
-        console.error(err);
         alert('질문 게시글 등록에 실패하였습니다.');
       });
   };
@@ -44,8 +49,8 @@ const AskMain = () => {
   const handleAllClear = () => {
     setInputValue((prevInputValue) => ({
       ...prevInputValue,
-      title: '',
-      body: '',
+      q_title: '',
+      q_content: '',
     }));
   };
 
@@ -62,6 +67,7 @@ const AskMain = () => {
           <Btn color="red" type="button" onClick={handleAllClear}>
             clear(초기화)
           </Btn>
+
           <Btn color="#0995ff" type="submit" onClick={handleSubmit}>
             submit(제출)
           </Btn>

@@ -1,14 +1,18 @@
 import styled from 'styled-components';
-import { BsFillInboxFill, IoIosTrophy, BsFillQuestionCircleFill, MdChatBubble } from '../../Header/Icon';
+import { BsFillInboxFill, IoIosTrophy, BsFillQuestionCircleFill, MdChatBubble } from '../../Icon';
 
 // 유저 프로필
 const ProfileWrapper = styled.div`
   display: flex;
   gap: 0.4rem;
-  padding: 0.625rem 1.125rem 0.625rem 0;
+  padding: 0.05rem 1.125rem 0.05rem 0;
 
   &:hover {
     background-color: rgba(227, 230, 232, 0.61);
+  }
+
+  img {
+    margin-top: 10px;
   }
 `;
 
