@@ -4,6 +4,7 @@ import com.codestates.comment.dto.CommentDto;
 import com.codestates.comment.entity.Comment;
 import com.codestates.comment.mapper.CommentMapper;
 import com.codestates.comment.service.CommentService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import javax.validation.Valid;
 @Validated
 @RequestMapping("/comment")
 @Transactional
+@CrossOrigin(origins = "*")
 public class CommentController {
 
     private final CommentService commentService;

@@ -26,9 +26,7 @@ public class Question extends Auditable {
     private String q_title;
 
     @Column(columnDefinition = "TEXT", nullable = false)
-    private String q_content1;
-    @Column(columnDefinition = "TEXT", nullable = false)
-    private String q_content2;
+    private String q_content;
 
     @ManyToOne
     @JoinColumn(name = "m_id")

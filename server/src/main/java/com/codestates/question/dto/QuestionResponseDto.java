@@ -18,8 +18,7 @@ public class QuestionResponseDto {
     private String m_name;
     private Long q_id;
     private String q_title;
-    private String q_content1;
-    private String q_content2;
+    private String q_content;
     private Long suggestedCount;
     private Long viewCount;
     private Long answerCount;

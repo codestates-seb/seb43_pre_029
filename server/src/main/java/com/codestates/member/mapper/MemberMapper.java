@@ -11,6 +11,7 @@ public interface MemberMapper {
     Member MemberPostDtoToMember(MemberDto.Post memberPostDto);
     Member MemberPatchDtoToMember(MemberDto.Patch memberPatchDto);
     MemberDto.MemberResponse MemberToMemberResponseDto(Member member);
+    MemberDto.Login_Response testMapper(Member member);
     default MemberDto.MemberGetResponse MemberToMemberGetResponse(Member member){
         MemberDto.MemberGetResponse response = new MemberDto.MemberGetResponse();
         response.setAddress(member.getEmail());
@@ -18,6 +19,7 @@ public interface MemberMapper {
         response.setAddress(member.getAddress());
         response.setStatus_message(member.getStatus_message());
         response.setEmail(member.getEmail());
+        response.setPhone(member.getPhone());
 
         Long questionCount = Long.valueOf(member.getQuestions().size());
         Long answerCount = Long.valueOf(member.getAnswers().size());

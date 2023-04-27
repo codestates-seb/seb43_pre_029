@@ -30,11 +30,8 @@ public class QuestionManager {
         Optional.ofNullable(fromQuestion.getQ_title())
                 .ifPresentOrElse(toQuestion::setQ_title, () -> {
                 });
-        Optional.ofNullable(fromQuestion.getQ_content1())
-                .ifPresentOrElse(toQuestion::setQ_content1, () -> {
-                });
-        Optional.ofNullable(fromQuestion.getQ_content2())
-                .ifPresentOrElse(toQuestion::setQ_content2, () -> {
+        Optional.ofNullable(fromQuestion.getQ_content())
+                .ifPresentOrElse(toQuestion::setQ_content, () -> {
                 });
         return toQuestion;
     }

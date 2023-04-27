@@ -19,4 +19,5 @@ public class AnswerResponseDto {
     private LocalDateTime modifiedAt;
     private Answer.AnswerStatus a_status;
     private Boolean accepted;
+    private String m_name;
 }
