@@ -24,10 +24,7 @@ public class QuestionDto {
         private String q_title;
 
         @NotBlank
-        private String q_content1;
-
-        @NotBlank
-        private String q_content2;
+        private String q_content;
     }
 
     @Getter
