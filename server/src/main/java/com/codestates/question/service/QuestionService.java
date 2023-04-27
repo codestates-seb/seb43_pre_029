@@ -186,7 +186,7 @@ public class QuestionService {
         List<Question> filteredQuestions = pageQuestions.getContent();
         List<Question> resultQuestions = new ArrayList<>();
         for(Question question : filteredQuestions){
-            if(question.getQ_title().contains(keyword)|| question.getQ_content1().contains(keyword)|| question.getQ_content2().contains(keyword)){
+            if(question.getQ_title().contains(keyword)|| question.getQ_content().contains(keyword)){
                 resultQuestions.add(question);
             }
         }
