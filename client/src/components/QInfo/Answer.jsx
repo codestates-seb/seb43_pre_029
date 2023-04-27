@@ -75,7 +75,6 @@ const User = styled.div`
   }
 `;
 
-
 const Answer = ({ answer }) => {
   const { a_content, m_name, createdAt, pic, m_id, q_id, accepted, a_id } = answer;
   const [newAnswer, setNewAnswer] = useState(accepted);
@@ -88,22 +87,13 @@ const Answer = ({ answer }) => {
   const onCheck = (a_id) => {
     console.log(a_id);
     setNewAnswer(!newAnswer);
-    axios
-      .patch(`http://ec2-3-39-194-243.ap-northeast-2.compute.amazonaws.com:8080/question/edit/answer-accept/${a_id}`, {
+    axios.patch(
+      `http://ec2-3-39-194-243.ap-northeast-2.compute.amazonaws.com:8080/question/edit/answer-accept/${a_id}`,
+      {
         q_id: q_id,
         m_id: m_id,
-      })
-      .then((response) => {
-        const newAnsweroo = qanswers.map((el) => {
-          if (el.a_id === a_id) {
-            console.log('a_id', a_id);
-            return { ...el, check: !el.check };
-          }
-          return el;
-        });
-        setNewAnswer(newAnsweroo);
-      })
-      .catch((err) => console.log(Error));
+      },
+    );
   };
 
   return (
@@ -144,10 +134,19 @@ const Answer = ({ answer }) => {
           {answerModal ? (
             <div className="quill">
               <FlexColumn>
-                <ReactQuill />
+                <ReactQuill
+                  className="my-quill"
+                  value={updateValue}
+                  onChange={(content) => {
+                    setUpdateValue(content);
+                  }}
+                  theme="snow"
+                  placeholder="수정할 내용을 적어주세요. 😊"
+                />
               </FlexColumn>
             </div>
           ) : null}
+
           <Btn
             className="answerBtn"
             color="skyblue"
@@ -158,39 +157,28 @@ const Answer = ({ answer }) => {
             답글 수정
           </Btn>
           {answerModal ? (
-            <FlexColumn>
-              <form>
-                <ReactQuill
-                  className="my-quill"
-                  value={updateValue}
-                  onChange={(content) => {
-                    setUpdateValue(content);
-                  }}
-                  theme="snow"
-                  placeholder="질문할 내용을 상세히 적어주세요."
-                />
-                <Btn
-                  color="black"
-                  type="submit"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    axios
-                      .patch(`/answer/edit/${a_id}`, {
-                        a_id: a_id,
-                        q_id: q_id,
-                        m_id: m_id,
-                        a_content: updateValue,
-                      })
-                      .then((res) => {
-                        navigate(0);
-                      });
-                  }}
-                >
-                  수정!
-                </Btn>
-              </form>
-            </FlexColumn>
+            <Btn
+              type="submit"
+              color="lightgreen"
+              className="answerBtn"
+              onClick={(e) => {
+                e.preventDefault();
+                axios
+                  .patch(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/answer/edit/${a_id}`, {
+                    a_id: a_id,
+                    q_id: q_id,
+                    m_id: m_id,
+                    a_content: updateValue,
+                  })
+                  .then(() => {
+                    navigate(0);
+                  });
+              }}
+            >
+              수정 완료
+            </Btn>
           ) : null}
+
           <Btn
             className="answerBtn"
             color="tomato"
@@ -252,7 +240,7 @@ const Flex = styled.div`
   justify-content: end;
   .quill {
     height: 150px;
-    width: 580px;
+    width: 505px;
     margin-bottom: 30px;
     padding-bottom: 20px;
   }
