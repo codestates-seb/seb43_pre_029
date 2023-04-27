@@ -59,7 +59,7 @@ const AskMain = () => {
       <form>
         <InputTitle setInputValue={setInputValue} inputValue={inputValue} />
         <Box>
-          <label htmlFor="body">본문</label>
+          <label htmlFor="body">Content</label>
           <p>Be specific and imagine you’re asking a question to another person.</p>
           <Editor setInputValue={setInputValue} inputValue={inputValue} />
         </Box>
