@@ -24,10 +24,7 @@ public class QuestionDto {
         private String q_title;
 
         @NotBlank
-        private String q_content1;
-
-        @NotBlank
-        private String q_content2;
+        private String q_content;
     }
 
     @Getter
@@ -43,10 +40,7 @@ public class QuestionDto {
         private String q_title;
 
         @NotSpace(message = "내용은 공백이 아니어야 합니다")
-        private String q_content1;
-
-        @NotSpace(message = "내용은 공백이 아니어야 합니다")
-        private String q_content2;
+        private String q_content;
     }
 
     @Getter
