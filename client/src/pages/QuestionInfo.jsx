@@ -45,8 +45,7 @@ const QuestionInfo = () => {
         setQianswers(res.data.answers);
         setComments(res.data.comments);
       });
-  }, []);
-
+  }, [p_id]);
   return (
     <>
       <div style={{ display: 'flex' }}>
@@ -56,7 +55,7 @@ const QuestionInfo = () => {
           <QInfoMain qinfo={qinfo} />
           <CommentList>
             {comments.map((comment) => (
-              <Comment comment={comment} key={comment.id} />
+              <Comment comment={comment} key={comment.c_id} c_id={comment.c_id} />
             ))}
           </CommentList>
           <AnswerTotal>{qinfo.answerCount} Answers</AnswerTotal>
