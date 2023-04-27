@@ -148,7 +148,7 @@ const QInfoValue = ({ qinfo }) => {
         </Profil>
       </ProfilLine>
       <Btn color="skyblue" onClick={openQuestionModal}>
-        {questionModal ? '닫기' : '수정'}
+        {questionModal ? '닫기' : '질문 글 수정'}
       </Btn>
       {questionModal ? (
         <div>
@@ -164,7 +164,7 @@ const QInfoValue = ({ qinfo }) => {
             placeholder="수정할 내용을 적어주세요."
           />
           <Btn
-            color="skyblue"
+            color="purple"
             onClick={(e) => {
               e.preventDefault();
               axios
@@ -182,9 +182,8 @@ const QInfoValue = ({ qinfo }) => {
           </Btn>
         </div>
       ) : null}
-      <br />
-      <Btn color="red" onClick={handleDelete(q_id)}>
-        삭제하기
+      <Btn color="tomato" onClick={handleDelete(q_id)}>
+        질문 글 삭제
       </Btn>
       <AddComment
         onClick={() => {
@@ -208,21 +207,26 @@ const QInfoValue = ({ qinfo }) => {
                 .then((res) => {
                   alert('댓글 등록 완료하였습니다!');
                   setCommentInput('');
+                  navigate(0);
                 })
                 .catch((err) => {
                   alert('댓글 등록에 실패하였습니다.');
                 });
             }}
           >
-            <input
-              className="cInput"
-              type="text"
-              value={commentInput}
-              onChange={(e) => {
-                setCommentInput(e.target.value);
-              }}
-            />
-            <button type="submit">제출</button>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <input
+                className="cInput"
+                type="text"
+                value={commentInput}
+                onChange={(e) => {
+                  setCommentInput(e.target.value);
+                }}
+              />
+              <Btn color="purple" type="submit">
+                제출
+              </Btn>
+            </div>
           </form>
         </CommetInput>
       ) : null}
