@@ -22,7 +22,7 @@ const App = () => {
           <Route path="/signup" element={isLogin ? <Navigate to="/" /> : <SignUp />} />
           <Route path="/mypage/:id" element={isLogin ? <Navigate to={`/mypage/${m_id}`} /> : <Login />} />
           <Route path={`/mypage/${m_id}`} element={<MyPage m_id={m_id} />} />
-          <Route path="/question/:id" element={<QuestionInfo {...isLogin} />} />
+          <Route path="/question/:p_id" element={<QuestionInfo {...isLogin} />} />
           <Route path="/loding" element={<Loding />} />
           <Route path="/question/ask" element={<Ask />} />
         </Routes>

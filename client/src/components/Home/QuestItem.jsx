@@ -65,10 +65,7 @@ const Checkicon = styled(GoCheck)`
   margin: 0px 2px 0px 2px;
 `;
 const QuestItem = ({ item }) => {
-  const { q_id, id, q_title, m_name, createAt, answers } = item;
-  // const acc = answer.acc;
-  // console.log(answer.a_id);
-  // console.log('acc', acc);
+  const { q_id, q_title, m_name, createAt, answers } = item;
   const accepted = answers.findIndex((e) => e.accepted === true);
 
   return (
@@ -85,12 +82,11 @@ const QuestItem = ({ item }) => {
             {answers.length} answers
           </div>
         )}
-        {/* <div>{answers.length} answers</div> */}
         <div>2 views</div>
       </div>
       <div className="B">
         <h4>
-          <Link to={`/question/${id}`}>{q_title}</Link>
+          <Link to={`/question/${q_id}`}>{q_title}</Link>
         </h4>
         <div className="info">
           <div className="user">{m_name}</div>

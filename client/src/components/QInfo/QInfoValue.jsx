@@ -7,6 +7,7 @@ import 'quill/dist/quill.snow.css';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/vs2015.css';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const ProfilLine = styled.div`
   width: 720px;
@@ -47,7 +48,7 @@ const User = styled.div`
 `;
 
 const QInfoValue = ({ qinfo }) => {
-  const { q_content1, createAt, m_name } = qinfo;
+  const { q_content, createAt, m_name, q_id, m_id } = qinfo;
 
   const modules = useMemo(() => {
     return {
@@ -86,10 +87,20 @@ const QInfoValue = ({ qinfo }) => {
   const [commentInput, setCommentInput] = useState('');
   const [questionModal, setQuestionModal] = useState(false);
   const [updateQuestionInput, setUpdateQuestionInput] = useState('');
-  const { id } = useParams();
+  const navigate = useNavigate();
 
-  const handleDelete = (id) => (e) => {
-    axios.delete(`http://localhost:4000/question/${id}`);
+  const handleDelete = (q_id) => (e) => {
+    axios
+      .delete(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/question`, {
+        data: {
+          q_id: q_id,
+          m_id: m_id,
+        },
+      })
+      .then(() => {
+        alert('해당 글이 삭제 되었습니다!');
+        navigate('/');
+      });
   };
 
   const openQuestionModal = (e) => {
@@ -98,9 +109,8 @@ const QInfoValue = ({ qinfo }) => {
 
   return (
     <div>
-      <div>{q_content1}</div>
       <ReactQuill
-        value={q_content1}
+        value={q_content}
         readOnly={true}
         modules={{
           toolbar: false,
@@ -142,9 +152,15 @@ const QInfoValue = ({ qinfo }) => {
             color="skyblue"
             onClick={(e) => {
               e.preventDefault();
-              axios.patch(`http://localhost:4000/question/${id}`, {
-                q_content: updateQuestionInput,
-              });
+              axios
+                .patch(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/question/edit`, {
+                  q_id: q_id,
+                  m_id: m_id,
+                  q_content: updateQuestionInput,
+                })
+                .then(() => {
+                  navigate(0);
+                });
             }}
           >
             제출
@@ -152,7 +168,7 @@ const QInfoValue = ({ qinfo }) => {
         </div>
       ) : null}
       <br />
-      <Btn color="red" onClick={handleDelete(id)}>
+      <Btn color="red" onClick={handleDelete(q_id)}>
         삭제하기
       </Btn>
       <div
@@ -169,13 +185,12 @@ const QInfoValue = ({ qinfo }) => {
             onSubmit={(e) => {
               e.preventDefault();
               axios
-                .post('http://localhost:4000/comment', { m_id: 0, q_id: id, c_comment: commentInput })
+                .post('http://localhost:4000/comment', { m_id: m_id, q_id: q_id, c_comment: commentInput })
                 .then((res) => {
                   alert('댓글 등록 완료하였습니다!');
                   setCommentInput('');
                 })
                 .catch((err) => {
-                  console.error(err);
                   alert('댓글 등록에 실패하였습니다.');
                 });
             }}
