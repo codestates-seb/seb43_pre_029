@@ -4,7 +4,7 @@ import {
   LogoImg,
   HeaderMenu,
   MenuButton,
-  SearchInputWrapper,
+  SearchInputForm,
   IconStyle,
   Icon1,
   SearchInput,
@@ -27,15 +27,15 @@ const LogoContainer = () => {
   );
 };
 
-const SearchForm = () => {
+const SearchContainer = () => {
   return (
     <form>
-      <SearchInputWrapper>
+      <SearchInputForm>
         <IconStyle>
           <Icon1 />
         </IconStyle>
         <SearchInput type="text" placeholder="Search..." />
-      </SearchInputWrapper>
+      </SearchInputForm>
     </form>
   );
 };
@@ -52,4 +52,4 @@ const ProfileContainer = () => {
   );
 };
 
-export { HamburgerContainer, LogoContainer, SearchForm, ProfileContainer };
+export { HamburgerContainer, LogoContainer, SearchContainer, ProfileContainer };

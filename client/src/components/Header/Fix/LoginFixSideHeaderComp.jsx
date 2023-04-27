@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import {
-  SearchInputWrapper,
+  SearchInputForm,
   IconStyle,
   Icon1,
   SearchInput,
@@ -9,18 +9,24 @@ import {
   Num,
   NavIconStyle,
 } from '../../style/Header/LoginFixSideHeaderstyle';
-// } from '../style/LoginFixSideHeaderstyle';
 
-const LoginHeaderForm = ({ searchvalueBind }) => {
+const LoginHeaderForm = ({ searchvalueBind, isSearchBind }) => {
   const [searchValue, setSearchValue] = searchvalueBind;
+  const [isSearched, setIsSearched] = isSearchBind;
+
   return (
-    <form>
-      <SearchInputWrapper>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        setIsSearched(true);
+      }}
+    >
+      <SearchInputForm>
         <IconStyle>
           <Icon1 />
         </IconStyle>
-        <SearchInput value={searchValue} onChange={setSearchValue} placeholder="Search..." />
-      </SearchInputWrapper>
+        <SearchInput value={searchValue} onChange={(e) => setSearchValue(e.target.value)} placeholder="Search..." />
+      </SearchInputForm>
     </form>
   );
 };

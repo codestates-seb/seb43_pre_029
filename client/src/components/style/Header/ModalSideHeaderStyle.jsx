@@ -8,10 +8,10 @@ import {
   LogoImg,
   HeaderMenu,
   MenuButton,
-  SearchInputWrapper,
+  SearchInputForm,
   IconStyle,
   Icon2,
-  SearchForm,
+  SearchContainerStyle,
   SearchInput,
   ButtonWrapper,
   LoginButton,
@@ -111,7 +111,7 @@ export { HeaderContainer };
 export { HamburgerStyle, Icon1Close, Icon1Open };
 export { Logo, LogoImg };
 export { HeaderMenu, MenuButton };
-export { SearchForm, SearchInputWrapper, IconStyle, Icon2, SearchInput };
+export { SearchContainerStyle, SearchInputForm, IconStyle, Icon2, SearchInput };
 export { ButtonWrapper, LoginButton, SignupButton };
 
 export { SidebarWrapper, SidebarMenu, SidebarMenuItem, SidebarCategories };

@@ -9,12 +9,12 @@ import EntireStyle from '../components/style/EntireStyle';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function MyPage({ m_id, searchvalueBind }) {
+function MyPage({ m_id, searchvalueBind, isSearchBind }) {
   useEffect(() => {
     axios
       .get(`/member/${m_id}`)
       .then((res) => {
-        setTotalData(res);
+        setTotalData(res.data);
       })
       .catch((err) => console.log(err));
   }, [m_id]);
@@ -32,20 +32,20 @@ function MyPage({ m_id, searchvalueBind }) {
   const disAbleBind = { isDisabled, setIsDisabled };
 
   const [totalData, setTotalData] = useState({
-    email: 'user@gmail.com',
-    name: 'eunhee',
-    address: '서울특별시 관악구 남부순환로 1643 서울 관악우체국 3층 소포실 (신림동) 렉처노트',
-    status_message: '부끄러웡',
-    phone: '010-0000-0000',
-    activity_count: 6,
-    question_count: 1,
-    comment_count: 3,
-    answer_count: 2,
+    email: '',
+    name: '',
+    address: '',
+    status_message: '',
+    phone: '',
+    activityCount: 0,
+    questionCount: 0,
+    commentCount: 0,
+    answerCount: 0,
   });
 
   return (
     <EntireStyle>
-      {/* <LoginFixSideHeader searchvalueBind={searchvalueBind} /> */}
+      <LoginFixSideHeader searchvalueBind={searchvalueBind} isSearchBind={isSearchBind} />
       <MyPageStyle>
         <UserConfigBtn isOverlay={isOverlay} setIsOverlay={setIsOverlay} isDisabled={isDisabled} editBind={editBind} />
         <Profile totalData={totalData} />
