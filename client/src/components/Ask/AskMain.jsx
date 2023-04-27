@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Editor from './Editor';
 import InputTitle from './InputTitle';
+import { useNavigate } from 'react-router-dom';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { setAskContent, setAskTitle } from '../../store';
 
@@ -16,6 +17,8 @@ const AskMain = () => {
     q_content: '',
   });
 
+  const navigate = useNavigate();
+
   /**
    * 질문 글 등록 기능!
    * @param {*} e : 이벤트 객체
@@ -23,14 +26,19 @@ const AskMain = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post('ec2-3-39-194-243.ap-northeast-2.compute.amazonaws.com:8080/question/ask', { ...inputValue, m_id: 1 })
+      .post('http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/question/ask', {
+        ...inputValue,
+        m_id: 1,
+      })
       .then((res) => {
+        console.log(res);
         alert('질문 게시글 등록 완료하였습니다!');
         setInputValue((prevInputValue) => ({
           ...prevInputValue,
           q_title: '',
           q_content: '',
         }));
+        navigate('/');
       })
       .catch((err) => {
         console.error(err);
@@ -62,6 +70,7 @@ const AskMain = () => {
           <Btn color="red" type="button" onClick={handleAllClear}>
             clear(초기화)
           </Btn>
+
           <Btn color="#0995ff" type="submit" onClick={handleSubmit}>
             submit(제출)
           </Btn>
