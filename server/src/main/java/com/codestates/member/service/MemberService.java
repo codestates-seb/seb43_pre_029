@@ -25,7 +25,6 @@ public class MemberService {
         findMember.checkActiveMember(findMember);
         // 수정권한이 있는지 확인 (토큰기반 인증 가능한지)
 
-        findMember.setPassword(member.getPassword());
         findMember.setName(member.getName());
         findMember.setAddress(member.getAddress());
         findMember.setStatus_message(member.getStatus_message());
@@ -33,6 +32,8 @@ public class MemberService {
 
         return memberRepository.save(findMember);
     }
+
+
     // 멤버의 상태 값을 MEMBER_DELETE 로 바꾸는 메서드
     public void deleteMember(long m_id){
         Member findMember = findMember(m_id);

@@ -14,5 +14,4 @@ public interface QuestionRepository extends JpaRepository<Question,Long> { //fix
 //            "FROM Question q " +
 //            "WHERE q.q_status <> com.codestates.question.entity.Question.QuestionStatus.QUESTION_DELETE")
 //    List<QuestionResponseDto> findQuestionsNotDeleted();
-
 }

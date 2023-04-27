@@ -47,6 +47,13 @@ public class MemberDto {
 
     @Getter
     @NoArgsConstructor
+    public static class PatchPassword {
+        private String password;
+    }
+
+    @Getter
+    @Setter
+    @NoArgsConstructor
     public static class CheckEmail {
         private String email;
     }
@@ -58,7 +65,9 @@ public class MemberDto {
     }
 
     @Getter
+    @Setter
     @NoArgsConstructor
+    @AllArgsConstructor
     public static class MemberResponse{
 
         private String email;
@@ -74,6 +83,7 @@ public class MemberDto {
         private String email;
         private String name;
         private String address;
+        private String phone;
         private String status_message;
         private Long activityCount;
         private Long commentCount;
