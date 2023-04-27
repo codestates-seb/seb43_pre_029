@@ -76,7 +76,7 @@ const User = styled.div`
 const Answer = ({ answer, a_id, qinfo, qanswers, setQianswers }) => {
   const { q_id, m_id } = qinfo;
   const { a_content, m_name, createdAt, pic } = answer;
-  const [newAnswer, setNewAnswer] = useState([]); // 머지때 제거해주세용
+  const [newAnswer, setNewAnswer] = useState([]);
   const { id } = useParams();
   const [commentModal, setCommentModal] = useState(false);
   const [answerModal, setAnswerModal] = useState(false);
