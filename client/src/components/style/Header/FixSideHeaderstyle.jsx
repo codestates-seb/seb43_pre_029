@@ -59,13 +59,15 @@ const MenuButton = styled.a`
 `;
 
 // 돋보기 + 검색 인풋
-const SearchForm = styled.form`
+// const SearchForm = styled.div`
+const SearchContainerStyle = styled.div`
   flex-shrink: 10000;
   flex-grow: 1;
   max-width: 45%;
 `;
 
-const SearchInputWrapper = styled.div`
+// const SearchInputWrapper = styled.div`
+const SearchInputForm = styled.form`
   display: flex;
   flex-grow: 1;
   border: 0.0625rem solid rgb(186, 191, 196);
@@ -164,5 +166,5 @@ const SignupButton = styled.button`
 export { HeaderContainer };
 export { Logo, LogoImg };
 export { HeaderMenu, MenuButton };
-export { SearchForm, SearchInputWrapper, IconStyle, Icon2, SearchInput };
+export { SearchContainerStyle, SearchInputForm, IconStyle, Icon2, SearchInput };
 export { ButtonWrapper, LoginButton, SignupButton };

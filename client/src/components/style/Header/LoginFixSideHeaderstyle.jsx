@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { HeaderContainer, Logo, HeaderMenu, SearchInputWrapper, IconStyle, Icon2 as Icon1 } from './FixSideHeaderstyle';
+import { HeaderContainer, Logo, HeaderMenu, SearchInputForm, IconStyle, Icon2 as Icon1 } from './FixSideHeaderstyle';
 import { ProfileWrapper, NavIconStyle, Icon2, Icon3, Icon4, Icon5, Avatar, Num } from './UserProfile';
 
 // 메인 로고
@@ -26,7 +26,7 @@ const MenuButton = styled.a`
   }
 `;
 
-// 돋보기 + 검색 인풋 : SearchInputWrapper
+// 돋보기 + 검색 인풋 : SearchInputForm
 // 돋보기 아이콘 : IconStyle, Icon1 (Icon2 as Icon1)
 
 // 검색 인풋
@@ -47,6 +47,6 @@ const SearchInput = styled.input`
 export { HeaderContainer };
 export { Logo, LogoImg };
 export { HeaderMenu, MenuButton };
-export { SearchInputWrapper, IconStyle, Icon1, SearchInput };
+export { SearchInputForm, IconStyle, Icon1, SearchInput };
 export { ProfileWrapper, Avatar, Num };
 export { NavIconStyle, Icon2, Icon3, Icon4, Icon5 };

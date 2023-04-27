@@ -10,17 +10,16 @@ const MyPageBlock = ({ number, text }) => {
 };
 
 const StateBlock = ({ totalData }) => {
-  const { activity_count, question_count, comment_count, answer_count } = totalData;
-
+  const { activityCount, questionCount, commentCount, answerCount } = totalData;
   return (
     <div className="contents">
       <div className="first-column">
-        <MyPageBlock number={activity_count} text="activity_count" />
-        <MyPageBlock number={answer_count} text="answered" />
+        <MyPageBlock number={activityCount} text="activityCount" />
+        <MyPageBlock number={answerCount} text="answerCount" />
       </div>
       <div className="second-column">
-        <MyPageBlock number={question_count} text="questions" />
-        <MyPageBlock number={comment_count} text="comment" />
+        <MyPageBlock number={questionCount} text="questionCount" />
+        <MyPageBlock number={commentCount} text="commentCount" />
       </div>
     </div>
   );

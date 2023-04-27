@@ -3,6 +3,7 @@ import axios from 'axios';
 const headerSearch = async (searchvalueBind, setSearchData) => {
   const [searchValue, setSearchValue] = searchvalueBind;
 
+  console.log('headerSearch setSearchData: ', setSearchData);
   try {
     // const reqData = { search_content: searchValue };
     console.log('keyword: ', searchValue);
@@ -14,4 +15,10 @@ const headerSearch = async (searchvalueBind, setSearchData) => {
   }
 };
 
-export default headerSearch;
+const headerSubmit = (e, searchvalueBind, setIsSearched) => {
+  e.preventDefault();
+  headerSearch(searchvalueBind);
+  setIsSearched(true);
+};
+
+export { headerSearch, headerSubmit };

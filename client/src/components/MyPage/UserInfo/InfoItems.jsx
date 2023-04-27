@@ -28,54 +28,44 @@ const InfoItem = ({ data, editBind }) => {
 };
 
 const modifySubmit = async (m_id, body, editBind) => {
-  const [isEdit] = editBind;
-
-  // try {
-  //   const res = await axios.post(`/member/edit/${m_id}`, body);
-  //   console.log(res);
-
-  //   const newEdit = isEdit.map(() => false);
-  //   setIsEdit(newEdit);
-  // } catch (error) {
-  //   console.log(error);
-  // }
+  try {
+    await axios.post(`/member/edit/${m_id}`, body);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const InfoItemContainer = ({ totalData, editBind }) => {
+  console.log('InfoCon totalData: ', totalData);
   const { name, email, address, status_message, phone } = totalData;
   const m_id = localStorage.getItem('m_id');
+  const [body, setBody] = useState({});
 
-  const [nameValue, setNameValue] = useState(name);
-  const [status, setStatus] = useState(status_message);
-  const [emailaddress, setEmailaddress] = useState(email);
-  const [adPoint, setAdPoint] = useState(address);
-  const [phoneNum, setPhoneNum] = useState(phone);
-  const [body, setBody] = useState({
-    name,
-    address: adPoint,
-    status_message: status,
-    phone: phoneNum,
-  });
+  useEffect(() => {
+    setBody({ name, email, address, status_message, phone });
+  }, [name, email, address, status_message, phone]);
+
+  console.log('body: ', body);
+
+  // console.log('status: ', status);
+  // console.log('emailaddress: ', emailaddress);
+  // console.log('adPoint: ', adPoint);
+  // console.log('phoneNum: ', phoneNum);
 
   const bind = [
-    { label: 'Name', value: nameValue, setValue: setNameValue, idx: 1 },
-    { label: 'Status Message', value: status, setValue: setStatus, idx: 2 },
-    { label: 'Email', value: emailaddress, setValue: setEmailaddress, idx: 3 },
-    { label: 'Address', value: adPoint, setValue: setAdPoint, idx: 4 },
-    { label: 'Phone Number', value: phoneNum, setValue: setPhoneNum, idx: 5 },
+    { label: 'Name', value: name, idx: 1 },
+    { label: 'Status Message', value: status_message, idx: 2 },
+    { label: 'Email', value: email, idx: 3 },
+    { label: 'Address', value: address, idx: 4 },
+    { label: 'Phone Number', value: phone, idx: 5 },
   ];
+
   const [isEdit, setIsEdit] = editBind;
 
   useEffect(() => {
-    const newBody = {
-      name,
-      address: adPoint,
-      status_message: status,
-      phone: phoneNum,
-    };
-
+    const newBody = { name, email, address, status_message, phone };
     setBody(newBody);
-  }, [name, adPoint, status, phoneNum]);
+  }, [name, email, address, status_message, phone]);
 
   return (
     <ItemContainerStyle
@@ -88,6 +78,7 @@ const InfoItemContainer = ({ totalData, editBind }) => {
       {bind.map((el) => (
         <InfoItem data={el} editBind={editBind} key={el.idx} />
       ))}
+
       {/* button에 submit 속성이 있는 듯 */}
       {isEdit && <button className="none" />}
     </ItemContainerStyle>

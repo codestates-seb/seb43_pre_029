@@ -82,13 +82,11 @@ const Answer = ({ answer }) => {
   const [answerModal, setAnswerModal] = useState(false);
   const [updateValue, setUpdateValue] = useState('');
   const navigate = useNavigate();
-  // console.log(answer);
-  // console.log(qanswers);
   const onCheck = (a_id) => {
     console.log(a_id);
     setNewAnswer(!newAnswer);
     axios
-      .patch(`http://ec2-3-39-194-243.ap-northeast-2.compute.amazonaws.com:8080/question/edit/answer-accept/${a_id}`, {
+      .patch(`/question/edit/answer-accept/${a_id}`, {
         q_id: q_id,
         m_id: m_id,
       })

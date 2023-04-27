@@ -1,7 +1,7 @@
 import MainLogo from '../../../images/Logo/stack-overflow-logo-vector.svg';
 import ModalSideBarImg from '../../../images/CreateTeam/ModalSideBarImg.png';
 import SidebarStarImg from '../../../images/Icon/SidebarStarImg.png';
-import headerSearch from '../../../logic/headerSearch';
+import { headerSearch } from '../../../logic/headerLogic';
 
 import {
   HamburgerStyle,
@@ -11,8 +11,8 @@ import {
   LogoImg,
   HeaderMenu,
   MenuButton,
-  SearchForm,
-  SearchInputWrapper,
+  SearchContainerStyle,
+  SearchInputForm,
   IconStyle,
   Icon2,
   SearchInput,
@@ -62,22 +62,22 @@ const LogoContainer = () => {
   );
 };
 
-const SearchForms = ({ searchvalueBind }) => {
+const SearchContainer = ({ searchvalueBind }) => {
   const [keyword, setKeyword] = searchvalueBind;
   return (
-    <SearchForm
-      onSubmit={(e) => {
-        e.preventDefault();
-        headerSearch(searchvalueBind);
-      }}
-    >
-      <SearchInputWrapper>
+    <SearchContainerStyle>
+      <SearchInputForm
+        onSubmit={(e) => {
+          e.preventDefault();
+          headerSearch(searchvalueBind);
+        }}
+      >
         <IconStyle>
           <Icon2 />
         </IconStyle>
         <SearchInput value={keyword} onChange={setKeyword} placeholder="Search..." />
-      </SearchInputWrapper>
-    </SearchForm>
+      </SearchInputForm>
+    </SearchContainerStyle>
   );
 };
 
@@ -96,4 +96,4 @@ const MemberButton = () => {
   );
 };
 
-export { HamburgerContainer, LogoContainer, SearchForms, MemberButton };
+export { HamburgerContainer, LogoContainer, SearchContainer, MemberButton };

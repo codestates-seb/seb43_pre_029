@@ -1,13 +1,13 @@
 import MainLogo from '../../../images/Logo/stack-overflow-logo-vector.svg';
-import headerSearch from '../../../logic/headerSearch';
+import { headerSubmit } from '../../../logic/headerLogic';
 
 import {
   Logo,
   LogoImg,
   HeaderMenu,
   MenuButton,
-  SearchInputWrapper,
-  SearchForm,
+  SearchInputForm,
+  SearchContainerStyle,
   IconStyle,
   Icon2,
   SearchInput,
@@ -39,20 +39,14 @@ const HeaderForm = ({ searchvalueBind, isSearchBind }) => {
   const [isSearched, setIsSearched] = isSearchBind;
 
   return (
-    <SearchForm
-      onSubmit={(e) => {
-        e.preventDefault();
-        headerSearch(searchvalueBind);
-        setIsSearched(true);
-      }}
-    >
-      <SearchInputWrapper>
+    <SearchContainerStyle>
+      <SearchInputForm onSubmit={(e) => headerSubmit(e, searchvalueBind, setIsSearched)}>
         <IconStyle>
           <Icon2 />
         </IconStyle>
         <SearchInput value={keyword} onChange={(e) => setKeyword(e.target.value)} placeholder="Search..." />
-      </SearchInputWrapper>
-    </SearchForm>
+      </SearchInputForm>
+    </SearchContainerStyle>
   );
 };
 

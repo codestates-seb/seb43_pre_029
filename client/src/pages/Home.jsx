@@ -60,7 +60,7 @@ export default function Home({ isLogin, searchvalueBind, isSearchBind }) {
                 <QuestionsList searchvalueBind={searchvalueBind} isSearchBind={isSearchBind} />
               )}
             </HomeTemplate>
-            <Footer />
+            {/* <Footer /> */}
           </Wrapper>
         </>
       ) : (
