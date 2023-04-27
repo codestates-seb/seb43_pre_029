@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { HamburgerContainer, LogoContainer, SearchForms, MemberButton } from './ModalSideHeaderComp';
 import { HeaderContainer } from '../../style/Header/ModalSideHeaderStyle';
 
-function ModalSideHeader({ isOpen }) {
+function ModalSideHeader({ isOpen, searchvalueBind }) {
   const [open, setOpen] = useState(false);
 
   const onToggle = () => setOpen(!open);
@@ -11,7 +11,7 @@ function ModalSideHeader({ isOpen }) {
     <HeaderContainer>
       <HamburgerContainer onToggle={onToggle} open={open} />
       <LogoContainer />
-      <SearchForms />
+      <SearchForms searchvalueBind={searchvalueBind} />
       <MemberButton />
     </HeaderContainer>
   );

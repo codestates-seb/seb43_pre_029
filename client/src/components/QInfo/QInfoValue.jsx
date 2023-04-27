@@ -7,6 +7,7 @@ import 'quill/dist/quill.snow.css';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/vs2015.css';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const ProfilLine = styled.div`
   width: 720px;
@@ -101,10 +102,20 @@ const QInfoValue = ({ qinfo }) => {
   const [commentInput, setCommentInput] = useState('');
   const [questionModal, setQuestionModal] = useState(false);
   const [updateQuestionInput, setUpdateQuestionInput] = useState('');
-  const { id } = useParams();
+  const navigate = useNavigate();
 
-  const handleDelete = (id) => (e) => {
-    axios.delete(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/question/${id}`);
+  const handleDelete = (q_id) => (e) => {
+    axios
+      .delete(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/question`, {
+        data: {
+          q_id: q_id,
+          m_id: m_id,
+        },
+      })
+      .then(() => {
+        alert('해당 글이 삭제 되었습니다!');
+        navigate('/');
+      });
   };
 
   const openQuestionModal = (e) => {
@@ -156,9 +167,15 @@ const QInfoValue = ({ qinfo }) => {
             color="skyblue"
             onClick={(e) => {
               e.preventDefault();
-              axios.patch(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/question/${id}`, {
-                q_content: updateQuestionInput,
-              });
+              axios
+                .patch(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/question/edit`, {
+                  q_id: q_id,
+                  m_id: m_id,
+                  q_content: updateQuestionInput,
+                })
+                .then(() => {
+                  navigate(0);
+                });
             }}
           >
             제출
@@ -166,7 +183,7 @@ const QInfoValue = ({ qinfo }) => {
         </div>
       ) : null}
       <br />
-      <Btn color="red" onClick={handleDelete(id)}>
+      <Btn color="red" onClick={handleDelete(q_id)}>
         삭제하기
       </Btn>
       <AddComment
@@ -193,7 +210,6 @@ const QInfoValue = ({ qinfo }) => {
                   setCommentInput('');
                 })
                 .catch((err) => {
-                  console.error(err);
                   alert('댓글 등록에 실패하였습니다.');
                 });
             }}

@@ -15,7 +15,6 @@ import {
 
 import { LoginHeaderForm, ProfileContainer, NavIconContainer } from './LoginFixSideHeaderComp';
 
-
 function LoginFixSideHeader() {
   /**
    * 2023/04/23 - 리액트 Icon 스타일 컴포넌트 배열 - fe-HyungUk

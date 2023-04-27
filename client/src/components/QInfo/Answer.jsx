@@ -1,11 +1,11 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { GoTriangleUp, GoTriangleDown } from 'react-icons/go';
-import { BsBookmark } from 'react-icons/bs';
-import { RxCountdownTimer } from 'react-icons/rx';
 import ReactQuill from 'react-quill';
 import { ImCheckmark } from 'react-icons/im';
+
+import { GoTriangleUp, GoTriangleDown, BsBookmark, RxCountdownTimer } from '../Icon';
 
 const AnswerMain = styled.div`
   display: flex;
@@ -75,19 +75,33 @@ const User = styled.div`
   }
 `;
 
+
 const Answer = ({ answer }) => {
   const { a_content, m_name, createdAt, pic, m_id, q_id, accepted, a_id } = answer;
   const [newAnswer, setNewAnswer] = useState(accepted);
   const [commentModal, setCommentModal] = useState(false);
   const [answerModal, setAnswerModal] = useState(false);
-
+  const [updateValue, setUpdateValue] = useState('');
+  const navigate = useNavigate();
+  // console.log(answer);
+  // console.log(qanswers);
   const onCheck = (a_id) => {
     console.log(a_id);
     setNewAnswer(!newAnswer);
     axios
-      .patch(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/question/edit/answer-accept/${a_id}`, {
+      .patch(`http://ec2-3-39-194-243.ap-northeast-2.compute.amazonaws.com:8080/question/edit/answer-accept/${a_id}`, {
         q_id: q_id,
         m_id: m_id,
+      })
+      .then((response) => {
+        const newAnsweroo = qanswers.map((el) => {
+          if (el.a_id === a_id) {
+            console.log('a_id', a_id);
+            return { ...el, check: !el.check };
+          }
+          return el;
+        });
+        setNewAnswer(newAnsweroo);
       })
       .catch((err) => console.log(Error));
   };
@@ -106,6 +120,7 @@ const Answer = ({ answer }) => {
       </AswSide>
       <div className="answerMain">
         <ReactQuill
+          className="my-quill"
           value={a_content}
           readOnly={true}
           modules={{
@@ -142,6 +157,40 @@ const Answer = ({ answer }) => {
           >
             답글 수정
           </Btn>
+          {answerModal ? (
+            <FlexColumn>
+              <form>
+                <ReactQuill
+                  className="my-quill"
+                  value={updateValue}
+                  onChange={(content) => {
+                    setUpdateValue(content);
+                  }}
+                  theme="snow"
+                  placeholder="질문할 내용을 상세히 적어주세요."
+                />
+                <Btn
+                  color="black"
+                  type="submit"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    axios
+                      .patch(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/answer/edit/${a_id}`, {
+                        a_id: a_id,
+                        q_id: q_id,
+                        m_id: m_id,
+                        a_content: updateValue,
+                      })
+                      .then((res) => {
+                        navigate(0);
+                      });
+                  }}
+                >
+                  수정!
+                </Btn>
+              </form>
+            </FlexColumn>
+          ) : null}
           <Btn
             className="answerBtn"
             color="tomato"

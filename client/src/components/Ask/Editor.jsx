@@ -50,7 +50,6 @@ export default function Editor({ setInputValue, inputValue }) {
    */
   const handleBodyChange = (content) => {
     setInputValue((prevInputValue) => ({ ...prevInputValue, q_content: content }));
-    console.log('🌈body : ', inputValue);
   };
 
   return (

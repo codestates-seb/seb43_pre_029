@@ -1,4 +1,5 @@
 import MainLogo from '../../../images/Logo/stack-overflow-logo-vector.svg';
+import headerSearch from '../../../logic/headerSearch';
 
 import {
   Logo,
@@ -33,20 +34,29 @@ const HeaderMenuContainer = () => {
   );
 };
 
-const HeaderForm = () => {
+const HeaderForm = ({ searchvalueBind, isSearchBind }) => {
+  const [keyword, setKeyword] = searchvalueBind;
+  const [isSearched, setIsSearched] = isSearchBind;
+
   return (
-    <SearchForm>
+    <SearchForm
+      onSubmit={(e) => {
+        e.preventDefault();
+        headerSearch(keyword, setKeyword);
+        setIsSearched(true);
+      }}
+    >
       <SearchInputWrapper>
         <IconStyle>
           <Icon2 />
         </IconStyle>
-        <SearchInput type="text" placeholder="Search..." />
+        <SearchInput value={keyword} onChange={(e) => setKeyword(e.target.value)} placeholder="Search..." />
       </SearchInputWrapper>
     </SearchForm>
   );
 };
 
-const HeaderButton = () => {
+const HeaderButtonLogin = () => {
   return (
     <ButtonWrapper>
       <LoginButton>
@@ -59,4 +69,17 @@ const HeaderButton = () => {
   );
 };
 
-export { HeaderLogo, HeaderMenuContainer, HeaderForm, HeaderButton };
+const HeaderButtonLogout = () => {
+  return (
+    <ButtonWrapper>
+      <LoginButton>
+        <a>Log out</a>
+      </LoginButton>
+      <SignupButton>
+        <a href="/mypage">myPage</a>
+      </SignupButton>
+    </ButtonWrapper>
+  );
+};
+
+export { HeaderLogo, HeaderMenuContainer, HeaderForm, HeaderButtonLogin, HeaderButtonLogout };

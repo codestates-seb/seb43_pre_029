@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import FixSideHeader from '../components/Header/Fix/FixSideHeader';
-import QInfoHeader from '../components/QInfo/QInfoHeader';
-import QInfoMain from '../components/QInfo/QInfoMain';
-import Answer from '../components/QInfo/Answer';
 import axios from 'axios';
 import styled from 'styled-components';
-import Comment from '../components/QInfo/Comment';
-import Footer from '../components/Footer/Footer';
-import AnswerForm from '../components/QInfo/AnswerForm';
 import { useParams } from 'react-router-dom';
+
+import Footer from '../components/Footer/Footer';
+import { QInfoHeader, QInfoMain, Answer, Comment, AnswerForm } from '../components/QInfo/QInfoBind';
 
 const QMain = styled.div`
   width: 800px;
@@ -36,33 +33,19 @@ const CommentList = styled.div`
 
 const QuestionInfo = () => {
   const [qinfo, setQinfo] = useState([]);
+
+  const { p_id } = useParams();
   const [comments, setComments] = useState([]);
   const [qanswers, setQianswers] = useState([]);
-  const { p_id } = useParams();
   useEffect(() => {
-<<<<<<< HEAD
     axios
       .get(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/question/some-page/${p_id}`)
       .then((res) => {
         setQinfo(res.data);
-        console.log('qinfo', res.data);
-        // console.log('data', res.data);
         setQianswers(res.data.answers);
-        // console.log('answers', res.data.comments);
         setComments(res.data.comments);
       });
   }, [p_id]);
-=======
-    axios.get(`http://ec2-3-39-194-243.ap-northeast-2.compute.amazonaws.com:8080/question/some-page/1`).then((res) => {
-      setQinfo(res.data);
-      console.log('data', res.data);
-      setQianswers(res.data.answers);
-      console.log('answers', res.data.answers);
-      setComments(res.data.comments);
-    });
-  }, [id]);
-
->>>>>>> 572c5292db956b1c85ae1b94e5a8938b7f261364
   return (
     <>
       <div style={{ display: 'flex' }}>
@@ -77,11 +60,18 @@ const QuestionInfo = () => {
           </CommentList>
           <AnswerTotal>{qinfo.answerCount} Answers</AnswerTotal>
           {qanswers.map((answer) => (
-            <Answer answer={answer} key={answer.a_id} a_id={answer.a_id} qanswers={qanswers} />
+            <Answer
+              answer={answer}
+              key={answer.a_id}
+              a_id={answer.a_id}
+              qanswers={qanswers}
+              qinfo={qinfo}
+              setQianswers={setQianswers}
+            />
           ))}
           <AnswerInput>
             <h2>Your Answer</h2>
-            <AnswerForm />
+            <AnswerForm qinfo={qinfo} setQianswers={setQianswers} qanswers={qanswers} />
           </AnswerInput>
         </QMain>
       </div>
