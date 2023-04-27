@@ -3,7 +3,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://database.cbecfcc3qkeh.ap-northeast-2.rds.amazonaws.com/stackoverflow?createdDatabaseIfNotExist=true&useUnicode=true&characterSetResults=UTF-8&useSSL=true
     username: root
-    password:  #db비밀번호
+    password: asdf1234 #db비밀번호
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
