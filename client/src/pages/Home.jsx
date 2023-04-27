@@ -44,7 +44,7 @@ export default function Home({ isLogin, searchvalueBind, isSearchBind }) {
   if (searchvalue !== '') setIsSearched(true);
   return (
     <>
-      {isLogin || isSearched ? (
+      {!isLogin || isSearched ? (
         <>
           {isLogin ? (
             <LoginFixSideHeader searchvalueBind={searchvalueBind} isSearchBind={isSearchBind} />

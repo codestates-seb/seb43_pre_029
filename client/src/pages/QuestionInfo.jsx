@@ -57,7 +57,7 @@ const QuestionInfo = ({ isLogin, searchvalueBind, isSearchBind }) => {
               <Comment comment={comment} key={comment.c_id} c_id={comment.c_id} />
             ))}
           </CommentList>
-          <AnswerTotal>{qinfo.answerCount} Answers</AnswerTotal>
+          <AnswerTotal>{qinfo.answers.length} Answers</AnswerTotal>
           {qanswers.map((answer) => (
             <Answer
               answer={answer}
