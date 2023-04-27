@@ -73,6 +73,8 @@ const Avatar = styled.img`
   height: 1.5625rem;
   border-radius: 20%;
   margin: 0 0 0 0.625rem;
+
+  cursor: pointer;
 `;
 
 const Num = styled.p`

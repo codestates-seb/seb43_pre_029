@@ -8,7 +8,7 @@ import {
   Icon4,
   Icon5,
 } from '../../style/Header/LoginModalSideHeaderStyle';
-import { HamburgerContainer, LogoContainer, SearchForm, ProfileContainer } from './LoginModalSideHeaderComp';
+import { HamburgerContainer, LogoContainer, SearchContainer, ProfileContainer } from './LoginModalSideHeaderComp';
 
 function LoginModalSideHeader({ isOpen }) {
   const [open, setOpen] = useState(false);
@@ -21,7 +21,7 @@ function LoginModalSideHeader({ isOpen }) {
       <HeaderContainer>
         <HamburgerContainer onToggle={onToggle} open={open} />
         <LogoContainer />
-        <SearchForm />
+        <SearchContainer />
         <ProfileContainer />
         {IconArr.map((el, idx) => (
           <NavIconStyle key={idx}>{el}</NavIconStyle>

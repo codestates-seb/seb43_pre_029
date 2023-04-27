@@ -57,7 +57,7 @@ export default function AnswerForm({ qinfo, setQianswers, qanswers }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post('http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/answer', {
+      .post('/answer', {
         q_id: q_id,
         m_id: m_id,
         a_content: answerInputValue,

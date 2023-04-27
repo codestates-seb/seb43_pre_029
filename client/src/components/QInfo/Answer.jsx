@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import ReactQuill from 'react-quill';
+import { ImCheckmark } from 'react-icons/im';
 
 import { GoTriangleUp, GoTriangleDown, BsBookmark, RxCountdownTimer } from '../Icon';
 
@@ -25,6 +26,7 @@ const AnswerMain = styled.div`
 const AswSide = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 50px;
   button,
   div {
@@ -35,6 +37,7 @@ const AswSide = styled.div`
     height: 36px;
     margin: 3px;
     padding: 0px;
+    background-color: transparent;
   }
 `;
 const ProfilLine = styled.div`
@@ -72,35 +75,24 @@ const User = styled.div`
   }
 `;
 
-const Answer = ({ answer, a_id, qinfo, qanswers, setQianswers }) => {
-  const { q_id, m_id } = qinfo;
-  const { a_content, m_name, createdAt, pic } = answer;
-  const [newAnswer, setNewAnswer] = useState([]);
-  const { id } = useParams();
+const Answer = ({ answer }) => {
+  const { a_content, m_name, createdAt, m_id, q_id, accepted, a_id } = answer;
+  const [newAnswer, setNewAnswer] = useState(accepted);
   const [commentModal, setCommentModal] = useState(false);
   const [answerModal, setAnswerModal] = useState(false);
   const [updateValue, setUpdateValue] = useState('');
   const navigate = useNavigate();
-  // console.log(answer);
-  // console.log(qanswers);
   const onCheck = (a_id) => {
+    console.log(a_id);
+    setNewAnswer(!newAnswer);
     axios
-      .patch(`http://ec2-3-39-194-243.ap-northeast-2.compute.amazonaws.com:8080/question/edit/answer-accept/${a_id}`, {
+      .patch(`/question/edit/answer-accept/${a_id}`, {
         q_id: q_id,
         m_id: m_id,
       })
-      .then((response) => {
-        const newAnsweroo = qanswers.map((el) => {
-          if (el.a_id === a_id) {
-            console.log('a_id', a_id);
-            return { ...el, check: !el.check };
-          }
-          return el;
-        });
-        setNewAnswer(newAnsweroo); // 머지때 제거해주세용
-      })
       .catch((err) => console.log(Error));
   };
+
   return (
     <AnswerMain>
       <AswSide>
@@ -108,14 +100,10 @@ const Answer = ({ answer, a_id, qinfo, qanswers, setQianswers }) => {
         <div>0</div>
         <GoTriangleDown size="40px" color="lightgrey" className="flex-item" />
         <BsBookmark size="20px" color="lightgrey" className="flex-item" />
-        <RxCountdownTimer size="20px" color="lightgrey" className="flex-item" />
-        <button
-          onClick={() => {
-            onCheck(a_id);
-          }}
-        >
-          {'체크'}
+        <button onClick={() => onCheck(a_id)}>
+          {newAnswer ? <ImCheckmark size="40px" color="rgb(47 111 68)" /> : <ImCheckmark size="40px" color="gray" />}
         </button>
+        <RxCountdownTimer size="20px" color="lightgrey" className="flex-item" />
       </AswSide>
       <div className="answerMain">
         <ReactQuill
@@ -140,66 +128,49 @@ const Answer = ({ answer, a_id, qinfo, qanswers, setQianswers }) => {
           </Profil>
         </ProfilLine>
         <Flex>
+          {answerModal ? (
+            <div className="quill">
+              <FlexColumn>
+                <ReactQuill />
+              </FlexColumn>
+            </div>
+          ) : null}
           <Btn
-            color="blue"
+            className="answerBtn"
+            color="skyblue"
             onClick={() => {
               setAnswerModal((prev) => !prev);
             }}
           >
             답글 수정
           </Btn>
-          {answerModal ? (
-            <FlexColumn>
-              <form>
-                <ReactQuill
-                  className="my-quill"
-                  value={updateValue}
-                  onChange={(content) => {
-                    setUpdateValue(content);
-                  }}
-                  theme="snow"
-                  placeholder="질문할 내용을 상세히 적어주세요."
-                />
-                <Btn
-                  color="black"
-                  type="submit"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    axios
-                      .patch(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/answer/edit/${a_id}`, {
-                        a_id: a_id,
-                        q_id: q_id,
-                        m_id: m_id,
-                        a_content: updateValue,
-                      })
-                      .then((res) => {
-                        navigate(0);
-                      });
-                  }}
-                >
-                  수정!
-                </Btn>
-              </form>
-            </FlexColumn>
-          ) : null}
           <Btn
-            color="red"
+            className="answerBtn"
+            color="tomato"
             onClick={() => {
-              axios.delete(`http://localhost:4000/question/${id}`);
+              axios.delete(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/answer`, {
+                data: {
+                  a_id: a_id,
+                  m_id: m_id,
+                },
+              });
             }}
           >
             답글 삭제
           </Btn>
         </Flex>
         <Flex>
-          <Btn
-            color="green"
-            onClick={() => {
-              setCommentModal(!commentModal);
-            }}
-          >
-            Add a comment
-          </Btn>
+          <div className="addComment">
+            <Btn
+              className="addBtn"
+              color="green"
+              onClick={() => {
+                setCommentModal(!commentModal);
+              }}
+            >
+              Add a comment
+            </Btn>
+          </div>
         </Flex>
         {commentModal ? (
           <div>
@@ -232,18 +203,54 @@ const Btn = styled.button`
 const Flex = styled.div`
   display: flex;
   justify-content: end;
+  .quill {
+    height: 150px;
+    width: 580px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+  }
+  .addComment {
+    width: 100%;
+    display: flex;
+  }
+  .answerBtn {
+    display: flex;
+    align-items: center;
+    height: 24px;
+    background-color: ${(props) => props.color};
+    padding: 3px 5px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 6px;
+    color: white;
+  }
+  .addBtn {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    height: 24px;
+    margin-left: 0px;
+  }
 `;
 
 const CommentInputStyle = styled.div`
+  form {
+    display: flex;
+    justify-content: center;
+  }
   input {
-    width: 85%;
+    width: 92%;
     border: 2px solid lightgray;
     padding: 6px;
+    border-radius: 3px;
   }
   button {
-    width: 12%;
+    margin-left: 3px;
+    width: 8%;
     padding: 5px;
     border: 2px solid lightgray;
+    border-radius: 3px;
   }
 `;
 

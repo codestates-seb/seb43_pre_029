@@ -8,6 +8,7 @@ const MyPageStyle = styled.div`
   /* width: 45rem; */
   width: 100%;
   padding: 2rem;
+  margin-top: 2.8rem;
 
   background-color: #fff;
   .container {

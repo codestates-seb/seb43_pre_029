@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { GoCheck } from 'react-icons/go';
 const ItemList = styled.div`
-  width: 48.125rem;
   height: 5.375rem;
   display: flex;
   padding: 1rem;
@@ -24,10 +23,11 @@ const ItemList = styled.div`
     .acc {
       background-color: rgb(47, 111, 68);
       color: rgb(255, 255, 255);
-      display: flex;
       padding: 2px 4px;
-      width: 85px;
+      display: inline-flex;
+      gap: 0.3em;
       height: 20px;
+      white-space: nowrap;
       border-radius: 3px;
       font-weight: 500;
     }
@@ -67,19 +67,20 @@ const Checkicon = styled(GoCheck)`
 const QuestItem = ({ item }) => {
   const { q_id, q_title, m_name, createAt, answers } = item;
   const accepted = answers.findIndex((e) => e.accepted === true);
-
   return (
     <ItemList>
       <div className="A">
         <div>0 votes</div>
-        {accepted ? (
-          <div>{answers.length} answer</div>
-        ) : (
+        {accepted > -1 ? (
           <div className="acc">
             <span>
               <Checkicon />
             </span>
-            {answers.length} answers
+            {answers.length} {answers.length > 1 ? 'answers' : 'answer'}
+          </div>
+        ) : (
+          <div>
+            {answers.length} {answers.length > 1 ? 'answers' : 'answer'}
           </div>
         )}
         <div>2 views</div>
