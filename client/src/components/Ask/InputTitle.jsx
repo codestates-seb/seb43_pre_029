@@ -19,7 +19,7 @@ export default function InputForm({ setInputValue, inputValue }) {
     <div>
       <Box>
         <Flex direction="column">
-          <label htmlFor="title">제목</label>
+          <label htmlFor="title">Title</label>
           <p>Be specific and imagine you’re asking a question to another person.</p>
           <input
             name="title"
