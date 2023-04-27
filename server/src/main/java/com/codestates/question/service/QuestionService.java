@@ -186,25 +186,26 @@ public class QuestionService {
         List<Question> filteredQuestions = pageQuestions.getContent();
         List<Question> resultQuestions = new ArrayList<>();
         for(Question question : filteredQuestions){
-            if(question.getQ_title().contains(keyword)|| question.getQ_content().contains(keyword)){
+            if(question.getQ_title().contains(keyword)){
                 resultQuestions.add(question);
             }
         }
-        return removeDuplicateQuestions(resultQuestions);
+//        return removeDuplicateQuestions(resultQuestions);
+        return resultQuestions;
     }
 
     // List내 중복요소 제거
-    public List<Question> removeDuplicateQuestions(List<Question> questions) {
-        Set<String> titleSet = new HashSet<>();
-        List<Question> uniqueQuestions = new ArrayList<>();
-        for (Question q : questions) {
-            if (!titleSet.contains(q.getQ_title())) {
-                titleSet.add(q.getQ_title());
-                uniqueQuestions.add(q);
-            }
-        }
-        return uniqueQuestions;
-    }
+//    public List<Question> removeDuplicateQuestions(List<Question> questions) {
+//        Set<String> titleSet = new HashSet<>();
+//        List<Question> uniqueQuestions = new ArrayList<>();
+//        for (Question q : questions) {
+//            if (!titleSet.contains(q.getQ_title())) {
+//                titleSet.add(q.getQ_title());
+//                uniqueQuestions.add(q);
+//            }
+//        }
+//        return uniqueQuestions;
+//    }
 
     // 검색기능의 페이지 네이션
     public Page<Question> convertToPage(List<Question> questions, Long pageNumber, int pageSize) {
