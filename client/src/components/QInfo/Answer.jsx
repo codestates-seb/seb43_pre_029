@@ -166,7 +166,7 @@ const Answer = ({ answer, a_id, qinfo, qanswers, setQianswers }) => {
                   onClick={(e) => {
                     e.preventDefault();
                     axios
-                      .patch(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/answer/edit/${a_id}`, {
+                      .patch(`/answer/edit/${a_id}`, {
                         a_id: a_id,
                         q_id: q_id,
                         m_id: m_id,

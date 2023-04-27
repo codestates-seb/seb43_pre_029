@@ -68,7 +68,7 @@ const SearchForms = ({ searchvalueBind }) => {
     <SearchForm
       onSubmit={(e) => {
         e.preventDefault();
-        headerSearch(keyword);
+        headerSearch(searchvalueBind);
       }}
     >
       <SearchInputWrapper>

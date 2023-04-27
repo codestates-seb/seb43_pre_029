@@ -153,7 +153,7 @@ const QInfoValue = ({ qinfo }) => {
             onClick={(e) => {
               e.preventDefault();
               axios
-                .patch(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/question/edit`, {
+                .patch(`/question/edit`, {
                   q_id: q_id,
                   m_id: m_id,
                   q_content: updateQuestionInput,

@@ -7,7 +7,7 @@ const HeaderContainer = styled.header`
   width: 100%;
   height: 2.8rem;
   /* height: 5.3vw; */
-  max-width:100%;
+  max-width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,7 +63,7 @@ const SearchForm = styled.form`
   flex-shrink: 10000;
   flex-grow: 1;
   max-width: 45%;
-`
+`;
 
 const SearchInputWrapper = styled.div`
   display: flex;
@@ -134,6 +134,10 @@ const LoginButton = styled.button`
     color: rgb(44, 88, 119);
   }
   a {
+    color: rgb(69, 123, 162);
+  }
+
+  p {
     color: rgb(69, 123, 162);
   }
 `;

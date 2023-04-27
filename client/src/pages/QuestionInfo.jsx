@@ -31,32 +31,30 @@ const CommentList = styled.div`
   margin: 0px 20px 5px 70px;
 `;
 
-const QuestionInfo = () => {
+const QuestionInfo = ({ isLogin, searchvalueBind, isSearchBind }) => {
   const [qinfo, setQinfo] = useState([]);
 
   const { p_id } = useParams();
   const [comments, setComments] = useState([]);
   const [qanswers, setQianswers] = useState([]);
   useEffect(() => {
-    axios
-      .get(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/question/some-page/${p_id}`)
-      .then((res) => {
-        setQinfo(res.data);
-        setQianswers(res.data.answers);
-        setComments(res.data.comments);
-      });
-  }, []);
+    axios.get(`/question/some-page/${p_id}`).then((res) => {
+      setQinfo(res.data);
+      setQianswers(res.data.answers);
+      setComments(res.data.comments);
+    });
+  }, [p_id]);
 
   return (
     <>
       <div style={{ display: 'flex' }}>
-        <FixSideHeader />
+        <FixSideHeader searchvalueBind={searchvalueBind} isSearchBind={isSearchBind} />
         <QMain>
           <QInfoHeader qinfo={qinfo} />
           <QInfoMain qinfo={qinfo} />
           <CommentList>
             {comments.map((comment) => (
-              <Comment comment={comment} key={comment.id} />
+              <Comment comment={comment} key={comment.c_id} />
             ))}
           </CommentList>
           <AnswerTotal>{qinfo.answerCount} Answers</AnswerTotal>

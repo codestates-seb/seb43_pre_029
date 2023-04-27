@@ -24,7 +24,7 @@ const AskMain = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post('http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/question/ask', {
+      .post('/question/ask', {
         ...inputValue,
         m_id: 1,
       })

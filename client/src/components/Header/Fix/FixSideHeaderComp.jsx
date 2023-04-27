@@ -42,7 +42,7 @@ const HeaderForm = ({ searchvalueBind, isSearchBind }) => {
     <SearchForm
       onSubmit={(e) => {
         e.preventDefault();
-        headerSearch(keyword, setKeyword);
+        headerSearch(searchvalueBind);
         setIsSearched(true);
       }}
     >
@@ -56,30 +56,17 @@ const HeaderForm = ({ searchvalueBind, isSearchBind }) => {
   );
 };
 
-const HeaderButtonLogin = () => {
+const HeaderButton = () => {
   return (
     <ButtonWrapper>
       <LoginButton>
-        <a href="/login">Log in</a>
+        <a href="/login">Log In</a>
       </LoginButton>
       <SignupButton>
-        <a href="/signup">Sign up</a>
+        <a href="/Signup">Sign up</a>
       </SignupButton>
     </ButtonWrapper>
   );
 };
 
-const HeaderButtonLogout = () => {
-  return (
-    <ButtonWrapper>
-      <LoginButton>
-        <a>Log out</a>
-      </LoginButton>
-      <SignupButton>
-        <a href="/mypage">myPage</a>
-      </SignupButton>
-    </ButtonWrapper>
-  );
-};
-
-export { HeaderLogo, HeaderMenuContainer, HeaderForm, HeaderButtonLogin, HeaderButtonLogout };
+export { HeaderLogo, HeaderMenuContainer, HeaderForm, HeaderButton };
