@@ -4,8 +4,8 @@ import Contnent from '../components/Home/Content';
 import QuestionsList from '../components/Home/QuestionsList';
 import FixSideHeader from '../components/Header/Fix/FixSideHeader';
 import ModalSideHeader from '../components/Header/Modal/ModalSideHeader';
-// import LoginFixSideHeader from '../components/Header/Fix/LoginFixSideHeader'
-// import LoginModalSideHeader from '../components/Header/Modal/LoginModalSideHeader'
+import LoginFixSideHeader from '../components/Header/Fix/LoginFixSideHeader';
+import LoginModalSideHeader from '../components/Header/Modal/LoginModalSideHeader';
 import Footer from '../components/Footer/Footer';
 
 const HomeTemplate = styled.div`
