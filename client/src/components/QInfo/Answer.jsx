@@ -75,9 +75,8 @@ const User = styled.div`
   }
 `;
 
-
 const Answer = ({ answer }) => {
-  const { a_content, m_name, createdAt, pic, m_id, q_id, accepted, a_id } = answer;
+  const { a_content, m_name, createdAt, m_id, q_id, accepted, a_id } = answer;
   const [newAnswer, setNewAnswer] = useState(accepted);
   const [commentModal, setCommentModal] = useState(false);
   const [answerModal, setAnswerModal] = useState(false);
@@ -92,16 +91,6 @@ const Answer = ({ answer }) => {
       .patch(`http://ec2-3-39-194-243.ap-northeast-2.compute.amazonaws.com:8080/question/edit/answer-accept/${a_id}`, {
         q_id: q_id,
         m_id: m_id,
-      })
-      .then((response) => {
-        const newAnsweroo = qanswers.map((el) => {
-          if (el.a_id === a_id) {
-            console.log('a_id', a_id);
-            return { ...el, check: !el.check };
-          }
-          return el;
-        });
-        setNewAnswer(newAnsweroo);
       })
       .catch((err) => console.log(Error));
   };
@@ -157,40 +146,6 @@ const Answer = ({ answer }) => {
           >
             답글 수정
           </Btn>
-          {answerModal ? (
-            <FlexColumn>
-              <form>
-                <ReactQuill
-                  className="my-quill"
-                  value={updateValue}
-                  onChange={(content) => {
-                    setUpdateValue(content);
-                  }}
-                  theme="snow"
-                  placeholder="질문할 내용을 상세히 적어주세요."
-                />
-                <Btn
-                  color="black"
-                  type="submit"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    axios
-                      .patch(`/answer/edit/${a_id}`, {
-                        a_id: a_id,
-                        q_id: q_id,
-                        m_id: m_id,
-                        a_content: updateValue,
-                      })
-                      .then((res) => {
-                        navigate(0);
-                      });
-                  }}
-                >
-                  수정!
-                </Btn>
-              </form>
-            </FlexColumn>
-          ) : null}
           <Btn
             className="answerBtn"
             color="tomato"
