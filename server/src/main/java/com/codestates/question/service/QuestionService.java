@@ -7,14 +7,16 @@ import com.codestates.member.service.MemberService;
 import com.codestates.question.entity.Question;
 import com.codestates.question.repository.QuestionRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import org.springframework.data.domain.PageRequest;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+
 
 
 @Service
@@ -24,9 +26,10 @@ public class QuestionService {
     private final QuestionManager questionManager;
     private final MemberService memberService;
 
+
+
     // Question 등록
     public Question createQuestion(Question question){
-//        questionManager.hasPermissionToModify(question);
         injectMember(question);
         return saveQuestion(question);
     }
@@ -72,36 +75,48 @@ public class QuestionService {
     // 전체 게시글 조회, 페이지 네이션 구현
     public Page<Question> findQuestions(Long page) {
         int pageNumber = page.intValue();
+        Sort.Direction direction = Sort.Direction.DESC;
+        String property = "createdAt";
         if (pageNumber < 0){
             throw new IllegalArgumentException("페이지 번호는 음수일 수 없습니다.");
         }
-        Sort.Direction direction = Sort.Direction.DESC;
-        String property = "modifiedAt";
+
         if(direction == null || property == null){
             throw new IllegalArgumentException("정렬 속성 및 방향은 null 일 수 없습니다.");
         }
         return questionRepository.findAll(PageRequest.of(pageNumber, 5, Sort.by(direction, property)));
     }
 
+
     // Answer 채택
     public Question acceptAnswer(Question question, Long a_id) {
         questionManager.hasPermissionToModify(question);
         Question findQuestion = questionManager.verifiedQuestion(question.getQ_id());
 
-        acceptAnswers(findQuestion.getAnswers(), a_id);
-        markQuestionAsAnswered(findQuestion);
-        saveQuestion(findQuestion);
+        // 답변채택 취소 시 -> questionstatus.question_Answered -> question_registration으로 변경
+        if(rejectAcceptedAnswers(findQuestion.getAnswers(),a_id)){
+            findQuestion.setQ_status(Question.QuestionStatus.QUESTION_REGISTRATION);
+            saveQuestion(findQuestion);
+        } else {
+            acceptAnswers(findQuestion.getAnswers(), a_id);
+            markQuestionAsAnswered(findQuestion);
+            saveQuestion(findQuestion);
+        }
         return findQuestion;
     }
 
-    // 답변채택 취소: question.List<answer>중 accepted값의 true인것을 false로 변경
-    public void rejectAcceptedAnswers(Question question){
-        List<Answer> answers = question.getAnswers();
-        for(Answer answer : answers){
-            if(answer.getAccepted() == true){
-                answer.setAccepted(false);
+    // 답변채택 취소: a_id값의 accepted값가 True라면 false로 변경
+    public boolean rejectAcceptedAnswers(List<Answer> answers, Long a_id){
+        boolean twoCheckAnswer = false;
+        for(Answer answer : answers) {
+            if (answer.getA_id() == a_id) {
+                if (answer.getAccepted() == true) {
+                    answer.setAccepted(false);
+                    twoCheckAnswer = true;
+                }
             }
         }
+        return twoCheckAnswer;
     }
 
     // q_status 답변완료상태 변경
@@ -146,12 +161,40 @@ public class QuestionService {
     }
 
     // 게시글 추천 수 증가
-    public void increaseLikes(Question question) {
+    public void increaseLikes(Question question, Long m_id) {
         //TODO 회원은 하나의 게시글에 한번의 추천밖에 할 수 없다. 로직 추가해야함
         question.setSuggestedCount(question.getSuggestedCount()+1);
         saveQuestion(question);
     }
 
+// 검색기능 구현
+    public List<Question> searchQuestions(Long page, String keyword) {
+        int pageNumber = page.intValue();
+        Sort.Direction direction = Sort.Direction.DESC;
+        String property = "createdAt";
 
+        if (pageNumber < 0){
+            throw new IllegalArgumentException("페이지 번호는 음수일 수 없습니다.");
+        }
 
+        if(direction == null || property == null){
+            throw new IllegalArgumentException("정렬 속성 및 방향은 null 일 수 없습니다.");
+        }
+        Page<Question> pageQuestions = questionRepository.findAll(PageRequest.of(pageNumber, 5, Sort.by(direction, property)));
+        List<Question> filteredQuestions = pageQuestions.getContent();
+        List<Question> resultQuestions = new ArrayList<>();
+        for(Question question : filteredQuestions){
+            if(question.getQ_title().contains(keyword)){
+                resultQuestions.add(question);
+            }
+        }
+        return filteredQuestions;
+    }
+
+    public Page<Question> convertToPage(List<Question> questions, Long pageNumber, int pageSize) {
+        int start = (int)(pageNumber - 1) * pageSize;
+        int end = Math.min(start + pageSize, questions.size());
+        return new PageImpl<>(questions.subList(start, end), PageRequest.of((int)(pageNumber - 1), pageSize), questions.size());
+    }
 }
+
