@@ -6,9 +6,9 @@ const QuestionsList = () => {
   const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
-    axios.get('http://ec2-3-39-194-243.ap-northeast-2.compute.amazonaws.com:8080/question?page=1').then((response) => {
+    axios.get('http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/question?page=1').then((response) => {
       setQuestions(response.data.data);
-      console.log(response.data.data);
+      // console.log(response.data.data);
     });
   }, []);
 
@@ -16,7 +16,7 @@ const QuestionsList = () => {
     <>
       <div>
         {questions.map((item) => (
-          <QuestItem item={item} key={item.q_id} answer={questions.answer} />
+          <QuestItem item={item} key={item.q_id} />
         ))}
       </div>
     </>

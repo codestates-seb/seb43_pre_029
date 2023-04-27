@@ -18,32 +18,45 @@ const CMain = styled.div`
   .date {
     color: rgb(130, 131, 132);
   }
+  .cBtn {
+    display: flex;
+    justify-content: end;
+  }
 `;
 const Btn = styled.button`
   background-color: ${(props) => props.color};
-  color: rgb(255, 255, 255);
-  padding: 0.5rem;
+  padding: 3px 5px;
   border: none;
   border-radius: 3px;
-  margin: 10px 20px;
-  font-weight: bolder;
   cursor: pointer;
-  width: 3rem;
-  height: 3rem;
+  margin-right: 6px;
+  color: white;
+  font-weight: bolder;
 `;
 
 const Comment = ({ comment, c_id }) => {
-  const { value, username, date } = comment;
+  const { c_comment, m_name, createdAt, m_id, q_id } = comment;
   const [isEdit, setIsEdit] = useState(false);
-  const [commentValue, setCommentValue] = useState(value);
+  const [commentValue, setCommentValue] = useState(c_comment);
 
   const handleRemove = () => {
-    axios.delete(`/comment/${c_id}`, { m_id: 0, q_id: 0 });
+    axios.delete(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/comment/${c_id}`, {
+      data: {
+        m_id: m_id,
+        q_id: q_id,
+      },
+    });
   };
 
   const onSubmit = () => {
-    axios.patch(`/comment/edit`, { m_id: 0, q_id: 0, c_id: 0, c_comment: commentValue });
+    axios.patch(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/comment/edit`, {
+      m_id: m_id,
+      q_id: q_id,
+      c_id: c_id,
+      c_comment: commentValue,
+    });
   };
+
   return (
     <>
       <CMain>
@@ -58,16 +71,16 @@ const Comment = ({ comment, c_id }) => {
             <input value={commentValue} onChange={(e) => setCommentValue(e.target.value)} />
           </form>
         ) : (
-          <span>{value}</span>
+          <span>{commentValue}</span>
         )}
-        <span className="name"> - {username}</span>
-        <span className="date"> {date}</span>
-        <div>
+        <span className="name"> - {m_name}</span>
+        <span className="date"> {createdAt}</span>
+        <div className="cBtn">
           <Btn color="skyblue" onClick={() => setIsEdit(true)}>
             수정
           </Btn>
           <Btn color="tomato" onClick={() => handleRemove(c_id)}>
-            x
+            삭제
           </Btn>
         </div>
       </CMain>

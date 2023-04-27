@@ -45,9 +45,24 @@ const User = styled.div`
     text-decoration: none;
   }
 `;
+const AddComment = styled.div`
+  font-size: 13px;
+`;
 
+const CommetInput = styled.div`
+  .cForm {
+    height: 70px;
+  }
+  .cInput {
+    width: 600px;
+    height: 30px;
+    border: 0.4px solid black;
+    border-radius: 3px;
+    font-size: 16px;
+  }
+`;
 const QInfoValue = ({ qinfo }) => {
-  const { q_content1, createAt, m_name } = qinfo;
+  const { q_content, createAt, m_name, m_id, q_id } = qinfo;
 
   const modules = useMemo(() => {
     return {
@@ -89,7 +104,7 @@ const QInfoValue = ({ qinfo }) => {
   const { id } = useParams();
 
   const handleDelete = (id) => (e) => {
-    axios.delete(`http://localhost:4000/question/${id}`);
+    axios.delete(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/question/${id}`);
   };
 
   const openQuestionModal = (e) => {
@@ -98,9 +113,8 @@ const QInfoValue = ({ qinfo }) => {
 
   return (
     <div>
-      <div>{q_content1}</div>
       <ReactQuill
-        value={q_content1}
+        value={q_content}
         readOnly={true}
         modules={{
           toolbar: false,
@@ -122,7 +136,7 @@ const QInfoValue = ({ qinfo }) => {
           </User>
         </Profil>
       </ProfilLine>
-      <Btn color="blue" onClick={openQuestionModal}>
+      <Btn color="skyblue" onClick={openQuestionModal}>
         {questionModal ? '닫기' : '수정'}
       </Btn>
       {questionModal ? (
@@ -142,7 +156,7 @@ const QInfoValue = ({ qinfo }) => {
             color="skyblue"
             onClick={(e) => {
               e.preventDefault();
-              axios.patch(`http://localhost:4000/question/${id}`, {
+              axios.patch(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/question/${id}`, {
                 q_content: updateQuestionInput,
               });
             }}
@@ -155,21 +169,25 @@ const QInfoValue = ({ qinfo }) => {
       <Btn color="red" onClick={handleDelete(id)}>
         삭제하기
       </Btn>
-      <div
-        className="addComment"
+      <AddComment
         onClick={() => {
           setCommentModal(!commentModal);
         }}
       >
         Add a comment
-      </div>
+      </AddComment>
       {commentModal ? (
-        <div>
+        <CommetInput>
           <form
+            className="cForm"
             onSubmit={(e) => {
               e.preventDefault();
               axios
-                .post('http://localhost:4000/comment', { m_id: 0, q_id: id, c_comment: commentInput })
+                .post('http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/comment', {
+                  m_id: m_id,
+                  q_id: q_id,
+                  c_comment: commentInput,
+                })
                 .then((res) => {
                   alert('댓글 등록 완료하였습니다!');
                   setCommentInput('');
@@ -181,6 +199,7 @@ const QInfoValue = ({ qinfo }) => {
             }}
           >
             <input
+              className="cInput"
               type="text"
               value={commentInput}
               onChange={(e) => {
@@ -189,7 +208,7 @@ const QInfoValue = ({ qinfo }) => {
             />
             <button type="submit">제출</button>
           </form>
-        </div>
+        </CommetInput>
       ) : null}
     </div>
   );
