@@ -76,7 +76,7 @@ const User = styled.div`
 `;
 
 const Answer = ({ answer }) => {
-  const { a_content, m_name, createdAt, pic, m_id, q_id, accepted, a_id } = answer;
+  const { a_content, m_name, createdAt, m_id, q_id, accepted, a_id } = answer;
   const [newAnswer, setNewAnswer] = useState(accepted);
   const [commentModal, setCommentModal] = useState(false);
   const [answerModal, setAnswerModal] = useState(false);

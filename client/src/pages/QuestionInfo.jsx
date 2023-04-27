@@ -40,7 +40,6 @@ const QuestionInfo = () => {
   const [qanswers, setQianswers] = useState([]);
   const { p_id } = useParams();
   useEffect(() => {
-<<<<<<< HEAD
     axios
       .get(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/question/some-page/${p_id}`)
       .then((res) => {
@@ -52,17 +51,6 @@ const QuestionInfo = () => {
         setComments(res.data.comments);
       });
   }, [p_id]);
-=======
-    axios.get(`http://ec2-3-39-194-243.ap-northeast-2.compute.amazonaws.com:8080/question/some-page/1`).then((res) => {
-      setQinfo(res.data);
-      console.log('data', res.data);
-      setQianswers(res.data.answers);
-      console.log('answers', res.data.answers);
-      setComments(res.data.comments);
-    });
-  }, [id]);
-
->>>>>>> 572c5292db956b1c85ae1b94e5a8938b7f261364
   return (
     <>
       <div style={{ display: 'flex' }}>
