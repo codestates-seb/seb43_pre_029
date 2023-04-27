@@ -35,20 +35,23 @@ const CommentList = styled.div`
 `;
 
 const QuestionInfo = () => {
-  const { id } = useParams();
-
   const [qinfo, setQinfo] = useState([]);
+  console.log('✅', qinfo);
+  const { p_id } = useParams();
   const [comments, setComments] = useState([]);
   const [qanswers, setQianswers] = useState([]);
   useEffect(() => {
-    axios.get(`http://ec2-3-39-194-243.ap-northeast-2.compute.amazonaws.com:8080/question/some-page/1`).then((res) => {
-      setQinfo(res.data);
-      console.log('data', res.data);
-      setQianswers(res.data.answers);
-      console.log('answers', res.data.answers);
-      setComments(res.data.comments);
-    });
-  }, [id]);
+    axios
+      .get(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/question/some-page/${p_id}`)
+      .then((res) => {
+        setQinfo(res.data);
+        // console.log('data', res.data);
+        setQianswers(res.data.answers);
+        // console.log('answers', res.data.answers);
+        setComments(res.data.comments);
+        // console.log('comments', res.data.comments);
+      });
+  }, []);
 
   return (
     <>
@@ -64,11 +67,18 @@ const QuestionInfo = () => {
           </CommentList>
           <AnswerTotal>{qinfo.answerCount} Answers</AnswerTotal>
           {qanswers.map((answer) => (
-            <Answer answer={answer} key={answer.a_id} a_id={answer.a_id} qanswers={qanswers} />
+            <Answer
+              answer={answer}
+              key={answer.a_id}
+              a_id={answer.a_id}
+              qanswers={qanswers}
+              qinfo={qinfo}
+              setQianswers={setQianswers}
+            />
           ))}
           <AnswerInput>
             <h2>Your Answer</h2>
-            <AnswerForm />
+            <AnswerForm qinfo={qinfo} setQianswers={setQianswers} qanswers={qanswers} />
           </AnswerInput>
         </QMain>
       </div>
