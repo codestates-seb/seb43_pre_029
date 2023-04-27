@@ -2,9 +2,7 @@ import styled from 'styled-components';
 import homeimg from '../images/home_img.png';
 import Contnent from '../components/Home/Content';
 import QuestionsList from '../components/Home/QuestionsList';
-
 import { FixSideHeader, ModalSideHeader } from '../components/Header/HeaderBind';
-
 import Footer from '../components/Footer/Footer';
 import { useState } from 'react';
 import SearchList from '../components/Home/SearchList';
@@ -40,7 +38,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
 export default function Home({ isLogin, searchvalueBind }) {
   const isSearchBind = useState(false);
   const [isSearched, setIsSearched] = isSearchBind;

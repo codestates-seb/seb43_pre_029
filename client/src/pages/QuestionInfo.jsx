@@ -24,6 +24,7 @@ const AnswerInput = styled.div`
     padding-top: 20px;
   }
 `;
+
 const CommentList = styled.div`
   border-top: 1px solid rgb(227 230 232);
   width: auto;
@@ -31,19 +32,20 @@ const CommentList = styled.div`
 `;
 
 const QuestionInfo = () => {
-  const { id } = useParams();
-
   const [qinfo, setQinfo] = useState([]);
-  const [qanswers, setQianswers] = useState([]);
-  const [comments, setComments] = useState([]);
 
-  // useEffect(() => {
-  //   axios.get(`http://localhost:4000/questions/${id}`).then((res) => {
-  //     setQinfo(res.data);
-  //     setQianswers(res.data.answers);
-  //     setComments(res.data.comment);
-  //   });
-  // }, [id]);
+  const { p_id } = useParams();
+  const [comments, setComments] = useState([]);
+  const [qanswers, setQianswers] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/question/some-page/${p_id}`)
+      .then((res) => {
+        setQinfo(res.data);
+        setQianswers(res.data.answers);
+        setComments(res.data.comments);
+      });
+  }, []);
 
   return (
     <>
@@ -57,13 +59,20 @@ const QuestionInfo = () => {
               <Comment comment={comment} key={comment.id} />
             ))}
           </CommentList>
-          <AnswerTotal>{qanswers.length} Answers</AnswerTotal>
+          <AnswerTotal>{qinfo.answerCount} Answers</AnswerTotal>
           {qanswers.map((answer) => (
-            <Answer answer={answer} key={answer.id} />
+            <Answer
+              answer={answer}
+              key={answer.a_id}
+              a_id={answer.a_id}
+              qanswers={qanswers}
+              qinfo={qinfo}
+              setQianswers={setQianswers}
+            />
           ))}
           <AnswerInput>
             <h2>Your Answer</h2>
-            <AnswerForm />
+            <AnswerForm qinfo={qinfo} setQianswers={setQianswers} qanswers={qanswers} />
           </AnswerInput>
         </QMain>
       </div>

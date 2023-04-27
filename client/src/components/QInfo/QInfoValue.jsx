@@ -6,8 +6,50 @@ import axios from 'axios';
 import 'quill/dist/quill.snow.css';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/vs2015.css';
+import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
+const ProfilLine = styled.div`
+  width: 720px;
+  margin-top: 50px;
+  display: flex;
+  justify-content: end;
+`;
+const Profil = styled.div`
+  width: 187px;
+  height: 54px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  padding: 5px 6px 7px 7px;
+  border-radius: 3px;
+  background-color: rgb(217, 234, 247);
+  .date {
+    width: 187px;
+    height: 16px;
+    margin: 1px 0px 4px;
+    color: rgb(106 115 124);
+  }
+`;
+const User = styled.div`
+  display: flex;
+  .pic {
+    margin-right: 8px;
+    img {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+  a {
+    color: rgb(0 116 204);
+    text-decoration: none;
+  }
+`;
 
 const QInfoValue = ({ qinfo }) => {
+  const { q_content, createAt, m_name, q_id, m_id } = qinfo;
+
   const modules = useMemo(() => {
     return {
       toolbar: [
@@ -41,14 +83,24 @@ const QInfoValue = ({ qinfo }) => {
     'code-block',
   ];
 
-  const { value, date, username, title, body, id } = qinfo;
   const [commentModal, setCommentModal] = useState(false);
   const [commentInput, setCommentInput] = useState('');
   const [questionModal, setQuestionModal] = useState(false);
   const [updateQuestionInput, setUpdateQuestionInput] = useState('');
+  const navigate = useNavigate();
 
-  const handleDelete = (id) => (e) => {
-    axios.delete(`http://localhost:4000/question/${id}`);
+  const handleDelete = (q_id) => (e) => {
+    axios
+      .delete(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/question`, {
+        data: {
+          q_id: q_id,
+          m_id: m_id,
+        },
+      })
+      .then(() => {
+        alert('해당 글이 삭제 되었습니다!');
+        navigate('/');
+      });
   };
 
   const openQuestionModal = (e) => {
@@ -58,7 +110,7 @@ const QInfoValue = ({ qinfo }) => {
   return (
     <div>
       <ReactQuill
-        value={value}
+        value={q_content}
         readOnly={true}
         modules={{
           toolbar: false,
@@ -66,7 +118,7 @@ const QInfoValue = ({ qinfo }) => {
       />
       <ProfilLine>
         <Profil>
-          <div className="date">{date}</div>
+          <div className="date">{createAt}</div>
           <User>
             <div className="pic">
               <img
@@ -75,7 +127,7 @@ const QInfoValue = ({ qinfo }) => {
               />
             </div>
             <div>
-              <a href={'/'}>{username}</a>
+              <a href={'/'}>{m_name}</a>
             </div>
           </User>
         </Profil>
@@ -100,9 +152,15 @@ const QInfoValue = ({ qinfo }) => {
             color="skyblue"
             onClick={(e) => {
               e.preventDefault();
-              axios.patch(`http://localhost:4000/question/${id}`, {
-                q_content: updateQuestionInput,
-              });
+              axios
+                .patch(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/question/edit`, {
+                  q_id: q_id,
+                  m_id: m_id,
+                  q_content: updateQuestionInput,
+                })
+                .then(() => {
+                  navigate(0);
+                });
             }}
           >
             제출
@@ -110,7 +168,7 @@ const QInfoValue = ({ qinfo }) => {
         </div>
       ) : null}
       <br />
-      <Btn color="red" onClick={handleDelete(id)}>
+      <Btn color="red" onClick={handleDelete(q_id)}>
         삭제하기
       </Btn>
       <div
@@ -127,13 +185,12 @@ const QInfoValue = ({ qinfo }) => {
             onSubmit={(e) => {
               e.preventDefault();
               axios
-                .post('http://localhost:4000/comment', { m_id: 0, q_id: id, c_comment: commentInput })
+                .post('http://localhost:4000/comment', { m_id: m_id, q_id: q_id, c_comment: commentInput })
                 .then((res) => {
                   alert('댓글 등록 완료하였습니다!');
                   setCommentInput('');
                 })
                 .catch((err) => {
-                  console.error(err);
                   alert('댓글 등록에 실패하였습니다.');
                 });
             }}
@@ -154,46 +211,6 @@ const QInfoValue = ({ qinfo }) => {
 };
 
 export default QInfoValue;
-
-const ProfilLine = styled.div`
-  margin-top: 50px;
-  width: 720px;
-  display: flex;
-  justify-content: end;
-`;
-
-const Profil = styled.div`
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  font-size: 13px;
-  padding: 5px 6px 7px 7px;
-  border-radius: 3px;
-  background-color: rgb(217, 234, 247);
-
-  .date {
-    width: 187px;
-    height: 16px;
-    margin: 1px 0px 4px;
-    color: rgb(10, 115, 124);
-  }
-`;
-
-const User = styled.div`
-  display: flex;
-
-  .pic {
-    margin-right: 8px;
-    img {
-      width: 2rem;
-      height: 2rem;
-    }
-  }
-  a {
-    color: rgb(0, 116, 204);
-    text-decoration: none;
-  }
-`;
 
 const Btn = styled.button`
   background-color: ${(props) => props.color};

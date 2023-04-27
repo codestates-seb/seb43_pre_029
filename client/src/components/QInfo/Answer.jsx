@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import ReactQuill from 'react-quill';
 
@@ -26,9 +26,6 @@ const AswSide = styled.div`
   display: flex;
   flex-direction: column;
   width: 50px;
-  align-items: center;
-  justify-content: center;
-  margin: 3px;
   button,
   div {
     display: flex;
@@ -75,26 +72,55 @@ const User = styled.div`
   }
 `;
 
-const Answer = ({ answer, setAnswers, answers }) => {
-  const { value, username, date, pic, check } = answers;
+const Answer = ({ answer, a_id, qinfo, qanswers, setQianswers }) => {
+  const { q_id, m_id } = qinfo;
+  const { a_content, m_name, createdAt, pic } = answer;
+  const [newAnswer, setNewAnswer] = useState([]);
   const { id } = useParams();
   const [commentModal, setCommentModal] = useState(false);
   const [answerModal, setAnswerModal] = useState(false);
-
+  const [updateValue, setUpdateValue] = useState('');
+  const navigate = useNavigate();
+  // console.log(answer);
+  // console.log(qanswers);
+  const onCheck = (a_id) => {
+    axios
+      .patch(`http://ec2-3-39-194-243.ap-northeast-2.compute.amazonaws.com:8080/question/edit/answer-accept/${a_id}`, {
+        q_id: q_id,
+        m_id: m_id,
+      })
+      .then((response) => {
+        const newAnsweroo = qanswers.map((el) => {
+          if (el.a_id === a_id) {
+            console.log('a_id', a_id);
+            return { ...el, check: !el.check };
+          }
+          return el;
+        });
+        setNewAnswer(newAnsweroo); // 머지때 제거해주세용
+      })
+      .catch((err) => console.log(Error));
+  };
   return (
     <AnswerMain>
-      {/* <AnswerSide answer={answer} check={check} /> */}
       <AswSide>
         <GoTriangleUp size="40px" color="lightgrey" className="flex-item" />
         <div>0</div>
         <GoTriangleDown size="40px" color="lightgrey" className="flex-item" />
         <BsBookmark size="20px" color="lightgrey" className="flex-item" />
         <RxCountdownTimer size="20px" color="lightgrey" className="flex-item" />
-        <button>체크</button>
+        <button
+          onClick={() => {
+            onCheck(a_id);
+          }}
+        >
+          {'체크'}
+        </button>
       </AswSide>
       <div className="answerMain">
         <ReactQuill
-          value={value}
+          className="my-quill"
+          value={a_content}
           readOnly={true}
           modules={{
             toolbar: false,
@@ -102,13 +128,13 @@ const Answer = ({ answer, setAnswers, answers }) => {
         />
         <ProfilLine>
           <Profil>
-            <div className="date">{answer.date}</div>
+            <div className="date">{createdAt}</div>
             <User>
               <div className="pic">
                 <img src={answer.pic} alt="profile" />
               </div>
               <div>
-                <a href={'/'}>{answer.username}</a>
+                <a href={'/'}>{m_name}</a>
               </div>
             </User>
           </Profil>
@@ -124,7 +150,36 @@ const Answer = ({ answer, setAnswers, answers }) => {
           </Btn>
           {answerModal ? (
             <FlexColumn>
-              <ReactQuill />
+              <form>
+                <ReactQuill
+                  className="my-quill"
+                  value={updateValue}
+                  onChange={(content) => {
+                    setUpdateValue(content);
+                  }}
+                  theme="snow"
+                  placeholder="질문할 내용을 상세히 적어주세요."
+                />
+                <Btn
+                  color="black"
+                  type="submit"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    axios
+                      .patch(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/answer/edit/${a_id}`, {
+                        a_id: a_id,
+                        q_id: q_id,
+                        m_id: m_id,
+                        a_content: updateValue,
+                      })
+                      .then((res) => {
+                        navigate(0);
+                      });
+                  }}
+                >
+                  수정!
+                </Btn>
+              </form>
             </FlexColumn>
           ) : null}
           <Btn
