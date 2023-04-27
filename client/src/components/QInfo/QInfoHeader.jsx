@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const HeaderBox = styled.div`
   padding-right: 20px;
@@ -49,19 +50,19 @@ const InfoheaderUnder = styled.div`
 `;
 
 const QInfoHeader = ({ qinfo }) => {
-  const { question, view } = qinfo;
+  const { q_title, viewCount } = qinfo;
   return (
     <HeaderBox>
       <InfoHeader>
-        <h1>{question}</h1>
+        <h1>{q_title}</h1>
         <AskBtn>
-          <a href="/">Ask Question</a>
+          <Link to="/question/ask">Ask Question</Link>
         </AskBtn>
       </InfoHeader>
       <InfoheaderUnder>
         <span>Asked today</span>
         <span>Modified today</span>
-        <span>Viewed {view} times</span>
+        <span>Viewed {viewCount} times</span>
       </InfoheaderUnder>
     </HeaderBox>
   );

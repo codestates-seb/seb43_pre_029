@@ -15,7 +15,7 @@ const QuestionsList = () => {
     <>
       <div>
         {questions.map((item) => (
-          <QuestItem item={item} key={item.q_id} answer={questions.answer} />
+          <QuestItem item={item} key={item.q_id} />
         ))}
       </div>
     </>

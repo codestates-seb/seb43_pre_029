@@ -38,6 +38,7 @@ const QuestionInfo = ({ isLogin, searchvalueBind, isSearchBind }) => {
   const [comments, setComments] = useState([]);
   const [qanswers, setQianswers] = useState([]);
   useEffect(() => {
+<<<<<<< HEAD
     axios.get(`/question/some-page/${p_id}`).then((res) => {
       setQinfo(res.data);
       setQianswers(res.data.answers);
@@ -45,6 +46,16 @@ const QuestionInfo = ({ isLogin, searchvalueBind, isSearchBind }) => {
     });
   }, [p_id]);
 
+=======
+    axios
+      .get(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/question/some-page/${p_id}`)
+      .then((res) => {
+        setQinfo(res.data);
+        setQianswers(res.data.answers);
+        setComments(res.data.comments);
+      });
+  }, [p_id]);
+>>>>>>> 323581b6f5a8a1510ef6b95cf08a1cdc2ff1e27f
   return (
     <>
       <div style={{ display: 'flex' }}>
@@ -54,7 +65,11 @@ const QuestionInfo = ({ isLogin, searchvalueBind, isSearchBind }) => {
           <QInfoMain qinfo={qinfo} />
           <CommentList>
             {comments.map((comment) => (
+<<<<<<< HEAD
               <Comment comment={comment} key={comment.c_id} />
+=======
+              <Comment comment={comment} key={comment.c_id} c_id={comment.c_id} />
+>>>>>>> 323581b6f5a8a1510ef6b95cf08a1cdc2ff1e27f
             ))}
           </CommentList>
           <AnswerTotal>{qinfo.answerCount} Answers</AnswerTotal>
