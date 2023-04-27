@@ -26,7 +26,8 @@ const LoginForm = () => {
   }, [accessToken, refreshToken, m_id]);
 
   const data = {
-    email: emailBind.value,
+    username: emailBind.value,
+    // email: emailBind.value,
     password: passwordBind.value,
   };
 

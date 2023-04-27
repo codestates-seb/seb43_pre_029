@@ -56,7 +56,7 @@ const HeaderForm = ({ searchvalueBind, isSearchBind }) => {
   );
 };
 
-const HeaderButton = () => {
+const HeaderButtonLogin = () => {
   return (
     <ButtonWrapper>
       <LoginButton>
@@ -69,4 +69,17 @@ const HeaderButton = () => {
   );
 };
 
-export { HeaderLogo, HeaderMenuContainer, HeaderForm, HeaderButton };
+const HeaderButtonLogout = () => {
+  return (
+    <ButtonWrapper>
+      <LoginButton>
+        <a>Log out</a>
+      </LoginButton>
+      <SignupButton>
+        <a href="/mypage">myPage</a>
+      </SignupButton>
+    </ButtonWrapper>
+  );
+};
+
+export { HeaderLogo, HeaderMenuContainer, HeaderForm, HeaderButtonLogin, HeaderButtonLogout };

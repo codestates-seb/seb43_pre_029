@@ -6,10 +6,10 @@ import SignUpInfo from '../images/SignUp.png';
 
 import ModalSideHeader from '../components/Header/Modal/ModalSideHeader';
 
-function SignUp() {
+function SignUp({ searchvalueBind }) {
   return (
     <EntireStyle>
-      <ModalSideHeader />
+      <ModalSideHeader searchvalueBind={searchvalueBind} />
       <SignUpStyle>
         <div>
           <img className="SignUpInfo" src={SignUpInfo} alt="SignUpInfo" />

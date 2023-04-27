@@ -2,7 +2,13 @@ import React from 'react';
 import FixSidebar from './FixSideBar';
 
 import { HeaderContainer } from '../../style/Header/FixSideHeaderstyle';
-import { HeaderLogo, HeaderMenuContainer, HeaderForm, HeaderButton } from './FixSideHeaderComp';
+import {
+  HeaderLogo,
+  HeaderMenuContainer,
+  HeaderForm,
+  HeaderButtonLogin,
+  HeaderButtonLogout,
+} from './FixSideHeaderComp';
 
 function FixSideHeader({ searchvalueBind, isSearchBind }) {
   return (
@@ -11,7 +17,8 @@ function FixSideHeader({ searchvalueBind, isSearchBind }) {
         <HeaderLogo />
         <HeaderMenuContainer />
         <HeaderForm searchvalueBind={searchvalueBind} isSearchBind={isSearchBind} />
-        <HeaderButton />
+        <HeaderButtonLogin />
+        {/* { ? <HeaderButtonLogin /> : <HeaderButtonLogout/>} */}
       </HeaderContainer>
       <FixSidebar />
     </>

@@ -62,8 +62,8 @@ const LogoContainer = () => {
   );
 };
 
-const SearchForms = ({ searchBind }) => {
-  const [keyword, setKeyword] = searchBind;
+const SearchForms = ({ searchvalueBind }) => {
+  const [keyword, setKeyword] = searchvalueBind;
   return (
     <SearchForm
       onSubmit={(e) => {

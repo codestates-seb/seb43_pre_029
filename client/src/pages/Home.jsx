@@ -41,8 +41,7 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-export default function Home({ isLogin }) {
-  const searchvalueBind = useState('');
+export default function Home({ isLogin, searchvalueBind }) {
   const isSearchBind = useState(false);
   const [isSearched, setIsSearched] = isSearchBind;
 

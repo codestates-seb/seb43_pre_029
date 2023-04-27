@@ -59,6 +59,7 @@ const LoginInput = ({ label, bind }) => {
 const testExp = (label, value, setValid) => {
   const EmailExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
   const passwordRegExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+  const phoneRegExp = /^01[016789]{1}-[0-9]{3,4}-[0-9]{4}$/;
 
   const validTest = (RegExp) => (RegExp ? setValid(true) : setValid(false));
 
@@ -70,6 +71,9 @@ const testExp = (label, value, setValid) => {
     case 'Current Password':
     case 'New Password':
       return validTest(passwordRegExp.test(value));
+
+    case 'Phone Number':
+      return validTest(phoneRegExp.test(value));
 
     default:
       return;
