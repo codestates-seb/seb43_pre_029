@@ -9,7 +9,7 @@ import EntireStyle from '../components/style/EntireStyle';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function MyPage({ m_id }) {
+function MyPage({ m_id, searchvalueBind }) {
   useEffect(() => {
     axios
       .get(`/member/${m_id}`)
@@ -45,7 +45,7 @@ function MyPage({ m_id }) {
 
   return (
     <EntireStyle>
-      {/* <LoginFixSideHeader /> */}
+      {/* <LoginFixSideHeader searchvalueBind={searchvalueBind} /> */}
       <MyPageStyle>
         <UserConfigBtn isOverlay={isOverlay} setIsOverlay={setIsOverlay} isDisabled={isDisabled} editBind={editBind} />
         <Profile totalData={totalData} />

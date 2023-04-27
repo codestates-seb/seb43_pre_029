@@ -1,11 +1,14 @@
 import axios from 'axios';
 
-const headerSearch = async (keyword, setKeyword) => {
+const headerSearch = async (searchvalueBind, setSearchData) => {
+  const [searchValue, setSearchValue] = searchvalueBind;
+
   try {
-    const reqData = { search_content: keyword };
-    console.log('keyword: ', keyword);
-    const res = await axios.post(`/search?q=${keyword}`, reqData);
-    setKeyword(res);
+    // const reqData = { search_content: searchValue };
+    console.log('keyword: ', searchValue);
+    const res = await axios.get(`/question/search?keyword=${searchValue}&page=1`);
+    setSearchData(res.data.data);
+    setSearchValue('');
   } catch (error) {
     console.log(error);
   }

@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import {
   SearchInputWrapper,
   IconStyle,
@@ -10,25 +11,30 @@ import {
 } from '../../style/Header/LoginFixSideHeaderstyle';
 // } from '../style/LoginFixSideHeaderstyle';
 
-const LoginHeaderForm = () => {
+const LoginHeaderForm = ({ searchvalueBind }) => {
+  const [searchValue, setSearchValue] = searchvalueBind;
   return (
     <form>
       <SearchInputWrapper>
         <IconStyle>
           <Icon1 />
         </IconStyle>
-        <SearchInput type="text" placeholder="Search..." />
+        <SearchInput value={searchValue} onChange={setSearchValue} placeholder="Search..." />
       </SearchInputWrapper>
     </form>
   );
 };
 
 const ProfileContainer = () => {
+  const navigate = useNavigate();
+  const m_id = localStorage.getItem('m_id');
+
   return (
     <ProfileWrapper>
       <Avatar
         src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973461_1280.png"
         alt="User Avatar"
+        onClick={() => navigate(`/mypage/${m_id}`)}
       />
       <Num>1</Num>
     </ProfileWrapper>
