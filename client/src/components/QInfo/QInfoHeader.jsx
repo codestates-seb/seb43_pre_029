@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const HeaderBox = styled.div`
   padding-right: 20px;
@@ -55,7 +56,7 @@ const QInfoHeader = ({ qinfo }) => {
       <InfoHeader>
         <h1>{question}</h1>
         <AskBtn>
-          <a href="/">Ask Question</a>
+          <Link to="/question/ask">Ask Question</Link>
         </AskBtn>
       </InfoHeader>
       <InfoheaderUnder>
