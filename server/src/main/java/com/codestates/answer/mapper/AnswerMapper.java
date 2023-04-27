@@ -29,6 +29,7 @@ public interface AnswerMapper {
                 .a_id(answer.getA_id())
                 .m_id(answer.getMember().getM_id())
                 .q_id(answer.getQuestion().getQ_id())
+                .m_name(answer.getMember().getName())
                 .a_content(answer.getA_content())
                 .createdAt(answer.getCreatedAt())
                 .modifiedAt(answer.getModifiedAt())
