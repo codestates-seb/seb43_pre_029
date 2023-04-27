@@ -73,28 +73,32 @@ const User = styled.div`
   }
 `;
 
-const Answer = ({ answer, a_id }) => {
+const Answer = ({ answer, a_id, qinfo, qanswers, setQianswers }) => {
+  const { q_id, m_id } = qinfo;
   const { a_content, m_name, createdAt, pic } = answer;
-  const [newAnswer, setNewAnswer] = useState();
+  const [newAnswer, setNewAnswer] = useState([]); // 머지때 제거해주세용
   const { id } = useParams();
   const [commentModal, setCommentModal] = useState(false);
   const [answerModal, setAnswerModal] = useState(false);
-
+  const [updateValue, setUpdateValue] = useState('');
+  // console.log(answer);
+  // console.log(qanswers);
   const onCheck = (a_id) => {
+    console.log(a_id);
     axios
-      .patch(`http://ec2-3-39-194-243.ap-northeast-2.compute.amazonaws.com:8080/question/edit/answer-accept/1`, {
-        q_id: 1,
-        m_id: 1,
-      }) // body {m_id, q_id} ??
+      .patch(`http://ec2-3-39-194-243.ap-northeast-2.compute.amazonaws.com:8080/question/edit/answer-accept/${a_id}`, {
+        q_id: q_id,
+        m_id: m_id,
+      })
       .then((response) => {
-        const newAnswers = response.data.answers.map((el) => {
+        const newAnsweroo = qanswers.map((el) => {
           if (el.a_id === a_id) {
             console.log('a_id', a_id);
             return { ...el, check: !el.check };
           }
           return el;
         });
-        setNewAnswer(newAnswers);
+        setNewAnswer(newAnsweroo); // 머지때 제거해주세용
       })
       .catch((err) => console.log(Error));
   };
@@ -106,10 +110,18 @@ const Answer = ({ answer, a_id }) => {
         <GoTriangleDown size="40px" color="lightgrey" className="flex-item" />
         <BsBookmark size="20px" color="lightgrey" className="flex-item" />
         <RxCountdownTimer size="20px" color="lightgrey" className="flex-item" />
-        <button onClick={() => onCheck(a_id)}>{'체크'}</button>
+        <button
+          onClick={() => {
+            console.log('클릭');
+            onCheck(a_id);
+          }}
+        >
+          {'체크'}
+        </button>
       </AswSide>
       <div className="answerMain">
         <ReactQuill
+          className="my-quill"
           value={a_content}
           readOnly={true}
           modules={{
@@ -140,7 +152,37 @@ const Answer = ({ answer, a_id }) => {
           </Btn>
           {answerModal ? (
             <FlexColumn>
-              <ReactQuill />
+              <form>
+                <ReactQuill
+                  className="my-quill"
+                  value={updateValue}
+                  onChange={(content) => {
+                    setUpdateValue(content);
+                  }}
+                  theme="snow"
+                  placeholder="질문할 내용을 상세히 적어주세요."
+                />
+                <Btn
+                  color="black"
+                  type="submit"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    axios
+                      .patch(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/answer/edit/${a_id}`, {
+                        a_id: a_id,
+                        q_id: q_id,
+                        m_id: m_id,
+                        a_content: updateValue,
+                      })
+                      .then((res) => {
+                        setQianswers((prev) => [...prev, { ...prev, a_content: updateValue }]); // [{},{},{},{},{}]
+                        console.log('📌', qanswers);
+                      });
+                  }}
+                >
+                  수정!
+                </Btn>
+              </form>
             </FlexColumn>
           ) : null}
           <Btn
