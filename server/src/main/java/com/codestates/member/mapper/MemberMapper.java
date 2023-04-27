@@ -11,6 +11,7 @@ public interface MemberMapper {
     Member MemberPostDtoToMember(MemberDto.Post memberPostDto);
     Member MemberPatchDtoToMember(MemberDto.Patch memberPatchDto);
     MemberDto.MemberResponse MemberToMemberResponseDto(Member member);
+    MemberDto.Login_Response testMapper(Member member);
     default MemberDto.MemberGetResponse MemberToMemberGetResponse(Member member){
         MemberDto.MemberGetResponse response = new MemberDto.MemberGetResponse();
         response.setAddress(member.getEmail());

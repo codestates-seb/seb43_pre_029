@@ -39,6 +39,7 @@ public class CommentDto {
         private Long m_id;
         private Long q_id;
         private Long c_id;
+	private String m_name;
         private String c_comment;
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;

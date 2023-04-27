@@ -12,25 +12,29 @@ import javax.validation.constraints.NotBlank;
 public class MemberDto {
     // Test용 PostDto
     @Getter
+    @Setter
+    @AllArgsConstructor
     @NoArgsConstructor
     public static class Post{
-        @NotBlank
         private String name;
-        @NotBlank
         private String password;
-        @NotBlank
         @Email
         private String email;
-        @NotBlank
         private String address;
-        @NotBlank
         private String status_message = "none";
-        @NotBlank
         private String phone;
-
     }
 
+	@Getter
+	@Setter
+	@NoArgsConstructor
+	public static class Login_Response{
+		private Long m_id;
+	}
+
     @Getter
+    @Setter
+    @AllArgsConstructor
     @NoArgsConstructor
     public static class Patch{
         // TODO: 양식 작성 -> 숫자 1개, 문자 1개, 8자 이상

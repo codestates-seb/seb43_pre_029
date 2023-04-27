@@ -25,6 +25,7 @@ public interface CommentMapper {
                 .m_id(comment.getMember().getM_id())
                 .q_id(comment.getQuestion().getQ_id())
                 .c_id(comment.getC_id())
+		.m_name(comment.getMember().getName())
                 .c_comment(comment.getC_comment())
                 .createdAt(comment.getCreatedAt())
                 .modifiedAt(comment.getModifiedAt())
