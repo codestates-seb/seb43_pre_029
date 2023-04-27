@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const ContnentTemplate = styled.div`
   display: flex;
@@ -83,7 +84,7 @@ const Contnent = () => {
       <ContentHeader>
         <h1>Top Questions</h1>
         <AskBtn>
-          <a href="/">Ask Question</a>
+          <Link to="/question/ask">Ask Question</Link>
         </AskBtn>
       </ContentHeader>
       <ContentA>
