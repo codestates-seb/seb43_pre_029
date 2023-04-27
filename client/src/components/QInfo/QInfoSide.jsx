@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { GoTriangleUp, GoTriangleDown } from 'react-icons/go';
-import { BsBookmark } from 'react-icons/bs';
-import { RxCountdownTimer } from 'react-icons/rx';
+
+import { GoTriangleUp, GoTriangleDown, BsBookmark, RxCountdownTimer } from '../Icon';
 
 const InfoSide = styled.div`
   display: flex;

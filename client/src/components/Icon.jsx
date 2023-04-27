@@ -8,6 +8,10 @@ import { IoIosTrophy } from 'react-icons/io';
 import { BsFillQuestionCircleFill } from 'react-icons/bs';
 import { MdChatBubble } from 'react-icons/md';
 
+import { GoTriangleUp, GoTriangleDown } from 'react-icons/go';
+import { BsBookmark } from 'react-icons/bs';
+import { RxCountdownTimer } from 'react-icons/rx';
+
 export {
   RxHamburgerMenu,
   SlMagnifier,
@@ -18,4 +22,8 @@ export {
   IoIosTrophy,
   BsFillQuestionCircleFill,
   MdChatBubble,
+  GoTriangleUp,
+  GoTriangleDown,
+  BsBookmark,
+  RxCountdownTimer,
 };

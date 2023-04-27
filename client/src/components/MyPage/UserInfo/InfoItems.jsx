@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { InfoItemsStyle, ItemStyle, UserConfigBtnStyle, ModalStyle, ItemContainerStyle } from '../../style/MyPageStyle';
+import { InfoItemsStyle, ItemStyle, ModalStyle, ItemContainerStyle } from '../../style/MyPageStyle';
 import { SignupInput } from '../../Input';
 import useInput from '../../../logic/useInput';
 import axios from 'axios';
