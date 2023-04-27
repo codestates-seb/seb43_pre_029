@@ -36,7 +36,7 @@ const CommentList = styled.div`
 
 const QuestionInfo = () => {
   const [qinfo, setQinfo] = useState([]);
-  console.log('✅', qinfo);
+
   const { p_id } = useParams();
   const [comments, setComments] = useState([]);
   const [qanswers, setQianswers] = useState([]);
@@ -45,11 +45,8 @@ const QuestionInfo = () => {
       .get(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/question/some-page/${p_id}`)
       .then((res) => {
         setQinfo(res.data);
-        // console.log('data', res.data);
         setQianswers(res.data.answers);
-        // console.log('answers', res.data.answers);
         setComments(res.data.comments);
-        // console.log('comments', res.data.comments);
       });
   }, []);
 

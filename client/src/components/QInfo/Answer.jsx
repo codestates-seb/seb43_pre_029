@@ -84,7 +84,6 @@ const Answer = ({ answer, a_id, qinfo, qanswers, setQianswers }) => {
   // console.log(answer);
   // console.log(qanswers);
   const onCheck = (a_id) => {
-    console.log(a_id);
     axios
       .patch(`http://ec2-3-39-194-243.ap-northeast-2.compute.amazonaws.com:8080/question/edit/answer-accept/${a_id}`, {
         q_id: q_id,
@@ -112,7 +111,6 @@ const Answer = ({ answer, a_id, qinfo, qanswers, setQianswers }) => {
         <RxCountdownTimer size="20px" color="lightgrey" className="flex-item" />
         <button
           onClick={() => {
-            console.log('클릭');
             onCheck(a_id);
           }}
         >
@@ -176,7 +174,6 @@ const Answer = ({ answer, a_id, qinfo, qanswers, setQianswers }) => {
                       })
                       .then((res) => {
                         setQianswers((prev) => [...prev, { ...prev, a_content: updateValue }]); // [{},{},{},{},{}]
-                        console.log('📌', qanswers);
                       });
                   }}
                 >

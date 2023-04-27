@@ -4,8 +4,6 @@ import styled from 'styled-components';
 import Editor from './Editor';
 import InputTitle from './InputTitle';
 import { useNavigate } from 'react-router-dom';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { setAskContent, setAskTitle } from '../../store';
 
 /**
  *
@@ -41,7 +39,6 @@ const AskMain = () => {
         navigate('/');
       })
       .catch((err) => {
-        console.error(err);
         alert('질문 게시글 등록에 실패하였습니다.');
       });
   };

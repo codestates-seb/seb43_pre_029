@@ -50,8 +50,6 @@ const User = styled.div`
 const QInfoValue = ({ qinfo }) => {
   const { q_content, createAt, m_name, q_id, m_id } = qinfo;
 
-  console.log('🌈', qinfo);
-
   const modules = useMemo(() => {
     return {
       toolbar: [
@@ -90,7 +88,7 @@ const QInfoValue = ({ qinfo }) => {
   const [questionModal, setQuestionModal] = useState(false);
   const [updateQuestionInput, setUpdateQuestionInput] = useState('');
   const navigate = useNavigate();
-  console.log(qinfo);
+
   const handleDelete = (q_id) => (e) => {
     axios
       .delete(`http://ec2-13-125-71-49.ap-northeast-2.compute.amazonaws.com:8080/question`, {
@@ -185,12 +183,10 @@ const QInfoValue = ({ qinfo }) => {
               axios
                 .post('http://localhost:4000/comment', { m_id: m_id, q_id: q_id, c_comment: commentInput })
                 .then((res) => {
-                  console.log(res);
                   alert('댓글 등록 완료하였습니다!');
                   setCommentInput('');
                 })
                 .catch((err) => {
-                  console.error(err);
                   alert('댓글 등록에 실패하였습니다.');
                 });
             }}
