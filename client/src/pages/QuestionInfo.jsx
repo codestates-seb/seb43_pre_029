@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import FixSideHeader from '../components/Header/Fix/FixSideHeader';
-import QInfoHeader from '../components/QInfo/QInfoHeader';
-import QInfoMain from '../components/QInfo/QInfoMain';
-import Answer from '../components/QInfo/Answer';
 import axios from 'axios';
 import styled from 'styled-components';
-import Comment from '../components/QInfo/Comment';
-import Footer from '../components/Footer/Footer';
 import { useParams } from 'react-router-dom';
-import AnswerForm from '../components/QInfo/AnswerForm';
+
+import Footer from '../components/Footer/Footer';
+import { QInfoHeader, QInfoMain, Answer, Comment, AnswerForm } from '../components/QInfo/QInfoBind';
 
 const QMain = styled.div`
   width: 800px;

@@ -13,6 +13,7 @@ import {
   Num,
 } from '../../style/Header/LoginModalSideHeaderStyle';
 import { HamburgerContainer } from './ModalSideHeaderComp';
+
 const LogoContainer = () => {
   return (
     <>

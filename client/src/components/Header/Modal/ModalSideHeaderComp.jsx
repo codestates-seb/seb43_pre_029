@@ -1,8 +1,7 @@
 import MainLogo from '../../../images/Logo/stack-overflow-logo-vector.svg';
 import ModalSideBarImg from '../../../images/CreateTeam/ModalSideBarImg.png';
 import SidebarStarImg from '../../../images/Icon/SidebarStarImg.png';
-
-import { IoEarthSharp } from 'react-icons/io5';
+import headerSearch from '../../../logic/headerSearch';
 
 import {
   HamburgerStyle,
@@ -21,52 +20,10 @@ import {
   LoginButton,
   SignupButton,
   SidebarWrapper,
-  SidebarCategories,
   SidebarMenu,
-  InformationIcon,
   SidebarMenuItem,
-  SideImg,
-  SidebarStarImgWrapper,
 } from '../../style/Header/ModalSideHeaderStyle';
-
-const CategoryPublic = () => {
-  return (
-    <>
-      <SidebarCategories>PUBLIC</SidebarCategories>
-      <SidebarMenuItem>
-        <IoEarthSharp />
-        Questions
-      </SidebarMenuItem>
-      <SidebarMenuItem>Tags</SidebarMenuItem>
-      <SidebarMenuItem>Users</SidebarMenuItem>
-      <SidebarMenuItem>Companies</SidebarMenuItem>
-    </>
-  );
-};
-
-const CategoryColletives = () => {
-  return (
-    <>
-      <SidebarCategories>
-        COLLECTIVES
-        <InformationIcon />
-      </SidebarCategories>
-      <SidebarMenuItem>
-        <SidebarStarImgWrapper src={SidebarStarImg} alt="Sidebar Star" />
-        Explore Collectives
-      </SidebarMenuItem>
-    </>
-  );
-};
-
-const CategoryTeams = () => {
-  return (
-    <>
-      <SidebarCategories>TEAMS</SidebarCategories>
-      <SideImg src={ModalSideBarImg} alt="SideBarImg" />
-    </>
-  );
-};
+import { CategoryPublic, CategoryColletives, CategoryTeams } from '../Fix/FixSidebarComp';
 
 const HamburgerContainer = ({ onToggle, open }) => {
   return (
@@ -80,10 +37,9 @@ const HamburgerContainer = ({ onToggle, open }) => {
             <SidebarMenuItem>
               <a href="/">Home</a>
             </SidebarMenuItem>
-
             <CategoryPublic />
-            <CategoryColletives />
-            <CategoryTeams />
+            <CategoryColletives src={SidebarStarImg} />
+            <CategoryTeams src={ModalSideBarImg} />
           </SidebarMenu>
         </SidebarWrapper>
       )}
@@ -106,14 +62,20 @@ const LogoContainer = () => {
   );
 };
 
-const SearchForms = () => {
+const SearchForms = ({ searchvalueBind }) => {
+  const [keyword, setKeyword] = searchvalueBind;
   return (
-    <SearchForm>
+    <SearchForm
+      onSubmit={(e) => {
+        e.preventDefault();
+        headerSearch(keyword);
+      }}
+    >
       <SearchInputWrapper>
         <IconStyle>
           <Icon2 />
         </IconStyle>
-        <SearchInput type="text" placeholder="Search..." />
+        <SearchInput value={keyword} onChange={setKeyword} placeholder="Search..." />
       </SearchInputWrapper>
     </SearchForm>
   );

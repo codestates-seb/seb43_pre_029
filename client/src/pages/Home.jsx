@@ -2,9 +2,10 @@ import styled from 'styled-components';
 import homeimg from '../images/home_img.png';
 import Contnent from '../components/Home/Content';
 import QuestionsList from '../components/Home/QuestionsList';
-import FixSideHeader from '../components/Header/Fix/FixSideHeader';
-import ModalSideHeader from '../components/Header/Modal/ModalSideHeader';
+import { FixSideHeader, ModalSideHeader } from '../components/Header/HeaderBind';
 import Footer from '../components/Footer/Footer';
+import { useState } from 'react';
+import SearchList from '../components/Home/SearchList';
 
 const HomeTemplate = styled.div`
   display: flex;
@@ -37,24 +38,26 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
+export default function Home({ isLogin, searchvalueBind }) {
+  const isSearchBind = useState(false);
+  const [isSearched, setIsSearched] = isSearchBind;
 
-export default function Home({ isLogin }) {
   return (
     <>
       {!isLogin ? (
         <>
-          <FixSideHeader />
+          <FixSideHeader searchvalueBind={searchvalueBind} isSearchBind={isSearchBind} />
           <Wrapper>
             <HomeTemplate>
               <Contnent />
-              <QuestionsList />
+              {isSearched ? <SearchList searchvalueBind={searchvalueBind} /> : <QuestionsList />}
             </HomeTemplate>
             <Footer />
           </Wrapper>
         </>
       ) : (
         <>
-          <ModalSideHeader />
+          <ModalSideHeader searchvalueBind={searchvalueBind} />
           <Imgstyle>
             <img src={homeimg} alt="" />
           </Imgstyle>
