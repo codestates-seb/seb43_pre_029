@@ -7,7 +7,8 @@ import {
   Avatar,
   Num,
   NavIconStyle,
-} from '../style/LoginFixSideHeaderstyle';
+} from '../../style/Header/LoginFixSideHeaderstyle';
+// } from '../style/LoginFixSideHeaderstyle';
 
 const LoginHeaderForm = () => {
   return (
