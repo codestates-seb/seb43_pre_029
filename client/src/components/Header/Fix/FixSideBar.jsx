@@ -12,7 +12,7 @@ const SidebarWrapper = styled.div`
   position: fixed;
   left: 0;
   top: 0;
-  width: 25rem;
+  width: 21rem;
   padding-top: 2.8125rem;
   display: flex;
   flex-direction: column;
@@ -25,7 +25,7 @@ const SidebarMenu = styled.div`
   display: flex;
   flex-direction: column;
   padding-top: 1.875rem;
-  margin-left: 14.4rem;
+  margin-left: 10.4rem;
   /* margin-left: 3rem; */
 
   & > *:nth-child(n + 4):nth-child(-n + 6) {

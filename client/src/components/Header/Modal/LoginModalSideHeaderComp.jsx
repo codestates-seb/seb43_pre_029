@@ -1,4 +1,4 @@
-import MainLogo from '../../images/stack-overflow-logo-vector.svg';
+import MainLogo from '../../../images/Logo/stack-overflow-logo-vector.svg';
 import {
   Logo,
   LogoImg,
@@ -11,9 +11,8 @@ import {
   ProfileWrapper,
   Avatar,
   Num,
-} from '../style/LoginModalSideHeaderStyle';
-import { HamburgerContainer } from './LoginModalSideHeaderComp';
-
+} from '../../style/Header/LoginModalSideHeaderStyle';
+import { HamburgerContainer } from './ModalSideHeaderComp';
 const LogoContainer = () => {
   return (
     <>
