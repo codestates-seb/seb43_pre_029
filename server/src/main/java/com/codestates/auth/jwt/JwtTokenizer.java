@@ -20,7 +20,7 @@ import java.util.Map;
 @Component
 public class JwtTokenizer {
 	@Getter
-	@Value("12341234")
+	@Value("${jwt.key}")
 	private String secretKey;	// JWT 생성 및 검증 시 사용되는 Secret Key 정보
 
 	@Getter

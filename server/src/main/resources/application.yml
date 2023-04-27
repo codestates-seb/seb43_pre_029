@@ -3,7 +3,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://database.cbecfcc3qkeh.ap-northeast-2.rds.amazonaws.com/stackoverflow?createdDatabaseIfNotExist=true&useUnicode=true&characterSetResults=UTF-8&useSSL=true
     username: root
-    password: asdf1234
+    password: password
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
@@ -20,7 +20,7 @@ spring:
             clientId: 329778892660-d7rhmfahefpllvb4a6caaj1q5iclg8k8.apps.googleusercontent.com
             clientSecret: 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
 jwt:
-  key: 12341234               # 민감한 정보는 시스템 환경 변수에서 로드한다.
+  key: ${JWT_SECRET_KEY}               # 민감한 정보는 시스템 환경 변수에서 로드한다.
   access-token-expiration-minutes: 30
   refresh-token-expiration-minutes: 420
 mail:
